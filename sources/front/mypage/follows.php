@@ -1,33 +1,11 @@
 ﻿<?php
 //フォロー・フォロワー画面
 
+require_once("inc_base.php");
+require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
+require_once("inc_smarty.php");
+
+//Smartyを使用した表示(テンプレートファイルの指定)
+$smarty->display('front/mypage/follows.tmpl');
+
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-        <h3>渡辺花子さんのフォロー・フォロワー</h3>
-        <input type="button" value="フォロー(３０人)"><input type="button" value="フォロワー(２５人)">
-        <div>
-            <img src="hoge" alt="プロ画" align="left">
-            <p>村上亮太</p>
-            学校で教師やってます
-            <hr>
-        </div>
-
-        <div>
-            <img src="hoge" alt="プロ画" align="left">
-            <p>矢吹聖矢</p>
-            学校で教師やってました
-            <hr>
-        </div>
-
-</body>
-
-</html>
