@@ -6,4 +6,3 @@ require_once("inc_smarty.php");
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $smarty->display('front/home.tmpl');
-?>
