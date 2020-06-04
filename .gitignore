@@ -1,3 +1,7 @@
-# CakePHP 3
+#Gitにあげないものを指定する
 
+#VisualStudioでGit弄る人の為
 .vs/*
+
+#コンパイル済みテンプレートを格納する場所なのでGitに上げる必要ない
+/Smarty/templates_c/
