@@ -1,17 +1,13 @@
-{php}
 
-// 変数の初期化
-$page_flag = 0;
+{if isset($smarty.post.btn_confirm)}
 
-if( !empty($_POST['btn_confirm']) ) {
+	{$pageFlag = 1}
 
-	$page_flag = 1;
+{elseif isset($smarty.post.btn_submit)}
 
-} elseif( !empty($_POST['btn_submit']) ) {
+  {$pageFlag = 2}
 
-	$page_flag = 2;
-}
-{/php}
+{/if}
 
 <!DOCTYPE>
 <html lang="ja">
@@ -20,7 +16,7 @@ if( !empty($_POST['btn_confirm']) ) {
 </head>
 <body>
 <h1>お問い合わせ詳細</h1>
-{php} if( $page_flag === 1 ): {/php}
+{if $pageFlag == 1}
 
 <form method="post" action="">
 
@@ -30,11 +26,11 @@ if( !empty($_POST['btn_confirm']) ) {
 
 </form>
 
-{php} elseif( $page_flag === 2 ): {/php}
+{elseif $pageFlag == 2}
 
 <p>返信が完了しました。</p>
 
-{php} else: {/php}
+{else}
 <form method="post" action="">
 
 <div align="center">
@@ -80,6 +76,7 @@ if( !empty($_POST['btn_confirm']) ) {
 </form>
 <input type="submit" name="btn_confirm" value="返信">
 </div>
-{php} endif; {/php}
+
+{/if}
 </body>
 </html>

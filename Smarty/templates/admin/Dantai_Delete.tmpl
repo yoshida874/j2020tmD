@@ -1,17 +1,13 @@
-{php}
 
-// 変数の初期化
-$page_flag = 0;
+{if isset($smarty.post.btn_confirm)}
 
-if( !empty($_POST['btn_confirm']) ) {
+	{$pageFlag = 1}
 
-	$page_flag = 1;
+{elseif isset($smarty.post.btn_submit)}
 
-} elseif( !empty($_POST['btn_submit']) ) {
+  {$pageFlag = 2}
 
-	$page_flag = 2;
-}
-{/php}
+{/if}
 
 <!DOCTYPE>
 <html lang="ja">
@@ -20,13 +16,13 @@ if( !empty($_POST['btn_confirm']) ) {
 </head>
 <body>
 <h1>団体詳細</h1>
-{php} if( $page_flag === 1 ): {/php}
+{if $pageFlag == 1}
 
 <p>削除が完了しました。</p>
 <input type="button" onclick="location.href='Dantai_List.php'" align="center" value="団体リストへ"/></button>
 
 
-{php} else: {/php}
+{else}
 
 <form method="post" action="">
 
@@ -86,6 +82,6 @@ if( !empty($_POST['btn_confirm']) ) {
 	<input type="submit" name="btn_confirm" style="position: absolute; left: 50%; top: 70%" value="削除" readonly>
 </form>
 
-{php} endif; {/php}
+{/if}
 </body>
 </html>
