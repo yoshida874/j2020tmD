@@ -106,66 +106,9 @@ class cnpo_group extends crecord {
 }
 
 //--------------------------------------------------------------------------------------
-///	NPOお問い合わせクラス
+///	NPO問い合わせクラス
 //--------------------------------------------------------------------------------------
 class cnpo_inquiry extends crecord {
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	コンストラクタ
-	*/
-	//--------------------------------------------------------------------------------------
-	public function __construct() {
-		//親クラスのコンストラクタを呼ぶ
-		parent::__construct();
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	すべての個数を得る
-	@param[in]	$debug	デバッグ出力をするかどうか
-	@return	個数
-	*/
-	//--------------------------------------------------------------------------------------
-	public function get_all_count($debug){
-		return $this->get_all_count_core($debug,'NPO_inquiry');
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	指定された範囲の配列を得る
-	@param[in]	$debug	デバッグ出力をするかどうか
-	@return	配列（2次元配列になる）
-	*/
-	//--------------------------------------------------------------------------------------
-	public function get_all($debug){	
-		return $this->get_alltable_core($debug,'NPO_inquiry','inquiry_id');
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	指定されたIDの配列を得る
-	@param[in]	$debug	デバッグ出力をするかどうか
-	@param[in]	$id		ID
-	@return	配列（1次元配列になる）空の場合はfalse
-	*/
-	//--------------------------------------------------------------------------------------
-	public function get_tgt($debug,$id){
-		return $this->get_tgt_core($debug,$id,'NPO_inquiry','inquiry_id');
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	デストラクタ
-	*/
-	//--------------------------------------------------------------------------------------
-	public function __destruct(){
-		//親クラスのデストラクタを呼ぶ
-		parent::__destruct();
-	}
-}
-
-
-
-//--------------------------------------------------------------------------------------
-///	メンバークラス
-//--------------------------------------------------------------------------------------
-class cmember extends crecord {
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
@@ -187,8 +130,8 @@ class cmember extends crecord {
 		$this->select(
 			$debug,					//デバッグ文字を出力するかどうか
 			"count(*)",				//取得するカラム
-			"member,prefecture",			//取得するテーブル
-			"member.prefecture_id = prefecture.prefecture_id" //条件
+			"NPO_inquiry",			//取得するテーブル
+			"1"					//条件
 		);
 		if($row = $this->fetch_assoc()){
 			//取得した個数を返す
@@ -212,10 +155,10 @@ class cmember extends crecord {
 		//親クラスのselect()メンバ関数を呼ぶ
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
-			"member.*,prefecture.prefecture_name", //取得するカラム
-			"member,prefecture",	//取得するテーブル
-			"member.prefecture_id = prefecture.prefecture_id", //条件
-			"member.member_id asc",	//並び替え
+			"*",			//取得するカラム
+			"NPO_inquiry",	//取得するテーブル
+			"1",			//条件
+			"inquiry_id asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
 		);
 		//順次取り出す
@@ -242,39 +185,12 @@ class cmember extends crecord {
 		//親クラスのselect()メンバ関数を呼ぶ
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
-			"member.*,prefecture.prefecture_name",			//取得するカラム
-			"member,prefecture",	//取得するテーブル
-			"member.member_id ={$id} and 
-member.prefecture_id = prefecture.prefecture_id"	//条件
+			"*",			//取得するカラム
+			"NPO_inquiry",	//取得するテーブル
+			"inquiry_id=" . $id	//条件
 		);
 		return $this->fetch_assoc();
 	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	フルーツとのマッチする配列を得る
-	@param[in]	$debug	デバッグ出力をするかどうか
-	@param[in]	$id		ID
-	@return	配列（1次元配列になる）
-	*/
-	//--------------------------------------------------------------------------------------
-	public function get_all_fruits_match($debug,$id){
-		$arr = array();
-		//親クラスのselect()メンバ関数を呼ぶ
-		$this->select(
-			$debug,			//デバッグ表示するかどうか
-			"*", //取得するカラム
-			"fruits_match",	//取得するテーブル
-			"member_id = {$id}", //条件
-			"fruits_id asc"	//並び替え
-		);
-		//順次取り出す
-		while($row = $this->fetch_assoc()){
-			$arr[] = $row['fruits_id'];
-		}
-		//取得した配列を返す
-		return $arr;
-	}
-
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	デストラクタ
@@ -285,5 +201,3 @@ member.prefecture_id = prefecture.prefecture_id"	//条件
 		parent::__destruct();
 	}
 }
-
-
