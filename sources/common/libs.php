@@ -15,5 +15,5 @@ require_once("controls_ex.php");
 require_once("contents_func.php");
 //このコンテンツ独自の
 //DBの継承クラスの定義
-require_once("contents_db.php");
+require_once("contents_db_NPO.php");
 

@@ -7,13 +7,11 @@
 //PDO接続初期化
 require_once("pdointerface.php");
 
-////////////////////////////////////
-//以下、DBクラス使用例
 
 //--------------------------------------------------------------------------------------
-///	都道府県クラス
+///	NPOグループクラス
 //--------------------------------------------------------------------------------------
-class cprefecture extends crecord {
+class cnpo_group extends crecord {
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
@@ -35,7 +33,7 @@ class cprefecture extends crecord {
 		$this->select(
 			$debug,					//デバッグ文字を出力するかどうか
 			"count(*)",				//取得するカラム
-			"prefecture",			//取得するテーブル
+			"NPO_group",			//取得するテーブル
 			"1"					//条件
 		);
 		if($row = $this->fetch_assoc()){
@@ -61,9 +59,9 @@ class cprefecture extends crecord {
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
-			"prefecture",	//取得するテーブル
+			"NPO_group",	//取得するテーブル
 			"1",			//条件
-			"prefecture_id asc",	//並び替え
+			"group_id asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
 		);
 		//順次取り出す
@@ -91,8 +89,8 @@ class cprefecture extends crecord {
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
-			"prefecture",	//取得するテーブル
-			"prefecture_id=" . $id	//条件
+			"NPO_group",	//取得するテーブル
+			"group_id=" . $id	//条件
 		);
 		return $this->fetch_assoc();
 	}
@@ -108,9 +106,9 @@ class cprefecture extends crecord {
 }
 
 //--------------------------------------------------------------------------------------
-///	フルーツクラス
+///	NPOお問い合わせクラス
 //--------------------------------------------------------------------------------------
-class cfruits extends crecord {
+class cnpo_inquiry extends crecord {
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
@@ -128,7 +126,7 @@ class cfruits extends crecord {
 	*/
 	//--------------------------------------------------------------------------------------
 	public function get_all_count($debug){
-		return $this->get_all_count_core($debug,'fruits');
+		return $this->get_all_count_core($debug,'NPO_inquiry');
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -137,8 +135,8 @@ class cfruits extends crecord {
 	@return	配列（2次元配列になる）
 	*/
 	//--------------------------------------------------------------------------------------
-	public function get_all($debug){
-		return $this->get_alltable_core($debug,'fruits','fruits_id');
+	public function get_all($debug){	
+		return $this->get_alltable_core($debug,'NPO_inquiry','inquiry_id');
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -149,7 +147,7 @@ class cfruits extends crecord {
 	*/
 	//--------------------------------------------------------------------------------------
 	public function get_tgt($debug,$id){
-		return $this->get_tgt_core($debug,$id,'fruits','fruits_id');
+		return $this->get_tgt_core($debug,$id,'NPO_inquiry','inquiry_id');
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -161,6 +159,8 @@ class cfruits extends crecord {
 		parent::__destruct();
 	}
 }
+
+
 
 //--------------------------------------------------------------------------------------
 ///	メンバークラス
