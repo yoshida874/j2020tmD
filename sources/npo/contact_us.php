@@ -1,12 +1,17 @@
 <?php
 
 require_once("inc_base.php");
-require_once($CMS_COMMON_INCLUDE_DIR . "libs_NPO.php");
+require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
 
 //1ページのリミット
 $limit = 20;
+//ページの設定
+//デフォルトは1
+$page = 1;
 $rows = array();
+$ERR_STR = '';
+$show_mode = '';
 
 function readdata(){
     global $limit;
@@ -17,6 +22,8 @@ function readdata(){
     $from = ($page - 1) * $limit;
     $rows = $obj->get_all(false,$from,$limit);
 }
+
+readdata();
 
 //--------------------------------------------------------------------------------------
 /*!
@@ -30,7 +37,7 @@ function assign_page_block(){
 	global $limit;
 	global $page;
 	$retstr = '';
-	$obj = new cmember();
+	$obj = new cnpo_inquiry();
 	$allcount = $obj->get_all_count(false);
 	$ctl = new cpager($_SERVER['PHP_SELF'],$allcount,$limit);
 	$smarty->assign('pager_arr',$ctl->get('page',$page));
@@ -57,7 +64,8 @@ function assign_NPO_inquiry_list(){
 $smarty->assign('ERR_STR',$ERR_STR);
 assign_page_block();
 assign_NPO_inquiry_list();
-assign_tgt_uri();
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $smarty->display('npo/contact_us.tmpl');
+
+?>
