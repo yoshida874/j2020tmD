@@ -14,6 +14,6 @@ $header_items = array(
     'イベント一覧' => $root_path . $sub_dir . '/Event_List.php',
     '団体一覧' => $root_path . $sub_dir . '/Dantai_List.php',
     'お問い合わせ一覧' => $root_path . $sub_dir . '/inquiryList.php',
-    'ブラックリスト' => $root_path . $sub_dir . '/Blacklist_Edit.php',
-    'ログイン' => '/~j2020tmD/sources/front/login.php'
+    'ブラックリスト' => $root_path . $sub_dir . '/Blacklist_List.php',
+    'ログイン' => $root_path . $sub_dir . '/KLogin.php'
 );
