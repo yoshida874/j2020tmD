@@ -3,6 +3,7 @@
 require_once("inc_base.php");
 require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
+require_once("inc_header.php");
 
 //1ページのリミット
 $limit = 20;
@@ -67,5 +68,3 @@ assign_NPO_inquiry_list();
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $smarty->display('npo/contact_us.tmpl');
-
-?>
