@@ -18,12 +18,15 @@ $smarty->assign('ageOfChild', '子供の年齢');
 $smarty->assign('genderOfChild', '子供の性別');
 $smarty->assign('introduce', '自己紹介文');
 
+$root_path = 'http://wiz.developluna.jp/~j2020tmD/';
+$sub_dir = 'sources/front/';
+
 $header_items = array(
-    'マイページ' => './mypage/userprofile.php',
-    '新着イベント' => './event_search.php',
-    'イベント編集' => './event_detail.php',
-    'イベント作成' => './event_create.php',
-    'ログイン' => './login.php'
+    'マイページ' => $root_path . $sub_dir . 'mypage/userprofile.php',
+    '新着イベント' => $root_path . $sub_dir . 'event_search.php',
+    'イベント編集' => $root_path . $sub_dir . 'event_detail.php',
+    'イベント作成' => $root_path . $sub_dir . 'event_create.php',
+    'ログイン' => $root_path . $sub_dir . 'login.php'
 );
 
 $smarty->assign('page', $header_items);
