@@ -5,12 +5,15 @@ require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
 
 $root_path = '/~j2020tmD';
-$sub_dir = '/sources/front';
+$sub_dir = '/sources/admin';
 
 $header_items = array(
-    'マイページ' => $root_path . $sub_dir . '/mypage/userprofile.php',
-    '新着イベント' => $root_path . $sub_dir . '/event_search.php',
-    'イベント編集' => $root_path . $sub_dir . '/event_detail.php',
-    'イベント作成' => $root_path . $sub_dir . '/event_create.php',
-    'ログイン' => $root_path . $sub_dir . '/login.php'
+    '管理者HOME' => $root_path . $sub_dir . '/KHome.php',
+    '管理者一覧' => $root_path . $sub_dir . '/adminList.php',
+    'ユーザー一覧' => $root_path . $sub_dir . '/userList.php',
+    'イベント一覧' => $root_path . $sub_dir . '/Event_List.php',
+    '団体一覧' => $root_path . $sub_dir . '/Dantai_List.php',
+    'お問い合わせ一覧' => $root_path . $sub_dir . '/inquiryList.php',
+    'ブラックリスト' => $root_path . $sub_dir . '/Blacklist_Edit.php',
+    'ログイン' => '/~j2020tmD/sources/front/login.php'
 );
