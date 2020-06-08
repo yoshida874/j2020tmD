@@ -19,6 +19,7 @@ if( !empty($_POST['btn_confirm']) ) {
 <title>プロフィール</title>
 </head>
 <body>
+{include file="../components/header.tmpl"}
 <h1>プロフィール</h1>
 <?php if( $page_flag === 1 ): ?>
 
@@ -149,5 +150,6 @@ if( !empty($_POST['btn_confirm']) ) {
 </form>
 
 <?php endif; ?>
+{include file="../components/footer.tmpl"}
 </body>
 </html>
