@@ -58,6 +58,19 @@ function assign_NPO_inquiry_list(){
 	$smarty->assign('rows',$rows);
 }
 
+//--------------------------------------------------------------------------------------
+/*!
+@brief	URIのアサイン
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function assign_tgt_uri(){
+	//$smartyをグローバル宣言（必須）
+	global $smarty;
+	global $page;
+	$smarty->assign('tgt_uri',$_SERVER['PHP_SELF'] . '?page=' . $page);
+}
+
 
 /////////////////////////////////////////////////////////////////
 /// 関数呼び出しブロック
@@ -65,6 +78,7 @@ function assign_NPO_inquiry_list(){
 $smarty->assign('ERR_STR',$ERR_STR);
 assign_page_block();
 assign_NPO_inquiry_list();
+//assign_tgt_uri();
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $smarty->display('npo/contact_us.tmpl');

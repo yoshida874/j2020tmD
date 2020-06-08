@@ -37,21 +37,13 @@
             {/if}
           </td>
           <td>
-            <button onclick="location.href='./contact_detail.php'">詳細</button>
+            <button onclick="location.href='./contact_detail.php?iid={$value.inquiry_id}'">詳細</button>
             <button onclick="location.href='./delete_prev.php'">削除</button>
           </td>
         </tr>
         {foreachelse}
-        <!-- sample2-->
         <tr>
-          <td>
-            京香
-          </td>
-          <td>返信済み</td>
-          <td>
-            <button onclick="location.href='./contact_detail.php'">詳細</button>
-            <button onclick="location.href='./delete_prev.php'">削除</button>
-          </td>
+        <td colspan="3" class="nobottom">メンバーが見つかりません</td>
         </tr>
         {/foreach}
       </table>
