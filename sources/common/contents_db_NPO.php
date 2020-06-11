@@ -1,7 +1,7 @@
 <?php
 /*!
 @file contents_db.php
-@brief 
+@brief
 @copyright Copyright (c) 2017 Yamanoi Yasushi,Shimojima Ryo.
 */
 //PDO接続初期化
@@ -61,7 +61,7 @@ class cnpo_group extends crecord {
 			"*",			//取得するカラム
 			"NPO_group",	//取得するテーブル
 			"1",			//条件
-			"group_id asc",	//並び替え
+			"NPO_id asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
 		);
 		//順次取り出す
@@ -90,7 +90,7 @@ class cnpo_group extends crecord {
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
 			"NPO_group",	//取得するテーブル
-			"group_id=" . $id	//条件
+			"NPO_id=" . $id	//条件
 		);
 		return $this->fetch_assoc();
 	}
