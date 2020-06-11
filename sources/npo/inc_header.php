@@ -8,7 +8,7 @@ $root_path = '/~j2020tmD';
 $sub_dir = '/sources/npo';
 
 $header_items = array(
-    'プロフィール' => $root_path . $sub_dir . '/profile_detail.php',
+    'プロフィール' => $root_path . $sub_dir . '/profile_create.php',
     '管理者' => $root_path . $sub_dir . '/admin_us.php',
     'お問い合わせ' => $root_path . $sub_dir . '/contact_us.php',
     'イベント作成' => $root_path . $sub_dir . '/event_create.php',
