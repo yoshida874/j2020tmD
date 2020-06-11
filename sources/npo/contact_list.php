@@ -86,4 +86,4 @@ assign_NPO_inquiry_list();
 //assign_tgt_uri();
 
 //Smartyを使用した表示(テンプレートファイルの指定)
-$smarty->display('npo/contact_us.tmpl');
+$smarty->display('npo/contact_list.tmpl');

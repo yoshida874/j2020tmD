@@ -6,5 +6,5 @@ require_once("inc_header.php");
 
 $smarty->assign('page', $header_items);
 //Smartyを使用した表示(テンプレートファイルの指定)
-$smarty->display('admin/KHome.tmpl');
+$smarty->display('admin/login.tmpl');
 ?>
