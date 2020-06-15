@@ -9,13 +9,77 @@ $smarty->assign('page', $header_items);
 
 //1ページのリミット
 $limit = 20;
-//ページの設定
-//デフォルトは1
-$page = 1;
 $rows = array();
 $ERR_STR = '';
 $show_mode = '';
 
+//ページの設定
+//デフォルトは1
+$page = 1;
+//もしページが指定されていたら
+if(isset($_GET['page']) 
+    //なおかつ、数字だったら
+    && cutil::is_number($_GET['page'])
+    //なおかつ、0より大きかったら
+    && $_GET['page'] > 0){
+    //パラメータを設定
+    $page = $_GET['page'];
+}
+
+if(is_func_active()){
+	if(param_chk()){
+		switch($_POST['func']){
+			case "del":
+				$show_mode = 'del';
+				//削除操作
+				deljob();
+				//リダイレクトするページの計算
+				$re_page = $page;
+				$obj = new cmember();
+				$allcount = $obj->get_all_count(false);
+				$last_page = (int)($allcount / $limit);
+				if($allcount % $limit){
+					$last_page++;
+				}
+				if($re_page > $last_page){
+					$re_page = $last_page;
+				}
+				//再読み込みのためにリダイレクト
+				cutil::redirect_exit($_SERVER['PHP_SELF'] 
+				. '?page=' . $re_page);
+			break;
+			default:
+			break;
+		}
+	}
+}
+$show_mode = 'edit';
+
+readdata();
+
+/////////////////////////////////////////////////////////////////
+/// 関数ブロック
+/////////////////////////////////////////////////////////////////
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	コマンドが渡されたかどうか
+@return	渡されたらtrue
+*/
+//--------------------------------------------------------------------------------------
+function is_func_active(){
+    if(isset($_POST['func']) && $_POST['func'] != ""){
+        return true;
+    }
+    return false;
+}
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	データ読み込み
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
 function readdata()
 {
 	global $limit;
@@ -26,8 +90,6 @@ function readdata()
 	$from = ($page - 1) * $limit;
 	$rows = $obj->get_all(false, $from, $limit);
 }
-
-readdata();
 
 //--------------------------------------------------------------------------------------
 /*!
@@ -84,7 +146,7 @@ function assign_tgt_uri()
 $smarty->assign('ERR_STR', $ERR_STR);
 assign_page_block();
 assign_NPO_inquiry_list();
-//assign_tgt_uri();
+assign_tgt_uri();
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'npo/';

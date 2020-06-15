@@ -15,7 +15,7 @@
       <table border="1">
         <tr>
           <td>ID</td>
-          <td>1</td>
+          <td>{$inquiry_id}</td>
         </tr>
         <tr>
           <td>状態</td>
@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td>ユーザ名</td>
-          <td>アザラシ大好き</td>
+          <td>{$smarty.post.user_name}</td>
         </tr>
         <tr>
           <td>ユーザID</td>
@@ -31,11 +31,11 @@
         </tr>
         <tr>
           <td>お問い合わせ内容</td>
-          <td>お弁当は持参したほうがいいですか？</td>
+          <td>{$smarty.post.content}</td>
         </tr>
         <tr>
           <td>受信日時</td>
-          <td>2020-01-14</td>
+          <td>{$smarty.post.target_date}</td>
         </tr>
       </table>
       <button onmousedown="Reply()">返信</button>

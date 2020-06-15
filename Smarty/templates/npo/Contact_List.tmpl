@@ -12,41 +12,42 @@
   <div>
     <h1>お問い合わせリスト</h1>
     <div align="center">
-      <table border="1">
-        <tr>
-          <td>ID</td>
-          <td>ユーザ名</td>
-          <td>状態</td>
-          <td>操作</td>
-        </tr>
 
-        <!-- sample1-->
-        {foreach from=$rows key=k item=value}
-        <tr>
-          <td>
-            {$value.inquiry_id}
-          </td>
-          <td>
-            {$value.user_name}
-          </td>
-          <td>
-            {if $value.reply}
-              返信済み
-            {else}
-              未返信
-            {/if}
-          </td>
-          <td>
-            <button onclick="location.href='./Contact_Detail.php?iid={$value.inquiry_id}'">詳細</button>
-            <button onclick="location.href='./Delete_Prev.php'">削除</button>
-          </td>
-        </tr>
-        {foreachelse}
-        <tr>
-        <td colspan="3" class="nobottom">メンバーが見つかりません</td>
-        </tr>
-        {/foreach}
-      </table>
+        <table border="1">
+          <tr>
+            <td>ID</td>
+            <td>ユーザ名</td>
+            <td>状態</td>
+            <td>操作</td>
+          </tr>
+
+          <!-- sample1-->
+          {foreach from=$rows key=k item=value}
+          <tr>
+            <td>
+              {$value.inquiry_id}
+            </td>
+            <td>
+              {$value.user_name}
+            </td>
+            <td>
+              {if $value.reply}
+                返信済み
+              {else}
+                未返信
+              {/if}
+            </td>
+            <td>
+              <button onclick="location.href='./Contact_Detail.php?iid={$value.inquiry_id}'">詳細</button>
+              <button onclick="location.href='./Delete_Prev.php'">削除</button>
+            </td>
+          </tr>
+          {foreachelse}
+          <tr>
+          <td colspan="3" class="nobottom">メンバーが見つかりません</td>
+          </tr>
+          {/foreach}
+        </table>
     </div>
   </div>
   {include file="../components/footer.tmpl"}
