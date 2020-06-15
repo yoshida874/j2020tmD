@@ -1,4 +1,5 @@
 ﻿<?php
+//よくある質問
 
 require_once("inc_base.php");
 require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
@@ -8,6 +9,6 @@ require_once("inc_header.php");
 $smarty->assign('page', $header_items);
 
 //Smartyを使用した表示(テンプレートファイルの指定)
-$top_path = 'npo/';
+$top_path = 'front/support/';
 $base_name = basename(__FILE__, ".php");
 $smarty->display($top_path . $base_name . '.tmpl');

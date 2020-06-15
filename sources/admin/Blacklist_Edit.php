@@ -6,6 +6,8 @@ require_once("inc_header.php");
 //変数宣言
 $smarty->assign("pageFlag","0");
 $smarty->assign('page', $header_items);
+
 //Smartyを使用した表示(テンプレートファイルの指定)
-$smarty->display('admin/Blacklist_Edit.tmpl');
-?>
+$top_path = 'admin/';
+$base_name = basename(__FILE__, ".php");
+$smarty->display($top_path . $base_name . '.tmpl');

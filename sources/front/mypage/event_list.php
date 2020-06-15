@@ -10,3 +10,8 @@ $smarty->assign('page', $header_items);
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $smarty->display('front/mypage/event_list.tmpl');
+
+//Smartyを使用した表示(テンプレートファイルの指定)
+$top_path = 'front/mypage/';
+$base_name = basename(__FILE__, ".php");
+$smarty->display($top_path . $base_name . '.tmpl');

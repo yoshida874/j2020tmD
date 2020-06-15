@@ -86,5 +86,6 @@ assign_NPO_group_list();
 //assign_tgt_uri();
 
 //Smartyを使用した表示(テンプレートファイルの指定)
-$smarty->display('admin/Dantai_List.tmpl');
-?>
+$top_path = 'admin/';
+$base_name = basename(__FILE__, ".php");
+$smarty->display($top_path . $base_name . '.tmpl');

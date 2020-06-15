@@ -8,4 +8,6 @@ require_once("inc_header.php");
 $smarty->assign('page', $header_items);
 
 //Smartyを使用した表示(テンプレートファイルの指定)
-$smarty->display('front/mypage/profile_edit.tmpl');
+$top_path = 'front/mypage/';
+$base_name = basename(__FILE__, ".php");
+$smarty->display($top_path . $base_name . '.tmpl');

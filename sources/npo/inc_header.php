@@ -5,12 +5,12 @@ require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
 
 $root_path = '/~j2020tmD';
-$sub_dir = '/sources/npo';
+$sub_path = '/sources/npo/';
 
 $header_items = array(
-    'プロフィール' => $root_path . $sub_dir . '/profile_create.php',
-    '管理者' => $root_path . $sub_dir . '/admin_list.php',
-    'お問い合わせ' => $root_path . $sub_dir . '/contact_list.php',
-    'イベント作成' => $root_path . $sub_dir . '/event_create.php',
-    'イベント一覧' => $root_path . $sub_dir . '/event_list.php'
+    'プロフィール' => $root_path . $sub_path . 'Profile_Create.php',
+    '管理者' => $root_path . $sub_path . 'Admin_List.php',
+    'お問い合わせ' => $root_path . $sub_path . 'Contact_List.php',
+    'イベント作成' => $root_path . $sub_path . 'Event_Create.php',
+    'イベント一覧' => $root_path . $sub_path . 'Event_List.php'
 );

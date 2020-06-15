@@ -69,11 +69,12 @@ function assign_NPO_inquiry_list()
 @return	なし
 */
 //--------------------------------------------------------------------------------------
-function assign_tgt_uri(){
+function assign_tgt_uri()
+{
 	//$smartyをグローバル宣言（必須）
 	global $smarty;
 	global $page;
-	$smarty->assign('tgt_uri',$_SERVER['PHP_SELF'] . '?page=' . $page);
+	$smarty->assign('tgt_uri', $_SERVER['PHP_SELF'] . '?page=' . $page);
 }
 
 
@@ -86,4 +87,6 @@ assign_NPO_inquiry_list();
 //assign_tgt_uri();
 
 //Smartyを使用した表示(テンプレートファイルの指定)
-$smarty->display('npo/contact_list.tmpl');
+$top_path = 'npo/';
+$base_name = basename(__FILE__, ".php");
+$smarty->display($top_path . $base_name . '.tmpl');
