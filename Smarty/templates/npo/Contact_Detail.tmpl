@@ -27,7 +27,7 @@
         </tr>
         <tr>
           <td>ユーザID</td>
-          <td>Azarashi_suko</td>
+          <td>{$smarty.post.user_id}</td>
         </tr>
         <tr>
           <td>お問い合わせ内容</td>
@@ -38,6 +38,7 @@
           <td>{$smarty.post.target_date}</td>
         </tr>
       </table>
+      <button onclick="location.href='./Contact_List.php'">戻る</button>
       <button onmousedown="Reply()">返信</button>
       <script>
         function Reply() {
@@ -51,6 +52,7 @@
       <p>
         <textarea name="" id="" cols="40" rows="10"> </textarea>
       </p>
+      <button>戻る</button>
       <button>送信</button>
     </section>
   </div>

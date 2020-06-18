@@ -12,7 +12,8 @@
   <div>
     <h1>お問い合わせリスト</h1>
     <div align="center">
-
+    {$ERR_STR}
+    <!--form name="form1" action="{$tgt_uri}" method="post" -->
         <table border="1">
           <tr>
             <td>ID</td>
@@ -20,8 +21,6 @@
             <td>状態</td>
             <td>操作</td>
           </tr>
-
-          <!-- sample1-->
           {foreach from=$rows key=k item=value}
           <tr>
             <td>
@@ -48,6 +47,7 @@
           </tr>
           {/foreach}
         </table>
+        <!--/form-->
     </div>
   </div>
   {include file="../components/footer.tmpl"}

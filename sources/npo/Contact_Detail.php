@@ -93,11 +93,8 @@ else{
 function paramchk(){
 	global $err_array;
 	$retflg = true;
-	/// 都道府県名の存在と空白チェック
+	/// ユーザー名の存在と空白チェック
 	if(ccontentsutil::chkset_err_field($err_array,'user_name','ユーザー名','isset_nl')){
-		$retflg = false;
-	}
-	if(ccontentsutil::chkset_err_field($err_array,'content','問い合わせ内容','isset_nl')){
 		$retflg = false;
 	}
 	return $retflg;
@@ -122,6 +119,7 @@ function assign_inquiry_id(){
 /////////////////////////////////////////////////////////////////
 if(!isset($_POST['user_name']))$_POST['user_name'] = '';
 if(!isset($_POST['content']))$_POST['content'] = '';
+if(!isset($_POST['user_id']))$_POST['user_id'] = '';
 if(!isset($_POST['target_date']))$_POST['target_date'] = '';
 assign_inquiry_id();
 $smarty->assign('err_array',$err_array);
