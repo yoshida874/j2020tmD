@@ -1,18 +1,47 @@
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="">
-  </head>
+<!DOCTYPE html>
+<html lang="ja">
 
-{include file="../components/header.tmpl"}
-<h1>イベント情報</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
 <body>
-<table border="1" align="center" width="500px">
-<tbody>
-<tr><th>イベント名</th><th>日付<th colspan="2">操作</th></tr>
-<tr><th>運動会</th><th>2020-07-03</th><td align="center"><input type="submit" name="kousin" onclick="location.href='Event_Edit.php'" value="編集"></td><td align="center"><input type="submit" name="sakujo" onclick="location.href='Event_Delete.php'" value="削除"></td></tr>
-<tr><th>運動会</th><th>2020-11-10</th><td align="center"><input type="submit" name="kousin" onclick="location.href='Event_Edit.php'" value="編集"></td><td align="center"><input type="submit" name="sakujo" onclick="location.href='Event_Delete.php'" value="削除"></td></tr></tbody>
-</table>
-{include file="../components/footer.tmpl"}
+  {include file="../components/header.tmpl"}
+  <div>
+    <h1>イベント情報</h1>
+    <div align="center">
+      <table border="1">
+        <tr>
+          <td>イベント名</td>
+          <td>日付</td>
+          <td>操作</td>
+        </tr>
+
+        <!-- sample1-->
+        {foreach from=$rows key=k item=value}
+        <tr>
+          <td>
+            {$value.event_id}
+          </td>
+          <td>
+            {$value.event_name}
+          </td>
+          <td>
+            <button onclick="location.href='./Event_Edit.php?iid={$value.event_id}'">詳細</button>
+            <button onclick="location.href='./Event_Delete.php'">削除</button>
+          </td>
+        </tr>
+        {foreachelse}
+        <tr>
+        <td colspan="3" class="nobottom">メンバーが見つかりません</td>
+        </tr>
+        {/foreach}
+      </table>
+    </div>
+  </div>
+  {include file="../components/footer.tmpl"}
 </body>
+
 </html>
