@@ -7,13 +7,15 @@
   </head>
 
   <body>
-    {include file="../components/header.tmpl"}
-    <div align="center">
-      <h2>ユーザ削除</h2>
+  {include file="../components/header.tmpl"}
+  <div align="center">
+    <section id="detail">
+      <h2>お問い合わせ詳細</h2>
+      {$err_flag}
       <table border="1">
         <tr>
           <td>ID</td>
-          <td>1</td>
+          <td>{$inquiry_id}</td>
         </tr>
         <tr>
           <td>状態</td>
@@ -21,19 +23,19 @@
         </tr>
         <tr>
           <td>ユーザ名</td>
-          <td>アザラシ大好き</td>
+          <td>{$smarty.post.user_name}</td>
         </tr>
         <tr>
           <td>ユーザID</td>
-          <td>Azarashi_suko</td>
+          <td>{$smarty.post.user_id}</td>
         </tr>
         <tr>
           <td>お問い合わせ内容</td>
-          <td>お弁当は持参したほうがいいですか？</td>
+          <td>{$smarty.post.content}</td>
         </tr>
         <tr>
           <td>受信日時</td>
-          <td>2020-01-14</td>
+          <td>{$smarty.post.target_date}</td>
         </tr>
       </table>
       <button>削除</button>
