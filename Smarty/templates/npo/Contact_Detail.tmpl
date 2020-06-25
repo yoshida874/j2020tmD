@@ -5,6 +5,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+  {literal}
+
+  <script type="text/javascript">
+  <!--
+  function set_func_form(fn,pm){
+      document.form1.target = "_self";
+      document.form1.func.value = fn;
+      document.form1.param.value = pm;
+      document.form1.submit();
+  }
+  // -->
+  </script>
+  {/literal}
 </head>
 
 <body>
@@ -12,6 +25,7 @@
   <div align="center">
     <section id="detail">
       <h2>お問い合わせ詳細</h2>
+      {$err_flag}
       <table border="1">
         <tr>
           <td>ID</td>
@@ -48,12 +62,21 @@
       </script>
     </section>
     <section id="reply" hidden>
-      <h2>返信内容</h2>
-      <p>
-        <textarea name="" id="" cols="40" rows="10"> </textarea>
-      </p>
-      <button>戻る</button>
-      <button>送信</button>
+      <form name="form1" action="{$smarty.server.PHP_SELF}" method="post" >
+        <h2>返信内容</h2>
+        <p>
+          <textarea name="" id="" cols="40" rows="10"> </textarea>
+        </p>
+        <input type="hidden"   name="inquiry_id" value="{$smarty.post.inquiry_id|escape}">
+        <input type="hidden"   name="user_name" value="{$smarty.post.user_name|escape}">
+        <input type="hidden"   name="user_id" value="{$smarty.post.user_id|escape}">
+        <input type="hidden"   name="content" value="{$smarty.post.content|escape}">
+        <input type="hidden"   name="target_date" value="{$smarty.post.target_date|escape}">
+        <input type="hidden" name="func" value="conf" />
+        <input type="hidden" name="param" value="" />
+        <button>戻る</button>
+        <input type="button"  value="送る" onClick="javascript:set_func_form('set','')"/>
+      </form>
     </section>
   </div>
   {include file="../components/footer.tmpl"}
