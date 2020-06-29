@@ -1,0 +1,18 @@
+create table admin_user(
+    id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id varchar(30) not null UNIQUE,
+    admin_id int(10) not null,
+    user_name varchar(30) not null,
+    pw varchar(64) not null,
+    address varchar(256),
+    authoity boolean not null default 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table admin_inquiry(
+    inquiry_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_name varchar(30) not null,
+    reply boolean not null default 0,
+    content varchar(600) not null,
+    target_date DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    reply_date datetime
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

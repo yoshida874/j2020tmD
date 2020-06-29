@@ -1,0 +1,11 @@
+create table User(
+    id int(10) not null AUTO_INCREMENT PRIMARY KEY,
+    user_id varchar(15) not null,
+    user_name varchar(30) not null,
+    pw varchar(64) not null,
+    birthday date,
+    hobby varchar(50),
+    address varchar(256) not null,
+    profile_content varchar(600),
+    profile_img varchar(100)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
