@@ -26,49 +26,63 @@
   <tr>
     <th>ID</th>
     <td>
-      <p>{php} echo $_POST['id']; {/php}</p>
+      <p>{php} echo $_POST['NPO_id']; {/php}</p>
     </td>
   </tr>
 
   <tr>
-    <th>団体名</th>
+    <th>グループ名</th>
     <td>
-      <p>{php} echo $_POST['dantai']; {/php}</p>
+      <p>{php} echo $_POST['group_name']; {/php}</p>
     </td>
   </tr>
 
   <tr>
     <th>代表者</th>
     <td>
-      <p>{php} echo $_POST['daihyo']; {/php}</p>
+      <p>{php} echo $_POST['NPO_representative']; {/php}</p>
     </td>
   </tr>
 
   <tr>
-    <th>代表者連絡先</th>
+    <th>メールアドレス</th>
     <td>
-      <p>{php} echo $_POST['renraku']; {/php}</p>
+      <p>{php} echo $_POST['NPO_mailaddress']; {/php}</p>
+    </td>
+  </tr>
+
+  <tr>
+    <th>都道府県</th>
+    <td>
+      <p>{php} echo $_POST['NPO_prefecture']; {/php}</p>
     </td>
   </tr>
 
   <tr>
     <th>市町村</th>
     <td>
-      <p>{php} echo $_POST['sityoson']; {/php}</p>
+      <p>{php} echo $_POST['NPO_city']; {/php}</p>
     </td>
   </tr>
 
   <tr>
-    <th>事務所の所在地</th>
+    <th>字丁目</th>
     <td>
-      <p>{php} echo $_POST['shozai']; {/php}</p>
+      <p>{php} echo $_POST['NPO_aza']; {/php}</p>
+    </td>
+  </tr>
+
+  <tr>
+    <th>郵便番号</th>
+    <td>
+      <p>{php} echo $_POST['NPO_postcode']; {/php}</p>
     </td>
   </tr>
 
   <tr>
     <th>目的</th>
     <td>
-      <p align="left" valign="top">{php} echo $_POST['mokuteki']; {/php}</p>
+      <p align="left" valign="top">{php} echo $_POST['NPO_purpose']; {/php}</p>
     </td>
   </tr>
 
@@ -94,49 +108,63 @@
   <tr>
     <th>ID</th>
     <td>
-      <input type="text" name="id" value="1" readonly>
+      <input type="text" name="NPO_id" value={$rows.NPO_id} readonly>
     </td>
   </tr>
 
   <tr>
-    <th>団体名</th>
+    <th>グループ名</th>
     <td>
-      <input type="text" name="dantai" value="" placeholder="団体名">
+      <input type="text" name="group_name" value={$rows.group_name} placeholder="グループ名">
     </td>
   </tr>
 
   <tr>
     <th>代表者</th>
     <td>
-      <input type="text" name="daihyo" value="" placeholder="名前">
+      <input type="text" name="NPO_representative" value={$rows.NPO_representative} placeholder="代表者">
     </td>
   </tr>
 
   <tr>
-    <th>代表者連絡先</th>
+    <th>メールアドレス</th>
     <td>
-      <input type="text" name="renraku" value="" placeholder="連絡先">
+      <input type="text" name="NPO_mailaddress" value={$rows.NPO_mailaddress} placeholder="メールアドレス">
+    </td>
+  </tr>
+
+  <tr>
+    <th>都道府県</th>
+    <td>
+    <input type="text" name="NPO_prefecture" value={$rows.NPO_prefecture} placeholder="都道府県">
     </td>
   </tr>
 
   <tr>
     <th>市町村</th>
     <td>
-      <textarea name="sityoson" value="" placeholder="市町村"></textarea>
+      <input type="text" name="NPO_city" value={$rows.NPO_city} placeholder="市町村">
     </td>
   </tr>
 
   <tr>
-    <th>事務所の所在地</th>
+    <th>字丁目</th>
     <td>
-      <input type="text" name="shozai" value="" placeholder="所在地">
+      <input type="text" name="NPO_aza" value={$rows.NPO_aza} placeholder="字丁目">
+    </td>
+  </tr>
+
+  <tr>
+    <th>郵便番号</th>
+    <td>
+      <input type="text" name="NPO_postcode" value={$rows.NPO_postcode} placeholder="郵便番号">
     </td>
   </tr>
 
   <tr>
     <th>目的</th>
     <td>
-      <textarea name="mokuteki" value="" cols="40" rows="8" placeholder="目的"></textarea>
+      <textarea name="NPO_purpose" cols="40" rows="8" placeholder="目的">{$rows.NPO_purpose}</textarea>
     </td>
   </tr>
 
