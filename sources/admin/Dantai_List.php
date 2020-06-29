@@ -16,6 +16,16 @@ $rows = array();
 $ERR_STR = '';
 $show_mode = '';
 
+//もしページが指定されていたら
+if(isset($_GET['page'])
+    //なおかつ、数字だったら
+    && cutil::is_number($_GET['page'])
+    //なおかつ、0より大きかったら
+    && $_GET['page'] > 0){
+    //パラメータを設定
+    $page = $_GET['page'];
+}
+
 function readdata()
 {
 	global $limit;
