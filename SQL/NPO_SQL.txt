@@ -17,3 +17,18 @@ create table NPO_user(
     address varchar(256),
     authoity boolean not null default 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into NPO_user(
+    user_id,
+    user_name,
+    NPO_id,
+    pw,
+    authoity
+)
+values(
+    'yoshida001',
+    '吉田',
+    1,
+    'admin001',
+    1
+);

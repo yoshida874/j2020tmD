@@ -12,5 +12,6 @@ $header_items = array(
     '管理者' => $root_path . $sub_path . 'Admin_List.php',
     'お問い合わせ' => $root_path . $sub_path . 'Contact_List.php',
     'イベント作成' => $root_path . $sub_path . 'Event_Create.php',
-    'イベント一覧' => $root_path . $sub_path . 'Event_List.php'
+    'イベント一覧' => $root_path . $sub_path . 'Event_List.php',
+    'ログイン'     => $root_path . $sub_path . 'Login_Page.php'
 );
