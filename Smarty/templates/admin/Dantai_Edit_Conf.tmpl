@@ -1,0 +1,110 @@
+<!DOCTYPE>
+<html lang="ja">
+<head>
+<title>団体詳細</title>
+{literal}
+<script type="text/javascript">
+<!--
+function set_func_form(fn,pm){
+	document.form1.target = "_self";
+	document.form1.func.value = fn;
+	document.form1.param.value = pm;
+	document.form1.submit();
+}
+
+
+// -->
+</script>
+{/literal}
+</head>
+<body>
+{include file="../components/header.tmpl"}
+<h1>団体詳細</h1>
+
+<form name="form1" method="post" action="">
+
+  <table border="1" align="center" width="500px">
+
+  <tr>
+    <th>ID</th>
+    <td>
+      <p>{$smarty.post.NPO_id}</p>
+      <input type="hidden" name="NPO_id"  value="{$smarty.post.NPO_id|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>グループ名</th>
+    <td>
+      <p>{$smarty.post.group_name}</p>
+      <input type="hidden" name="group_name"  value="{$smarty.post.group_name|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>代表者</th>
+    <td>
+      <p>{$smarty.post.NPO_representative}</p>
+      <input type="hidden" name="NPO_representative"  value="{$smarty.post.NPO_representative|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>メールアドレス</th>
+    <td>
+      <p>{$smarty.post.NPO_mailaddress}</p>
+      <input type="hidden" name="NPO_mailaddress"  value="{$smarty.post.NPO_mailaddress|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>都道府県</th>
+    <td>
+      <p>{$smarty.post.NPO_prefecture}</p>
+      <input type="hidden" name="NPO_prefecture"  value="{$smarty.post.NPO_prefecture|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>市町村</th>
+    <td>
+      <p>{$smarty.post.NPO_city}</p>
+      <input type="hidden" name="NPO_city"  value="{$smarty.post.NPO_city|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>字丁目</th>
+    <td>
+      <p>{$smarty.post.NPO_aza}</p>
+      <input type="hidden" name="NPO_aza"  value="{$smarty.post.NPO_aza|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>郵便番号</th>
+    <td>
+      <p>{$smarty.post.NPO_postcode}</p>
+      <input type="hidden" name="NPO_postcode"  value="{$smarty.post.NPO_postcode|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>目的</th>
+    <td>
+      <p>{$smarty.post.NPO_purpose}</p>
+      <input type="hidden" name="NPO_purpose"  value="{$smarty.post.NPO_purpose|escape}" />
+    </td>
+  </tr>
+
+  </table>
+  <input type="hidden" name="func" value="" />
+  <input type="hidden" name="param" value="" />
+	<input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
+	<input type="button" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 50%" value="更新">
+
+</form>
+
+{include file="../components/footer.tmpl"}
+</body>
+</html>
