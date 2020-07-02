@@ -17,3 +17,4 @@ require_once("contents_func.php");
 //DBの継承クラスの定義
 require_once("contents_db_NPO.php");
 require_once("contents_db_event.php");
+require_once("contents_db_users.php");
