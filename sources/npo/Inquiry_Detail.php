@@ -182,7 +182,7 @@ function regist(){
 	$chenge = new cchange_ex();
 	$chenge->update('NPO_inquiry',$dataarr,'inquiry_id=' . $inquiry_id);
 
-    cutil::redirect_exit('Contact_List.php');
+    cutil::redirect_exit('Inquiry_List.php');
 }
 
 /////////////////////////////////////////////////////////////////
