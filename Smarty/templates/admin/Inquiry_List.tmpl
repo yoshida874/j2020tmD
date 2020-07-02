@@ -1,26 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
 </head>
+
 <body>
-{include file="../components/header.tmpl"}
-  <h1>お問い合わせリスト</h1>
-  <div align="center">
-    <table border="1">
-      <tr>
-        <th>ユーザー名</th> <th>状態</th> <th>操作</th>
-      <tr>
-        <td>しんたろう</td> <td>未返信</td> <td><input type="button" value="詳細" onclick="location.href='Inquiry_Reply.php'"><input type="button" value="削除" onclick="location.href='Inquiry_Delete.php'"></td>
-      </tr>
-      <tr>
-        <td>おっとせい</td> <td>送信済み</td> <td><input type="button" value="詳細" onclick="location.href='Inquiry_Reply.php'"><input type="button" value="削除" onclick="location.href='Inquiry_Delete.php'"></td>
-      </tr>
-
-
-
-{include file="../components/footer.tmpl"}
+  {include file="../components/header.tmpl"}
+  <div>
+    <h1>お問い合わせリスト</h1>
+    <div align="center">
+    {$ERR_STR}
+    <!--form name="form1" action="{$tgt_uri}" method="post" -->
+        <table border="1">
+          <tr>
+            <td>ID</td>
+            <td>ユーザ名</td>
+            <td>状態</td>
+            <td>操作</td>
+          </tr>
+          {foreach from=$rows key=k item=value}
+          <tr>
+            <td>
+              {$value.inquiry_id}
+            </td>
+            <td>
+              {$value.user_name}
+            </td>
+            <td>
+              {if $value.reply}
+                返信済み
+              {else}
+                未返信
+              {/if}
+            </td>
+            <td>
+              <button onclick="location.href='./Inquiry_Detail.php?iid={$value.inquiry_id}'">詳細</button>
+              <button onclick="location.href='./Inquiry_Delete.php?iid={$value.inquiry_id}'">削除</button>
+            </td>
+          </tr>
+          {foreachelse}
+          <tr>
+          <td colspan="3" class="nobottom">メンバーが見つかりません</td>
+          </tr>
+          {/foreach}
+        </table>
+        <!--/form-->
+    </div>
+  </div>
+  {include file="../components/footer.tmpl"}
 </body>
+
 </html>

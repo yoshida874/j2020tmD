@@ -9,9 +9,9 @@ require_once("pdointerface.php");
 
 
 //--------------------------------------------------------------------------------------
-///	NPOユーザークラス
+///	adminユーザークラス
 //--------------------------------------------------------------------------------------
-class cnpo_user extends crecord {
+class cadmin_user extends crecord {
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
@@ -33,7 +33,7 @@ class cnpo_user extends crecord {
 		$this->select(
 			$debug,					//デバッグ文字を出力するかどうか
 			"count(*)",				//取得するカラム
-			"NPO_user",			//取得するテーブル
+			"admin_user",			//取得するテーブル
 			"1"					//条件
 		);
 		if($row = $this->fetch_assoc()){
@@ -59,7 +59,7 @@ class cnpo_user extends crecord {
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
-			"NPO_user",	//取得するテーブル
+			"admin_user",	//取得するテーブル
 			"1",			//条件
 			"id asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
@@ -86,7 +86,7 @@ class cnpo_user extends crecord {
         $this->select(
             $debug,         //デバッグ表示するかどうか
             "*",          //取得するカラム
-            "NPO_user",    //取得するテーブル
+            "admin_user",    //取得するテーブル
             "user_id like {$safe_login}"    //条件
         );
         return $this->fetch_assoc();
@@ -105,9 +105,9 @@ class cnpo_user extends crecord {
 
 
 //--------------------------------------------------------------------------------------
-///	NPOグループクラス
+///	adminグループクラス
 //--------------------------------------------------------------------------------------
-class cnpo_group extends crecord {
+class cadmin_group extends crecord {
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
@@ -129,7 +129,7 @@ class cnpo_group extends crecord {
 		$this->select(
 			$debug,					//デバッグ文字を出力するかどうか
 			"count(*)",				//取得するカラム
-			"NPO_group",			//取得するテーブル
+			"admin_group",			//取得するテーブル
 			"1"					//条件
 		);
 		if($row = $this->fetch_assoc()){
@@ -155,9 +155,9 @@ class cnpo_group extends crecord {
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
-			"NPO_group",	//取得するテーブル
+			"admin_group",	//取得するテーブル
 			"1",			//条件
-			"NPO_id asc",	//並び替え
+			"admin_id asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
 		);
 		//順次取り出す
@@ -185,8 +185,8 @@ class cnpo_group extends crecord {
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
-			"NPO_group",	//取得するテーブル
-			"NPO_id=" . $id	//条件
+			"admin_group",	//取得するテーブル
+			"admin_id=" . $id	//条件
 		);
 		return $this->fetch_assoc();
 	}
@@ -202,9 +202,9 @@ class cnpo_group extends crecord {
 }
 
 //--------------------------------------------------------------------------------------
-///	NPO問い合わせクラス
+///	admin問い合わせクラス
 //--------------------------------------------------------------------------------------
-class cnpo_inquiry extends crecord {
+class cadmin_inquiry extends crecord {
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
@@ -226,7 +226,7 @@ class cnpo_inquiry extends crecord {
 		$this->select(
 			$debug,					//デバッグ文字を出力するかどうか
 			"count(*)",				//取得するカラム
-			"NPO_inquiry",			//取得するテーブル
+			"admin_inquiry",			//取得するテーブル
 			"1"					//条件
 		);
 		if($row = $this->fetch_assoc()){
@@ -252,7 +252,7 @@ class cnpo_inquiry extends crecord {
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
-			"NPO_inquiry",	//取得するテーブル
+			"admin_inquiry",	//取得するテーブル
 			"1",			//条件
 			"inquiry_id asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
@@ -282,7 +282,7 @@ class cnpo_inquiry extends crecord {
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
-			"NPO_inquiry",	//取得するテーブル
+			"admin_inquiry",	//取得するテーブル
 			"inquiry_id=" . $id	//条件
 		);
 		return $this->fetch_assoc();

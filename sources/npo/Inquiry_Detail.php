@@ -134,7 +134,7 @@ function paramchk(){
 
 //--------------------------------------------------------------------------------------
 /*!
-@brief	メンバーIDのアサイン
+@brief	問い合わせIDのアサイン
 @return	なし
 */
 //--------------------------------------------------------------------------------------
@@ -174,8 +174,15 @@ function regist(){
 	$To = $to_mail;
     //本番送信
 	mb_send_mail($To, $Subject, $Message, $Headers);
-	
-    cutil::redirect_exit('Contact_List.php');
+
+	//更新処理
+	$dataarr = array();
+	$inquiry_id = (string)$_POST['inquiry_id'];
+	$dataarr['reply'] = 1;
+	$chenge = new cchange_ex();
+	$chenge->update('NPO_inquiry',$dataarr,'inquiry_id=' . $inquiry_id);
+
+    cutil::redirect_exit('Inquiry_List.php');
 }
 
 /////////////////////////////////////////////////////////////////
