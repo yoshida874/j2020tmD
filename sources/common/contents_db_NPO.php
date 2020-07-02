@@ -80,7 +80,7 @@ class cnpo_user extends crecord {
     @return 配列（1次元配列になる）空の場合はfalse
     */
     //--------------------------------------------------------------------------------------
-    public function get_tgt($debug,$id){
+    public function get_tgt_login($debug,$id){
 		$safe_login = $this->make_safe_sqlstr((string)$id);
         //親クラスのselect()メンバ関数を呼ぶ
         $this->select(

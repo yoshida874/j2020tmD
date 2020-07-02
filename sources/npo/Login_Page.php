@@ -36,7 +36,7 @@ function chk_NPO_login($login_user){
     global $user_id;
     global $user_name;
     $NPO = new cnpo_user();
-    $row = $NPO->get_tgt(false,$login_user);
+    $row = $NPO->get_tgt_login(false,$login_user);
     if($row === false || !isset($row['user_id'])){
         $ERR_STR .= "ログイン名が不定です。\n";
         return false;
