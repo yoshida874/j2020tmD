@@ -18,4 +18,4 @@ require_once("contents_func.php");
 require_once("contents_db_admin.php");
 require_once("contents_db_NPO.php");
 require_once("contents_db_event.php");
-require_once("contents_db_users.php");
+require_once("contents_db_user.php");
