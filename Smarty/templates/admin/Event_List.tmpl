@@ -23,10 +23,10 @@
         {foreach from=$rows key=k item=value}
         <tr>
           <td>
-            {$value.event_id}
+            {$value.event_name}
           </td>
           <td>
-            {$value.event_name}
+            {$value.start_event}
           </td>
           <td>
             <button onclick="location.href='./Event_Edit.php?iid={$value.event_id}'">詳細</button>
