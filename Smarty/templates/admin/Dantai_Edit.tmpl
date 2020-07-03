@@ -12,6 +12,24 @@ function set_func_form(fn,pm){
 	document.form1.submit();
 }
 
+function check(){
+  var err = "";
+  if (form1.group_name.value == ""){
+    err += "グループ名が入力されていません\n";
+  }
+  if (form1.NPO_representative.value == ""){
+    err += "代表者が入力されていません\n";
+  }
+  if (form1.NPO_mailaddress.value == ""){
+    err += "メールアドレスが入力されていません\n";
+  }
+  if (err == ""){
+  set_func_form('confirm','');
+  }else{
+    alert(err);
+  }
+}
+
 // -->
 </script>
 {/literal}
@@ -34,49 +52,49 @@ function set_func_form(fn,pm){
   <tr>
     <th>グループ名</th>
     <td>
-      <input type="text" name="group_name" value={$rows.group_name} placeholder="グループ名">
+      <input type="text" name="group_name" placeholder="グループ名" value={$rows.group_name}>
     </td>
   </tr>
 
   <tr>
     <th>代表者</th>
     <td>
-      <input type="text" name="NPO_representative" value={$rows.NPO_representative} placeholder="代表者">
+      <input type="text" name="NPO_representative" placeholder="代表者" value={$rows.NPO_representative}>
     </td>
   </tr>
 
   <tr>
     <th>メールアドレス</th>
     <td>
-      <input type="text" name="NPO_mailaddress" value={$rows.NPO_mailaddress} placeholder="メールアドレス">
+      <input type="text" name="NPO_mailaddress" placeholder="メールアドレス" value={$rows.NPO_mailaddress}>
     </td>
   </tr>
 
   <tr>
     <th>都道府県</th>
     <td>
-    <input type="text" name="NPO_prefecture" value={$rows.NPO_prefecture} placeholder="都道府県">
+    <input type="text" name="NPO_prefecture" placeholder="都道府県" value={$rows.NPO_prefecture}>
     </td>
   </tr>
 
   <tr>
     <th>市町村</th>
     <td>
-      <input type="text" name="NPO_city" value={$rows.NPO_city} placeholder="市町村">
+      <input type="text" name="NPO_city" placeholder="市町村" value={$rows.NPO_city}>
     </td>
   </tr>
 
   <tr>
     <th>字丁目</th>
     <td>
-      <input type="text" name="NPO_aza" value={$rows.NPO_aza} placeholder="字丁目">
+      <input type="text" name="NPO_aza" placeholder="字丁目" value={$rows.NPO_aza}>
     </td>
   </tr>
 
   <tr>
     <th>郵便番号</th>
     <td>
-      <input type="text" name="NPO_postcode" value={$rows.NPO_postcode} placeholder="郵便番号">
+      <input type="text" name="NPO_postcode" placeholder="郵便番号" value={$rows.NPO_postcode}>
     </td>
   </tr>
 
@@ -90,7 +108,7 @@ function set_func_form(fn,pm){
 </table>
   <input type="hidden" name="func" value="" />
   <input type="hidden" name="param" value="" />
-	<input type="button" name="btn_confirm" onClick="javascript:set_func_form('confirm','')" style="position: absolute; left: 50%; top: 70%" value="確認">
+	<input type="button" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 70%" value="確認">
 </form>
 
 {include file="../components/footer.tmpl"}
