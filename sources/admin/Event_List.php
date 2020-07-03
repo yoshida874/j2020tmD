@@ -27,6 +27,75 @@ if (
     $page = $_GET['page'];
 }
 
+if (is_func_active()) {
+    if (param_chk()) {
+        switch ($_POST['func']) {
+            case "del":
+                $show_mode = 'del';
+                //削除操作
+                deljob();
+                //リダイレクトするページの計算
+                $re_page = $page;
+                $obj = new cevent();
+                $allcount = $obj->get_all_count(false);
+                $last_page = (int) ($allcount / $limit);
+                if ($allcount % $limit) {
+                    $last_page++;
+                }
+                if ($re_page > $last_page) {
+                    $re_page = $last_page;
+                }
+                //再読み込みのためにリダイレクト
+                cutil::redirect_exit($_SERVER['PHP_SELF']
+                    . '?page=' . $re_page);
+                break;
+            default:
+                break;
+        }
+    }
+}
+$show_mode = 'edit';
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	コマンドが渡されたかどうか
+@return	渡されたらtrue
+*/
+//--------------------------------------------------------------------------------------
+function is_func_active()
+{
+    if (isset($_POST['func']) && $_POST['func'] != "") {
+        return true;
+    }
+    return false;
+}
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	パラメータのチェック
+@return	エラーがあったらfalse
+*/
+//--------------------------------------------------------------------------------------
+function param_chk()
+{
+    global $ERR_STR;
+    if (
+        !isset($_POST['param'])
+        || !cutil::is_number($_POST['param'])
+        || $_POST['param'] <= 0
+    ) {
+        $ERR_STR .= "パラメータを取得できませんでした\n";
+        return false;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	データ読み込み
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
 function readdata()
 {
     global $limit;
@@ -39,6 +108,19 @@ function readdata()
 }
 
 readdata();
+//--------------------------------------------------------------------------------------
+/*!
+@brief	削除
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function deljob()
+{
+    $chenge = new cchange_ex();
+    if ($_POST['param'] > 0) {
+        $chenge->delete("Event", "event_id=" . $_POST['param']);
+    }
+}
 //--------------------------------------------------------------------------------------
 /*!
 @brief	ページャーのアサイン
@@ -91,6 +173,7 @@ function assign_tgt_uri()
 $smarty->assign('ERR_STR', $ERR_STR);
 assign_cevent_list();
 assign_page_block();
+assign_tgt_uri();
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'admin/';
