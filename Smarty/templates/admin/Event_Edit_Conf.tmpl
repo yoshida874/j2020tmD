@@ -68,37 +68,69 @@ function set_func_form(fn,pm){
 </tr>
 
 <tr>
-  <th>イベント開始</th>
+  <th>イベント開始日</th>
   <td>
-    <p>{$smarty.post.start_event}</p>
-    <input type="hidden" name="start_event"  value="{$smarty.post.start_event|escape}" />
+    <p>{$smarty.post.start_event_date}</p>
+    <input type="hidden" name="start_event_date"  value="{$smarty.post.start_event_date|escape}" />
+  </td>
+</tr>
+
+<tr>
+  <th>イベント開始時間</th>
+  <td>
+    <p>{$smarty.post.start_event_time}</p>
+    <input type="hidden" name="start_event_time"  value="{$smarty.post.start_event_time|escape}" />
   </td>
 </tr>
 
 
 <tr>
-  <th>イベント終了</th>
+  <th>イベント終了日</th>
   <td>
-    <p>{$smarty.post.end_event}</p>
-    <input type="hidden" name="end_event"  value="{$smarty.post.end_event|escape}" />
+    <p>{$smarty.post.end_event_date}</p>
+    <input type="hidden" name="end_event_date"  value="{$smarty.post.end_event_date|escape}" />
+  </td>
+</tr>
+
+<tr>
+  <th>イベント終了時間</th>
+  <td>
+    <p>{$smarty.post.end_event_time}</p>
+    <input type="hidden" name="end_event_time"  value="{$smarty.post.end_event_time|escape}" />
   </td>
 </tr>
 
 
 <tr>
-  <th>募集開始</th>
+  <th>募集開始日</th>
   <td>
-    <p>{$smarty.post.start_recruiting}</p>
-    <input type="hidden" name="start_recruiting"  value="{$smarty.post.start_recruiting|escape}" />
+    <p>{$smarty.post.start_recruiting_date}</p>
+    <input type="hidden" name="start_recruiting_date"  value="{$smarty.post.start_recruiting_date|escape}" />
+  </td>
+</tr>
+
+<tr>
+  <th>募集開始時間</th>
+  <td>
+    <p>{$smarty.post.start_recruiting_time}</p>
+    <input type="hidden" name="start_recruiting_time"  value="{$smarty.post.start_recruiting_time|escape}" />
   </td>
 </tr>
 
 
 <tr>
-  <th>募集終了</th>
+  <th>募集終了日</th>
   <td>
-    <p>{$smarty.post.end_recruiting}</p>
-    <input type="hidden" name="end_recruiting"  value="{$smarty.post.end_recruiting|escape}" />
+    <p>{$smarty.post.end_recruiting_date}</p>
+    <input type="hidden" name="end_recruiting_date"  value="{$smarty.post.end_recruiting_date|escape}" />
+  </td>
+</tr>
+
+<tr>
+  <th>募集終了時間</th>
+  <td>
+    <p>{$smarty.post.end_recruiting_time}</p>
+    <input type="hidden" name="end_recruiting_time"  value="{$smarty.post.end_recruiting_time|escape}" />
   </td>
 </tr>
 

@@ -24,26 +24,31 @@ $event_member_id = $_GET['iid'];
 function regist()
 {
     global $event_member_id;
-    $dataarr = array();
-    $dataarr['event_id'] = (int) $_POST['event_id'];
-    $dataarr['event_name'] = (string) $_POST['event_name'];
-    $dataarr['NPO_id'] = (int) $_POST['NPO_id'];
-    $dataarr['start_age'] = (int) $_POST['start_age'];
-    $dataarr['end_age'] = (int) $_POST['end_age'];
-    $dataarr['start_event'] = (string) $_POST['start_event'];
-    $dataarr['end_event'] = (string) $_POST['end_event'];
-    $dataarr['start_recruiting'] = (string) $_POST['start_recruiting'];
-    $dataarr['end_recruiting'] = (string) $_POST['end_recruiting'];
-    $dataarr['representative'] = (string) $_POST['representative'];
-    $dataarr['venue_name'] = (string) $_POST['venue_name'];
-    $dataarr['venue_prefecture'] = (string) $_POST['venue_prefecture'];
-    $dataarr['venue_city'] = (string) $_POST['venue_city'];
-    $dataarr['venue_aza'] = (string) $_POST['venue_aza'];
-    $dataarr['event_postcode'] = (string) $_POST['event_postcode'];
-    $dataarr['cost'] = (int) $_POST['cost'];
-    $dataarr['hash_tag'] = (string) $_POST['hash_tag'];
-    $dataarr['content'] = (string) $_POST['content'];
-    $dataarr['img'] = (string) $_POST['img'];
+    $dataarr = array(
+        'event_id'              => (int) $_POST['event_id'],
+        'event_name'            => (string) $_POST['event_name'],
+        'NPO_id'                => (int) $_POST['NPO_id'],
+        'start_age'             => (int) $_POST['start_age'],
+        'end_age'               => (int) $_POST['end_age'],
+        'start_event_date'      => (string) $_POST['start_event_date'],
+        'start_event_time'      => (string) $_POST['start_event_time'],
+        'end_event_date'        => (string) $_POST['end_event_date'],
+        'end_event_time'        => (string) $_POST['end_event_time'],
+        'start_recruiting_date' => (string) $_POST['start_recruiting_date'],
+        'start_recruiting_time' => (string) $_POST['start_recruiting_time'],
+        'end_recruiting_date'   => (string) $_POST['end_recruiting_date'],
+        'end_recruiting_time'   => (string) $_POST['end_recruiting_time'],
+        'representative'        => (string) $_POST['representative'],
+        'venue_name'            => $_POST['venue_name'],
+        'venue_prefecture'      => (string) $_POST['venue_prefecture'],
+        'venue_city'            => (string) $_POST['venue_city'],
+        'venue_aza'             => (string) $_POST['venue_aza'],
+        'event_postcode'        => (string) $_POST['event_postcode'],
+        'cost'                  => (int) $_POST['cost'],
+        'hash_tag'              => (string) $_POST['hash_tag'],
+        'content'               => (string) $_POST['content'],
+        'img'                   => (string) $_POST['img']
+    );
     $chenge = new cchange_ex();
 
     $chenge->update('Event', $dataarr, 'event_id=' . $event_member_id);
