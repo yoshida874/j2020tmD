@@ -5,8 +5,23 @@ create table admin_user(
     user_name varchar(30) not null,
     pw varchar(64) not null,
     address varchar(256),
-    authoity boolean not null default 0
+    authority boolean not null default 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into admin_user(
+    user_id,
+    user_name,
+    admin_id,
+    pw,
+    authority
+)
+values(
+    'yoshida001',
+    '吉田',
+    1,
+    'admin001',
+    1
+);
 
 create table admin_inquiry(
     inquiry_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
