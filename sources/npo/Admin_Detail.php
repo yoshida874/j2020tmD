@@ -25,8 +25,10 @@ function regist(){
 	$dataarr['id'] = (int)$member_id;
 	$dataarr['user_id'] = (string)$_POST['user_id'];
 	$dataarr['user_name'] = (string)$_POST['user_name'];
-	$dataarr['NPO_id'] = (int)$_POST['NPO_id'];
-  $dataarr['pw'] = (string)$_POST['pw'];
+  $dataarr['NPO_id'] = (int)$_POST['NPO_id'];
+  if ($_POST['pw'] !=""){
+    $dataarr['pw'] = (string)cutil::pw_encode($_POST['pw']);
+  }
   $dataarr['address'] = (string)$_POST['address'];
 	$dataarr['authority'] = (int)$_POST['authority'];
 	$chenge = new cchange_ex();
