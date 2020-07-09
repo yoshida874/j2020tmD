@@ -15,14 +15,6 @@
     document.form1.param.value = pm;
     document.form1.submit();
   }
-    function check(){
-      var err = "";
-      if (err == ""){
-      set_func_form('confirm','');
-      }else{
-        alert(err);
-      }
-    }
 // -->
   </script>
   {/literal}
@@ -31,7 +23,7 @@
 <body>
   {include file="../components/header.tmpl"}
   <div align="center">
-      <h2>お問い合わせ詳細</h2>
+      <h2>確認</h2>
       {$err_flag}
       <form name="form1" method="post" action="">
       <table border="1">
@@ -72,7 +64,8 @@
         </p>
       <input type="hidden" name="func" value="" />
       <input type="hidden" name="param" value="" />
-	    <input type="button" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 70%" value="確認">
+        <input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
+        <input type="button" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 50%" value="送信">
       </form>
   </div>
   {include file="../components/footer.tmpl"}

@@ -15,7 +15,7 @@ create table NPO_user(
     NPO_id int(10) not null,
     pw varchar(64) not null,
     address varchar(256),
-    authoity boolean not null default 0
+    authority boolean not null default 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 insert into NPO_user(
@@ -23,7 +23,7 @@ insert into NPO_user(
     user_name,
     NPO_id,
     pw,
-    authoity
+    authority
 )
 values(
     'yoshida001',

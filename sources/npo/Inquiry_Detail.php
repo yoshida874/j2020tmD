@@ -35,51 +35,6 @@ if(isset($_POST['inquiry_id'])
 //メンバークラスを構築
 $npo_inquiry_obj = new cnpo_inquiry();
 
-if(isset($_POST['func'])){
-	switch($_POST['func']){
-		case 'set':
-			if(!paramchk()){
-				$_POST['func'] = 'edit';
-				$err_flag = 1;
-			}
-			else{
-				regist();
-				//regist()内でリダイレクトするので
-				//ここまで実行されればリダイレクト失敗
-				$_POST['func'] = 'edit';
-				//システムに問題のあるエラー
-				$err_flag = 2;
-			}
-		case 'conf':
-			if(!paramchk()){
-				$_POST['func'] = 'edit';
-				$err_flag = 1;
-			}
-		break;
-		case 'edit':
-			//戻るボタン。
-		break;
-		default:
-			//通常はありえない
-			echo '原因不明のエラーです。';
-			exit;
-		break;
-	}
-}
-else{
-	if($inquiry_id > 0){
-		if(($_POST = $npo_inquiry_obj->get_tgt(false,$inquiry_id)) === false){
-			$_POST['func'] = 'new';
-		}
-		else{
-			$_POST['func'] = 'edit';
-		}
-	}
-	else{
-		//新規の入力フォーム
-		$_POST['func'] = 'new';
-	}
-}
 
 /////////////////////////////////////////////////////////////////
 /// 関数ブロック
@@ -132,19 +87,6 @@ function paramchk(){
 	return $retflg;
 }
 
-//--------------------------------------------------------------------------------------
-/*!
-@brief	問い合わせIDのアサイン
-@return	なし
-*/
-//--------------------------------------------------------------------------------------
-function assign_inquiry_id(){
-	//$smartyをグローバル宣言（必須）
-	global $smarty;
-	global $inquiry_id;
-	$smarty->assign('inquiry_id',$inquiry_id);
-}
-
 
 //--------------------------------------------------------------------------------------
 /*!
@@ -152,7 +94,8 @@ function assign_inquiry_id(){
 @return なし
 */
 //--------------------------------------------------------------------------------------
-function regist(){
+function regist($inquiry_id){
+	global $rows;
     //必要に応じてここでDB保存処理
 
 	$to_mail = 'ud8mnzdd@gmail.com';
@@ -177,7 +120,6 @@ function regist(){
 
 	//更新処理
 	$dataarr = array();
-	$inquiry_id = (string)$_POST['inquiry_id'];
 	$dataarr['reply'] = 1;
 	$chenge = new cchange_ex();
 	$chenge->update('NPO_inquiry',$dataarr,'inquiry_id=' . $inquiry_id);
@@ -185,19 +127,40 @@ function regist(){
     cutil::redirect_exit('Inquiry_List.php');
 }
 
+function read_data($inquiry_id)
+{
+    //$smartyをグローバル宣言（必須）
+    global $smarty;
+    global $limit;
+    global $rows;
+    global $order;
+    global $page;
+    $obj = new cnpo_inquiry();
+    $rows = $obj->get_tgt(false, $inquiry_id);
+    $smarty->assign('rows', $rows);
+}
+
+read_data($inquiry_id);
+
+if (!isset($_POST["func"])) {
+    $_POST["func"] = "";
+}
+
 /////////////////////////////////////////////////////////////////
 /// 関数呼び出しブロック
 /////////////////////////////////////////////////////////////////
-if(!isset($_POST['user_name']))$_POST['user_name'] = '';
-if(!isset($_POST['content']))$_POST['content'] = '';
-if(!isset($_POST['user_id']))$_POST['user_id'] = '';
-if(!isset($_POST['target_date']))$_POST['target_date'] = '';
-if(!isset($_POST['reply_address']))$_POST['reply_address'] = '';
+if(!isset($_POST['reply_content']))$_POST['reply_content'] = '';
 assign_err_flag();
-assign_inquiry_id();
 $smarty->assign('err_array',$err_array);
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'npo/';
 $base_name = basename(__FILE__, ".php");
-$smarty->display($top_path . $base_name . '.tmpl');
+if(isset($_POST["func"]) && $_POST["func"] == "confirm"){
+	$smarty->display($top_path . $base_name . '_Conf.tmpl');
+}elseif(isset($_POST["func"]) && $_POST["func"] == "set"){
+	regist($inquiry_id);
+}else{
+	$smarty->display($top_path . $base_name . '.tmpl');
+}
+
