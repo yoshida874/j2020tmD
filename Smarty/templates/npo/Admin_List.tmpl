@@ -20,27 +20,24 @@
         </tr>
 
         <!-- sample1-->
+        {foreach from=$rows key=k item=value}
         <tr>
           <td>
-            たろう
+            {$value.user_name}
           </td>
-          <td>admin</td>
           <td>
-            <button onclick="location.href='./Admin_Detail.php'">詳細</button>
+            {$value.authority}
+          </td>
+          <td>
+            <button onclick="location.href='./Admin_Detail.php?id={$value.id}'">詳細</button>
             <button onclick="location.href='./Admin_Delete.php'">削除</button>
           </td>
         </tr>
-        <!-- sample2-->
+        {foreachelse}
         <tr>
-          <td>
-            杏南
-          </td>
-          <td>読み取り</td>
-          <td>
-            <button onclick="location.href='./Admin_Detail.php'">詳細</button>
-            <button onclick="location.href='./Admin_Delete.php'">削除</button>
-          </td>
+          <td colspan="3" class="nobottom">メンバーが見つかりません</td>
         </tr>
+        {/foreach}
       </table>
     </div>
   </div>
