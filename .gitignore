@@ -3,5 +3,8 @@
 #VisualStudioでGit弄る人の為
 .vs/*
 
+# VSCode setting file
+.vscode/*
+
 #コンパイル済みテンプレートを格納する場所なのでGitに上げる必要ない
 /Smarty/templates_c/
