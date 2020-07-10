@@ -7,7 +7,28 @@
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="css/admin_base.css">
         <link rel="stylesheet" href="css/user_list.css">
-        <title>プロフィール</title> 
+        <title>ホーム画面</title> 
+        
+        <script type="text/javascript">
+            function set_func_form( fn, pm ) {
+                document.form1.target = "_self";
+                document.form1.func.value = fn;
+                document.form1.param.value = pm;
+                document.form1.submit();
+            }
+
+            function del_func_form( pm, mess ) {
+                var message = "本当に\r\n";
+                message += mess;
+                message += "\r\nを削除しますか？";
+                if ( confirm( message ) ) {
+                    document.form1.target = "_self";
+                    document.form1.func.value = 'del';
+                    document.form1.param.value = pm;
+                    document.form1.submit();
+                }
+            }
+        </script>
         
 
 
@@ -23,12 +44,14 @@
         <a href="Home_Page.php">
         <header>サイト名</header>
             <a href="Profile_Create.php">
-                <i class="fas fa-qrcode"></i>
+            <i class="fas fa-list-alt fa-2x"></i>
                 <span>プロフィール</span>
+        </a>
             <a href="Admin_List.php">
                 <i class="fas fa-list-alt fa-2x"></i>
                 <span>管理者</span>
-            <a href="event_create.php">
+        </a>
+        <a href="event_create.php">
                 <i class="fas fa-bars"></i>
                 <span>イベント作成</span>
             </a>
@@ -46,45 +69,47 @@
             </a>
         </div>
 
+        
+
         <h1>HOME</h1>
-<h1 align="center"></h1>
+        <h1 align="center">ようこそ○○さん</h1>
         
         <div id="main">
-            <h3>プロフィール</h3>
             <!-- コンテンツ　-->
             
                 <p></p>
                 <table>
                     <tr>
-                        <th>ID</th>
-                        <td class="center">1</td>
-                    </tr>
-                    <tr>
-                        <th>団体名</th>
-                        <td class="center">郡山総合保育団体</td>
+                        <td class="center">
+                            <a href="Profile_Create.php">プロフィール</a>
                         </td>
                     </tr>
                     <tr>
-                        <th>代表者</th>
-                        <td class="center">森</td>
+                        <td class="center">
+                            <a href="Admin_List.php">管理者</a>
                         </td>
                     </tr>
                     <tr>
-                    <th>メールアドレス</th>
-                        <td class="center">mori@gmail.com</td>
+                        <td class="center">
+                            <a href="">イベント作成</a>
+                        </td>
+                    </>
+                    <tr>
+                        <td class="center">
+                            <a href="Event_List.php">イベント一覧</a>
                         </td>
                     </tr>
                     <tr>
-                        <th>市町村</th>
-                        <td class="center">郡山市</td>
+                        <td class="center">
+                            <a href="inquiry_List.php">お問い合わせ</a>
                         </td>
                     </tr>
                     <tr>
-                        <th>事務所の所在地</th>
-                        <td class="center">郡山市</td>
+                        <td class="center">
+                            <a href="">ログアウト</a>
                         </td>
                     </tr>
-                </table>
+                                    </table>
                 <input type="hidden" name="func" value="" />
                 <input type="hidden" name="param" value="" />
             </form>

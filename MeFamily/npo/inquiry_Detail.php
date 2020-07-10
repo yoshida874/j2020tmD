@@ -7,7 +7,7 @@
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="css/admin_base.css">
         <link rel="stylesheet" href="css/user_list.css">
-        <title>ユーザ一覧</title> 
+        <title>お問い合わせ詳細</title> 
         
 
 
@@ -20,38 +20,39 @@
             <i class="fas fa-times" id="cancel"></i>
         </label>
         <div class="sidebar">
-            <header>サイト名</header>
+        <a href="Home_Page.php">
+        <header>サイト名</header>
             <a href="Profile_Create.php">
-                <i class="fas fa-qrcode"></i>
+            <i class="fas fa-list-alt fa-2x"></i>
                 <span>プロフィール</span>
-            </a>
-            <a href="Admin_List.php" class="active">
+        </a>
+            <a href="Admin_List.php">
                 <i class="fas fa-list-alt fa-2x"></i>
                 <span>管理者</span>
-            </a>
-            <a href="">
+        </a>
+        <a href="event_create.php">
                 <i class="fas fa-bars"></i>
-                <span>お問い合わせ</span>
-            </a>
-            <a href="admin_Event_List.php" >
-                <i class="fas fa-list-alt fa-2x"></i>
                 <span>イベント作成</span>
             </a>
-            <a href="Event_List.php">
-                <i class="far fa-list-alt fa-2x"></i>
+            <a href="Event_List.php" >
+                <i class="fas fa-list-alt fa-2x"></i>
                 <span>イベント一覧</span>
             </a>
-            <a href="">
+            <a href="inquiry_List.php">
+                <i class="far fa-question-circle"></i>
+                <span>お問い合わせ</span>
+            </a>
+            <a href="Login_Page.php">
                 <i class="fas fa-sign-out-alt fa-2x"></i>
                 <span>ログアウト</span>
             </a>
         </div>
 
         <h1>HOME</h1>
-<h1 align="center">ようこそ○○さん</h1>
+<h1 align="center"></h1>
         
         <div id="main">
-            <h3>管理者詳細</h3>
+            <h3>詳細</h3>
             <!-- コンテンツ　-->
             
             <p></p>
