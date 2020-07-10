@@ -12,9 +12,9 @@ function set_func_form(fn,pm){
 	document.form1.submit();
 }
 
-function check(tp){
+function check(){
   var err = "";
-  if (form1.pw.value != tp){
+  if (form1.pw.value != ""){
     if(form1.pw.value != form1.repw.value){
       err = "パスワードの値が一致しません"
     }
@@ -57,7 +57,7 @@ function check(tp){
     <tr>
       <td>パスワード</td>
       <td>
-      <input type="password" name="pw" placeholder="パスワード" value={$rows.pw}>
+      <input type="password" name="pw" placeholder="パスワードを変更する場合入力してください">
       </td>
     </tr>
     <tr>
@@ -82,7 +82,7 @@ function check(tp){
     <input type="hidden" name="NPO_id" value={$rows.NPO_id} />
     <input type="hidden" name="func" value="" />
     <input type="hidden" name="param" value="" />
-    <input type="button" name="btn_confirm" onClick="javascript:check('{$rows.pw}')" style="position: absolute; left: 50%; top: 70%" value="確認">
+    <input type="button" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 70%" value="確認">
   </form>
 
   {include file="../components/footer.tmpl"}

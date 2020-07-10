@@ -1,0 +1,95 @@
+<!DOCTYPE>
+<html lang="ja">
+<head>
+<title>ユーザー詳細</title>
+{literal}
+<script type="text/javascript">
+<!--
+function set_func_form(fn,pm){
+	document.form1.target = "_self";
+	document.form1.func.value = fn;
+	document.form1.param.value = pm;
+	document.form1.submit();
+}
+
+// -->
+</script>
+{/literal}
+</head>
+<body>
+{include file="../components/header.tmpl"}
+
+<h1>ユーザー詳細</h1>
+
+<form name="form1" method="post" action="">
+
+  <table border="1" align="center" width="500px">
+
+  <tr>
+    <th>ID</th>
+    <td>
+      <p>{$smarty.post.id}</p>
+      <input type="hidden" name="id"  value="{$smarty.post.id|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>ユーザーID</th>
+    <td>
+    <p>{$smarty.post.user_id}</p>
+      <input type="hidden" name="user_id"  value="{$smarty.post.user_id|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>ADMIN ID</th>
+    <td>
+      <p>{$smarty.post.admin_id}</p>
+      <input type="hidden" name="admin_id"  value="{$smarty.post.admin_id|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>ユーザー名</th>
+    <td>
+    <p>{$smarty.post.user_name}</p>
+      <input type="hidden" name="user_name"  value="{$smarty.post.user_name|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>PW</th>
+    <td>
+    <p>{$smarty.post.pw}</p>
+      <input type="hidden" name="pw"  value="{$smarty.post.pw|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>メールアドレス</th>
+    <td>
+      <p>{$smarty.post.address}</p>
+      <input type="hidden" name="address"  value="{$smarty.post.address|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>権限</th>
+    <td>
+      <p>{$smarty.post.authority}</p>
+      <input type="hidden" name="authority"  value="{$smarty.post.authority|escape}" />
+    </td>
+  </tr>
+
+  </table>
+
+  <input type="hidden" name="func" value="" />
+  <input type="hidden" name="param" value="" />
+	<input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
+	<input type="button" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 50%" value="更新">
+
+</form>
+
+{include file="../components/footer.tmpl"}
+</body>
+</html>
