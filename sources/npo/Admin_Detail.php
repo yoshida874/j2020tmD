@@ -22,21 +22,15 @@ $member_id = $_GET['id'];
 function regist(){
 	global $member_id;
 	$dataarr = array();
-	
+
 	$dataarr['id'] = (int)$member_id;
 	$dataarr['user_id'] = (string)$_POST['user_id'];
 	$dataarr['user_name'] = (string)$_POST['user_name'];
-<<<<<<< HEAD
   $dataarr['NPO_id'] = (int)$_POST['NPO_id'];
   if ($_POST['pw'] !=""){
     $dataarr['pw'] = (string)cutil::pw_encode($_POST['pw']);
   }
   $dataarr['address'] = (string)$_POST['address'];
-=======
-	$dataarr['NPO_id'] = (int)$_POST['NPO_id'];
-  	$dataarr['pw'] = (string)$_POST['pw'];
-  	$dataarr['address'] = (string)$_POST['address'];
->>>>>>> 7cf8ed08315fac1edd879dafc0a813d8960f1410
 	$dataarr['authority'] = (int)$_POST['authority'];
 	$chenge = new cchange_ex();
 
