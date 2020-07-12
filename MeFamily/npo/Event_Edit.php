@@ -7,7 +7,7 @@
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="css/admin_base.css">
         <link rel="stylesheet" href="css/user_list.css">
-        <title>ユーザ一覧</title> 
+        <title>イベント情報編集</title> 
         
 
 
@@ -21,15 +21,13 @@
         </label>
         <div class="sidebar">
             <header>サイト名</header>
-            <a href="Admin_List.php" >
+            <a href="Profile_Create.php">
                 <i class="fas fa-qrcode"></i>
-                <span>管理者情報</span>
-            </a>
-            <a href="User_List.php" class="active">
+                <span>プロフィール</span>
+            <a href="Admin_List.php">
                 <i class="fas fa-list-alt fa-2x"></i>
-                <span>ユーザー一覧</span>
-            </a>
-            <a href="">
+                <span>管理者</span>
+            <a href="event_create.php">
                 <i class="fas fa-bars"></i>
                 <span>イベント作成</span>
             </a>
@@ -37,26 +35,18 @@
                 <i class="fas fa-list-alt fa-2x"></i>
                 <span>イベント一覧</span>
             </a>
-            <a href="Dantai_List.php">
-                <i class="far fa-list-alt fa-2x"></i>
-                <span>団体一覧</span>
-            </a>
             <a href="inquiry_List.php">
                 <i class="far fa-question-circle"></i>
                 <span>お問い合わせ</span>
             </a>
-            <a href="Blacklist_List.php">
-                <i class="fas fa-sliders-h"></i>
-                <span>ブラックリスト</span>
-            </a>
-            <a href="">
+            <a href="Login_Page.php">>
                 <i class="fas fa-sign-out-alt fa-2x"></i>
                 <span>ログアウト</span>
             </a>
         </div>
 
         <h1>HOME</h1>
-<h1 align="center">ようこそ○○さん</h1>
+<h1 align="center"></h1>
         
         <div id="main">
             <h3>イベント編集</h3>
@@ -64,7 +54,6 @@
             
             <p></p>
                 <table>
-                <div class="form-group">
                     <tr>
                         <th>イベント名</th>
                         <td class="center" name="yourId" readonly><input type="text" name="userId" size="50" value="" /></td>
@@ -97,25 +86,18 @@
     value=""></textarea>
                         </td>
                     </tr>
-                    </div>
-                    </div>
-         <div style="border: 2px solid #000000; width: 1110px; height: 180px;">
                     <table>
-                    
-        <!-- 開催日程-->
+                                <!-- 開催日程-->
         <tr>開催日程・募集期間<span style="color: red;">*必須</span></tr>
       <tr>
           <th>開始日時</th>
           <td>
-          <div class="form-group">
             <table>
               <tr>
               <td>日</td>
               <td><input type="text" name='start_day' class="form-control input-sm" id="kaisai_name"
                 placeholder="日にちを入力" size="50" style="width:400px;"  data-rule="minlen:1" data-msg="値を入力してください"
                 value=""></td>
-                <div class="validation"></div>
-      </div>
               </tr>
               <tr>
               <td>時間</td>
@@ -135,7 +117,7 @@
               <td><input type="text" name='start_day' class="form-control input-sm" id="kaisai_name"
                 placeholder="日にちを入力" size="50" style="width:400px;"  data-rule="minlen:1" data-msg="値を入力してください"
                 value=""></td>
-              </tr>
+
               <tr>
               <td>時間</td>
               <td><input type="text" name='start_time' class="form-control input-sm" id="kaisai_name"
@@ -149,7 +131,7 @@
   <tr>
     <th>
     募集開始
-    <p>〜終了日</p>
+    〜終了日
     </th>
     <td>
     <table>
@@ -157,8 +139,7 @@
         <td>日</td>
         <td><input type="text" name='start_day' class="form-control input-sm" id="kaisai_name"
                 placeholder="日にちを入力" size="50" style="width:400px;"  data-rule="minlen:1" data-msg="値を入力してください"
-                value=""> <div class="validation"></div>
-    </div>
+                value=""></td>
         <tr>
         <td>時間</td>
         <td><input type="text" name='start_time' class="form-control input-sm" id="kaisai_name"
@@ -169,28 +150,26 @@
     </table>
     
 </td>
-</div>
-</div>
   </table>
-  <br><div style="border: 2px solid #000000; width: 1110px; height: 180px;">
+  <br>
   <tr>開催場所<span style="color: red;">*必須</span></tr>
   <tr>
       <table>
         <div class="form-group">
-          <p style="margin-bottom: 0px;">会場名</p>
-          <input type="text" name='venue_name' class="form-control input-sm" id="kaisai_name"
-              placeholder="会場名を入力" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-              value="">
-          <div class="validation"></div>
-      </div>
+          <th>会場名</th>
+          <td><input type="text" name='venue_name' class="form-control input-sm" id="kaisai_name"
+              placeholder="会場名を入力" size="50" style = "width:400px;" data-rule="minlen:1" data-msg="値を入力してください"
+              value=""></td>
+</tr>
       <div class="form-group">
-        <p style="margin-bottom: 0px;">場所</p>
-        <input type="text" name='plane' class="form-control input-sm" id="kaisai_name"
-            placeholder="場所を入力" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-            value="">
-        <div class="validation"></div>
-    </div>
+        <th>場所</th>
+        <td><input type="text" name='plane' class="form-control input-sm" id="kaisai_name"
+            placeholder="場所を入力" size="50" style = "width:400px;" data-rule="minlen:1" data-msg="値を入力してください"
+            value=""></td>
+</tr>
       </table>
+
+<br>
 
      <div class="button_wrapper">
       <button class="mx-auto btn btn-outline-primary rounded-pill d-block"  style="position: 
@@ -201,11 +180,7 @@
    </div>
    </div>
   </tr>
-                <input type="hidden" name="func" value="" />
-                <input type="hidden" name="param" value="" />
-                <p class="center"><input type="button"  value="確認" onClick="javascript:set_func_form('conf','')"/></p>
-            </form>
-            <p>&nbsp;</p>
+            
         </div>
     </body>
 

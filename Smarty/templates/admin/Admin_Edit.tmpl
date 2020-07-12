@@ -1,136 +1,111 @@
-
-{if isset($smarty.post.btn_confirm)}
-
-	{$pageFlag = 1}
-
-{elseif isset($smarty.post.btn_submit)}
-
-  {$pageFlag = 2}
-
-{/if}
-
-
 <!DOCTYPE>
 <html lang="ja">
-<head>
 <title>管理者詳細</title>
+{literal}
+<script type="text/javascript">
+<!--
+function set_func_form(fn,pm){
+	document.form1.target = "_self";
+	document.form1.func.value = fn;
+	document.form1.param.value = pm;
+	document.form1.submit();
+}
+
+function check(){
+  var err = "";
+  if (form1.pw.value != ""){
+    if(form1.pw.value != form1.repw.value){
+      err = "パスワードの値が一致しません"
+    }
+  }
+  if (err == ""){
+  set_func_form('confirm','');
+  }else{
+    alert(err);
+  }
+}
+// -->
+</script>
+{/literal}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 </head>
-<body>
+
 {include file="../components/header.tmpl"}
+<body>
+
 <h1>管理者詳細</h1>
-{if $pageFlag == 1}
 
-<form method="post" action="">
-
-  <table border="1">
+  <form name="form1" method="post" action="">
+  <table border="1" align="center" width="500px">
 
   <tr>
     <th>ID</th>
     <td>
-      <p>{php} echo $_POST['yourId']; {/php}</p>
+      <input type="text" name="id" value={$rows.id} readonly>
     </td>
   </tr>
 
   <tr>
-    <th>権限</th>
+    <th>ユーザーID</th>
     <td>
-      <p>{php} echo $_POST['yourAuthority']; {/php}</p>
+      <input type="text" name="user_id" placeholder="ユーザーID" value={$rows.user_id}>
     </td>
   </tr>
 
   <tr>
-    <th>表示者名</th>
+    <th>ADMIN ID</th>
     <td>
-      <p>{php} echo $_POST['yourName']; {/php}</p>
+      <input type="text" name="admin_id" placeholder="ADMIN ID" value={$rows.admin_id}>
+    </td>
+  </tr>
+
+  <tr>
+    <th>ユーザー名</th>
+    <td>
+      <input type="text" name="user_name" placeholder="ユーザー名" value={$rows.user_name}>
     </td>
   </tr>
 
   <tr>
     <th>PW</th>
     <td>
-      <p>{php} echo $_POST['yourPassword']; {/php}</p>
+      <input type="password" name="pw" placeholder="パスワードを変更する場合入力してください" value="">
     </td>
   </tr>
 
   <tr>
     <th>PWの再確認</th>
     <td>
-      <p>{php} echo $_POST['confirmPassword']; {/php}</p>
+      <input type="password" name="repw" placeholder="もう一度入力してください" value="">
     </td>
   </tr>
+
 
   <tr>
     <th>メールアドレス</th>
     <td>
-      <p>{php} echo $_POST['yourMailaddress']; {/php}</p>
-    </td>
-  </tr>
-
-  </table>
-
-	<input type="submit" name="btn_back" value="戻る">
-	<input type="submit" name="btn_submit" value="更新">
-
-</form>
-
-{elseif $pageFlag == 2}
-
-<p>更新が完了しました。</p>
-
-{else}
-
-<form method="post" action="">
-
-<table border="1">
-
-  <tr>
-    <th>ID</th>
-    <td>
-      <input type="text" name="yourId" value="1" readonly>
+      <input type="text" name="address" placeholder="メールアドレス" value={$rows.address}>
     </td>
   </tr>
 
   <tr>
     <th>権限</th>
     <td>
-      <input type="text" name="yourAuthority" value="" placeholder="権限">
-    </td>
-  </tr>
-
-  <tr>
-    <th>表示者名</th>
-    <td>
-      <input type="text" name="yourName" value="" placeholder="名前">
-    </td>
-  </tr>
-
-  <tr>
-    <th>PW</th>
-    <td>
-      <input type="text" name="yourPassword" value="" placeholder="PW">
-    </td>
-  </tr>
-
-  <tr>
-    <th>PWの再確認</th>
-    <td>
-      <input type="text" name="confirmPassword" value="" placeholder="PW">
-    </td>
-  </tr>
-
-  <tr>
-    <th>メールアドレス</th>
-    <td>
-      <input type="text" name="yourMailaddress" value="" placeholder="Mailaddress">
+      <input type="radio" name="authority" value="0" {if $rows.authority == 0 }checked="checked"{/if} />READ ONLY
+      <input type="radio" name="authority" value="1" {if $rows.authority == 1 }checked="checked"{/if} />ADMIN
     </td>
   </tr>
 
 </table>
-
-	<input type="submit" name="btn_confirm" value="確認">
+    <input type="hidden" name="func" value="" />
+    <input type="hidden" name="param" value="" />
+    <input type="button" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 70%" value="確認">
 </form>
 
-{/if}
 {include file="../components/footer.tmpl"}
 </body>
 </html>
