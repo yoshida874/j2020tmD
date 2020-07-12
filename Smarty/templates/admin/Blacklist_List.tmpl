@@ -2,17 +2,79 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="">
-  </head>
+  {literal}
+  <script type="text/javascript">
 
-{include file="../components/header.tmpl"}
-<h1>ブラックリスト</h1>
+  function del_func_form(pm,mess){
+      console.log("del_func");
+      var message = "本当に\r\n";
+      message += mess;
+      message += "\r\nを削除しますか？";
+      console.log(message);
+      if(confirm(message)){
+          document.form1.target = "_self";
+          document.form1.func.value = 'del';
+          document.form1.param.value = pm;
+          document.form1.submit();
+      }else {
+        console.log('キャンセルがクリックされました');
+      }
+  }
+  </script>
+  {/literal}
+</head>
+
 <body>
-<table border="1" align="center" width="500px">
-<tbody>
-<tr><th>ユーザー名</th><th>通報数<th colspan="2">操作</th></tr>
-<tr><th>さぶろう</th><th>5</th><td align="center"><input type="submit" name="kousin" onclick="location.href='Blacklist_Edit.php'" value="編集"></td><td align="center"><input type="submit" name="sakujo" onclick="location.href='Blacklist_Delete.php'" value="削除"></td></tr>
-<tr><th>よしお</th><th>5</th><td align="center"><input type="submit" name="kousin" onclick="location.href='Blacklist_Edit.php'" value="編集"></td><td align="center"><input type="submit" name="sakujo" onclick="location.href='Blacklist3.Delete'" value="削除"></td></tr></tbody>
-</table>
+  {include file="../components/header.tmpl"}
+  <div>
+    <h1>ブラックリスト</h1>
+    <div align="center">
+    {$ERR_STR}
+    <form name="form1" action="{$tgt_uri}" method="post" >
+    <p>{$pager_arr}</p>
+      <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>ユーザーID</th>
+          <th>ランク</th>
+          <th>報告件数</th>
+          <th>操作</th>
+        </tr>
+
+        {foreach from=$rows key=k item=value}
+        <tr>
+          <td>
+            {$value.id}
+          </td>
+          <td>
+            {$value.user_id}
+          </td>
+          <td>
+            {$value.degree_risk}
+          </td>
+          <td>
+            {$value.report_number}
+          </td>
+          <td>
+            <a href="./Blacklist_Edit.php?iid={$value.id}">
+                <button type="button">詳細</button>
+            </a>
+            <button onclick="javascript:del_func_form({$value.id},'【ID : {$value.id} NAME : {$value.user_id}】')" >削除</button>
+          </td>
+        </tr>
+        {foreachelse}
+        <tr>
+          <td colspan="3" class="nobottom">メンバーが見つかりません</td>
+        </tr>
+        {/foreach}
+      </table>
+      <input type="hidden" name="func" value="" />
+      <input type="hidden" name="param" value="" />
+      </form>
+      <p>&nbsp;</p>
+    </div>
+  </div>
+  
 {include file="../components/footer.tmpl"}
 </body>
 </html>
