@@ -31,7 +31,7 @@ function readdata()
 	global $rows;
 	global $order;
 	global $page;
-	$obj = new cadmin_user();
+	$obj = new cuser();
 	$from = ($page - 1) * $limit;
 	$rows = $obj->get_all(false, $from, $limit);
 }
@@ -52,7 +52,7 @@ function assign_page_block()
 	global $limit;
 	global $page;
 	$retstr = '';
-	$obj = new cadmin_user();
+	$obj = new cuser();
 	$allcount = $obj->get_all_count(false);
 	$ctl = new cpager($_SERVER['PHP_SELF'], $allcount, $limit);
 	$smarty->assign('pager_arr', $ctl->get('page', $page));
