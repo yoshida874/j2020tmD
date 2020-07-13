@@ -70,12 +70,34 @@ readdata();
 @return	渡されたらtrue
 */
 //--------------------------------------------------------------------------------------
-function is_func_active(){
-    if(isset($_POST['func']) && $_POST['func'] != ""){
+function is_func_active()
+{
+    if (isset($_POST['func']) && $_POST['func'] != "") {
         return true;
     }
     return false;
 }
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	パラメータのチェック
+@return	エラーがあったらfalse
+*/
+//--------------------------------------------------------------------------------------
+function param_chk()
+{
+    global $ERR_STR;
+    if (
+        !isset($_POST['param'])
+        || !cutil::is_number($_POST['param'])
+        || $_POST['param'] <= 0
+    ) {
+        $ERR_STR .= "パラメータを取得できませんでした\n";
+        return false;
+    }
+    return true;
+}
+
 
 //--------------------------------------------------------------------------------------
 /*!
@@ -92,6 +114,20 @@ function readdata()
 	$obj = new cadmin_inquiry();
 	$from = ($page - 1) * $limit;
 	$rows = $obj->get_all(false, $from, $limit);
+}
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	削除
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function deljob()
+{
+    $chenge = new cchange_ex();
+    if ($_POST['param'] > 0) {
+        $chenge->delete("Event", "event_id=" . $_POST['param']);
+    }
 }
 
 //--------------------------------------------------------------------------------------

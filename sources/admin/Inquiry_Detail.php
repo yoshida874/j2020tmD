@@ -19,10 +19,10 @@ if(isset($_GET['page'])
 	$page = $_GET['page'];
 }
 
-if(isset($_GET['iid']) 
-	&& cutil::is_number($_GET['iid'])
-	&& $_GET['iid'] > 0){
-	$inquiry_id = $_GET['iid'];
+if(isset($_GET['id']) 
+	&& cutil::is_number($_GET['id'])
+	&& $_GET['id'] > 0){
+	$inquiry_id = $_GET['id'];
 }
 
 //$_POST優先
