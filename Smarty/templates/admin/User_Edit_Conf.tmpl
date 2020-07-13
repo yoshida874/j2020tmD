@@ -41,13 +41,6 @@ function set_func_form(fn,pm){
     </td>
   </tr>
 
-  <tr>
-    <th>ADMIN ID</th>
-    <td>
-      <p>{$smarty.post.admin_id}</p>
-      <input type="hidden" name="admin_id"  value="{$smarty.post.admin_id|escape}" />
-    </td>
-  </tr>
 
   <tr>
     <th>ユーザー名</th>
@@ -66,6 +59,22 @@ function set_func_form(fn,pm){
   </tr>
 
   <tr>
+    <th>生年月日</th>
+    <td>
+      <p>{$smarty.post.birthday}</p>
+      <input type="hidden" name="birthday"  value="{$smarty.post.birthday|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>趣味</th>
+    <td>
+      <p>{$smarty.post.hobby}</p>
+      <input type="hidden" name="hobby"  value="{$smarty.post.hobby|escape}" />
+    </td>
+  </tr>
+
+  <tr>
     <th>メールアドレス</th>
     <td>
       <p>{$smarty.post.address}</p>
@@ -74,10 +83,18 @@ function set_func_form(fn,pm){
   </tr>
 
   <tr>
-    <th>権限</th>
+    <th>プロフィール文</th>
     <td>
-      <p>{$smarty.post.authority}</p>
-      <input type="hidden" name="authority"  value="{$smarty.post.authority|escape}" />
+      <p>{$smarty.post.profile_content}</p>
+      <input type="hidden" name="profile_content"  value="{$smarty.post.profile_content|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>プロフィール画像</th>
+    <td>
+      <p>{$smarty.post.profile_img}</p>
+      <input type="hidden" name="profile_img"  value="{$smarty.post.profile_img|escape}" />
     </td>
   </tr>
 
