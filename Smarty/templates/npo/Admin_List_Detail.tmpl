@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>メンバー詳細</title>
+{literal}
+<script type="text/javascript">
+<!--
+/*function set_func_form(fn,pm){
+	document.form1.target = "_self";
+	document.form1.func.value = fn;
+	document.form1.param.value = pm;
+	document.form1.submit();
+}*/
+function insert_func_form(pm,mess){
+      var message = "";
+      message += mess;
+      message += "\r\nよろしいですか？";
+      console.log(message);
+      if(confirm(message)){
+          document.form1.target = "_self";
+          document.form1.func.value = 'set';
+          document.form1.param.value = pm;
+          document.form1.submit();
+      }else {
+        console.log('キャンセルがクリックされました');
+      }
+  }
+// -->
+</script>
+{/literal}
+</head>
+
+<body>
+    {include file="../components/header.tmpl"}
+    <div>
+        <div>
+            <h1>管理者詳細</h1>
+        </div>
+        <div>
+            {$err_flag}
+            <form name="form1" action="{$smarty.server.PHP_SELF}" method="post" >
+                <a href="Admin_List.php">一覧に戻る</a><br />
+                <span class="red">＊</span>は必須項目
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <td width="70%">{$user_id_txt}</td>
+                    </tr>
+                    <tr>
+                        <th>ユーザID<span class="red">＊</span></th>
+                        <td width="70%"><input type="text" name="user_id" size="50" />
+                        {if isset($err_array.user_id) }<br />
+                            <span class="red">{$err_array.user_id}</span>
+                        {/if}
+                    </tr>
+                    <tr>
+                        <th>NPO_ID<span class="red">＊</span></th>
+                        <td width="70%"><input type="text" name="NPO_id" size="50" />
+                        {if isset($err_array.NPO_id) }<br />
+                            <span class="red">{$err_array.NPO_id}</span>
+                        {/if}
+                    </tr>
+                    <tr>
+                        <th>ユーザー名<span class="red">＊</span></th>
+                        <td width="70%"><input type="text" name="user_name" size="50" />
+                        {if isset($err_array.user_name) }<br />
+                            <span class="red">{$err_array.user_name}</span>
+                        {/if}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>パスワード<span class="red">＊</span></th>
+                        <td width="70%"><input type="text" name="pw" size="50"/>
+                        {if isset($err_array.pw) }<br />
+                            <span class="red">{$err_array.pw}</span>
+                        {/if}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス<span class="red">＊</span></th>
+                        <td width="70%"><input type="text" name="address" size="50"/>
+                        {if isset($err_array.address) }<br />
+                            <span class="red">{$err_array.address}</span>
+                        {/if}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>権限<span class="red">＊</span></th>
+                        <td width="70%"><input type="text" name="authority" size="50"/>
+                        {if isset($err_array.authority) }<br />
+                            <span class="red">{$err_array.authority}</span>
+                        {/if}
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="func" value="" />
+                <input type="hidden" name="param" value="" />
+                <input type="hidden" name="id" value="{$id}" />
+                <p class="center">
+                    <!--<input type="button"  value="確認" onClick="javascript:set_func_form('set','')"/>-->
+                    <!-- ユーザID : {$value.user_id} NPO_ID : {$value.NPO_id} ユーザ名 : {$value.user_name} パスワード: {$value.pw} メールアドレス: {$value.address} 権限: {$value.authority} -->
+                    <input type="button"  value="確認" onClick="javascript:insert_func_form('','入力内容を登録します。')"/>
+                </p>
+            </form>
+            </div>
+        <!-- /コンテンツ　-->
+        </div>
+    </div>
+    <!-- /全体コンテナ　-->
+    {include file="../components/footer.tmpl"}
+</body>
+</html>

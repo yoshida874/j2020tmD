@@ -90,7 +90,7 @@ function del_func_form(pm,mess){
                         <td class="center">1</td>
                         <td class="center">yoshida</td>
                         <td class="center">返信済み</td>
-                        <td class="center"><a href="Inquiry_Detail.php">詳細</a>
+                        <td class="center"><a href="inquiry_Detail.php">詳細</a>
                         <td width="65%" class="center"><input type="button" value="削除" onClick="javascript:del_func_form(1,'【yoshida】')" />
                         </td>
                     </tr>

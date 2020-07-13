@@ -11,22 +11,22 @@
   <div align="center">
     <table border="1">
       <tr>
-          <td>ID</td>
-          <td>ユーザーID</td>
           <td>ユーザー名</td>
+          <td>ADMIN ID</td>
+          <td>権限</td>
           <td>操作</td>
       </tr>
         <!-- sample1-->
         {foreach from=$rows key=k item=value}
         <tr>
           <td>
-            {$value.id}
-          </td>
-          <td>
-            {$value.user_id}
-          </td>
-          <td>
             {$value.user_name}
+          </td>
+          <td>
+            {$value.admin_id}
+          </td>
+          <td>
+            {$value.authority}
           </td>
           <td>
             <button onclick="location.href='./User_Edit.php?id={$value.id}'">詳細</button>

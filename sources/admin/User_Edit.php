@@ -23,18 +23,16 @@ function regist(){
 	$dataarr = array();
 	$dataarr['id'] = (int)$member_id;
   $dataarr['user_id'] = (string)$_POST['user_id'];
+  $dataarr['admin_id'] = (string)$_POST['admin_id'];
 	$dataarr['user_name'] = (string)$_POST['user_name'];
   if ($_POST['pw'] !=""){
     $dataarr['pw'] = (string)cutil::pw_encode($_POST['pw']);
   }
-  $dataarr['birthday'] = date('Y-m-d', strtotime($_POST['birthday']));
-  $dataarr['hobby'] = (string)$_POST['hobby'];
   $dataarr['address'] = (string)$_POST['address'];
-	$dataarr['profile_content'] = (string)$_POST['profile_content'];
-  $dataarr['profile_img'] = (string)$_POST['profile_img'];
+	$dataarr['authority'] = (int)$_POST['authority'];
 	$chenge = new cchange_ex();
 
-	$chenge->update('user',$dataarr,'id=' . $member_id);
+	$chenge->update('admin_user',$dataarr,'id=' . $member_id);
 	cutil::redirect_exit($_SERVER['PHP_SELF'] . '?id=' . $member_id);
 }
 
@@ -46,7 +44,7 @@ function read_data($member_id)
 	global $rows;
 	global $order;
 	global $page;
-	$obj = new cuser();
+	$obj = new cadmin_user();
   $rows = $obj->get_tgt(false, $member_id);
   $smarty->assign('rows', $rows);
 }

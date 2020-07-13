@@ -11,13 +11,15 @@ require_once("pdointerface.php");
 //--------------------------------------------------------------------------------------
 /// ユーザークラス
 //--------------------------------------------------------------------------------------
-class cuser extends crecord {
+class cuser extends crecord
+{
     //--------------------------------------------------------------------------------------
     /*!
     @brief  コンストラクタ
     */
     //--------------------------------------------------------------------------------------
-    public function __construct() {
+    public function __construct()
+    {
         //親クラスのコンストラクタを呼ぶ
         parent::__construct();
     }
@@ -28,19 +30,19 @@ class cuser extends crecord {
     @return 個数
     */
     //--------------------------------------------------------------------------------------
-    public function get_all_count($debug){
+    public function get_all_count($debug)
+    {
         //親クラスのselect()メンバ関数を呼ぶ
         $this->select(
             $debug,                 //デバッグ文字を出力するかどうか
             "count(*)",             //取得するカラム
-            "user",			//取得するテーブル
-			"1"
+            "user",            //取得するテーブル
+            "1"
         );
-        if($row = $this->fetch_assoc()){
+        if ($row = $this->fetch_assoc()) {
             //取得した個数を返す
             return $row['count(*)'];
-        }
-        else{
+        } else {
             return 0;
         }
     }
@@ -53,50 +55,52 @@ class cuser extends crecord {
     @return 配列（2次元配列になる）
     */
     //--------------------------------------------------------------------------------------
-    public function get_all($debug,$from,$limit){
-		$arr = array();
-		//親クラスのselect()メンバ関数を呼ぶ
-		$this->select(
-			$debug,			//デバッグ表示するかどうか
-			"*",			//取得するカラム
-			"user",	//取得するテーブル
-			"1",			//条件
-			"user_id asc",	//並び替え
-			"limit " . $from . "," . $limit		//抽出開始行と抽出数
-		);
-		//順次取り出す
-		while($row = $this->fetch_assoc()){
-			$arr[] = $row;
-		}
-		//取得した配列を返す
-		return $arr;
+    public function get_all($debug, $from, $limit)
+    {
+        $arr = array();
+        //親クラスのselect()メンバ関数を呼ぶ
+        $this->select(
+            $debug,            //デバッグ表示するかどうか
+            "*",            //取得するカラム
+            "user",    //取得するテーブル
+            "1",            //条件
+            "user_id asc",    //並び替え
+            "limit " . $from . "," . $limit        //抽出開始行と抽出数
+        );
+        //順次取り出す
+        while ($row = $this->fetch_assoc()) {
+            $arr[] = $row;
+        }
+        //取得した配列を返す
+        return $arr;
     }
 
-	//--------------------------------------------------------------------------------------
-	/*!
+    //--------------------------------------------------------------------------------------
+    /*!
 	@brief	指定されたIDの配列を得る
 	@param[in]	$debug	デバッグ出力をするかどうか
 	@param[in]	$id		ID
 	@return	配列（1次元配列になる）空の場合はfalse
 	*/
-	//--------------------------------------------------------------------------------------
-	public function get_tgt($debug,$id){
-		if(!cutil::is_number($id)
-		||  $id < 1){
-			//falseを返す
-			return false;
-		}
-		//親クラスのselect()メンバ関数を呼ぶ
-		$this->select(
-			$debug,			//デバッグ表示するかどうか
-			"*",			//取得するカラム
-			"user",	//取得するテーブル
-			"id=" . $id	//条件
-		);
-		return $this->fetch_assoc();
-	}
-
-
+    //--------------------------------------------------------------------------------------
+    public function get_tgt($debug, $id)
+    {
+        if (
+            !cutil::is_number($id)
+            ||  $id < 1
+        ) {
+            //falseを返す
+            return false;
+        }
+        //親クラスのselect()メンバ関数を呼ぶ
+        $this->select(
+            $debug,            //デバッグ表示するかどうか
+            "*",            //取得するカラム
+            "user",    //取得するテーブル
+            "user_id=" . $id    //条件
+        );
+        return $this->fetch_assoc();
+    }
     //--------------------------------------------------------------------------------------
     /*!
     @brief  指定されたログインの配列を得る
@@ -105,8 +109,9 @@ class cuser extends crecord {
     @return 配列（1次元配列になる）空の場合はfalse
     */
     //--------------------------------------------------------------------------------------
-    public function get_tgt_login($debug,$id){
-		$safe_login = $this->make_safe_sqlstr((string)$id);
+    public function get_tgt_login($debug, $id)
+    {
+        $safe_login = $this->make_safe_sqlstr((string) $id);
         //親クラスのselect()メンバ関数を呼ぶ
         $this->select(
             $debug,         //デバッグ表示するかどうか
@@ -115,14 +120,15 @@ class cuser extends crecord {
             "user_id like {$safe_login}"    //条件
         );
         return $this->fetch_assoc();
-	}
+    }
 
     //--------------------------------------------------------------------------------------
     /*!
     @brief  デストラクタ
     */
     //--------------------------------------------------------------------------------------
-    public function __destruct(){
+    public function __destruct()
+    {
         //親クラスのデストラクタを呼ぶ
         parent::__destruct();
     }
@@ -131,13 +137,15 @@ class cuser extends crecord {
 //--------------------------------------------------------------------------------------
 /// ユーザー子供クラス
 //--------------------------------------------------------------------------------------
-class cuser_children extends crecord {
+class cuser_children extends crecord
+{
     //--------------------------------------------------------------------------------------
     /*!
     @brief  コンストラクタ
     */
     //--------------------------------------------------------------------------------------
-    public function __construct() {
+    public function __construct()
+    {
         //親クラスのコンストラクタを呼ぶ
         parent::__construct();
     }
@@ -148,19 +156,19 @@ class cuser_children extends crecord {
     @return 個数
     */
     //--------------------------------------------------------------------------------------
-    public function get_all_count($debug){
+    public function get_all_count($debug)
+    {
         //親クラスのselect()メンバ関数を呼ぶ
         $this->select(
             $debug,                 //デバッグ文字を出力するかどうか
             "count(*)",             //取得するカラム
-            "user_children",			//取得するテーブル
-			"1"
+            "user_children",            //取得するテーブル
+            "1"
         );
-        if($row = $this->fetch_assoc()){
+        if ($row = $this->fetch_assoc()) {
             //取得した個数を返す
             return $row['count(*)'];
-        }
-        else{
+        } else {
             return 0;
         }
     }
@@ -173,32 +181,34 @@ class cuser_children extends crecord {
     @return 配列（2次元配列になる）
     */
     //--------------------------------------------------------------------------------------
-    public function get_all($debug,$from,$limit){
-		$arr = array();
-		//親クラスのselect()メンバ関数を呼ぶ
-		$this->select(
-			$debug,			//デバッグ表示するかどうか
-			"*",			//取得するカラム
-			"user_children",	//取得するテーブル
-			"1",			//条件
-			"id asc",	//並び替え
-			"limit " . $from . "," . $limit		//抽出開始行と抽出数
-		);
-		//順次取り出す
-		while($row = $this->fetch_assoc()){
-			$arr[] = $row;
-		}
-		//取得した配列を返す
-		return $arr;
+    public function get_all($debug, $from, $limit)
+    {
+        $arr = array();
+        //親クラスのselect()メンバ関数を呼ぶ
+        $this->select(
+            $debug,            //デバッグ表示するかどうか
+            "*",            //取得するカラム
+            "user_children",    //取得するテーブル
+            "1",            //条件
+            "id asc",    //並び替え
+            "limit " . $from . "," . $limit        //抽出開始行と抽出数
+        );
+        //順次取り出す
+        while ($row = $this->fetch_assoc()) {
+            $arr[] = $row;
+        }
+        //取得した配列を返す
+        return $arr;
     }
 
-	//--------------------------------------------------------------------------------------
-	/*!
+    //--------------------------------------------------------------------------------------
+    /*!
 	@brief	指定されたIDの配列を得る
 	@param[in]	$debug	デバッグ出力をするかどうか
 	@param[in]	$id		ID
 	@return	配列（1次元配列になる）空の場合はfalse
 	*/
+<<<<<<< HEAD
 	//--------------------------------------------------------------------------------------
 	public function get_tgt($debug,$id,$user_id){
 		if(!cutil::is_number($id)
@@ -216,13 +226,36 @@ class cuser_children extends crecord {
 		);
 		return $this->fetch_assoc();
 	}
+=======
+    //--------------------------------------------------------------------------------------
+    public function get_tgt($debug, $id)
+    {
+        if (
+            !cutil::is_number($id)
+            ||  $id < 1
+        ) {
+            //falseを返す
+            return false;
+        }
+        //親クラスのselect()メンバ関数を呼ぶ
+        $this->select(
+            $debug,            //デバッグ表示するかどうか
+            "*",            //取得するカラム
+            "user_children,user",    //取得するテーブル
+            "user.id= {$id} and	
+            user.user_id = user.user_id" //条件
+        );
+        return $this->fetch_assoc();
+    }
+>>>>>>> d1f0efc12750ea43f07e3daaddf67dc16f4ee8f4
 
     //--------------------------------------------------------------------------------------
     /*!
     @brief  デストラクタ
     */
     //--------------------------------------------------------------------------------------
-    public function __destruct(){
+    public function __destruct()
+    {
         //親クラスのデストラクタを呼ぶ
         parent::__destruct();
     }
