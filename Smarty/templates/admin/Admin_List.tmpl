@@ -5,21 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
 {include file="../components/header.tmpl"}
+<body>
   <h1>管理者情報</h1>
   <div align="center">
     <table border="1">
       <tr>
-        <th>管理者名</th> <th>権限</th> <th>操作</th>
-      <tr>
-        <td>たろう</td> <td>読み取り専用</td> <td><input type="button" value="編集" onclick="location.href='Admin_Edit.php'"><input type="button" value="削除" onclick="location.href='Admin_Delete.php'"></td>
+          <td>ユーザー名</td>
+          <td>ADMIN ID</td>
+          <td>権限</td>
+          <td>操作</td>
       </tr>
-      <tr>
-        <td>ミー</td> <td>admin</td> <td><input type="button" value="編集" onclick="location.href='Admin_Edit.php'"><input type="button" value="削除" onclick="location.href='Admin_Delete.php'"></td>
-      </tr>
-    </table>
+        <!-- sample1-->
+        {foreach from=$rows key=k item=value}
+        <tr>
+          <td>
+            {$value.user_name}
+          </td>
+          <td>
+            {$value.admin_id}
+          </td>
+          <td>
+            {if $value.authority}
+            ADMIN
+            {else}
+            READ ONLY
+            {/if}
+          </td>
+          <td>
+            <button onclick="location.href='./Admin_Edit.php?id={$value.id}'">詳細</button>
+            <button onclick="location.href='./Admin_Edit.php'">削除</button>
+          </td>
+        </tr>
+        {foreachelse}
+        <tr>
+          <td colspan="3" class="nobottom">メンバーが見つかりません</td>
+        </tr>
+        {/foreach}
+      </table>
+    </div>
   </div>
+
 {include file="../components/footer.tmpl"}
 </body>
 </html>

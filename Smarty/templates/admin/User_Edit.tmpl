@@ -57,13 +57,6 @@ function check(){
   </tr>
 
   <tr>
-    <th>ADMIN ID</th>
-    <td>
-      <input type="text" name="admin_id" placeholder="ADMIN ID" value={$rows.admin_id}>
-    </td>
-  </tr>
-
-  <tr>
     <th>ユーザー名</th>
     <td>
       <input type="text" name="user_name" placeholder="ユーザー名" value={$rows.user_name}>
@@ -84,6 +77,19 @@ function check(){
     </td>
   </tr>
 
+  <tr>
+    <th>生年月日</th>
+    <td>
+      <input type="date" name="birthday" placeholder="生年月日" value={$rows.birthday}>
+    </td>
+  </tr>
+
+  <tr>
+    <th>趣味</th>
+    <td>
+      <input type="text" name="hobby" placeholder="趣味" value={$rows.hobby}>
+    </td>
+  </tr>
 
   <tr>
     <th>メールアドレス</th>
@@ -93,9 +99,16 @@ function check(){
   </tr>
 
   <tr>
-    <th>権限</th>
+    <th>プロフィール文</th>
     <td>
-      <input type="text" name="authority" placeholder="権限" value={$rows.authority}>
+      <input type="text" name="profile_content" placeholder="プロフィール文" value={$rows.profile_content}>
+    </td>
+  </tr>
+
+  <tr>
+    <th>プロフィール画像</th>
+    <td>
+      <input type="text" name="profile_img" placeholder="プロフィール画像のパス" value={$rows.profile_img}>
     </td>
   </tr>
 
