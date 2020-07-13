@@ -200,7 +200,7 @@ class cuser_children extends crecord {
 	@return	配列（1次元配列になる）空の場合はfalse
 	*/
 	//--------------------------------------------------------------------------------------
-	public function get_tgt($debug,$id){
+	public function get_tgt($debug,$id,$user_id){
 		if(!cutil::is_number($id)
 		||  $id < 1){
 			//falseを返す
@@ -212,7 +212,7 @@ class cuser_children extends crecord {
 			"*",			//取得するカラム
 			"user_children,user",	//取得するテーブル
             "user.id= {$id} and	
-            user.user_id = user.user_id"//条件
+            user.user_id = user.{$user_id}"//条件
 		);
 		return $this->fetch_assoc();
 	}
