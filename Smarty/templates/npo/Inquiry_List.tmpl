@@ -2,14 +2,51 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+        <link rel="stylesheet" href="../css/admin_base.css">
+        <link rel="stylesheet" href="../css/user_list.css">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <title>お問い合わせ</title> 
 </head>
 
 <body>
-  {include file="../components/header.tmpl"}
+<input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <div class="sidebar">
+        <a href="Home_Page.php">
+        <header>サイト名</header>
+            <a href="Profile_Create.php">
+            <i class="fas fa-list-alt fa-2x"></i>
+                <span>プロフィール</span>
+        </a>
+            <a href="Admin_List.php">
+                <i class="fas fa-list-alt fa-2x"></i>
+                <span>管理者</span>
+        </a>
+        <a href="event_create.php">
+                <i class="fas fa-bars"></i>
+                <span>イベント作成</span>
+            </a>
+            <a href="Event_List.php" >
+                <i class="fas fa-list-alt fa-2x"></i>
+                <span>イベント一覧</span>
+            </a>
+            <a href="inquiry_List.php">
+                <i class="far fa-question-circle"></i>
+                <span>お問い合わせ</span>
+            </a>
+            <a href="Login_Page.php">
+                <i class="fas fa-sign-out-alt fa-2x"></i>
+                <span>ログアウト</span>
+            </a>
+        </div>
   <div>
+  <div id="main">
     <h1>お問い合わせリスト</h1>
     <div align="center">
     {$ERR_STR}
@@ -37,8 +74,8 @@
               {/if}
             </td>
             <td>
-              <button onclick="location.href='./Inquiry_Detail.php?iid={$value.inquiry_id}'">詳細</button>
-              <button onclick="location.href='./Inquiry_Delete.php?iid={$value.inquiry_id}'">削除</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='./Inquiry_Detail.php?iid={$value.inquiry_id}'">詳細</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='./Inquiry_Delete.php?iid={$value.inquiry_id}'">削除</button>
             </td>
           </tr>
           {foreachelse}
@@ -50,7 +87,9 @@
         <!--/form-->
     </div>
   </div>
-  {include file="../components/footer.tmpl"}
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
 
 </html>

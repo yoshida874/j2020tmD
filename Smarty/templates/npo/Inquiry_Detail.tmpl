@@ -2,13 +2,16 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+   <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+        <link rel="stylesheet" href="../css/admin_base.css">
+        <link rel="stylesheet" href="../css/user_list.css">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <title>お問い合わせ</title> 
   {literal}
 
   <script type="text/javascript">
-    <!--
     function set_func_form(fn,pm){
     document.form1.target = "_self";
     document.form1.func.value = fn;
@@ -29,53 +32,78 @@
 </head>
 
 <body>
-  {include file="../components/header.tmpl"}
-  <div align="center">
-      <h2>お問い合わせ詳細</h2>
-      {$err_flag}
-      <form name="form1" method="post" action="">
-      <table border="1">
-        <tr>
-          <td>ID</td>
-          <td>{$rows.user_name}</td>
-        </tr>
-        <tr>
-          <td>状態</td>
-          <td>
-              {if $rows.reply}
-                返信済み
-              {else}
-                未返信
-              {/if}
-          </td>
-        </tr>
-        <tr>
-          <td>ユーザ名</td>
-          <td>{$rows.user_name}</td>
-        </tr>
-        <tr>
-          <td>ユーザID</td>
-          <td>{$rows.user_id}</td>
-        </tr>
-        <tr>
-          <td>お問い合わせ内容</td>
-          <td>{$rows.content}</td>
-        </tr>
-        <tr>
-          <td>受信日時</td>
-          <td>{$rows.target_date}</td>
-        </tr>
-      </table>
-      <h2>返信内容</h2>
-        <p>
-          <textarea name="reply_content" id="reply_content" cols="40" rows="5">{$smarty.post.reply_content}</textarea>
-        </p>
-      <input type="hidden" name="func" value="" />
-      <input type="hidden" name="param" value="" />
-	    <input type="button" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 70%" value="確認">
-      </form>
+  <div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li>Jelena Jovanovic <span>Web Developer</span></li>
+      <li><a href="https://vanila.io" target="_blank">Company</a></li>
+      <li><a href="https://instagram.com/plavookac" target="_blank">Instagram</a></li>
+      <li><a href="https://twitter.com/plavookac" target="_blank">Twitter</a></li>
+      <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a></li>
+      <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
+    </ul>
   </div>
-  {include file="../components/footer.tmpl"}
+  <div>
+    <div id='center' class="main center">
+      <div class="container">
+      <div align="center">
+        <h2>お問い合わせ詳細</h2>
+        {$err_flag}
+        <form name="form1" method="post" action="">
+        <table border="1">
+          <tr>
+            <td>ID</td>
+            <td>{$rows.user_name}</td>
+          </tr>
+          <tr>
+            <td>状態</td>
+            <td>
+                {if $rows.reply}
+                  返信済み
+                {else}
+                  未返信
+                {/if}
+            </td>
+          </tr>
+          <tr>
+            <td>ユーザ名</td>
+            <td>{$rows.user_name}</td>
+          </tr>
+          <tr>
+            <td>ユーザID</td>
+            <td>{$rows.user_id}</td>
+          </tr>
+          <tr>
+            <td>お問い合わせ内容</td>
+            <td>{$rows.content}</td>
+          </tr>
+          <tr>
+            <td>受信日時</td>
+            <td>{$rows.target_date}</td>
+          </tr>
+        </table>
+        <br>
+        <h2>返信内容</h2>
+          <p>
+            <textarea class = "textarea" name="reply_content" id="reply_content" cols="40" rows="5">{$smarty.post.reply_content}</textarea>
+          </p>
+        <input type="hidden" name="func" value="" />
+        <input type="hidden" name="param" value="" />
+        <br>
+        <input type="button" class="btn btn-primary" onClick="javascript:check()" style="bottom; left: 50%; top: 70%" value="確認">
+        </form>
+    </div>
+  </div>
+</div>
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
 
 </html>
