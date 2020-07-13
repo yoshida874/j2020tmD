@@ -208,7 +208,6 @@ class cuser_children extends crecord
 	@param[in]	$id		ID
 	@return	配列（1次元配列になる）空の場合はfalse
 	*/
-<<<<<<< HEAD
 	//--------------------------------------------------------------------------------------
 	public function get_tgt($debug,$id,$user_id){
 		if(!cutil::is_number($id)
@@ -226,28 +225,6 @@ class cuser_children extends crecord
 		);
 		return $this->fetch_assoc();
 	}
-=======
-    //--------------------------------------------------------------------------------------
-    public function get_tgt($debug, $id)
-    {
-        if (
-            !cutil::is_number($id)
-            ||  $id < 1
-        ) {
-            //falseを返す
-            return false;
-        }
-        //親クラスのselect()メンバ関数を呼ぶ
-        $this->select(
-            $debug,            //デバッグ表示するかどうか
-            "*",            //取得するカラム
-            "user_children,user",    //取得するテーブル
-            "user.id= {$id} and	
-            user.user_id = user.user_id" //条件
-        );
-        return $this->fetch_assoc();
-    }
->>>>>>> d1f0efc12750ea43f07e3daaddf67dc16f4ee8f4
 
     //--------------------------------------------------------------------------------------
     /*!
