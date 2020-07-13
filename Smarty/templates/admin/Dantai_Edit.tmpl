@@ -1,6 +1,13 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="ja">
-<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link rel="stylesheet" href="css/admin_base.css">
+        <link rel="stylesheet" href="css/user_list.css">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <title>団体詳細</title>
 {literal}
 <script type="text/javascript">
@@ -35,8 +42,46 @@ function check(){
 {/literal}
 </head>
 <body>
-{include file="../components/header.tmpl"}
-<h1>団体詳細</h1>
+
+  <input type="checkbox" id="check">
+  <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+  </label>
+  <div class="sidebar">
+      <header>サイト名</header>
+      <a href="Admin_List.php">
+          <i class="fas fa-qrcode"></i>
+          <span>管理者情報</span>
+      </a>
+      <a href="User_List.php">
+          <i class="fas fa-list-alt fa-2x"></i>
+          <span>ユーザー一覧</span>
+      </a>
+      <a href="Event_List.php" >
+          <i class="fas fa-list-alt fa-2x"></i>
+          <span>イベント一覧</span>
+      </a>
+      <a href="Dantai_List.php" class="active">
+          <i class="far fa-list-alt fa-2x"></i>
+          <span>団体一覧</span>
+      </a>
+      <a href="inquiry_List.php">
+          <i class="far fa-question-circle"></i>
+          <span>お問い合わせ</span>
+      </a>
+      <a href="Blacklist_List.php">
+          <i class="fas fa-sliders-h"></i>
+          <span>ブラックリスト</span>
+      </a>
+      <a href="">
+          <i class="fas fa-sign-out-alt fa-2x"></i>
+          <span>ログアウト</span>
+      </a>
+  </div>
+  
+  <div id="main">
+      <h3>団体詳細</h3>
 
 <form name="form1" method="post" action="">
 
@@ -101,16 +146,17 @@ function check(){
   <tr>
     <th>目的</th>
     <td>
-      <textarea name="NPO_purpose" cols="40" rows="8" placeholder="目的">{$rows.NPO_purpose}</textarea>
+      <textarea class="textarea" name="NPO_purpose" cols="40" rows="8" placeholder="目的">{$rows.NPO_purpose}</textarea>
     </td>
   </tr>
 
 </table>
   <input type="hidden" name="func" value="" />
   <input type="hidden" name="param" value="" />
-	<input type="button" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 70%" value="確認">
+	<input type="button" class="btn btn-primary" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 110%" value="確認">
 </form>
-
-{include file="../components/footer.tmpl"}
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
 </html>

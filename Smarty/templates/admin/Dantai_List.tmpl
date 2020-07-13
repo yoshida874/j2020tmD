@@ -2,9 +2,15 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link rel="stylesheet" href="css/admin_base.css">
+        <link rel="stylesheet" href="css/user_list.css">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+        
+
   {literal}
   <script type="text/javascript">
 
@@ -28,17 +34,58 @@
 </head>
 
 <body>
-  {include file="../components/header.tmpl"}
+
+<input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <div class="sidebar">
+            <header>サイト名</header>
+            <a href="Admin_List.php">
+                <i class="fas fa-qrcode"></i>
+                <span>管理者情報</span>
+            </a>
+            <a href="User_List.php">
+                <i class="fas fa-list-alt fa-2x"></i>
+                <span>ユーザー一覧</span>
+            </a>
+            <a href="Event_List.php" >
+                <i class="fas fa-list-alt fa-2x"></i>
+                <span>イベント一覧</span>
+            </a>
+            <a href="Dantai_List.php" class="active">
+                <i class="far fa-list-alt fa-2x"></i>
+                <span>団体一覧</span>
+            </a>
+            <a href="inquiry_List.php">
+                <i class="far fa-question-circle"></i>
+                <span>お問い合わせ</span>
+            </a>
+            <a href="Blacklist_List.php">
+                <i class="fas fa-sliders-h"></i>
+                <span>ブラックリスト</span>
+            </a>
+            <a href="">
+                <i class="fas fa-sign-out-alt fa-2x"></i>
+                <span>ログアウト</span>
+            </a>
+        </div>
+
+        <h1 align="center">ようこそ○○さん</h1>
+        
+        <div id="main">
+            <h3>団体リスト</h3>
+
   <div>
-    <h1>団体</h1>
     <div align="center">
     {$ERR_STR}
     <form name="form1" action="{$tgt_uri}" method="post" >
-      <table border="1">
+      <table>
         <tr>
-          <td>ID</td>
-          <td>グループ名</td>
-          <td>操作</td>
+          <th>ID</th>
+          <th>グループ名</th>
+          <th colspan="2">操作</th>
         </tr>
 
         <!-- sample1-->
@@ -52,9 +99,11 @@
           </td>
           <td>
             <a href='./Dantai_Edit.php?id={$value.NPO_id}'>
-              <button type="button">詳細</button>
+              <button type="button" class="btn btn-primary">詳細</button>
             </a>
-            <button onclick="javascript:del_func_form({$value.NPO_id},'【ID : {$value.NPO_id} NAME : {$value.group_name}】')" >削除</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary"  onclick="javascript:del_func_form({$value.NPO_id},'【ID : {$value.NPO_id} NAME : {$value.group_name}】')" >削除</button>
           </td>
         </tr>
         {foreachelse}
@@ -67,8 +116,13 @@
       <input type="hidden" name="param" value="" />
     </form>
     </div>
+
   </div>
-  {include file="../components/footer.tmpl"}
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  
 </body>
 
 </html>
