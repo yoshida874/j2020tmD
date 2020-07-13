@@ -8,6 +8,27 @@ create table admin_user(
     authority boolean not null default 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+create table black_list(
+    id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id varchar(30) not null,
+    degree_risk  varchar(5),
+    reason varchar(200),
+    report_number int(2)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into black_list(
+    user_id,
+    degree_risk,
+    reason,
+    report_number
+)
+values(
+    'umami_111',
+    'イエロー',
+    '施設に迷惑行為',
+    5
+)
+
 insert into admin_user(
     user_id,
     user_name,
@@ -22,6 +43,7 @@ values(
     'admin001',
     1
 );
+
 
 create table admin_inquiry(
     inquiry_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
