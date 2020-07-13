@@ -25,42 +25,29 @@
 </head>
 
 <body>
-<input type="checkbox" id="check">
-        <label for="check">
-            <i class="fas fa-bars" id="btn"></i>
-            <i class="fas fa-times" id="cancel"></i>
-        </label>
-        <div class="sidebar">
-        <a href="Home_Page.php">
-        <header>サイト名</header>
-            <a href="Profile_Create.php">
-            <i class="fas fa-list-alt fa-2x"></i>
-                <span>プロフィール</span>
-        </a>
-            <a href="Admin_List.php">
-                <i class="fas fa-list-alt fa-2x"></i>
-                <span>管理者</span>
-        </a>
-        <a href="event_create.php">
-                <i class="fas fa-bars"></i>
-                <span>イベント作成</span>
-            </a>
-            <a href="Event_List.php" >
-                <i class="fas fa-list-alt fa-2x"></i>
-                <span>イベント一覧</span>
-            </a>
-            <a href="inquiry_List.php">
-                <i class="far fa-question-circle"></i>
-                <span>お問い合わせ</span>
-            </a>
-            <a href="Login_Page.php">
-                <i class="fas fa-sign-out-alt fa-2x"></i>
-                <span>ログアウト</span>
-            </a>
-        </div>
+  <div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+<li><a href="Home_Page.php">ホーム</a></li>
+            <li><a href="Profile_Create.php">プロフィール</a></li>
+            <li><a href="Admin_List.php">管理者</a></li>
+            <li><a href="Event_Create.php">イベント作成</a></li>
+            <li><a href="Event_List.php">イベント一覧</a></li>
+            <li><a href="Inquiry_List.php" >お問い合わせ</a></li>
+            <li><a href="Login_Page.php">ログアウト</a></li>
+    </ul>
+  </div>
+  <br>
   <div>
-  <div id="main">
-  <div align="center">
+    <div id='center' class="main center">
+      <div class="container">
+      <div align="center">
       <h2>確認</h2>
       {$err_flag}
       <form name="form1" method="post" action="">
@@ -103,9 +90,12 @@
         </p>
       <input type="hidden" name="func" value="" />
       <input type="hidden" name="param" value="" />
-        <input type="button" class="btn btn-primary" onClick="javascript:set_func_form('edit','')" style="bottom; left: 45%; top: 50%" value="戻る">
-        <input type="button" class = "btn btn-primary"onClick="javascript:set_func_form('set','')" style="bottom; left: 55%; top: 50%" value="送信">
+        <input type="button" class="btn btn-secondary btn-lg" onClick="javascript:set_func_form('edit','')" style="bottom; left: 45%; top: 50%" value="戻る">
+        <input type="button" class = "btn btn-secondary btn-lg"onClick="javascript:set_func_form('set','')" style="bottom; left: 55%; top: 50%" value="送信">
       </form>
+  </div>
+      </div>
+    </div>
   </div>
   <script src="../assets/vendor/jquery/jquery.min.js"></script>
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -113,3 +103,4 @@
 </body>
 
 </html>
+
