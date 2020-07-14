@@ -101,11 +101,12 @@ function set_func_form(fn,pm){
 
   <input type="hidden" name="func" value="" />
   <input type="hidden" name="param" value="" />
-	<input type="button" class="btn btn-primary" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 85%" value="戻る">
-	<input type="button" class="btn btn-primary" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 85%" value="更新">
-
 </form>
 
+<div>
+  <input class="btn btn-secondary btn-lg" name="btn_back" onClick="javascript:set_func_form('edit','')" value="戻る">
+  <input class="btn btn-secondary btn-lg" name="btn_submit" onClick="javascript:set_func_form('set','')"  value="更新">
+</div>
 
 </body>
 </html>
