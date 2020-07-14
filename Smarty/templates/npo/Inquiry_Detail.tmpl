@@ -39,17 +39,7 @@
     <div class="spinner horizontal"></div>
     <div class="spinner diagonal part-2"></div>
   </label>
-  <div id="sidebarMenu">
-    <ul class="sidebarMenuInner">
-      <li><a href="Home_Page.php">ホーム</a></li>
-            <li><a href="Profile_Create.php">プロフィール</a></li>
-            <li><a href="Admin_List.php">管理者</a></li>
-            <li><a href="Event_Create.php">イベント作成</a></li>
-            <li><a href="Event_List.php">イベント一覧</a></li>
-            <li><a href="Inquiry_List.php" >お問い合わせ</a></li>
-            <li><a href="Login_Page.php">ログアウト</a></li>
-    </ul>
-  </div>
+    {include file="../components/Side_Menu.tmpl"}
   <br>
   <div>
     <div id='center' class="main center">
@@ -107,5 +97,7 @@
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
+
+<br>
 
 </html>

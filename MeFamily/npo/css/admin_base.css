@@ -156,6 +156,12 @@ label #cancel {
   height:200px;
 }
 
+.area {
+  resize: none;
+  width:400px;
+  height:200px;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 html, body {
     overflow-x: hidden;
@@ -306,3 +312,5 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   border: 1px solid #889100;
   background-color: #f4ff42;
 }
+
+

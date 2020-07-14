@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+        <link rel="stylesheet" href="../css/admin_base.css">
+        <link rel="stylesheet" href="../css/user_list.css">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
   </head>
   <body>
-    {include file="../components/header.tmpl"}
-    <div align="center">
+    <div class="header"></div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+      <div class="spinner diagonal part-1"></div>
+      <div class="spinner horizontal"></div>
+      <div class="spinner diagonal part-2"></div>
+    </label>
+  {include file="../components/Side_Menu.tmpl"}
+    <br>
+    <div>
+      <div id='center' class="main center">
+        <div class="container">
+        <div align="center">
       <table border="1">
         <tr>
           <td>イベント名</td>
@@ -61,10 +76,11 @@
           <td><input type="text" name="userId" value="" size="24" /></td>
         </tr>
       </table>
+      <br>
       <section id="confirm">
         <form>
           <div align="center">
-            <button onmousedown="confirm()">確認</button>
+            <button class="btn btn-secondary btn-lg" onmousedown="confirm()">確認</button>
           </div>
         </form>
         <script>
@@ -76,8 +92,8 @@
       </section>
       <section id="post" hidden>
         <div align="center">
-          <button onmousedown="back()">戻る</button>
-          <button>追加</button>
+          <button class="btn btn-secondary btn-lg" onmousedown="back()">戻る</button>
+          <button class="btn btn-secondary btn-lg">追加</button>
         </div>
         <script>
           function back() {
@@ -87,6 +103,8 @@
         </script>
       </section>
     </div>
-    {include file="../components/footer.tmpl"}
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
   </body>
 </html>
