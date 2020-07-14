@@ -1,28 +1,25 @@
-<!DOCTYPE>
-<html lang="ja">
-<head>
-<title>管理者詳細</title>
-{literal}
-<script type="text/javascript">
-<!--
-function set_func_form(fn,pm){
-	document.form1.target = "_self";
-	document.form1.func.value = fn;
-	document.form1.param.value = pm;
-	document.form1.submit();
-}
-
-
-// -->
-</script>
-{/literal}
+<!DOCTYPE html>
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>管理者詳細</title>
+  {literal}
+  <script type="text/javascript">
+  <!--
+  function set_func_form(fn,pm){
+    document.form1.target = "_self";
+    document.form1.func.value = fn;
+    document.form1.param.value = pm;
+    document.form1.submit();
+  }
+  
+  
+  // -->
+  </script>
+  {/literal}
 </head>
-
+    
 <body>
 {include file="../components/header.tmpl"}
 
@@ -59,12 +56,10 @@ function set_func_form(fn,pm){
       <input type="textarea" name="reason">
       </td>
     </tr>
-  </table>
     <input type="hidden" name="func" value="" />
     <input type="hidden" name="param" value="" />
     <input type="button" name="btn_confirm" onClick="javascript:set_func_form('func','')" style="position: absolute; left: 50%; top: 70%" value="確認">
   </form>
-
   {include file="../components/footer.tmpl"}
 </body>
 

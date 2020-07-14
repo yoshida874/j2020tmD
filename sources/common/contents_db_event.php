@@ -59,7 +59,7 @@ class cevent extends crecord {
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
-			"Event",	//取得するテーブル
+			"Event left join NPO_group on Event.NPO_id = NPO_group.NPO_id",	//取得するテーブル
 			"1",			//条件
 			"event_id asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
@@ -94,6 +94,33 @@ class cevent extends crecord {
 		);
 		return $this->fetch_assoc();
 	}
+
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief	指定されたIDの配列を得る
+	@param[in]	$debug	デバッグ出力をするかどうか
+	@param[in]	$id		ID
+	@return	配列（1次元配列になる）空の場合はfalse
+	*/
+	//--------------------------------------------------------------------------------------
+	public function get_search($debug,$keyword){
+		$keyword = $this->make_safe_sqlstr((string)$keyword);
+		//親クラスのselect()メンバ関数を呼ぶ
+		$this->select(
+			$debug,			//デバッグ表示するかどうか
+			"*",			//取得するカラム
+			"Event left join NPO_group on Event.NPO_id = NPO_group.NPO_id",	//取得するテーブル
+			"event_name like {$keyword} or
+			  venue_city like {$keyword}" 	//条件
+		);
+		//順次取り出す
+        while ($row = $this->fetch_assoc()) {
+            $arr[] = $row;
+        }
+        //取得した配列を返す
+        return $arr;
+	}
+
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	デストラクタ
