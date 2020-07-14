@@ -1,13 +1,19 @@
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<header>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <nav class="my-2 my-md-0 mr-md-3">
-            {foreach from=$page item=href key=key_name}
-                <a class="p-2 text-dark" href={$href}>{$key_name}</a>
-            {/foreach}
-        </nav>
-    </div>
-</header>
+<div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li>サイト名 <span>サイト名</span></li>
+      {foreach from=$page item=href key=key_name}
+        <li><a href={$href}></i>{$key_name}</a></li>
+      {/foreach}
+    </ul>
+  </div>
