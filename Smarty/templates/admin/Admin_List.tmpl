@@ -35,29 +35,12 @@
 </head>
 
 <body>
-  <div class="header"></div>
-  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-  <label for="openSidebarMenu" class="sidebarIconToggle">
-    <div class="spinner diagonal part-1"></div>
-    <div class="spinner horizontal"></div>
-    <div class="spinner diagonal part-2"></div>
-  </label>
-  <div id="sidebarMenu">
-    <ul class="sidebarMenuInner">
-      <li>サイト名 <span>サイト名</span></li>
-      <li><a href="Admin_List.php" target="_blank"></i>管理者情報</a></li>
-      <li><a href="User_List.php" target="_blank">ユーザー一覧</a></li>
-      <li><a href="Event_List.php" target="_blank">イベント一覧</a></li>
-      <li><a href="Dantai_List.php" target="_blank">団体一覧</a></li>
-      <li><a href="Inquiry_List.php" target="_blank">お問い合わせ</a></li>
-      <li><a href="Blacklist_List.php" target="_blank">ブラックリスト</a></li>
-      <li><a href="Login_Page.php" target="_blank">ログアウト</a></li>
-    </ul>
-  </div>
-
-  <h1 align="center">ようこそ○○さん</h1>
+  {include file="../components/Side_Menu.tmpl"}
         
-        <div id="main">
+         <!--<div id="main">-->
+         <div id = "center" class ="main center">
+          <div class="container">
+           <div align = "center">
             <h3>管理者情報</h3>
   <div align="center">
     <table>
