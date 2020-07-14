@@ -238,17 +238,17 @@ class cuser_children extends crecord
 	*/
 	//--------------------------------------------------------------------------------------
 	public function get_tgt($debug,$user_id){
-		if(!cutil::is_number($id)
-		||  $id < 1){
-			//falseを返す
+		if(!cutil::is_number($user_id)
+		||  $user_id < 1){
+            //falseを返す
 			return false;
 		}
 		//親クラスのselect()メンバ関数を呼ぶ
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
-			"user_children.*,user.user_id",			//取得するカラム
-			"user_children,user",	//取得するテーブル
-            "user.user_id = {$user_id}"//条件
+			"*",			//取得するカラム
+			"user_children",	//取得するテーブル
+            "user_id = {$user_id}"//条件
 		);
 		return $this->fetch_assoc();
 	}

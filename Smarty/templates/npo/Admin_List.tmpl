@@ -2,17 +2,24 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+  <link rel="stylesheet" href="../css/admin_base.css">
+  <link rel="stylesheet" href="../css/user_list.css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <title>Document</title>
 </head>
 
 <body>
-{include file="../components/header.tmpl"}
+  {include file="../components/Side_Menu.tmpl"}
+    <br>
   <div>
+    <div id='center' class="main center">
+      <div class="container">
+      <div align="center">
     <h1>管理者情報</h1>
     <div align="center">
-    <p><a href="Admin_List_Detail.php">新規</a></p>
       <table border="1">
         <tr>
           <td>管理者</td>
@@ -30,8 +37,8 @@
             {$value.authority}
           </td>
           <td>
-            <button onclick="location.href='./Admin_Detail.php?id={$value.id}'">詳細</button>
-            <button onclick="location.href='./Admin_Delete.php'">削除</button>
+            <button class="btn btn-secondary btn-lg" onclick="location.href='./Admin_Detail.php?id={$value.id}'">詳細</button>
+            <button class="btn btn-secondary btn-lg" onclick="location.href='./Admin_Delete.php'">削除</button>
           </td>
         </tr>
         {foreachelse}
@@ -40,9 +47,13 @@
         </tr>
         {/foreach}
       </table>
+      <br>
+      <p><a href="Admin_List_Detail.php">新規作成</a></p>
     </div>
   </div>
-  {include file="../components/footer.tmpl"}
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
 
 </html>
