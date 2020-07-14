@@ -102,14 +102,17 @@ function insert_func_form(pm,mess){
                         </td>
                     </tr>
                 </table>
+                <br>
                 <input type="hidden" name="func" value="" />
                 <input type="hidden" name="param" value="" />
                 <input type="hidden" name="id" value="{$id}" />
+                <div align="center">
                 <p class="center">
                     <!--<input type="button"  value="確認" onClick="javascript:set_func_form('set','')"/>-->
                     <!-- ユーザID : {$value.user_id} NPO_ID : {$value.NPO_id} ユーザ名 : {$value.user_name} パスワード: {$value.pw} メールアドレス: {$value.address} 権限: {$value.authority} -->
-                    <input type="button"  value="確認" onClick="javascript:insert_func_form('','入力内容を登録します。')"/>
+                    <input type="button" class="btn btn-secondary btn-lg" value="確認" onClick="javascript:insert_func_form('','入力内容を登録します。')"/>
                 </p>
+            </div>
             </form>
             </div>
         <!-- /コンテンツ　-->

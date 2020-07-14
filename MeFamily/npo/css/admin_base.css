@@ -313,4 +313,6 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   background-color: #f4ff42;
 }
 
-
+.button_wrapper{
+  text-align:center;
+}

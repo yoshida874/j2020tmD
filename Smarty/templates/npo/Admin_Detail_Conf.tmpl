@@ -25,6 +25,11 @@ function set_func_form(fn,pm){
 </head>
 <body>
    {include file="../components/Side_Menu.tmpl"}
+     <br>
+  <div>
+    <div id='center' class="main center">
+      <div class="container">
+      <div align="center">
 <h1>団体詳細</h1>
 
 <form name="form1" method="post" action="">
@@ -72,11 +77,14 @@ function set_func_form(fn,pm){
   </tr>
 
   </table>
+
+  <br>
+
   <input type="hidden" name="NPO_id"  value="{$smarty.post.NPO_id|escape}" />
   <input type="hidden" name="func" value="" />
   <input type="hidden" name="param" value="" />
-	<input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
-	<input type="button" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 50%" value="更新">
+	<input type="button" class="btn btn-secondary btn-lg" name="btn_back" onClick="javascript:set_func_form('edit','')" style="bottom; absolute; left: 45%; top: 50%" value="戻る">
+	<input type="button" class="btn btn-secondary btn-lg" name="btn_submit" onClick="javascript:set_func_form('set','')" style="bottom; left: 55%; top: 50%" value="更新">
 
 </form>
 
