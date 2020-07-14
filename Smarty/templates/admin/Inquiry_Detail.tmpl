@@ -2,23 +2,32 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
+   <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <link rel="stylesheet" href="css/admin_base.css">
-        <link rel="stylesheet" href="css/user_list.css">
-  <title>お問い合わせ詳細</title>
-  {literal}
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+        <link rel="stylesheet" href="../css/admin_base.css">
+        <link rel="stylesheet" href="../css/user_list.css">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <title>お問い合わせ詳細</title> 
+        {literal}
 
   <script type="text/javascript">
   <!--
-  function set_func_form(fn,pm){
-      document.form1.target = "_self";
-      document.form1.func.value = fn;
-      document.form1.param.value = pm;
-      document.form1.submit();
+    function set_func_form(fn,pm){
+    document.form1.target = "_self";
+    document.form1.func.value = fn;
+    document.form1.param.value = pm;
+    document.form1.submit();
   }
-  // -->
+    function check(){
+      var err = "";
+      if (err == ""){
+      set_func_form('confirm','');
+      }else{
+        alert(err);
+      }
+    }
+// -->
   </script>
   {/literal}
 </head>
@@ -31,63 +40,63 @@
           <div class="container">
            <div align = "center">
             <h3>お問い合わせ詳細</h3>
-
-  <div>
-    <section id="detail">
-      {$err_flag}
-      <table>
-        <tr>
-          <td>ID</td>
-          <td>{$inquiry_id}</td>
-        </tr>
-        <tr>
-          <td>状態</td>
-          <td>未返信</td>
-        </tr>
-        <tr>
-          <td>ユーザ名</td>
-          <td>{$smarty.post.user_name}</td>
-        </tr>
-        <tr>
-          <td>ユーザID</td>
-          <td>{$smarty.post.user_id}</td>
-        </tr>
-        <tr>
-          <td>お問い合わせ内容</td>
-          <td>{$smarty.post.content}</td>
-        </tr>
-        <tr>
-          <td>受信日時</td>
-          <td>{$smarty.post.target_date}</td>
-        </tr>
-      </table>
-      <button type="button" class="btn btn-secondary" onclick="location.href='./Inquiry_List.php'">戻る</button>
-      <button type="button" class="btn btn-secondary" onmousedown="Reply()">返信</button>
-      <script>
-        function Reply() {
-          document.getElementById("detail").hidden = true;
-          document.getElementById("reply").hidden = false;
-        }
-      </script>
-    </section>
-    <section id="reply" hidden>
-      <form name="form1" action="{$smarty.server.PHP_SELF}" method="post" >
-        <h2>返信内容</h2>
-        <p>
-          <textarea name="" id="" cols="40" rows="10"> </textarea>
-        </p>
-        <input type="hidden"   name="inquiry_id" value="{$smarty.post.inquiry_id|escape}">
-        <input type="hidden"   name="user_name" value="{$smarty.post.user_name|escape}">
-        <input type="hidden"   name="user_id" value="{$smarty.post.user_id|escape}">
-        <input type="hidden"   name="content" value="{$smarty.post.content|escape}">
-        <input type="hidden"   name="target_date" value="{$smarty.post.target_date|escape}">
-        <input type="hidden" name="func" value="conf" />
-        <input type="hidden" name="param" value="" />
-        <button>戻る</button>
-        <input type="button"  value="送る" onClick="javascript:set_func_form('set','')"/>
-      </form>
-    </section>
-  </div>
-</body>
-
-</html>
+    <div>
+              <section id="detail">  
+        <form name="form1" method="post" action="">
+          {$err_flag}
+          <table>
+            <tr>
+              <td>ID</td>
+              <td>{$inquiry_id}</td>
+            </tr>
+            <tr>
+              <td>状態</td>
+              <td>未返信</td>
+            </tr>
+            <tr>
+              <td>ユーザ名</td>
+              <td>{$smarty.post.user_name}</td>
+            </tr>
+            <tr>
+              <td>ユーザID</td>
+              <td>{$smarty.post.user_id}</td>
+            </tr>
+            <tr>
+              <td>お問い合わせ内容</td>
+              <td>{$smarty.post.content}</td>
+            </tr>
+            <tr>
+              <td>受信日時</td>
+              <td>{$smarty.post.target_date}</td>
+            </tr>
+          </table>
+          <button type="button" class="btn btn-secondary" onclick="location.href='./Inquiry_List.php'">戻る</button>
+          <button type="button" class="btn btn-secondary" onmousedown="Reply()">返信</button>
+          <script>
+            function Reply() {
+              document.getElementById("detail").hidden = true;
+              document.getElementById("reply").hidden = false;
+            }
+          </script>
+        </section>
+        <section id="reply" hidden>
+          <form name="form1" action="{$smarty.server.PHP_SELF}" method="post" >
+            <h2>返信内容</h2>
+            <p>
+              <textarea name="" id="" cols="40" rows="10"> </textarea>
+            </p>
+            <input type="hidden"   name="inquiry_id" value="{$smarty.post.inquiry_id|escape}">
+            <input type="hidden"   name="user_name" value="{$smarty.post.user_name|escape}">
+            <input type="hidden"   name="user_id" value="{$smarty.post.user_id|escape}">
+            <input type="hidden"   name="content" value="{$smarty.post.content|escape}">
+            <input type="hidden"   name="target_date" value="{$smarty.post.target_date|escape}">
+            <input type="hidden" name="func" value="conf" />
+            <input type="hidden" name="param" value="" />
+            <button class="btn btn-secondary">戻る</button>
+            <input type="button" class="btn btn-secondary" value="送る" onClick="javascript:set_func_form('set','')"/>
+          </form>
+        </section>
+      </div>
+    </body>
+    
+    </html>
