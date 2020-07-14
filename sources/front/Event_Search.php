@@ -20,10 +20,8 @@ if(isset($_GET['keyword']) && $_GET['keyword'] != ''){
     $obj = new cevent();
     $_GET['keyword'] = '%'.$_GET['keyword'].'%';
     $rows = $obj->get_search(false,$_GET['keyword']);
-    print_r($rows);
 }
 else{
-    print('〇');
     readdata();
 }
 
