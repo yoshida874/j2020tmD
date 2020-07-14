@@ -8,7 +8,6 @@ require_once($CMS_COMMON_INCLUDE_DIR . "auth_user.php");
 
 $smarty->assign('page', $header_items);
 
-var_dump($_SESSION);
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'front/';
 $base_name = basename(__FILE__, ".php");
