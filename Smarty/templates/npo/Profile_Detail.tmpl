@@ -1,10 +1,38 @@
 <!DOCTYPE>
 <html lang="ja">
 <head>
+  <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+        <link rel="stylesheet" href="../css/admin_base.css">
+        <link rel="stylesheet" href="../css/user_list.css">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <title>プロフィール</title>
 </head>
 <body>
-{include file="../components/header.tmpl"}
+  <div class="header"></div>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+          <div class="spinner diagonal part-1"></div>
+          <div class="spinner horizontal"></div>
+          <div class="spinner diagonal part-2"></div>
+        </label>
+        <div id="sidebarMenu">
+          <ul class="sidebarMenuInner">
+            <li><a href="Home_Page.php">ホーム</a></li>
+            <li><a href="Profile_Create.php">プロフィール</a></li>
+            <li><a href="Admin_List.php">管理者</a></li>
+            <li><a href="Event_Create.php">イベント作成</a></li>
+            <li><a href="Event_List.php">イベント一覧</a></li>
+            <li><a href="Inquiry_List.php" >お問い合わせ</a></li>
+            <li><a href="Login_Page.php">ログアウト</a></li>
+          </ul>
+        </div>
+        <br>
+        <div>
+          <div id='center' class="main center">
+            <div class="container">
+            <div align="center">
 <h1>プロフィール</h1>
 
 <form method="post" action="./Profile_Success.php">
@@ -62,10 +90,11 @@
 
   </table>
 
-	<input type="button" name="btn_back" onclick="history.back()" style="position: absolute; left: 45%; top: 50%" value="戻る">
-	<input type="submit" name="btn_submit" style="position: absolute; left: 55%; top: 50%" value="更新">
+  <br>
+
+	<input type="button"  class="btn btn-secondary btn-lg" name="btn_back" onclick="history.back()" style="bottom; left: 45%; top: 50%" value="戻る">
+	<input type="submit"  class="btn btn-secondary btn-lg" name="btn_submit" style="bottom; left: 55%; top: 50%" value="更新">
 
 </form>
-{include file="../components/footer.tmpl"}
 </body>
 </html>

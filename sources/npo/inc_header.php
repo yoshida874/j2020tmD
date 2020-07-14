@@ -8,6 +8,7 @@ $root_path = '/~j2020tmD';
 $sub_path = '/sources/npo/';
 
 $header_items = array(
+    'ホーム' => $root_path . $sub_path . 'Home_Page.php',
     'プロフィール' => $root_path . $sub_path . 'Profile_Create.php',
     '管理者' => $root_path . $sub_path . 'Admin_List.php',
     'お問い合わせ' => $root_path . $sub_path . 'Inquiry_List.php',

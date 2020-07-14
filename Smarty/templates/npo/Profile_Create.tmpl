@@ -1,69 +1,98 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+        <link rel="stylesheet" href="../css/admin_base.css">
+        <link rel="stylesheet" href="../css/user_list.css">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
     </head>
 
     <body>
-        {include file="../components/header.tmpl"}
+        <div class="header"></div>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+          <div class="spinner diagonal part-1"></div>
+          <div class="spinner horizontal"></div>
+          <div class="spinner diagonal part-2"></div>
+        </label>
+        <div id="sidebarMenu">
+          <ul class="sidebarMenuInner">
+            <li><a href="Home_Page.php">ホーム</a></li>
+            <li><a href="Profile_Create.php">プロフィール</a></li>
+            <li><a href="Admin_List.php">管理者</a></li>
+            <li><a href="Event_Create.php">イベント作成</a></li>
+            <li><a href="Event_List.php">イベント一覧</a></li>
+            <li><a href="Inquiry_List.php" >お問い合わせ</a></li>
+            <li><a href="Login_Page.php">ログアウト</a></li>
+        </div>
+        <br>
+        <div>
+          <div id='center' class="main center">
+            <div class="container">
+            <div align="center">
         <form method="post" action="./Profile_Detail.php">
         <table border="1" align="center" width="500px">
 
         <tr>
             <th>ID</th>
             <td>
-            <input type="text" name="id" value="1" readonly>
+            <input type="text" size="76" name="id" value="1" readonly>
             </td>
         </tr>
 
         <tr>
             <th>団体名</th>
             <td>
-            <input type="text" name="dantai" value="" placeholder="団体名">
+            <input type="text" size="76" name="dantai" value="" placeholder="団体名">
             </td>
         </tr>
 
         <tr>
             <th>代表者</th>
             <td>
-            <input type="text" name="daihyo" value="" placeholder="名前">
+            <input type="text" size="76" name="daihyo" value="" placeholder="名前">
             </td>
         </tr>
 
         <tr>
             <th>メールアドレス</th>
             <td>
-            <input type="text" name="renraku" value="" placeholder="連絡先">
+            <input type="text" size="76" name="renraku" value="" placeholder="連絡先">
             </td>
         </tr>
 
         <tr>
             <th>市町村</th>
             <td>
-            <input name="sityoson" value="" placeholder="市町村"></input>
+            <input name="sityoson" size="76" value="" placeholder="市町村"></input>
             </td>
         </tr>
 
         <tr>
             <th>事務所の所在地</th>
             <td>
-            <input type="text" name="shozai" value="" placeholder="所在地">
+            <input type="text" size="76" name="shozai" value="" placeholder="所在地">
             </td>
         </tr>
 
         <tr>
             <th>目的</th>
             <td>
-            <textarea name="mokuteki" value="" cols="40" rows="8" placeholder="目的"></textarea>
+            <textarea class = "textarea" name="mokuteki" value="" cols="40" rows="8" placeholder="目的"></textarea>
             </td>
         </tr>
 
         </table>
 
-	    <input type="submit" name="btn_confirm" style="position: absolute; left: 50%; top: 70%" value="確認">
+        <br>
+	    <input type="submit" class="btn btn-secondary btn-lg" name="btn_confirm" style="bottom; left: 50%; top: 70%" value="確認">
         </form>
-        {include file="../components/footer.tmpl"}
+        <br>
+        <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
     </body>
 </html>

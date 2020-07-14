@@ -1,23 +1,35 @@
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+    <link rel="stylesheet" href="../css/admin_base.css">
+    <link rel="stylesheet" href="../css/user_list.css">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Smarty/templates/admin/KHome.css">
     <title>NPOホーム画面</title>
   </head>
 
 <body>
-  {include file="../components/header.tmpl"}
+  {include file="../components/Side_Menu.tmpl"}
+  <br>
+  <div>
+    <div id='center' class="main center">
+      <div class="container">
+      <div align="center">
   <h1>HOME</h1>
   <h1 align="center">ようこそ○○さん</h1>
   <table border="1" align="center" width="500px">
   <tbody>
   <tr><td align="center"><a href="Profile_Create.php">プロフィール</a></td></tr>
   <tr><td align="center"><a href="Admin_List.php">管理者</a></td></tr>
-  <tr><td align="center"><a href="Contact_List.php">お問い合わせ</a></td></tr>
   <tr><td align="center"><a href="Event_Create.php">イベント作成</a></td></tr>
   <tr><td align="center"><a href="Event_List.php">イベント一覧</a></td></tr>
+  <tr><td align="center"><a href="Inquiry_List.php">お問い合わせ</a></td></tr>
   </tbody>
   </table>
-  {include file="../components/footer.tmpl"}
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
   </body>
 </html>

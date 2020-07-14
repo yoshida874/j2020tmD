@@ -3,7 +3,11 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+        <link rel="stylesheet" href="../css/admin_base.css">
+        <link rel="stylesheet" href="../css/user_list.css">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <title>Document</title>
   {literal}
 
@@ -21,8 +25,29 @@
 </head>
 
 <body>
-  {include file="../components/header.tmpl"}
-  <div align="center">
+  <div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+<li><a href="Home_Page.php">ホーム</a></li>
+            <li><a href="Profile_Create.php">プロフィール</a></li>
+            <li><a href="Admin_List.php">管理者</a></li>
+            <li><a href="Event_Create.php">イベント作成</a></li>
+            <li><a href="Event_List.php">イベント一覧</a></li>
+            <li><a href="Inquiry_List.php" >お問い合わせ</a></li>
+            <li><a href="Login_Page.php">ログアウト</a></li>
+    </ul>
+  </div>
+  <br>
+  <div>
+    <div id='center' class="main center">
+      <div class="container">
+      <div align="center">
       <h2>確認</h2>
       {$err_flag}
       <form name="form1" method="post" action="">
@@ -58,17 +83,24 @@
           <td>{$rows.target_date}</td>
         </tr>
       </table>
+      <br>
       <h2>返信内容</h2>
         <p>
-          <textarea name="reply_content" id="reply_content" cols="40" rows="5">{$smarty.post.reply_content}</textarea>
+          <textarea class = "textarea" name="reply_content" id="reply_content" cols="40" rows="5">{$smarty.post.reply_content}</textarea>
         </p>
       <input type="hidden" name="func" value="" />
       <input type="hidden" name="param" value="" />
-        <input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
-        <input type="button" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 50%" value="送信">
+        <input type="button" class="btn btn-secondary btn-lg" onClick="javascript:set_func_form('edit','')" style="bottom; left: 45%; top: 50%" value="戻る">
+        <input type="button" class = "btn btn-secondary btn-lg"onClick="javascript:set_func_form('set','')" style="bottom; left: 55%; top: 50%" value="送信">
       </form>
   </div>
-  {include file="../components/footer.tmpl"}
+      </div>
+    </div>
+  </div>
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
 
 </html>
+

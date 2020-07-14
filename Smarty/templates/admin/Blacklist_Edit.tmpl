@@ -1,109 +1,71 @@
-
-{if isset($smarty.post.btn_confirm)}
-
-	{$pageFlag = 1}
-
-{elseif isset($smarty.post.btn_submit)}
-
-  {$pageFlag = 2}
-
-{/if}
-
 <!DOCTYPE>
 <html lang="ja">
 <head>
-<title>ブラックリスト</title>
+<title>管理者詳細</title>
+{literal}
+<script type="text/javascript">
+<!--
+function set_func_form(fn,pm){
+	document.form1.target = "_self";
+	document.form1.func.value = fn;
+	document.form1.param.value = pm;
+	document.form1.submit();
+}
+
+
+// -->
+</script>
+{/literal}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 </head>
+
 <body>
 {include file="../components/header.tmpl"}
-<h1>ブラックリスト</h1>
-{if $pageFlag == 1}
 
-<form method="post" action="">
-
+  <h2>ブラックリスト詳細</h2>
+  <form name="form1" method="post" action="">
   <table border="1" align="center" width="500px">
-
-  <tr>
-    <th>ID</th>
-    <td>
-      <p>{php} echo $_POST['id']; {/php}</p>
-    </td>
-  </tr>
-
-  <tr>
-    <th>ユーザー名</th>
-    <td>
-      <p>{php} echo $_POST['name']; {/php}</p>
-    </td>
-  </tr>
-
-  <tr>
-    <th>危険度</th>
-    <td>
-      <p>{php} echo $_POST['kiken']; {/php}</p>
-    </td>
-  </tr>
-
-  <tr>
-    <th>ブラックリスト入りの理由</th>
-    <td>
-      <p align="left" valign="top">{php} echo $_POST['blacklist']; {/php}</p>
-    </td>
-  </tr>
-
+    <tr>
+      <td>ID</td>
+      <td>
+        <input type="text" name="id" value={$rows.id} readonly>
+      </td>
+    </tr>
+    <tr>
+        <td>ユーザーID</td>
+        <td>
+          <input type="text" name="user_id" value={$rows.user_id} readonly>
+        </td>
+    </tr>
+    <tr>
+        <td>ランク</td>
+        <td>
+          <input type="text" name="degree_risk" value={$rows.degree_risk} readonly>
+        </td>
+    </tr>
+    <tr>
+      <td>報告件数</td>
+      <td>
+        <input type="text" name="report_number"value={$rows.report_number} >
+      </td>
+    </tr>
+    <tr>
+      <td>理由</td>
+      <td>
+      <input type="textarea" name="reason">
+      </td>
+    </tr>
   </table>
+    <input type="hidden" name="func" value="" />
+    <input type="hidden" name="param" value="" />
+    <input type="button" name="btn_confirm" onClick="javascript:set_func_form('func','')" style="position: absolute; left: 50%; top: 70%" value="確認">
+  </form>
 
-	<input type="submit" name="btn_back" style="position: absolute; left: 45%; top: 50%" value="戻る">
-	<input type="submit" name="btn_submit" style="position: absolute; left: 55%; top: 50%" value="更新">
-
-</form>
-
-{elseif $pageFlag == 2}
-
-<p>更新が完了しました。</p>
-<input type="button" onclick="location.href='Blacklist_List.php'" align="center" value="ブラックリストへ"/></button>
-
-
-{else}
-
-<form method="post" action="">
-
-<table border="1" align="center" width="500px">
-
-  <tr>
-    <th>ID</th>
-    <td>
-      <input type="text" name="id" value="1" readonly>
-    </td>
-  </tr>
-
-  <tr>
-    <th>ユーザー名</th>
-    <td>
-      <input type="text" name="name" value="" placeholder="名前">
-    </td>
-  </tr>
-
-  <tr>
-    <th>危険度</th>
-    <td>
-      <input type="text" name="kiken" value="" placeholder="危険度">
-    </td>
-  </tr>
-
-  <tr>
-    <th>ブラックリスト入りの理由</th>
-    <td>
-      <textarea name="blacklist" value="" cols="40" rows="8" placeholder="理由"></textarea>
-    </td>
-  </tr>
-
-</table>
-
-	<input type="submit" name="btn_confirm" style="position: absolute; left: 50%; top: 50%" value="確認">
-</form>
-
-{/if}
-{include file="../components/footer.tmpl"}
+  {include file="../components/footer.tmpl"}
 </body>
+
 </html>
