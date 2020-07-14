@@ -1,6 +1,12 @@
 <!DOCTYPE>
 <html lang="ja">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+  <link rel="stylesheet" href="../css/admin_base.css">
+  <link rel="stylesheet" href="../css/user_list.css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <title>団体詳細</title>
 {literal}
 <script type="text/javascript">
@@ -18,7 +24,7 @@ function set_func_form(fn,pm){
 {/literal}
 </head>
 <body>
-{include file="../components/header.tmpl"}
+   {include file="../components/Side_Menu.tmpl"}
 <h1>団体詳細</h1>
 
 <form name="form1" method="post" action="">
@@ -74,6 +80,8 @@ function set_func_form(fn,pm){
 
 </form>
 
-{include file="../components/footer.tmpl"}
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
 </html>

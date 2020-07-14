@@ -24,60 +24,18 @@
 </head>
 
 <body>
-
-
-        <input type="checkbox" id="check">
-        <label for="check">
-            <i class="fas fa-bars" id="btn"></i>
-            <i class="fas fa-times" id="cancel"></i>
-        </label>
-        <div class="sidebar">
-            <header>サイト名</header>
-            <a href="Admin_List.php" >
-                <i class="fas fa-qrcode"></i>
-                <span>管理者情報</span>
-            </a>
-            <a href="User_List.php">
-                <i class="fas fa-list-alt fa-2x"></i>
-                <span>ユーザー一覧</span>
-            </a>
-            <a href="">
-                <i class="fas fa-bars"></i>
-                <span>イベント作成</span>
-            </a>
-            <a href="Event_List.php" >
-                <i class="fas fa-list-alt fa-2x"></i>
-                <span>イベント一覧</span>
-            </a>
-            <a href="Dantai_List.php">
-                <i class="far fa-list-alt fa-2x"></i>
-                <span>団体一覧</span>
-            </a>
-            <a href="inquiry_List.php" class="active">
-                <i class="far fa-question-circle"></i>
-                <span>お問い合わせ</span>
-            </a>
-            <a href="Blacklist_List.php">
-                <i class="fas fa-sliders-h"></i>
-                <span>ブラックリスト</span>
-            </a>
-            <a href="Login.php">>
-                <i class="fas fa-sign-out-alt fa-2x"></i>
-                <span>ログアウト</span>
-            </a>
-        </div>
-
-        <h1>HOME</h1>
-
-         <h1 align="center">ようこそ○○さん</h1>
+  {include file="../components/Side_Menu.tmpl"}
         
-        <div id="main">
+         
+         <div id = "center" class ="main center">
+          <div class="container">
+           <div align = "center">
             <h3>お問い合わせ詳細</h3>
 
   <div>
     <section id="detail">
       {$err_flag}
-      <table border="1">
+      <table>
         <tr>
           <td>ID</td>
           <td>{$inquiry_id}</td>
@@ -103,8 +61,8 @@
           <td>{$smarty.post.target_date}</td>
         </tr>
       </table>
-      <button onclick="location.href='./Inquiry_List.php'">戻る</button>
-      <button onmousedown="Reply()">返信</button>
+      <button type="button" class="btn btn-secondary" onclick="location.href='./Inquiry_List.php'">戻る</button>
+      <button type="button" class="btn btn-secondary" onmousedown="Reply()">返信</button>
       <script>
         function Reply() {
           document.getElementById("detail").hidden = true;
