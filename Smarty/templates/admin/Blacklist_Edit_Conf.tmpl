@@ -1,6 +1,5 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="ja">
-<head>
 <title>管理者詳細</title>
 {literal}
 <script type="text/javascript">
@@ -20,18 +19,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <link rel="stylesheet" href="css/admin_base.css">
-  <link rel="stylesheet" href="css/user_list.css">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin_base.css">
+  <link rel="stylesheet" href="../css/user_list.css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <title>Document</title>
 </head>
 
 <body>
-{include file="../components/header.tmpl"}
-
-  <h2>管理者詳細</h2>
+  {include file="../components/Side_Menu.tmpl"}
+        
+  <!--<div id="main">-->
+  <div id = "center" class ="main center">
+   <div class="container">
+    <div align = "center">
+  <h2>ブラックリスト詳細</h2>
   <form name="form1" method="post" action="">
-  <table border="1" align="center" width="500px">
+  <table>
     <tr>
       <th>ID</th>
       <td>
@@ -67,13 +70,18 @@
   </table>
     <input type="hidden" name="func" value="" />
     <input type="hidden" name="param" value="" />
-    <input type="button" class="btn btn-primary" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 110%" value="戻る">
-	<input type="button" class="btn btn-primary" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 110%" value="更新">
+    <!--<input type="button" class="btn btn-primary" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 110%" value="戻る">-->
+    <!--<input type="button" class="btn btn-primary" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 110%" value="更新">-->
+  
+  <input class="btn btn-secondary btn-lg" type="submit" name="btn_back" onClick="javascript:set_func_form('edit','')" value="戻る">
+  <input class="btn btn-secondary btn-lg" type="submit" name="btn_submit" onClick="javascript:set_func_form('set','')" value="更新">
+
+
   </form>
 
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
 
 </html>
