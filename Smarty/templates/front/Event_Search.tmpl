@@ -16,7 +16,7 @@
     {include file="../components/header.tmpl"}
 
     <div>
-        <form name="form1" method="get"" action="">
+        <form name="form1" method="get" action="">
             <div class="">
                 <div class="">
                     <label>キーワード</label>
@@ -32,7 +32,7 @@
 
                 <div class="">
                     <label>対象年齢</label>
-                    <input type="text"> ~ <input type="text">
+                    <input type="text" name="start_age"> ~ <input type="text" name="end_age">
                 </div>
             </div>
 
@@ -49,6 +49,7 @@
                 </div>
                 <input type="submit" value="検索">
             </div>
+            <input type="hidden" name="search" value="" />
         </form>
     </div>
 
@@ -58,6 +59,7 @@
         {foreach from=$rows key=k item=value}            
             <div class="">
                 {$value.start_event_date}<br>
+                ({$value.start_event_week})
             </div>
             <div class="">
                 <p>
