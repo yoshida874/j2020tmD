@@ -103,15 +103,21 @@ class cevent extends crecord {
 	@return	配列（1次元配列になる）空の場合はfalse
 	*/
 	//--------------------------------------------------------------------------------------
-	public function get_search($debug,$keyword){
+	public function get_search($debug,$keyword,$start_event_date,$end_event_date,$start_age,$end_age){
 		$keyword = $this->make_safe_sqlstr((string)$keyword);
+		$start_event_date = $this->make_safe_sqlstr((string)$start_event_date);
+		$end_event_date = $this->make_safe_sqlstr((string)$end_event_date);
 		//親クラスのselect()メンバ関数を呼ぶ
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
 			"*",			//取得するカラム
 			"Event left join NPO_group on Event.NPO_id = NPO_group.NPO_id",	//取得するテーブル
-			"event_name like {$keyword} or
-			  venue_city like {$keyword}" 	//条件
+			"(event_name like {$keyword} or
+			  venue_city like {$keyword}) and
+			  start_event_date between {$start_event_date} and {$end_event_date} and
+			  start_age  <= {$start_age} and
+			  end_age >= {$end_age}
+			  "
 		);
 		//順次取り出す
         while ($row = $this->fetch_assoc()) {
