@@ -9,7 +9,7 @@ require_once("inc_header.php");
 $smarty->assign('page', $header_items);
 
 //Smartyを使用した表示(テンプレートファイルの指定)
-$smarty->display('front/mypage/event_list.tmpl');
+$smarty->display('front/mypage/Event_List.tmpl');
 
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'front/mypage/';
