@@ -55,6 +55,7 @@ function assign_cevent_list()
     global $rows;
     $smarty->assign('rows', $rows);
 }
+print('test');
 
 assign_cevent_list();
 //Smartyを使用した表示(テンプレートファイルの指定)
