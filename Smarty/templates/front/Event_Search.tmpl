@@ -58,12 +58,10 @@
         {foreach from=$rows key=k item=value}            
             <div class="">
                 {$value.start_event_date}<br>
-                (日)
             </div>
             <div class="">
                 <p>
-                    {$value.start_event_time}<br>
-                    ~{$value.end_event_time}
+                    {$value.start_event_time|date_format:"%H:%M"}~<br>
                 </p>
                 <p>
                     対象年齢<br>
