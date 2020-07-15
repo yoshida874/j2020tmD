@@ -16,15 +16,36 @@ $rows = array();
 $ERR_STR = '';
 $show_mode = '';
 
-if(isset($_GET['keyword']) && $_GET['keyword'] != ''){
+if(isset($_GET['search'])){
     $obj = new cevent();
     $_GET['keyword'] = '%'.$_GET['keyword'].'%';
-    $rows = $obj->get_search(false,$_GET['keyword']);
+    if($_GET['start_event_date'] == ""){
+        $_GET['start_event_date'] = '1900-01-01';
+    }
+    if($_GET['end_event_date'] == ""){
+        $_GET['end_event_date'] = '2030-01-01';
+    }
+    if($_GET['start_age'] == ""){
+        $_GET['start_age'] = 100;
+    }
+    if($_GET['end_age'] == ""){
+        $_GET['end_age'] = 0;
+    }
+    $rows = $obj->get_search(false,$_GET['keyword'],$_GET['start_event_date'],
+                            $_GET['end_event_date'],$_GET['start_age'],
+                            $_GET['end_age']);
 }
 else{
     readdata();
 }
 
+//曜日リスト
+$week = array('日', '月', '火', '水', '木', '金', '土');
+foreach($rows as $index => $value){
+    $date = new DateTime($value["start_event_date"]);
+    $date = $date->format('w');
+    $rows[$index] = $value + array('start_event_week'=>$week[$date]);
+}
 //--------------------------------------------------------------------------------------
 /*!
 @brief	データ読み込み
@@ -55,9 +76,10 @@ function assign_cevent_list()
     global $rows;
     $smarty->assign('rows', $rows);
 }
-print('test');
+
 
 assign_cevent_list();
+
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'front/';
 $base_name = basename(__FILE__, ".php");
