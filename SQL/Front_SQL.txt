@@ -9,3 +9,11 @@ create table User(
     profile_content varchar(600),
     profile_img varchar(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table participant(
+    id int(10) not null AUTO_INCREMENT PRIMARY KEY,
+    user_id int(10) not null,
+    event_id int(10) not null,
+    child_id int(10) not null,
+    create_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

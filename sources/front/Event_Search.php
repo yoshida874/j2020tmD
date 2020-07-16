@@ -31,9 +31,10 @@ if(isset($_GET['search'])){
     if($_GET['end_age'] == ""){
         $_GET['end_age'] = 0;
     }
+    print_r($_GET['venue_city']);
     $rows = $obj->get_search(false,$_GET['keyword'],$_GET['start_event_date'],
                             $_GET['end_event_date'],$_GET['start_age'],
-                            $_GET['end_age']);
+                            $_GET['end_age'],$_GET['venue_city']);
 }
 else{
     readdata();
@@ -41,11 +42,18 @@ else{
 
 //曜日リスト
 $week = array('日', '月', '火', '水', '木', '金', '土');
-foreach($rows as $index => $value){
-    $date = new DateTime($value["start_event_date"]);
-    $date = $date->format('w');
-    $rows[$index] = $value + array('start_event_week'=>$week[$date]);
+if(!empty($rows)){
+    foreach($rows as $index=>$value){
+        //参加人数挿入
+        $obj = new cparticipant();
+        $participant = $obj->get_event_user(false,$value["event_id"]);
+        //曜日挿入
+        $date = new DateTime($value["start_event_date"]);
+        $date = $date->format('w');
+        $rows[$index] = $value + $participant + array('start_event_week'=>$week[$date]);
+    }
 }
+
 //--------------------------------------------------------------------------------------
 /*!
 @brief	データ読み込み
@@ -76,7 +84,6 @@ function assign_cevent_list()
     global $rows;
     $smarty->assign('rows', $rows);
 }
-
 
 assign_cevent_list();
 
