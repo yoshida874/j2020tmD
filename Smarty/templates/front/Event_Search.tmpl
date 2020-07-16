@@ -39,8 +39,9 @@
             <div class="">
                 <div class="">
                     <label>開催場所</label>
-                        <select name="pref">
-                        <option value="place">郡山市</option>
+                        <select name="venue_city">
+                        <option value="郡山市">郡山市</option>
+                        <option value="須賀川市">須賀川市</option>
                         </select>
                 </div>
                 <div class="">
@@ -71,23 +72,28 @@
                 </p>
             </div>
             <div class="">
-                <img src="https://pbs.twimg.com/profile_images/747300073134915586/bGWrw26Y.jpg">
+                <img src={$value.img}>
             </div>
             <div class="">
                 <p>
-                    {$value.group_name}<br>
+                    <a href="Event_Detail.php?id={$value.event_id}">
+                    {$value.event_name}<br>
+                    </a>
                 </p>
                 <p>
-                    郡山シーパラダイス 郡山神保町2丁目32
+                    {$value.group_name}
                 </p>
-                9/27 人
+                <p>
+                    {$value.venue_name} {$value.venue_city}{$value.venue_aza}
+                </p>
+                {$value.participant}/{$value.upper_limit} 人
             </div>
         {foreachelse}
             検索結果が見つかりません
         {/foreach}
         </div>
     </div>
-    {include file="../components/footer.tmpl"}
 </body>
+{include file="../components/footer.tmpl"}
 
 </html>
