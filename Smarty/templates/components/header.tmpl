@@ -1,9 +1,8 @@
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 </head>
 
-<header>
+<!--<header>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <nav class="my-2 my-md-0 mr-md-3">
             {foreach from=$page item=href key=key_name}
@@ -11,4 +10,26 @@
             {/foreach}
         </nav>
     </div>
-</header> 
+</header> -->
+
+ <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+    <h1 class="logo mr-auto"><a href="Home_Page.php">サイト名</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+     <!--ナビゲーションクラス-->
+      <nav class="nav-menu d-none d-lg-block">
+
+        <ul>
+            {foreach from=$page item=href key=key_name}
+                <li class="active"><a href={$href}>{$key_name}</a></li>
+            {/foreach}
+        
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
