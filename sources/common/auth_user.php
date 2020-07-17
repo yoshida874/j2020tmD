@@ -13,15 +13,15 @@ $_SESSIONは多次元配列にする
 session_start();
 if((!isset($_SESSION['j2020tmD_user']['login_user'])) 
     || (!isset($_SESSION['j2020tmD_user']['user_id']))){
-    cutil::redirect_exit("Login_Page.php");
+    cutil::redirect_exit("/~j2020tmD/sources/front/Login_Page.php");
 }
 $user = new cuser();
 $row = $user->get_tgt_login(false,$_SESSION['j2020tmD_user']['login_user']);
 if($row === false || !isset($row['user_id'])){
-    cutil::redirect_exit("Login_Page.php");
+    cutil::redirect_exit("/~j2020tmD/sources/front/Login_Page.php");
 }
 if($row['user_id'] != $_SESSION['j2020tmD_user']['user_id']){
-    cutil::redirect_exit("Login_Page.php");
+    cutil::redirect_exit("/~j2020tmD/sources/front/Login_Page.php");
 }
 
 function echo_hello_user_name(){
