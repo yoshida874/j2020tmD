@@ -57,6 +57,7 @@
     <div class="">
         <hr>検索結果({$rows|@count}件)<hr>
         <div class="">
+        <form name="event" method="post" action="">
         {foreach from=$rows key=k item=value}            
             <div class="">
                 {$value.start_event_date}<br>
@@ -91,6 +92,7 @@
         {foreachelse}
             検索結果が見つかりません
         {/foreach}
+        </form>
         </div>
     </div>
 </body>
