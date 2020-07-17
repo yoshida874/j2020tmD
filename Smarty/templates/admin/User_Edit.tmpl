@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="ja">
 <title>ユーザー詳細</title>
 {literal}
@@ -29,18 +29,27 @@ function check(){
 {/literal}
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="../css/admin_base.css">
+  <link rel="stylesheet" href="../css/user_list.css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <title>Document</title>
 </head>
 
-{include file="../components/header.tmpl"}
-<body>
 
-<h1>ユーザー詳細</h1>\
+<body>
+  {include file="../components/Side_Menu.tmpl"}
+        
+  <!--<div id="main">-->
+  <div id = "center" class ="main center">
+   <div class="container">
+    <div align = "center">
+<h1>ユーザー詳細</h1>
 
   <form name="form1" method="post" action="">
-  <table border="1" align="center" width="500px">
+  <table>
 
   <tr>
     <th>ID</th>
@@ -115,9 +124,11 @@ function check(){
 </table>
     <input type="hidden" name="func" value="" />
     <input type="hidden" name="param" value="" />
-    <input type="button" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 70%" value="確認">
-</form>
+    <!--<input type="button" name="btn_confirm" onClick="javascript:check()" style="position: absolute; left: 50%; top: 70%" value="確認">-->
+    <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" onClick="javascript:check()"  value="確認">
 
-{include file="../components/footer.tmpl"}
+  </form>
+
+
 </body>
 </html>

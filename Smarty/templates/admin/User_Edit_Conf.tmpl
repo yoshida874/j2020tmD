@@ -1,6 +1,12 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="../css/admin_base.css">
+    <link rel="stylesheet" href="../css/user_list.css">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <title>ユーザー詳細</title>
 {literal}
 <script type="text/javascript">
@@ -17,13 +23,18 @@ function set_func_form(fn,pm){
 {/literal}
 </head>
 <body>
-{include file="../components/header.tmpl"}
+  {include file="../components/Side_Menu.tmpl"}
+        
+  <!--<div id="main">-->
+  <div id = "center" class ="main center">
+   <div class="container">
+    <div align = "center">
 
 <h1>ユーザー詳細</h1>
 
 <form name="form1" method="post" action="">
 
-  <table border="1" align="center" width="500px">
+  <table>
 
   <tr>
     <th>ID</th>
@@ -102,11 +113,12 @@ function set_func_form(fn,pm){
 
   <input type="hidden" name="func" value="" />
   <input type="hidden" name="param" value="" />
-	<input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
+	<!--<input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
 	<input type="button" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 50%" value="更新">
-
+  -->
+  <input class="btn btn-secondary btn-lg" type="submit" name="btn_back" onClick="javascript:set_func_form('edit','')" value="戻る">
+  <input class="btn btn-secondary btn-lg" type="submit" name="btn_submit" onClick="javascript:set_func_form('set','')" value="更新">
 </form>
 
-{include file="../components/footer.tmpl"}
 </body>
 </html>

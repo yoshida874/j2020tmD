@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link rel="stylesheet" href="../css/admin_base.css">
+        <link rel="stylesheet" href="../css/user_list.css">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <title>Document</title>
 
   {literal}
@@ -27,16 +32,21 @@
   </script>
   {/literal}
 </head>
-{include file="../components/header.tmpl"}
+{include file="../components/Side_Menu.tmpl"}
+        
+         <!--<div id="main">-->
+         <div id = "center" class ="main center">
+          <div class="container">
+           <div align = "center">
 <body>
   <h1>ユーザー情報</h1>
   <div align="center">
-    <table border="1">
+    <table>
       <tr>
           <td>ID</td>
           <td>ユーザーID</td>
           <td>ユーザー名</td>
-          <td>操作</td>
+          <td colspan="2">操作</td>
       </tr>
         <!-- sample1-->
         {foreach from=$rows key=k item=value}
@@ -52,9 +62,11 @@
           </td>
           <td class="center">
             <a href="./User_Edit.php?id={$value.id}">
-                <button type="button">詳細</button>
+                <button class="btn btn-primary" type="button">詳細</button>
             </a>
-            <input type="button" value="削除" 
+          </td>
+          <td>
+            <input type="button" class="btn btn-primary" value="削除" 
               onClick="javascript:del_func_form({$value.id},'【ID : {$value.id} NAME : {$value.user_name}】')" ></button>
           </td>
         </tr>
@@ -67,6 +79,5 @@
     </div>
   </div>
 
-{include file="../components/footer.tmpl"}
 </body>
 </html>
