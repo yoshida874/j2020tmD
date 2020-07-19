@@ -79,7 +79,7 @@ function insert_func_form(pm,mess){
                     </tr>
                     <tr>
                         <th>パスワード<span class="red">＊</span></th>
-                        <td width="70%"><input type="text" name="pw" size="50"/>
+                        <td width="70%"><input type="password" name="pw" size="50"/>
                         {if isset($err_array.pw) }<br />
                             <span class="red">{$err_array.pw}</span>
                         {/if}
@@ -95,7 +95,9 @@ function insert_func_form(pm,mess){
                     </tr>
                     <tr>
                         <th>権限<span class="red">＊</span></th>
-                        <td width="70%"><input type="text" name="authority" size="50"/>
+                        <td width="70%">
+                            <input type="radio" name="authority" value="0" checked="checked" />READ ONLY
+                            <input type="radio" name="authority" value="1" checked="checked" />ADMIN
                         {if isset($err_array.authority) }<br />
                             <span class="red">{$err_array.authority}</span>
                         {/if}
