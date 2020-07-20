@@ -4,18 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>問い合わせ</title>
+    {literal}
+    <script type="text/javascript">
+    <!--
+    function set_func_form(fn,pm){
+        document.form1.target = "_self";
+        document.form1.func.value = fn;
+        document.form1.param.value = pm;
+        document.form1.submit();
+    }
+    function check(){
+    var err = "";
+    if(form1.inquiry.value == ""){
+        err += "お問い合わせの種類を選択してください\n"
+    }
+    if(form1.Content.value == ""){
+        err += "お問い合わせ内容を入力してください\n"
+    }
+    if(form1.mailaddress.value == ""){
+        err += "メールアドレスを入力してください"
+    }
+    if (err == ""){
+    set_func_form('confirm','');
+    }else{
+        alert(err);
+    }
+    }
+    // -->
+    </script>
+    {/literal}
 </head>
 
 <body>
     {include file="../../components/header.tmpl"}
     <h1>お問い合わせ</h1>
-    <P>お問い合わせの種類・内容・メールアドレスをご入力の上、「送信」ボタンをクリックして下さい</P>
+    <P>お問い合わせの種類・内容・メールアドレス・ユーザーIDをご入力の上、「送信」ボタンをクリックして下さい</P>
     <p>お問い合わせの種類<br>
-    <select name=”inquiry”>
+    <form name="form1" method="post" action="">
+    <select name="inquiry">
         <option value="">選択してください</option>
-        <option value=”login”>ログインできない</option>
-        <option value=”signup”>会員登録について</option>
+        <option value="login">ログインできない</option>
+        <option value="signup">会員登録について</option>
     </select>
     </p>
     <p>お問い合わせ内容<br>
@@ -23,10 +53,17 @@
     </p>
     <p>
         メールアドレス<br>
-        <input type="text" size="50">
+        <input type="email" name="mailaddress" size="50">
     </p>
+    <p>
+        ユーザーID<br>
+        <input type="text" name="userId" size="50">
+    </p>
+    <input type="hidden" name="func" value="" />
+    <input type="hidden" name="param" value="" />
+    </form>
     <div align="center">
-        <input type="button" value="送信">
+    <input type="button" name="btn_confirm" value="確認" onclick="javascript:check()">
     </div>
     {include file="../../components/footer.tmpl"}
 </body>
