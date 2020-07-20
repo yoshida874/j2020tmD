@@ -34,7 +34,11 @@
             {$value.user_name}
           </td>
           <td>
-            {$value.authority}
+            {if $value.authority}
+              ADMIN
+            {else}
+              READ ONLY
+            {/if}
           </td>
           <td>
             <button class="btn btn-secondary btn-lg" onclick="location.href='./Admin_Detail.php?id={$value.id}'">詳細</button>
