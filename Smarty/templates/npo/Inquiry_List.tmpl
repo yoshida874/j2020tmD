@@ -20,7 +20,6 @@
     <div class="spinner horizontal"></div>
     <div class="spinner diagonal part-2"></div>
   </label>
-  {foreach from=$rows key=k item=value}
   <br>
   <div>
     <div id='center' class="main center">
@@ -28,7 +27,7 @@
       <div align="center">
         <h1>お問い合わせリスト</h1>
     {$ERR_STR}
-    <!--form name="form1" action="{$tgt_uri}" method="post" -->
+    <form name="form1" action="{$tgt_uri}" method="post">
         <table border="1">
           <tr>
             <td>ID</td>
@@ -42,7 +41,7 @@
               {$value.inquiry_id}
             </td>
             <td>
-              {$value.user_name}
+              {$value.user_id}
             </td>
             <td>
               {if $value.reply}
@@ -61,7 +60,7 @@
           </tr>
           {/foreach}
         </table>
-        <!--/form-->
+        </form>
     </div>
   </div>
     </div>
