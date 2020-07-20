@@ -313,3 +313,4 @@ class chash_tag extends crecord {
 		//親クラスのデストラクタを呼ぶ
 		parent::__destruct();
 	}
+}
