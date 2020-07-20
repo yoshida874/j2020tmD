@@ -1,0 +1,104 @@
+<!DOCTYPE>
+<html lang="ja">
+<head>
+<title>プロフィール編集</title>
+{literal}
+<script type="text/javascript">
+<!--
+function set_func_form(fn,pm){
+	document.form1.target = "_self";
+	document.form1.func.value = fn;
+	document.form1.param.value = pm;
+	document.form1.submit();
+}
+
+// -->
+</script>
+{/literal}
+</head>
+<body>
+{include file="../../components/header.tmpl"}
+
+<form name="form1" method="post" action="{$smarty.server.PHP_SELF}">
+
+  <table border="1" align="center" width="500px">
+
+  <tr>
+
+  <tr>
+    <th>ユーザーID</th>
+    <td>
+    <p>{$smarty.post.user_id}</p>
+      <input type="hidden" name="user_id"  value="{$smarty.post.user_id|escape}" />
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>ユーザー名</th>
+    <td>
+    <p>{$smarty.post.user_name}</p>
+      <input type="hidden" name="user_name"  value="{$smarty.post.user_name|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>PW</th>
+    <td>
+    <p>{$smarty.post.pw}</p>
+      <input type="hidden" name="pw"  value="{$smarty.post.pw|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>生年月日</th>
+    <td>
+      <p>{$smarty.post.birthday}</p>
+      <input type="hidden" name="birthday"  value="{$smarty.post.birthday|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>趣味</th>
+    <td>
+      <p>{$smarty.post.hobby}</p>
+      <input type="hidden" name="hobby"  value="{$smarty.post.hobby|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>メールアドレス</th>
+    <td>
+      <p>{$smarty.post.address}</p>
+      <input type="hidden" name="address"  value="{$smarty.post.address|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>プロフィール文</th>
+    <td>
+      <p>{$smarty.post.profile_content}</p>
+      <input type="hidden" name="profile_content"  value="{$smarty.post.profile_content|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>プロフィール画像</th>
+    <td>
+      <p><img src="{$imgDir}{$smarty.post.profile_img}" width="200px"></p>
+      <input type="hidden" name="profile_img"  value="{$smarty.post.profile_img|escape}" />
+    </td>
+  </tr>
+
+  </table>
+
+  <input type="hidden" name="func" value="" />
+  <input type="hidden" name="param" value="" />
+	<input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
+	<input type="button" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 50%" value="更新">
+  <!--<input type="hidden" name="profile_img" value="{$smarty.post.profile_img|escape}" /> -->
+</form>
+
+{include file="../../components/footer.tmpl"}
+</body>
+</html>
