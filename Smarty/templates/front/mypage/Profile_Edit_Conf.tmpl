@@ -1,6 +1,10 @@
 <!DOCTYPE>
 <html lang="ja">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
 <title>プロフィール編集</title>
 {literal}
 <script type="text/javascript">
@@ -18,7 +22,14 @@ function set_func_form(fn,pm){
 </head>
 <body>
 {include file="../../components/header.tmpl"}
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id='center' class="main center">
+  <div class="container">
+<div align="center">
 <form name="form1" method="post" action="{$smarty.server.PHP_SELF}">
 
   <table border="1" align="center" width="500px">
@@ -91,13 +102,28 @@ function set_func_form(fn,pm){
   </tr>
 
   </table>
-
+<br>
+<hr>
+<div class="row">
   <input type="hidden" name="func" value="" />
   <input type="hidden" name="param" value="" />
-	<input type="button" name="btn_back" onClick="javascript:set_func_form('edit','')" style="position: absolute; left: 45%; top: 50%" value="戻る">
-	<input type="button" name="btn_submit" onClick="javascript:set_func_form('set','')" style="position: absolute; left: 55%; top: 50%" value="更新">
+  <div class="col-md-5">
+    <div align="right">
+  <input type="button" class="btn btn-outline-secondary btn-lg" name="btn_back" onClick="javascript:set_func_form('edit','')" style="bottom: absolute; left: 45%; top: 50%" value="戻る">
+  </div>
+</div>
+  
+  <div class="col-md-5">
+    <div align="center">
+  <input type="button" class="btn btn-outline-primary btn-lg" name="btn_submit" onClick="javascript:set_func_form('set','')" style="bottom: absolute; left: 55%; top: 50%" value="更新">
+  </div>
+</div>
   <!--<input type="hidden" name="profile_img" value="{$smarty.post.profile_img|escape}" /> -->
+</div>
 </form>
+</div>
+</div>
+</div>
 
 {include file="../../components/footer.tmpl"}
 </body>
