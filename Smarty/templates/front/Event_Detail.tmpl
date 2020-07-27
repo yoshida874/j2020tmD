@@ -10,34 +10,33 @@
 <body>
   {include file="../components/header.tmpl"}
   <div>
-    <!-- column 1-->
     <div>
       <table>
         <tr>
           <td>
             <table>
               <tr>
-                <td>1/17</td>
+                <td>{$rows.start_event_date}</td>
               </tr>
               <tr>
-                <td>（日）</td>
+                <td>({$rows.start_event_week})</td>
               </tr>
             </table>
           </td>
-          <td>水族館で生物と触れ合おう！</td>
+          <td>{$rows.event_name}</td>
         </tr>
       </table>
       <table>
         <tr>
           <td>
-            <img class="fit-picture" src="img path" alt="Event imgge" />
+            <img class="fit-picture" src="{$value.img}" alt="Event image" />
           </td>
         </tr>
         <tr>
           <td>
             <textarea name="" id="" cols="80" rows="10" readonly>
-                    このイベントは水族館でいきものと触れ合えるやつです
-            　</textarea>
+              {$rows.content}
+            </textarea>
           </td>
         </tr>
         <tr>
@@ -48,7 +47,6 @@
       </table>
     </div>
 
-    <!-- column 2-->
     <div>
       <!-- 開催団体 -->
       <div style="border: 2px solid #000000; width: 300px; height: 155px;">
@@ -62,7 +60,7 @@
           <table>
             <tr>
               <td>
-                <img class="fit-picture" src="img path" alt="Event imgge" />
+                <img class="fit-picture" src="img path" alt="Event image" />
               </td>
               <td>
                 <table>
@@ -76,7 +74,7 @@
               </td>
             </tr>
             <tr>
-              <td />
+            </td>
               <td><button>フォロー</button></td>
             </tr>
           </table>
@@ -92,17 +90,17 @@
             <td>開催日時</td>
           </tr>
           <tr>
-            <td>2020/1/17</td>
+            <td>{$rows.start_event_date}</td>
           </tr>
           <tr>
-            <td>9:00 ~ 17:00</td>
+            <td>{$rows.start_event_time} ~ {$rows.start_event_time}</td>
           </tr>
           <table>
             <tr>
-              <td>対象年齢　1〜6歳</td>
+              <td>対象年齢 {$rows.start_age}〜{$rows.end_age}歳</td>
             </tr>
             <tr>
-              <td>参加費用　500円</td>
+              <td>参加費用 {$rows.cost}円</td>
             </tr>
           </table>
           <tr>
@@ -122,11 +120,11 @@
           </tr>
           <tr>
             <td>会場名</td>
-            <td>郡山シーパラダイス</td>
+            <td>{$rows.venue_name}</td>
           </tr>
           <tr>
             <td>住所</td>
-            <td>郡山市神保町2丁目32</td>
+            <td>{$rows.venue_city}{$rows.venue_aza}</td>
           </tr>
         </table>
       </div>
@@ -138,7 +136,7 @@
         <table>
           <tr>
             <td>管理者</td>
-            <td>梨田 桜@nashida_sakura</td>
+            <td>{$rows.representative}</td>
           </tr>
         </table>
       </div>

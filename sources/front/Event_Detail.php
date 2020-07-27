@@ -7,6 +7,45 @@ require_once("inc_header.php");
 
 $smarty->assign('page', $header_items);
 
+$rows = array();
+
+readdata($_GET['iid']);
+
+//曜日リスト
+$week = array('日', '月', '火', '水', '木', '金', '土');
+if(!empty($rows)){
+    $date = new DateTime($rows["start_event_date"]);
+    $date = $date->format('w');
+    $rows = $rows + array('start_event_week'=>$week[$date]);
+}
+//--------------------------------------------------------------------------------------
+/*!
+@brief	データ読み込み
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function readdata($id)
+{
+    global $rows;
+    $obj = new cevent();
+    $rows = $obj->get_tgt(false,$id);
+}
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	Eventのアサイン
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function assign_cevent_list()
+{
+    //$smartyをグローバル宣言（必須）
+    global $smarty;
+    global $rows;
+    $smarty->assign('rows', $rows);
+}
+
+assign_cevent_list();
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'front/';
 $base_name = basename(__FILE__, ".php");
