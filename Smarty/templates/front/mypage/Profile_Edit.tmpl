@@ -4,37 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>プロフィール編集</title>
+    {literal}
+    <script type="text/javascript">
+    <!--
+    function set_func_form(fn,pm){
+        document.form1.target = "_self";
+        document.form1.func.value = fn;
+        document.form1.param.value = pm;
+        document.form1.submit();
+    }
+    function check(){
+    var err = "";
+    if (form1.pw.value != ""){
+        if(form1.pw.value != form1.repw.value){
+        err = "パスワードの値が一致しません"
+        }
+    }
+    if (err == ""){
+    set_func_form('confirm','');
+    }else{
+        alert(err);
+    }
+    }
+    // -->
+    </script>
+    {/literal}
+
+
 </head>
 
 <body>
     {include file="../../components/header.tmpl"}
     <div align="center">
+    <form name="form1" method="post" action="" enctype="multipart/form-data">
         <table border="1">
             <tr>
                 <th>
                     ユーザー名
                     <p>（ニックネーム可）</p>
                 </th>
-                <td><input type="text" value="渡辺花子"></td>
+                <td><input type="text" name="user_name" placeholder="ユーザー名" value={$user.user_name|escape}></td>
             </tr>
             <tr>
-                <th>ID</th>
-                <td><input type="text" value="@Watanabe_watanabe"></td>
+                <th>ユーザーID</th>
+                <td><input type="text" name="user_id" placeholder="ユーザーID" value={$user.user_id|escape}></td>
             </tr>
             <tr>
                 <th>メールアドレス</th>
-                <td><input type="text" value="watanabe@gmail.com"></td>
+                <td><input type="email" name="address" placeholder="メールアドレス" value={$user.address|escape}></td>
+            </tr>
+            <tr>
+                <th>PW</th>
+                <td>
+                <input type="password" name="pw" placeholder="パスワードを変更する場合入力してください" value="">
+                </td>
+            </tr>
+            <tr>
+                <th>PWの再確認</th>
+                <td>
+                <input type="password" name="repw" placeholder="もう一度入力してください" value="">
+                </td>
+            </tr>
+            <tr>
+            <th>生年月日</th>
+                <td>
+                <input type="date" name="birthday" placeholder="生年月日" value={$user.birthday}>
+                </td>
             </tr>
             <tr>
                 <th>プロフィール画像</th>
-                <td><img src="hoge">
-                    <input type="file" name="img_upload" accept="image/jpeg,image/png,image/gif">
+                {if $user.profile_img != ''}
+                <td><img src="{$imgDir}{$user.profile_img}" width="200px">
+                {/if}
+                <input type="hidden" name="profile_img" value="{$user.profile_img|escape}" />
+                <input type="file" name="profile_img" accept="image/jpeg,image/png,image/gif">
                 </td>
             </tr>
             <tr>
                 <th>趣味</th>
-                <td><input type="text" value="料理"></td>
+                <td><input type="text" name="hobby" placeholder="趣味" value={$user.hobby|escape}></td>
             </tr>
             <tr>
                 <th>お子様の名前
@@ -44,16 +93,19 @@
             </tr>
             <tr>
                 <th>自己紹介</th>
-                <td><textarea name="" id="" cols="50" rows="10"></textarea></td>
+                <td><textarea name="profile_content" id="" cols="50" rows="10">{$user.profile_content|escape}</textarea></td>
             </tr>
         </table>
+            <input type="hidden" name="func" value="" />
+            <input type="hidden" name="param" value="" />
+        </form>
 
         <p>
             <input type="button" value="+お子様の追加" onclick="history.back()">
-            <input type="button" value="登録" onclick="history.back()">
+            <input type="button" name="btn_confirm" value="確認" onclick="javascript:check()">
         </p>
     </div>
-    {include file="../../components/footer.tmpl"}
-</body>
 
+</body>
+{include file="../../components/footer.tmpl"}
 </html>

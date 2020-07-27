@@ -1,0 +1,69 @@
+<!DOCTYPE>
+<html lang="ja">
+<head>
+<title>プロフィール編集</title>
+{literal}
+<script type="text/javascript">
+<!--
+function set_func_form(fn,pm){
+	document.form1.target = "_self";
+	document.form1.func.value = fn;
+	document.form1.param.value = pm;
+	document.form1.submit();
+}
+
+// -->
+</script>
+{/literal}
+</head>
+<body>
+{include file="../../components/header.tmpl"}
+<form name="form1" method="post" action="">
+
+<table>
+
+  <tr>
+    <th>お問い合わせの種類</th>
+    <td>{if $smarty.post.inquiry == "login"}
+      <p>ログインできない</p>
+      {elseif $smarty.post.inquiry == "signup"}
+      <p>会員登録について</p>
+      {/if}
+      <input type="hidden" name="inquiry"  value="{$smarty.post.inquiry|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>お問い合わせ内容</th>
+    <td>
+      <p>{$smarty.post.Content}</p>
+      <input type="hidden" name="Content"  value="{$smarty.post.Content|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>ユーザーID</th>
+    <td>
+      <p>{$smarty.post.userId}</p>
+      <input type="hidden" name="userId"  value="{$smarty.post.userId|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th>メールアドレス</th>
+    <td>
+      <p>{$smarty.post.mailaddress}</p>
+      <input type="hidden" name="mailaddress"  value="{$smarty.post.mailaddress|escape}" />
+    </td>
+  </tr>
+
+  <table>
+  <input type="hidden" name="func" value="" />
+  <input type="hidden" name="param" value="" />
+
+</form>
+<input class="btn btn-secondary btn-lg" type="submit" class="btn btn-primary" name="btn_back" onClick="javascript:history.back();" value="戻る">
+<input class="btn btn-secondary btn-lg" type="submit" class="btn btn-primary" name="btn_submit" onClick="javascript:set_func_form('set','')" value="送信">
+{include file="../../components/footer.tmpl"}
+</body>
+</html>
