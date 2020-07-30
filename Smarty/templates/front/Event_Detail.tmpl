@@ -5,6 +5,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+  {literal}
+  <script type="text/javascript">
+
+function event_func_form(iid){
+  var message = 'このイベントに申し込みますか?'
+  console.log(message);
+  if(confirm(message)){
+      document.form1.target = "_self";
+      document.form1.func.value = 'del';
+      document.form1.param.value = iid;
+      document.form1.submit();
+  }else {
+    console.log('キャンセルがクリックされました');
+  }
+}  
+  </script>
+{/literal}
 </head>
 
 <body>
@@ -13,23 +30,15 @@
     <div>
       <table>
         <tr>
-          <td>
-            <table>
-              <tr>
-                <td>{$rows.start_event_date}</td>
-              </tr>
-              <tr>
-                <td>({$rows.start_event_week})</td>
-              </tr>
-            </table>
-          </td>
+          <td>{$rows.start_event_date}</td>
+          <td>({$rows.start_event_week})</td>
           <td>{$rows.event_name}</td>
         </tr>
       </table>
       <table>
         <tr>
           <td>
-            <img class="fit-picture" src="{$value.img}" alt="Event image" />
+            <img class="fit-picture" src="{$rows.img}" alt="Event image" />
           </td>
         </tr>
         <tr>
@@ -93,7 +102,7 @@
             <td>{$rows.start_event_date}</td>
           </tr>
           <tr>
-            <td>{$rows.start_event_time} ~ {$rows.start_event_time}</td>
+            <td>{$rows.start_event_time|date_format:"%H:%M"} ~ {$rows.end_event_time|date_format:"%H:%M"}</td>
           </tr>
           <table>
             <tr>
@@ -104,8 +113,9 @@
             </tr>
           </table>
           <tr>
-            <td></td>
-            <td><button>イベントに申し込む</button></td>
+            <td><input type="button" class="btn btn-primary" value="イベントに申し込む" 
+              onClick="javascript:event_func_form({$rows.event_id})" ></button>
+            </td>
           </tr>
         </table>
       </div>
