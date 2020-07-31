@@ -17,3 +17,16 @@ create table participant(
     child_id int(10) not null,
     create_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+create table hash_tag(
+    hash_tag int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    hash_name varchar(30) not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table tag_event_link(
+    id int(10) NOT NULL AUTO_INCREMENT,
+    hash_id int(10),
+    event_id int(10),
+    primary key(id,hash_id,event_id)
+)
