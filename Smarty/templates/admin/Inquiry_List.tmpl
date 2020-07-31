@@ -57,7 +57,7 @@
         {$value.inquiry_id}
         </td>
         <td>
-        {$value.user_name}
+        {$value.user_id}
         </td>
         <td>
         {if $value.reply}
@@ -73,7 +73,7 @@
         </td>
         <td width="65%" class="center">
             <input type="button" class="btn btn-primary" value="削除" 
-            onClick="javascript:del_func_form({$value.inquiry_id},'【ID : {$value.inquiry_id} NAME : {$value.user_name}】')" ></button>
+            onClick="javascript:del_func_form({$value.inquiry_id},'【ID : {$value.inquiry_id} NAME : {$value.user_id}】')" ></button>
         </td>
     </tr>
     {foreachelse}

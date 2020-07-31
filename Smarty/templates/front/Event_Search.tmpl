@@ -1,101 +1,133 @@
-<?php
-//イベント検索画面
-
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href='mypage/css/style.css' rel="stylesheet">
+
+    <title>検索</title>
 </head>
 
 <body>
     {include file="../components/header.tmpl"}
-
+    <br>
+    <br>
+    <br>
+    <div id='center' class="main center">
+        <div class="container">
+            <hr>
+            <br>
+            <div align="left">
     <div>
-        <form name="form1" method="get" action="">
-            <div class="">
-                <div class="">
-                    <label>キーワード</label>
-                    <input type="text" name="keyword">
-                </div>
 
-                <div class="">
-                    <label>開催日</label>
+        <form name="form1" method="get" action="">
+                <div>
+                    <span><label>・キーワード</label></span>
+                    <input type="text" name="keyword">
+
+                    <label> ｌ</label>
+
+                    <label>・関連タグ</label>
+                    <input type="text">
+                <br>
+            </div>
+            <br>
+            <div>
+                <span><label>・対象年齢</label></span>
+                <input type="text" name="start_age"> 歳 ~ <input type="text" name="end_age"> 歳
+            </div>
+            <br>
+                <div>
+                    <span><label>・開催日</label></span>
                     <input type="date" name="start_event_date">
                     ~
                     <input type="date" name="end_event_date">
-                </div>
-
-                <div class="">
-                    <label>対象年齢</label>
-                    <input type="text" name="start_age"> ~ <input type="text" name="end_age">
-                </div>
-            </div>
-
-            <div class="">
-                <div class="">
-                    <label>開催場所</label>
+                    <label>　ｌ</label>
+                    <label>・開催場所</label>
                         <select name="venue_city">
                         <option value="郡山市">郡山市</option>
                         <option value="須賀川市">須賀川市</option>
                         </select>
                 </div>
-                <div class="">
-                    <label>関連タグ</label>
-                    <input type="text">
-                </div>
-                <input type="submit" value="検索">
-            </div>
+                <div align="right">
+                    <div class="row">
+                        <div class="col-md-10">
+            <div>
+                <input class="btn btn-outline-primary btn-lg" type="submit" value="検索">
             <input type="hidden" name="search" value="" />
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
         </form>
+        </div>
+<div>
+    <br>
+    <hr>
+        <h2>検索結果({$rows|@count}件)</h2>
+        {foreach from=$rows key=k item=value}
+        <form name="form1" method="get" action="">
+
+        <br>
+            <div class="row">
+                <div class="col-md-4">
+                <div>
+
+                    <a href="Event_Detail.php?iid={$value.event_id}">
+
+                        <h4><b>{$value.event_name}<br></b></h4>
+                    </a>
+                </div>
+                <div>
+          <img src="{$value.img}" class="img-fluid img-thumbnail"  
+          style="width:480px;height:180px;object-fit: cover;" alt="">
+        </div>
+                </div>
+      <div class="col-md-7">
+          <br>
+          <br>
+            <div>
+                <b>・日付/時間</b>：
+                {$value.start_event_date}
+                ({$value.start_event_week})
+                    {$value.start_event_time|date_format:"%H:%M"}~<br>
+            </div>
+            <br>
+            <div>
+                    <b>・対象年齢</b>：{$value.start_age}歳~{$value.end_age}歳
+                </div>
+                <br>
+            <div>
+                <b>・開催団体</b>：{$value.group_name}
+            </div>
+            <br>
+                <div>
+                    <b>・開催場所</b>：{$value.venue_name} {$value.venue_city}{$value.venue_aza}
+                </div>
+                <br>
+                <div class="col-md-12">
+                    <h3 align = right>{$value.participant}/{$value.upper_limit} 人</h3>
+            </div>
+      </div>
     </div>
 
-    <div class="">
-        <hr>検索結果({$rows|@count}件)<hr>
-        <div class="">
-        <form name="event" method="post" action="">
-        {foreach from=$rows key=k item=value}            
-            <div class="">
-                {$value.start_event_date}<br>
-                ({$value.start_event_week})
-            </div>
-            <div class="">
-                <p>
-                    {$value.start_event_time|date_format:"%H:%M"}~<br>
-                </p>
-                <p>
-                    対象年齢<br>
-                    {$value.start_age}歳~{$value.end_age}歳
-                </p>
-            </div>
-            <div class="">
-                <img src={$value.img}>
-            </div>
-            <div class="">
-                <p>
-                    <a href="Event_Detail.php?id={$value.event_id}">
-                    {$value.event_name}<br>
-                    </a>
-                </p>
-                <p>
-                    {$value.group_name}
-                </p>
-                <p>
-                    {$value.venue_name} {$value.venue_city}{$value.venue_aza}
-                </p>
-                {$value.participant}/{$value.upper_limit} 人
-            </div>
+    </form>
         {foreachelse}
             検索結果が見つかりません
         {/foreach}
-        </form>
         </div>
     </div>
-</body>
-{include file="../components/footer.tmpl"}
+    </div>
+</div>
+        </div>
 
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+{include file="../components/footer.tmpl"}
+</body>
 </html>

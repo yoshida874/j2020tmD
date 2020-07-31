@@ -72,13 +72,14 @@ function check(){
     <tr>
       <td>メールアドレス</td>
       <td>
-        <input type="text" size="50" name="address" placeholder="メールアドレス" value={$rows.address}>
+        <input type="email" size="50" name="address" placeholder="メールアドレス" value={$rows.address}>
       </td>
     </tr>
     <tr>
       <td>権限</td>
       <td>
-      <input type="text" size="50" name="authority" placeholder="権限" value={$rows.authority}>
+        <input type="radio" name="authority" value="0" {if $rows.authority == 0 }checked="checked"{/if} />READ ONLY
+        <input type="radio" name="authority" value="1" {if $rows.authority == 1 }checked="checked"{/if} />ADMIN
       </td>
     </tr>
   </table>
