@@ -2,58 +2,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>マイページ</title>
 </head>
 <body>
   {include file="../../components/header.tmpl"}
-  <img src="" alt="プロフィール画像">
+  <br>
+  <br>
+  <br>
+  <br>
+  <div id='center' class="main center">
+    <div class="container">
+    <div align="left">
+      <h1>マイページ</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-1"></div>
+  <div class="col-md-4">
+  <img src="../../img/SHI1987004.jpeg"  style="width:200px;height:180px"; alt="プロフィール画像">
+    <div>
+      <br>
+      <font size="5">フォロー　 : {$numOfFollow}</font>
+    </div>
+    <div>
+      <font size="5">フォロワー : {$numOfFollower}</font>
+    </div>
+  </div>
+    <div>
+    <div class="col-md-12">
+    <div>
+      <font size="5">ユーザID　: {$userId}</font>
+        </div>
+        <div>
+          <font size="5">名　前　 　: {$name}</font>
+        </div>
+        <div>
+          <font size="5"> 生年月日 　: {$birth}</font>
+        </div>
+        <div>
+          <font size="5">子供の名前 : {$nameOfChild}</font>
+        </div>
+        <div>
+          <font size="5">子供の性別 : {$genderOfChild}</font>
+        </div>
+        <div>
+          <font size="5">子供の年齢 : {$ageOfChild}歳</font>
+        </div>
+        <div>
+          <font size="5">趣　味　　 : {$interest}</font>
+        </div>
+    </div>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-11">
+  <div align="right">
+<div>
+    <a href="Profile_Edit.php" class="btn btn-outline-primary btn-lg">プロフィールの変更</a>
+  </div>
+  </div>
+  </div>
+  </div>
+  <hr>
+  <br>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+  <div class="p-3 mb-2 bg-white text-dark" style="border: solid 3px #000; width:600 px; height:340px; border: solid 3px #000000;">
 
-  <div style="border: solid 3px #000; width:100 px; margin: 5em; border: solid 3px #000000;">
-
-    <p>
-        ユーザID : {$userId}<br />
-         名前 : {$name}<br />
-         生年月日 : {$birth}<br />
-         趣味 : {$interest}<br />
-         フォロー : {$numOfFollow}<br />
-         フォロワー : {$numOfFollower}<br />
-         子供の名前 : {$nameOfChild}<br />
-         子供の年齢 : {$ageOfChild}<br />
-         子供の性別 : {$genderOfChild}<br />
-      <a href="Profile_Edit.php">プロフィールの変更</a>
-    </p>
+    <!--{$introduce}-->
+    こんにちは！一児の母親です。はじめての子育てで苦労することも多いですが、一生懸命子育て頑張ってます！<br>
+    同じ年代のママ友が少ないので娘の為にも積極にイベントに参加しています。
 
   </div>
-
-  <div style="border: solid 3px #000; width:100 px; margin: 5em; border: solid 3px #000000;">
-
-    {$introduce}
-
+    </div>
+    <br>
+  <br>
+  <div class="col-md-3">
+    <div align="right">
+      <table border="1">
+    
+        <tr>
+          <td class="p-3 mb-2 bg-white text-dark" width="200" height="50" style="text-align:center;" ><a href="Event_List.php">ブックマーク</a> </td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-white text-dark" width="200" height="50" style="text-align:center;" > <a href="Event_List.php">予約内容の確認</a> </td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-white text-dark" width="200" height="50" style="text-align:center;" > <a href="Event_List.php">イベントの編集</a> </td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-white text-dark" width="200" height="50" style="text-align:center;" > <a href="Newmessage_Page.php">通知</a> </td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-white text-dark" width="210" height="50" style="text-align:center;" > <a href="Event_List.php">過去に参加したイベント</a> </td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-white text-dark" width="200" height="50" style="text-align:center;" > <a href="Withdrawal_Page.php">退会</a> </td>
+        </tr>
+      </table>
+      <br>
+      <div>
+          <div class="row">
+            <div class="col-md-12">
+      <h4>・sns連携</h4>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  <hr>
+    </br>
   </div>
-
-  <table border="1">
-
-    <tr>
-      <td> <a href="Event_List.php">ブックマーク</a> </td>
-    </tr>
-    <tr>
-      <td> <a href="Event_List.php">予約内容の確認</a> </td>
-    </tr>
-    <tr>
-      <td> <a href="Event_List.php">イベントの編集</a> </td>
-    </tr>
-    <tr>
-      <td> <a href="Newmessage_Page.php">通知</a> </td>
-    </tr>
-    <tr>
-      <td> <a href="Event_List.php">過去に参加したイベント</a> </td>
-    </tr>
-    <tr>
-      <td> <a href="Withdrawal_Page.php">退会</a> </td>
-    </tr>
-  </table>
-
-  <p> sns連携 </p>
+</div>
   {include file="../../components/footer.tmpl"}
+  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 </body>
 </html>
