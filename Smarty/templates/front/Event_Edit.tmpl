@@ -25,21 +25,30 @@
   <link href="/~j2020tmD/sources/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="/~j2020tmD/sources/assets/vendor/venobox/venobox.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/admin_base.css">
+  <link rel="stylesheet" href="../css/adminmin_base.css">
         <link rel="stylesheet" href="../css/user_list.css">
 
   <!-- Template Main CSS File -->
      <link href="/~j2020tmD/sources/assets/css/style.css" rel="stylesheet">
 </head>
+
   <body>
     {include file="../components/header.tmpl"}
-    <br>
-    <br>
-    <div id='center' class="main center">
+    <br><br><div id='center' class="main center">
         <div class="container">
         <div align="left"> 
-            <h1>イベント作成</h1>
+            <h1>イベント編集</h1>
             <hr> <br>
+
+            <div class="row">
+              <div class="col-md-11">
+            <div align="center">
+          <div>
+              <a href="" class="btn btn-outline-primary btn-lg">データの呼び出し</a>
+            </div>
+            </div>
+            </div>
+            </div>
 
         <div class="">
                 <form name="form1" action="" method="post" enctype="multipart/form-data"
@@ -226,167 +235,16 @@
     </div>
     </div>
     </div>
+    <p>
+      <div align = "center">
+      <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="作成" onclick="">
+      <input class="btn btn-secondary btn-lg" type="submit" name="btn" value="保存" onclick="">
+      <input class="btn btn-secondary btn-lg" type="submit" name="delete_btn" value="削除" onclick="">
 
-<!-- 元のコード。おそらく使わない -->
-      <!--<div>
-        <div>
-            <table>
-                <tr>
-                <td>タイトル</td>
-                <td><input type="text" name="title" value="" size="24" /></td>
-                </tr>
+      </div>
+    </p>
+    <br>
+    {include file="../components/footer.tmpl"}
+</body>
 
-                <tr>
-                <td>開催団体</td>
-                <td>
-                    <input
-                    type="text"
-                    name="organizing_organization"
-                    value=""
-                    size="24"
-                    />
-                </td>
-                </tr>
-
-                <tr>
-                <td>イベント画像</td>
-                <td><img class="fit-picture" src="img path" alt="Event imgge" /></td>
-                </tr>
-
-                <tr>
-                <td>対象年齢</td>
-                <td>
-                    <input type="text" name="title" value="" size="24" style="width: 50px;"/>
-                    ~
-                    <input type="text" name="title" value="" size="24" style="width: 50px;"/>
-                </td>
-                </tr>
-
-                <tr>
-                <table border="1">
-                    <tr>
-                    <td>主催者</td>
-                    <td><input type="text" name="title" value="" size="24" /></td>
-                    </tr>
-                    <tr>
-                    <td>ハッシュタグ</td>
-                    <td>aaa, bbb, ccc, ddd</td>
-                    </tr>
-                    <tr>
-                    <td>参加費用</td>
-                    <td>500円</td>
-                    </tr>
-                </table>
-                </tr>
-
-                <tr>
-                <td>イベント説明文</td>
-                </tr>
-            </table>
-            </div>
-            <textarea name="" id="" cols="40" rows="10">
-                このいべんとは〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜
-            </textarea>-->
-
-            <!-- column divで分割させたほうが後々楽そう？-->
-            <!--<div style="border: 2px solid #000000; width: 300px; height: 220px;">
-                <div>
-                    <table>-->
-                    <!-- 開催日程-->
-                    <!--<tr>
-                        開催日程・募集期間
-                    </tr>
-                    <tr>
-                        <td>開始日時</td>
-                        <td>
-                        <table>
-                            <tr>
-                            <td>日</td>
-                            <td><input type="text" name="title" value="" size="24" /></td>
-                            </tr>
-                            <tr>
-                            <td>時間</td>
-                            <td><input type="text" name="title" value="" size="24" /></td>
-                            </tr>
-                        </table>
-                        </td>
-                    </tr>-->
-
-                    <!-- 終了日時-->
-                    <!--<tr>
-                        <td>終了日時</td>
-                        <td>
-                        <table>
-                            <tr>
-                            <td>日</td>
-                            <td><input type="text" name="title" value="" size="24" /></td>
-                            </tr>
-                            <tr>
-                            <td>時間</td>
-                            <td><input type="text" name="title" value="" size="24" /></td>
-                            </tr>
-                        </table>
-                        </td>
-                    </tr>-->
-                    <!-- 募集開始〜終了-->
-                    <!--<tr>
-                        <td>
-                        募集開始
-                        <p>〜終了日</p>
-                        </td>
-                        <td>
-                        <table>
-                            <tr>
-                            <td>日</td>
-                            <td><input type="text" name="title" value="" size="24" /></td>
-                            </tr>
-                            <tr>
-                            <td>時間</td>
-                            <td><input type="text" name="title" value="" size="24" /></td>
-                            </tr>
-                        </table>
-                        </td>
-                    </tr>
-                    </table>
-                </div>
-
-                <div style="border: 2px solid #000000; width: 300px; height: 100px;">
-                    <tr>
-                    開催場所
-                    </tr>
-                    <tr>
-                        <table>
-                            <tr>
-                                <td>会場名</td>
-                                <td><td><input type="text" name="title" value="" size="24" /></td></td>
-                            </tr>
-                            <tr>
-                                <td>場所</td>
-                                <td><td><input type="text" name="title" value="" size="24" /></td></td>
-                            </tr>
-                        </table>
-                    </tr>
-                </div>
-
-                <table>
-                    <tr>
-                        <td><button>作成</button></td>
-                        <td><button>保存</button></td>
-                        <td><button>削除</button></td>
-                    </tr>
-                </table>
-            </div>
-        </div>-->
-        <p>
-            <div align = "center">
-            <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="作成" onclick="">
-            <input class="btn btn-secondary btn-lg" type="submit" name="btn" value="保存" onclick="">
-            <input class="btn btn-secondary btn-lg" type="submit" name="delete_btn" value="削除" onclick="">
-
-            </div>
-          </p>
-          <br>
-  </body>
- 
 </html>
-{include file="../components/footer.tmpl"}
