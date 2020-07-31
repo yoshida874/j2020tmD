@@ -31,20 +31,16 @@
   <!-- Template Main CSS File -->
      <link href="/~j2020tmD/sources/assets/css/style.css" rel="stylesheet">
 </head>
-{include file="../components/header.tmpl"}
+
 <body>
-
-  <!-- ======= 入力欄 ======= -->
-  <section id="about" class="about">
+  {include file="../components/header.tmpl"}
+  <br><br>
+  <div id='center' class="main center">
     <div class="container">
-
-      <div class="section-title">
-        <br><h2>新規会員登録</h2>
-        <p>ここでは会員登録をすることができます。<br>
-          各項目を入力して登録してください。<br>
-          お子様が複数人の場合は、追加ボタンを押して新たに情報を入力してください</p>
-      </div><br>
-
+    <div align="left"> 
+        <h1>新規会員登録</h1>
+        <hr> <br>
+        
       
       <div class="">
         <form name="form1" action="" method="post" enctype="multipart/form-data"
@@ -123,7 +119,8 @@
               </tr>
         </form>
       </div>
-      
+      </div>
+      </div>
       <p>
         <div align = "center">
         <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="+お子様の追加" onclick="history.back()">
@@ -131,9 +128,11 @@
         </div>
       </p>
       <br>
-    </div>
-  </section>
+      {include file="../components/footer.tmpl"}
+  </div>
+      
+      
 
 </body>
-{include file="../components/footer.tmpl"}
+
 </html>
