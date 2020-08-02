@@ -18,7 +18,11 @@ img.example {
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
-  background:#F5FFFA;
+  background:#00ff80;
+}
+
+.sample{
+  background:#00ff80;
 }
 
 a {
