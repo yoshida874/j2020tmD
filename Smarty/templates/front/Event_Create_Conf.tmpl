@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <script type="text/javascript" src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
 
   <title>Our Story - MeFamily Bootstrap Template</title>
 
@@ -17,89 +16,6 @@
         document.form1.param.value = pm;
         document.form1.submit();
     }
-
-
-
-    function check(){
-    var err = "";
-    if (form1.event_name.value == ""){
-        err += "タイトルを入力してください。\n"
-    }
-    if ((form1.start_age.value) == "0" || (form1.end_age.value) == "0"){
-        err += "対象年齢を入力してください。\n"
-    }
-    if (form1.representative.value == ""){
-        err += "主催者を入力してください。\n"
-    }
-    if (form1.cost.value == ""){
-        err += "参加費用を入力してください。\n"
-    }
-    if (form1.content.value == ""){
-        err += "イベント説明文を入力してください。\n"
-    }
-    if ((form1.start_event_date.value == "") || (form1.start_event_time.value == "")){
-        err += "開始日時を入力してください。\n"
-    }
-    if ((form1.end_event_date.value == "") || (form1.end_event_time.value == "")){
-        err += "終了日時を入力してください。\n"
-    }
-    if ((form1.start_recruiting_date.value == "") || (form1.start_recruiting_time.value == "")){
-        err += "募集開始を入力してください。\n"
-    }
-    if ((form1.end_recruiting_date.value == "") || (form1.end_recruiting_time.value == "")){
-        err += "終了日を入力してください。\n"
-    }
-    if (form1.venue_name.value == ""){
-        err += "会場名を入力してください。\n"
-    }
-    if (form1.venue_prefecture.value == ""){
-        err += "都道府県を入力してください。\n"
-    }
-    if (form1.venue_city.value == ""){
-        err += "市町村を入力してください。\n"
-    }
-    if (form1.venue_aza.value == ""){
-        err += "番地以下を入力してください。\n"
-    }
-    if (err == ""){
-    set_func_form('confirm','');
-    }else{
-        alert(err);
-    }
-    }
-
-    $(function(){
-    //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-    $('form').on('change', 'input[type="file"]', function(e) {
-        var file = e.target.files[0],
-            reader = new FileReader(),
-            $preview = $(".preview");
-            t = this;
-
-        // 画像ファイル以外の場合は何もしない
-        if(file.type.indexOf("image") < 0){
-        return false;
-        }
-
-        // ファイル読み込みが完了した際のイベント登録
-        reader.onload = (function(file) {
-        return function(e) {
-            //既存のプレビューを削除
-            $preview.empty();
-            // .prevewの領域の中にロードした画像を表示するimageタグを追加
-            $preview.append($('<img>').attr({
-                    src: e.target.result,
-                    width: "200px",
-                    class: "preview",
-                    title: file.name
-                }));
-        };
-        })(file);
-
-        reader.readAsDataURL(file);
-    });
-    });
-
     // -->
     </script>
     {/literal}
@@ -127,93 +43,73 @@
         <link rel="stylesheet" href="../css/user_list.css">
 
   <!-- Template Main CSS File -->
-     <link href="/~j2020tmD/sources/css/style.css" rel="stylesheet">
+     <link href="/~j2020tmD/sources/assets/css/style.css" rel="stylesheet">
 </head>
 {include file="../components/header.tmpl"}
   <body>
 
     <section id="about" class="about">
         <div class="container">
-          <div class="section-title">
-            <br><h2>イベント作成</h2>
-            <p>ここでは、あなたが求めるイベントを作成して申請することができます<br>
-            各項目を入力して申請ボタンを押してください</p>
-          </div><br>
+
 
         <div class="">
                 <form name="form1" action="" method="post" enctype="multipart/form-data"
                     class="contactform">
                   <div class="form-group">
                       <p style="margin-bottom: 0px;">タイトル<span style="color: red;">*必須</span></p>
-                      <input type="text" name='event_name'  class="form-control input-sm" id="kaisai_pass"
-                          placeholder="タイトル" value="" required>
+                      <input type="text" name='event_name' class="form-control input-sm" id="kaisai_pass"
+                      readonly placeholder="タイトル" value="{$smarty.post.event_name}">
                       <div class="validation"></div>
                   </div>
                   <div class="form-group">
                     <p style="margin-bottom: 0px;">イベント画像</p>
-                    <input type="file" name='event_img' accept="image/jpeg,image/png" class="" id="kaisai_name"
-                        placeholder="イベント画像" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
-                        <div class="preview" ></div>
+                    {if isset($smarty.post.event_img)}
+                    <p><img src="{$imgDir}{$smarty.post.event_img}" width="200px"></p>
+                    <input type="hidden" name="event_img"  value="{$smarty.post.event_img|escape}" />
+                    {/if}
                     <div class="validation"></div>
-                  </div>
+                　</div>
                 <div class="form-group">
                     <label>対象年齢<span style="color: red;">*必須</span></label>
                     <div class="myfoam">
-                        <select name="start_age">
-                        <option value="0" >選択してください</option>
-                                                                                    <option value="0" >0</option>
-                                                                                    <option value="1" >1</option>
-                                                                                    <option value="2" >2</option>
-                                                                                    <option value="3" >3</option>
-                                                                                    <option value="4" >4</option>
-                                                                                    <option value="5" >5</option>
-                                                                                    <option value="6" >6</option>
-                        </select>歳
+                    <input type="hidden" name="start_age"  value="{$smarty.post.start_age|escape}" />
+                    <input type="hidden" name="end_age"  value="{$smarty.post.end_age|escape}" />
+                        {$smarty.post.start_age|escape}歳
                         ～
-                        <select name="end_age">
-                          <option value="0">選択してください。</option>
-                                                                                    <option value="0" >0</option>
-                                                                                    <option value="1" >1</option>
-                                                                                    <option value="2" >2</option>
-                                                                                    <option value="3" >3</option>
-                                                                                    <option value="4" >4</option>
-                                                                                    <option value="5" >5</option>
-                                                                                    <option value="6" >6</option>
-                      </select>歳
+                        {$smarty.post.end_age|escape}歳
                     </div>
                 </div>
                 <div class="form-group">
                     <p style="margin-bottom: 0px;">主催者<span style="color: red;">*必須</span></p>
                     <input type="text" name='representative' class="form-control input-sm" id="kaisai_name"
-                        placeholder="主催者" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
+                    readonly placeholder="主催者" data-rule="minlen:1" data-msg="値を入力してください"
+                        value="{$smarty.post.representative}">
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
                     <p style="margin-bottom: 0px;">ハッシュタグ</p>
                     <input type="text" name='hash_tag' class="form-control input-sm" id="kaisai_name"
-                        placeholder="ハッシュタグ" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
+                    readonly placeholder="ハッシュタグ" data-rule="minlen:1" data-msg="値を入力してください"
+                        value="{$smarty.post.hash_tag}">
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
                     <p style="margin-bottom: 0px;">参加上限人数</p>
                     <input type="text" name='upper_limit' class="form-control input-sm" id="kaisai_name"
-                        placeholder="参加上限人数" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
+                    readonly placeholder="参加上限人数" data-rule="minlen:1" data-msg="値を入力してください"
+                        value="{$smarty.post.upper_limit}">
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
                     <p style="margin-bottom: 0px;">参加費用<span style="color: red;">*必須</span></p>
                     <input type="text" name='cost' class="form-control input-sm" id="kaisai_name"
-                        placeholder="参加費用" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
+                    readonly placeholder="参加費用" data-rule="minlen:1" data-msg="値を入力してください"
+                        value="{$smarty.post.cost}">
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
                     <p style="margin-bottom: 0px;">イベント説明文<span style="color: red;">*必須</span></p>
-                    <textarea class="textarea" name="content" cols="40" rows="8" placeholder="目的"></textarea>
+                    <textarea class="textarea" name="content" cols="40" rows="8" readonly  placeholder="目的">{$smarty.post.content}</textarea>
                     <div class="validation"></div>
                 </div>
 
@@ -228,14 +124,14 @@
                                     <tr>
 
                                         <td><input type="date" name='start_event_date' class="" id="kaisai_name"
-                                        placeholder="日にちを入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value=""></td>
+                                        readonly placeholder="日にちを入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$smarty.post.start_event_date}"></td>
                                     </tr><br>
                                     <tr>
 
                                         <td><input type="time" name='start_event_time' class=" id="kaisai_name"
-                                        placeholder="時間を入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value=""></td>
+                                        readonly placeholder="時間を入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$smarty.post.start_event_time}"></td>
                                     </tr>
                             </td>
                         </tr><br>
@@ -246,14 +142,14 @@
                                 <tr>
 
                                         <td><input type="date" name='end_event_date' class="" id="kaisai_name"
-                                            placeholder="日にちを入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                            value=""></td>
+                                        readonly placeholder="日にちを入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                            value="{$smarty.post.end_event_date}"></td>
                                 </tr><br>
                                 <tr>
 
                                     <td><input type="time" name='end_event_time' class="" id="kaisai_name"
-                                    placeholder="時間を入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                    value=""></td>
+                                    readonly placeholder="時間を入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                    value="{$smarty.post.end_event_time}"></td>
                                 </tr>
                         </td>
                         </tr><br>
@@ -264,14 +160,14 @@
                                 <tr>
                                     <!--<td>日</td>-->
                                     <td><input type="date" name='start_recruiting_date' class="" id="kaisai_name"
-                                        placeholder="日にちを入力" size="20" style="width:px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value=""></td>
+                                    readonly placeholder="日にちを入力" size="20" style="width:px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$smarty.post.start_recruiting_date}"></td>
                                     </tr><br>
                                     <tr>
                                     <!--<td>時間</td>-->
                                     <td><input type="time" name='start_recruiting_time' class="" id="kaisai_name"
-                                    placeholder="時間を入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
-                                    value=""></td>
+                                    readonly placeholder="時間を入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
+                                    value="{$smarty.post.start_recruiting_time}"></td>
                                 </tr>
                         </td>
                         </tr><br>
@@ -282,14 +178,14 @@
                                 <tr>
 
                                         <td><input type="date" name='end_recruiting_date' class="" id="kaisai_name"
-                                            placeholder="日にちを入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
-                                            value=""></td>
+                                        readonly placeholder="日にちを入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
+                                            value="{$smarty.post.end_recruiting_date}"></td>
                                     </tr><br>
                                     <tr>
 
                                     <td><input type="time" name='end_recruiting_time' class="" id="kaisai_name"
-                                        placeholder="時間を入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
-                                        value=""></td>
+                                    readonly placeholder="時間を入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$smarty.post.end_recruiting_time}"></td>
                                 </tr>
                         </td>
                         </tr>
@@ -304,28 +200,28 @@
                                 <p style="margin-bottom: 0px;">会場名</p>
                                     <input type="text" name='venue_name' class="form-control input-sm" id="kaisai_name"
                                         placeholder="会場名" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value="">
+                                        value="{$smarty.post.venue_name}">
                                     <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">都道府県</p>
                                     <input type="text" name='venue_prefecture' class="form-control input-sm" id="kaisai_name"
                                         placeholder="都道府県" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value="">
+                                        value="{$smarty.post.venue_prefecture}">
                                     <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">市町村</p>
                                     <input type="text" name='venue_city' class="form-control input-sm" id="kaisai_name"
                                         placeholder="市町村" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value="">
+                                        value="{$smarty.post.venue_city}">
                                     <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">番地以下</p>
                                     <input type="text" name='venue_aza' class="form-control input-sm" id="kaisai_name"
                                         placeholder="番地以下" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value="">
+                                        value="{$smarty.post.venue_aza}">
                                     <div class="validation"></div>
 
                                     <input type="hidden" name="func" value="" />
@@ -337,7 +233,8 @@
 
         <p>
             <div align = "center">
-            <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="確認" onclick="javascript:check()">
+            <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="戻る" onclick="javascript:history.back();">
+            <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="作成" onclick="javascript:set_func_form('set','')">
 
             </div>
           </p>
