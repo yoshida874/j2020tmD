@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
     <link rel="stylesheet" href="./css/style.css">
     <title>プロフィール編集</title>
     {literal}
@@ -29,6 +31,48 @@
         alert(err);
     }
     }
+
+
+    $(function(){
+    //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+    $('form').on('change', 'input[type="file"]', function(e) {
+        var file = e.target.files[0],
+            reader = new FileReader(),
+            $preview = $(".preview");
+            t = this;
+
+        // 画像ファイル以外の場合は何もしない
+        if(file.type.indexOf("image") < 0){
+        return false;
+        }
+
+        // ファイル読み込みが完了した際のイベント登録
+        reader.onload = (function(file) {
+        return function(e) {
+            //既存のプレビューを削除
+            $preview.empty();
+            // .prevewの領域の中にロードした画像を表示するimageタグを追加
+            $preview.append($('<img>').attr({
+                    src: e.target.result,
+                    width: "200px",
+                    class: "preview",
+                    title: file.name
+                }));
+        };
+        })(file);
+
+        reader.readAsDataURL(file);
+    });
+    });
+
+    $(document).ready(function(){
+    //画像が入っていなかった場合は表示させない
+    {/literal}{if $user.profile_img != ''}{literal}
+    $preview = $(".preview");
+    $preview.append($("<img src='{/literal}{$imgDir}{$user.profile_img}{literal}' width='200'>"));
+    {/literal}{/if}{literal}
+    });
+
     // -->
     </script>
     {/literal}
@@ -48,7 +92,9 @@
     <div align="left">
         <h1>プロフィールの変更</h1>
     </div>
-        <hr> 
+
+        <hr>
+
         <div align = "center">
     <form name="form1" method="post" action="" enctype="multipart/form-data">
         <table width="700" height="200" border="1">
@@ -88,8 +134,10 @@
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">プロフィール画像</th>
                 {if $user.profile_img != ''}
-                <td class="p-3 mb-2 bg-white text-dark" width="120" height="100"><img src="{$imgDir}{$user.profile_img}" width="200px">
+                  <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
                 {/if}
+                <div class="preview" ></div>
+
                 <br>
                 <input type="hidden" name="profile_img" value="{$user.profile_img|escape}" />
                 <br>
