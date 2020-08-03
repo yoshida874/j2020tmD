@@ -25,7 +25,7 @@
     if (form1.event_name.value == ""){
         err += "タイトルを入力してください。\n"
     }
-    if ((form1.start_age.value) == "0" || (form1.end_age.value) == "0"){
+    if ((form1.start_age.value) == "999" || (form1.end_age.value) == "999"){
         err += "対象年齢を入力してください。\n"
     }
     if (form1.representative.value == ""){
@@ -124,7 +124,7 @@
   <link href="/~j2020tmD/sources/assets/vendor/venobox/venobox.css" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/admin_base.css">
-        <link rel="stylesheet" href="../css/user_list.css">
+  <link rel="stylesheet" href="../css/user_list.css">
 
   <!-- Template Main CSS File -->
      <link href="/~j2020tmD/sources/css/style.css" rel="stylesheet">
@@ -132,7 +132,6 @@
 
   <body>
   {include file="../components/header.tmpl"}
-    <section id="about" class="about">
     <br>
     <br>
     <div id='center' class="main center">
@@ -163,7 +162,7 @@
                     <label>対象年齢<span style="color: red;">*必須</span></label>
                     <div class="myfoam">
                         <select name="start_age">
-                        <option value="0" >選択してください</option>
+                        <option value="999" >選択してください</option>
                                                                                     <option value="0" >0</option>
                                                                                     <option value="1" >1</option>
                                                                                     <option value="2" >2</option>
@@ -174,7 +173,7 @@
                         </select>歳
                         ～
                         <select name="end_age">
-                          <option value="0">選択してください。</option>
+                          <option value="999">選択してください。</option>
                                                                                     <option value="0" >0</option>
                                                                                     <option value="1" >1</option>
                                                                                     <option value="2" >2</option>
@@ -301,7 +300,7 @@
 
             <br>
                     <tr>開催場所<span style="color: red;">*必須</span></tr>
-                    <tr>
+                     <tr>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">会場名</p>
                                     <input type="text" name='venue_name' class="form-control input-sm" id="kaisai_name"
@@ -336,8 +335,10 @@
                                     <input type="hidden" name="param" value="" />
                                 </form>
                             </div>
-                    </tr>
-            </section>
+                        </tr>
+                </div>
+            </div>
+        </div>
 
         <p>
             <div align = "center">
