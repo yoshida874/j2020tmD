@@ -65,6 +65,7 @@
     });
 
     $(document).ready(function(){
+    //画像が入っていなかった場合は表示させない
     {/literal}{if $user.profile_img != ''}{literal}
     $preview = $(".preview");
     $preview.append($("<img src='{/literal}{$imgDir}{$user.profile_img}{literal}' width='200'>"));
