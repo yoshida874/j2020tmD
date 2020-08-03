@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
+
+    <head>
+        <title>問い合わせ</title>
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>問い合わせ</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+                  <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/~j2020tmD/sources/css/adminmin_base.css" rel="stylesheet">
+        <link href="/~j2020tmD/sources/css/style.css" rel="stylesheet">
+
     {literal}
     <script type="text/javascript">
-    <!--
+   
     function set_func_form(fn,pm){
         document.form1.target = "_self";
         document.form1.func.value = fn;
@@ -36,35 +44,62 @@
     {/literal}
 </head>
 
+
 <body>
     {include file="../../components/header.tmpl"}
+    <br><br><br>
+    <div id='center' class="main center">
+        <div class="container">
+        <div align="left">
     <h1>お問い合わせ</h1>
-    <P>お問い合わせの種類・内容・メールアドレス・ユーザーIDをご入力の上、「送信」ボタンをクリックして下さい</P>
-    <p>お問い合わせの種類<br>
-    <form name="form1" method="post" action="">
-    <select name="inquiry">
-        <option value="">選択してください</option>
-        <option value="login">ログインできない</option>
-        <option value="signup">会員登録について</option>
-    </select>
-    </p>
-    <p>お問い合わせ内容<br>
-        <textarea name="Content" cols="100" rows="10"></textarea>
-    </p>
-    <p>
-        メールアドレス<br>
-        <input type="email" name="mailaddress" size="50">
-    </p>
-    <p>
-        ユーザーID<br>
-        <input type="text" name="userId" size="50">
-    </p>
-    <input type="hidden" name="func" value="" />
-    <input type="hidden" name="param" value="" />
-    </form>
-    <div align="center">
-    <input type="button" name="btn_confirm" value="確認" onclick="javascript:check()">
-    </div>
-    {include file="../../components/footer.tmpl"}
+
+    <hr>
+            <p>お問い合わせの種類・内容・メールアドレスをご入力の上、
+            「送信」ボタンをクリックしてください。<br>
+            ユーザー様はユーザーIDも入力してください。<br>
+            <span style="color: red;">*全ての項目を入力してください</span>
+        </p>
+    
+        <p>お問い合わせの種類<br>
+            <form name="form1" method="POST" action="">
+                <select name="inquiry">
+                    <option value="">選択してください</option>
+                    <option value="login">ログインできない</option>
+                    <option value="signup">会員登録について</option>
+                    <option value="black">迷惑行為、誹謗中傷をされた</option>
+                    <option value="other">その他</option>
+                </select>
+        </p>
+        <p>お問い合わせ内容<br>
+            <textarea class = "textarea" name="Content" id="reply_content" ></textarea>
+        </p>
+        <div class="form-group">
+            <p style="margin-bottom: 0px;">メールアドレス</p>
+            <input type="email" name='mailaddress' class="form-control input-sm" id="kaisai_name"
+              placeholder="メールアドレス" data-rule="minlen:1" data-msg="値を入力してください">
+            <div class="validation"></div>
+        </div>
+        <div class="form-group">
+            <p style="margin-bottom: 0px;">ユーザーID</p>
+            <input type="text" name='userId' class="form-control input-sm" id="kaisai_name"
+                placeholder="ユーザーID" data-rule="minlen:1" data-msg="値を入力してください">
+            <div class="validation"></div>
+        </div>
+        <input type="hidden" name="func" value="" />
+        <input type="hidden" name="param" value="" />
+        </form>
+        <div align="center">
+            <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="送信"　 onclick="javascript:check()">
+        </div>
+    </div><br>
+    </div><br>
+</div>
+        <script src="/~j2020tmD/sources/front/js/main.js"></script>
+
+        <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+        <script src="/~j2020tmD/sources/front/js/main.js"></script>
+{include file="../../components/footer.tmpl"}
 </body>
 </html>

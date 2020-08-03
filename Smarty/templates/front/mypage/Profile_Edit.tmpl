@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+
+
     <link rel="stylesheet" href="./css/style.css">
     <title>プロフィール編集</title>
     {literal}
@@ -91,7 +92,9 @@
     <div align="left">
         <h1>プロフィールの変更</h1>
     </div>
+
         <hr>
+
         <div align = "center">
     <form name="form1" method="post" action="" enctype="multipart/form-data">
         <table width="700" height="200" border="1">
@@ -131,9 +134,10 @@
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">プロフィール画像</th>
                 {if $user.profile_img != ''}
-                <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
+                  <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
                 {/if}
                 <div class="preview" ></div>
+
                 <br>
                 <input type="hidden" name="profile_img" value="{$user.profile_img|escape}" />
                 <br>
