@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-                      <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <script type="text/javascript" src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+    <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
     <title>プロフィール編集</title>
@@ -66,7 +66,14 @@
         reader.readAsDataURL(file);
     });
 
+    });
 
+    $(document).ready(function(){
+    //画像が入っていなかった場合は表示させない
+    {/literal}{if $user.profile_img != ''}{literal}
+    $preview = $(".preview");
+    $preview.append($("<img src='{/literal}{$imgDir}{$user.profile_img}{literal}' width='200'>"));
+    {/literal}{/if}{literal}
 
     });
 
@@ -89,7 +96,9 @@
     <div align="left">
         <h1>プロフィールの変更</h1>
     </div>
+
         <hr>
+
         <div align = "center">
     <form name="form1" method="post" action="" enctype="multipart/form-data">
         <table width="700" height="200" border="1">
@@ -129,9 +138,11 @@
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">プロフィール画像</th>
                 {if $user.profile_img != ''}
+
                 <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
                 {/if}
                 <div class="preview" ></div>
+                
                 <br>
                 <input type="hidden" name="profile_img" value="{$user.profile_img|escape}" />
                 <br>
