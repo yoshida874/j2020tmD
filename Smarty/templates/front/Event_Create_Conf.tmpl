@@ -40,18 +40,23 @@
   <link href="/~j2020tmD/sources/assets/vendor/venobox/venobox.css" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/admin_base.css">
-        <link rel="stylesheet" href="../css/user_list.css">
+  <link rel="stylesheet" href="../css/user_list.css">
 
   <!-- Template Main CSS File -->
-     <link href="/~j2020tmD/sources/assets/css/style.css" rel="stylesheet">
+     <link href="/~j2020tmD/sources/css/style.css" rel="stylesheet">
 </head>
-{include file="../components/header.tmpl"}
-  <body>
 
-    <section id="about" class="about">
-        <div class="container">
-
-
+<body>
+    {include file="../components/header.tmpl"}
+      <br>
+      <br>
+      <div id='center' class="main center">
+  
+          <div class="container">
+          <div align="left"> 
+              <h1>作成確認</h1>
+              <hr> <br>
+  
         <div class="">
                 <form name="form1" action="" method="post" enctype="multipart/form-data"
                     class="contactform">
@@ -199,28 +204,28 @@
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">会場名</p>
                                     <input type="text" name='venue_name' class="form-control input-sm" id="kaisai_name"
-                                        placeholder="会場名" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value="{$smarty.post.venue_name}">
+                                     readonly placeholder="会場名" size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                     value="{$smarty.post.venue_name}">
                                     <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">都道府県</p>
                                     <input type="text" name='venue_prefecture' class="form-control input-sm" id="kaisai_name"
-                                        placeholder="都道府県" size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                    readonly placeholder="都道府県" size="20" data-rule="minlen:1" data-msg="値を入力してください"
                                         value="{$smarty.post.venue_prefecture}">
                                     <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">市町村</p>
                                     <input type="text" name='venue_city' class="form-control input-sm" id="kaisai_name"
-                                        placeholder="市町村" size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                    readonly placeholder="市町村" size="20" data-rule="minlen:1" data-msg="値を入力してください"
                                         value="{$smarty.post.venue_city}">
                                     <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">番地以下</p>
                                     <input type="text" name='venue_aza' class="form-control input-sm" id="kaisai_name"
-                                        placeholder="番地以下" size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                    readonly placeholder="番地以下" size="20" data-rule="minlen:1" data-msg="値を入力してください"
                                         value="{$smarty.post.venue_aza}">
                                     <div class="validation"></div>
 
@@ -229,7 +234,9 @@
                                 </form>
                             </div>
                     </tr>
-            </section>
+                </div>
+            </div>
+        </div>
 
         <p>
             <div align = "center">
