@@ -62,12 +62,78 @@ img.example {
     transition: all 0.4s; 
 }
 
-  
-  .back-to-top i:hover {
+.back-to-top i:hover {
     background: #f8f9fa;
     color: #fff;
   }
+
   
+  #why-us .section-header h3,
+  #why-us .section-header p {
+    color: #fff;
+  }
+  
+  #why-us .card {
+    background: mediumseagreen;
+    border-color: mediumseagreen;
+    border-radius: 10px;
+    margin: 0 15px;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+    height: 100%;
+  }
+  
+  #why-us .card i {
+    font-size: 48px;
+    padding-top: 15px;
+    color: #feeabf;
+  }
+  
+  #why-us .card h5 {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  
+  #why-us .card p {
+    font-size: 15px;
+    color: #fefad8;
+  }
+  
+  #why-us .card .readmore {
+    color: #fff;
+    font-weight: 600;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+    border-bottom: #008f64 solid 2px;
+  }
+  
+  #why-us .card .readmore:hover {
+    border-bottom: #fff solid 2px;
+  }
+  
+  #why-us .counters {
+    padding-top: 40px;
+  }
+  
+  #why-us .counters span {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+    display: block;
+    color: #fff;
+  }
+  
+  #why-us .counters p {
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #ffe9cc;
+  }
+
+
   /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/
@@ -557,10 +623,7 @@ img.example {
   /*--------------------------------------------------------------
   # Sections General
   --------------------------------------------------------------*/
-  section {
-    padding: 60px 0;
-  }
-  
+
   .section-bg {
     background-color: #b4e0ff;
   }
@@ -574,7 +637,7 @@ img.example {
   
   .section-title2 {
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
   }
   
   .section-title h2 {
@@ -1536,12 +1599,7 @@ img.example {
     visibility: visible;
     animation-name: fadeIn;
   }
-  
-  #why-us {
-    padding: 60px 0;
-    background: #00992e;
-  }
-  
+    
   .fadeIn {
     animation-name: fadeIn;
   }
