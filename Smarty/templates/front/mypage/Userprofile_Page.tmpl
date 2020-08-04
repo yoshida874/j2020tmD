@@ -3,7 +3,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
   <title>マイページ</title>
 </head>
 <body>
@@ -20,7 +23,7 @@
   <div class="row">
     <div class="col-md-1"></div>
   <div class="col-md-4">
-  <img src="../../img/SHI1987004.jpeg"  style="width:200px;height:180px"; alt="プロフィール画像">
+  <img src="/~j2020tmD/sources/images/profile_img/{$img_name}"  style="width:200px;height:180px"; alt="プロフィール画像">
     <div>
       <br>
       <font size="5">フォロー　 : {$numOfFollow}</font>
@@ -83,7 +86,6 @@
   <div class="col-md-3">
     <div align="right">
       <table border="1">
-    
         <tr>
           <td class="p-3 mb-2 bg-white text-dark" width="200" height="50" style="text-align:center;" ><a href="Event_List.php">ブックマーク</a> </td>
         </tr>
@@ -107,7 +109,7 @@
       <div>
           <div class="row">
             <div class="col-md-12">
-      <h4>・sns連携</h4>
+              <a class="twitter-timeline" href="https://twitter.com/faridyu?ref_src=twsrc%5Etfw">Tweets by faridyu</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
     </div>
     </div>
@@ -119,8 +121,11 @@
   </div>
 </div>
   {include file="../../components/footer.tmpl"}
-  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/~j2020tmD/sources/front/js/main.js"></script>
+
+        <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+        <script src="/~j2020tmD/sources/front/js/main.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ require_once($CMS_COMMON_INCLUDE_DIR . "auth_user.php");
 $smarty->assign("pageFlag","0");
 $smarty->assign('page', $header_items);
 
-$imgDir = "../../profile_img/";
+$imgDir = "../../images/profile_img/";
 $smarty->assign('imgDir',$imgDir);
 
 $err_array = array();
