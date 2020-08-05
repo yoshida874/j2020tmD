@@ -9,7 +9,7 @@
     <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
+    <link rel="stylesheet" href="/~j2020tmD/sources/front/css/Profile.css">
     <title>プロフィール編集</title>
     {literal}
     <script type="text/javascript">
@@ -120,7 +120,7 @@
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">PW</th>
                 <td class="p-3 mb-2 bg-white text-dark" width="120" height="50">
-                <input type="password" name="pw" placeholder="パスワードを変更する場合は入力してください" value="" size="40">
+                <input type="password" name="pw" placeholder="変更する場合は入力してください" value="" size="40">
                 </td>
             </tr>
             <tr>
@@ -164,77 +164,6 @@
                 <td class="p-3 mb-2 bg-white text-dark" width="120" height="80"><textarea class = "textarea" name="profile_content" id="" cols="50" rows="10">{$user.profile_content|escape}</textarea></td>
             </tr>
         </table>
-
-        <table border="1" align="center" width="500px">
-
-
-            <tr>
-              <th  class="p-3 mb-2 bg-white text-dark">ユーザー名</th>
-              <td  class="p-3 mb-2 bg-white text-dark">
-              <p>渡邉和子</p>
-                <input type="hidden" name="user_name"  value="渡邉和子" />
-              </td>
-            </tr>
-          
-        
-          <tr>
-            <th  class="p-3 mb-2 bg-white text-dark">ユーザーID</th>
-            <td  class="p-3 mb-2 bg-white text-dark">
-            <p>watanabe_wata</p>
-              <input type="hidden" name="user_id"  value="watanabe_wata" />
-            </td>
-          </tr>
-        
-          
-          <tr>
-            <th  class="p-3 mb-2 bg-white text-dark">メールアドレス</th>
-            <td  class="p-3 mb-2 bg-white text-dark">
-              <p>watanabe@gmail.com</p>
-              <input type="hidden" name="address"  value="watanabe@gmail.com" />
-            </td>
-          </tr>
-        
-          <tr>
-            <th  class="p-3 mb-2 bg-white text-dark">PW</th>
-            <td  class="p-3 mb-2 bg-white text-dark">
-            <p></p>
-              <input type="hidden" name="pw"  value="" />
-            </td>
-          </tr>
-        
-          <tr>
-            <th  class="p-3 mb-2 bg-white text-dark">生年月日</th>
-            <td  class="p-3 mb-2 bg-white text-dark">
-              <p>1999-06-11</p>
-              <input type="hidden" name="birthday"  value="1999-06-11" />
-            </td>
-          </tr>
-        
-          <tr>
-            <th  class="p-3 mb-2 bg-white text-dark">プロフィール画像</th>
-            <td  class="p-3 mb-2 bg-white text-dark">
-              <p><img src="../../images/profile_img/050c5d2920200804121423087.jpg" width="200px"></p>
-              <input type="hidden" name="profile_img"  value="050c5d2920200804121423087.jpg" />
-            </td>
-          </tr>
-        
-          <tr>
-            <th  class="p-3 mb-2 bg-white text-dark">趣味</th>
-            <td  class="p-3 mb-2 bg-white text-dark">
-              <p>セーリング</p>
-              <input type="hidden" name="hobby"  value="セーリング" />
-            </td>
-          </tr>
-        
-          <tr>
-            <th  class="p-3 mb-2 bg-white text-dark">自己紹介</th>
-            <td  class="p-3 mb-2 bg-white text-dark">
-              <p>アウトドア系のイベントに参加してます!</p>
-              <input type="hidden" name="profile_content"  value="アウトドア系のイベントに参加してます!" />
-            </td>
-          </tr>
-        
-          </table>
             <input type="hidden" name="func" value="" />
             <input type="hidden" name="param" value="" />
         </form>
