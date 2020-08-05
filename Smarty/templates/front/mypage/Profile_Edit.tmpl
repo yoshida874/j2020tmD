@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/~j2020tmD/sources/front/css/Profile.css">
     <title>プロフィール編集</title>
     {literal}
     <script type="text/javascript">
@@ -29,6 +33,50 @@
         alert(err);
     }
     }
+
+
+    $(function(){
+    //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+    $('form').on('change', 'input[type="file"]', function(e) {
+        var file = e.target.files[0],
+            reader = new FileReader(),
+            $preview = $(".preview");
+            t = this;
+
+        // 画像ファイル以外の場合は何もしない
+        if(file.type.indexOf("image") < 0){
+        return false;
+        }
+
+        // ファイル読み込みが完了した際のイベント登録
+        reader.onload = (function(file) {
+        return function(e) {
+            //既存のプレビューを削除
+            $preview.empty();
+            // .prevewの領域の中にロードした画像を表示するimageタグを追加
+            $preview.append($('<img>').attr({
+                    src: e.target.result,
+                    width: "200px",
+                    class: "preview",
+                    title: file.name
+                }));
+        };
+        })(file);
+
+        reader.readAsDataURL(file);
+    });
+
+    });
+
+    $(document).ready(function(){
+    //画像が入っていなかった場合は表示させない
+    {/literal}{if $user.profile_img != ''}{literal}
+    $preview = $(".preview");
+    $preview.append($("<img src='{/literal}{$imgDir}{$user.profile_img}{literal}' width='200'>"));
+    {/literal}{/if}{literal}
+
+    });
+
     // -->
     </script>
     {/literal}
@@ -48,7 +96,13 @@
     <div align="left">
         <h1>プロフィールの変更</h1>
     </div>
+<<<<<<< HEAD
         <hr> 
+=======
+
+        <hr>
+
+>>>>>>> 1a29c53366960c44dd7aa9bb15cfbeaacd96de37
         <div align = "center">
     <form name="form1" method="post" action="" enctype="multipart/form-data">
         <table width="700" height="200" border="1">
@@ -70,7 +124,11 @@
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">PW</th>
                 <td class="p-3 mb-2 bg-white text-dark" width="120" height="50">
+<<<<<<< HEAD
                 <input type="password" name="pw" placeholder="パスワードを変更する場合は入力してください" value="" size="40">
+=======
+                <input type="password" name="pw" placeholder="変更する場合は入力してください" value="" size="40">
+>>>>>>> 1a29c53366960c44dd7aa9bb15cfbeaacd96de37
                 </td>
             </tr>
             <tr>
@@ -88,8 +146,16 @@
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">プロフィール画像</th>
                 {if $user.profile_img != ''}
+<<<<<<< HEAD
                 <td class="p-3 mb-2 bg-white text-dark" width="120" height="100"><img src="{$imgDir}{$user.profile_img}" width="200px">
                 {/if}
+=======
+
+                <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
+                {/if}
+                <div class="preview" ></div>
+                
+>>>>>>> 1a29c53366960c44dd7aa9bb15cfbeaacd96de37
                 <br>
                 <input type="hidden" name="profile_img" value="{$user.profile_img|escape}" />
                 <br>
@@ -138,7 +204,16 @@
 
 </body>
 {include file="../../components/footer.tmpl"}
+<<<<<<< HEAD
 <script src="../../assets/vendor/jquery/jquery.min.js"></script>
 <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+=======
+<script src="/~j2020tmD/sources/front/js/main.js"></script>
+
+        <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+        <script src="/~j2020tmD/sources/front/js/main.js"></script>
+>>>>>>> 1a29c53366960c44dd7aa9bb15cfbeaacd96de37
 </html>
