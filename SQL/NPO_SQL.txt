@@ -5,7 +5,10 @@ create table NPO_inquiry(
     reply boolean not null default 0,
     content varchar(600) not null,
     target_date DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    reply_date datetime
+    reply_date datetime,
+    reply_address varchar(255),
+    Type varchar(20),
+
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table NPO_user(

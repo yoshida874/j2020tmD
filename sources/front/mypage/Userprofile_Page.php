@@ -55,6 +55,7 @@ $smarty->assign('userId', $user["user_id"]);
 $smarty->assign('name', $user["user_name"]);
 $smarty->assign('birth', $user["birthday"]);
 $smarty->assign('interest', $user["hobby"]);
+$smarty->assign('img_name', $user["profile_img"]);
 $smarty->assign('numOfFollow', 'フォロー');
 $smarty->assign('numOfFollower', 'フォロワー');
 $smarty->assign('nameOfChild', $children["child_name"]);
