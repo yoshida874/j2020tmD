@@ -478,7 +478,7 @@ img.example {
     line-height: 1;
     width: auto;
     height: auto;
-    background: rgba(255, 255, 255, 0.2);
+    background: aquamarine;
     border-radius: 50px;
     padding: 10px;
     transition: 0.3s;
@@ -486,7 +486,7 @@ img.example {
   }
   
   #hero .carousel-control-next-icon:hover, #hero .carousel-control-prev-icon:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: aquamarine;
     color: rgba(255, 255, 255, 0.8);
   }
   
