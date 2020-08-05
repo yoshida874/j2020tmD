@@ -3,32 +3,15 @@
 
 
     <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-      
         <title>問い合わせ</title>
-        <meta content="" name="descriptison">
-        <meta content="" name="keywords">
-      
-        <!-- Favicons -->
-        <link href="/~j2020tmD/sources/assets/img/favicon.png" rel="icon">
-        <link href="/~j2020tmD/sources/assets//img/apple-touch-icon.png" rel="apple-touch-icon">
-      
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-      
-        <!-- Vendor CSS Files -->
-        <link href="/~j2020tmD/sources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-        <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-        <link href="/~j2020tmD/sources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-        <link href="/~j2020tmD/sources/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-        <link href="/~j2020tmD/sources/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="/~j2020tmD/sources/assets/vendor/venobox/venobox.css" rel="stylesheet">
-        <!-- Template Main CSS File -->
-        <link href="/~j2020tmD/sources/css/admin_base.css" rel="stylesheet">
-
-        <link href="/~j2020tmD/sources/assets/css/style.css" rel="stylesheet">
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+                  <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/~j2020tmD/sources/css/adminmin_base.css" rel="stylesheet">
+        <link href="/~j2020tmD/sources/css/style.css" rel="stylesheet">
 
     {literal}
     <script type="text/javascript">
@@ -64,7 +47,7 @@
 
 <body>
     {include file="../../components/header.tmpl"}
-    <br>
+    <br><br><br>
     <div id='center' class="main center">
         <div class="container">
         <div align="left">
@@ -78,11 +61,13 @@
         </p>
     
         <p>お問い合わせの種類<br>
-            <form name="form1" method="POST" action="xxx.cgi">
+            <form name="form1" method="POST" action="">
                 <select name="inquiry">
                     <option value="">選択してください</option>
                     <option value="login">ログインできない</option>
                     <option value="signup">会員登録について</option>
+                    <option value="black">迷惑行為、誹謗中傷をされた</option>
+                    <option value="other">その他</option>
                 </select>
         </p>
         <p>お問い合わせ内容<br>
@@ -109,8 +94,12 @@
     </div><br>
     </div><br>
 </div>
+        <script src="/~j2020tmD/sources/front/js/main.js"></script>
 
-   <br><br><br><br>
+        <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+        <script src="/~j2020tmD/sources/front/js/main.js"></script>
+{include file="../../components/footer.tmpl"}
 </body>
 </html>
-{include file="../../components/footer.tmpl"}

@@ -18,7 +18,11 @@ img.example {
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
-  background:#F5FFFA;
+  background:#00ff80;
+}
+
+.sample{
+  background:#00ff80;
 }
 
 a {
@@ -53,13 +57,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 50px;
-  background: #00ff00;
+  background: #95d3ff;
   color: #fff;
   transition: all 0.4s;
 }
 
 .back-to-top i:hover {
-  background: #0087e7;
+  background: #f8f9fa;
   color: #fff;
 }
 
@@ -286,14 +290,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-toggle i {
-  color: #24325d;
+  color: #008000;
 }
 
 .mobile-nav {
   position: fixed;
   top: 55px;
   right: 15px;
-  bottom: 15px;
   left: 15px;
   z-index: 9999;
   overflow-y: auto;
@@ -1566,7 +1569,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: #F5FFFA;
 }
 
 :root {
