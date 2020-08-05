@@ -30,3 +30,24 @@ create table tag_event_link(
     event_id int(10),
     primary key(id,hash_id,event_id)
 )
+
+insert into user(
+    user_id,
+    user_name,
+    pw,
+    birthday,
+    hobby,
+    address,
+    profile_content,
+    sex
+)
+values(
+    'watanabe_wata',
+    '渡邉和子',
+    'watanabe001',
+    '1999-06-11',
+    'セーリング',
+    'watanabe@gmail.com',
+    'アウトドア系のイベントに参加してます!',
+    1
+)
