@@ -21,7 +21,7 @@ if((!isset($_SESSION['j2020tmD_user']['login_user']))
     }else{
         $login_items = array(
             'item_name'  => 'ログアウト',
-            'item_path'  => 'Login_Page.php'
+            'item_path'  => 'Logout_Page.php'
         );
     }
 
