@@ -3,7 +3,6 @@
 require_once("inc_base.php");
 require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
-require_once("inc_header.php");
 require_once($CMS_COMMON_INCLUDE_DIR . "auth_user.php");
 
 
@@ -31,3 +30,5 @@ $user_id = $_SESSION["j2020tmD_user"]["user_id"];
 echo $user_id;
 logout();
 delete_user($user_id);
+//セッションを消してからヘッダー出力
+require_once("inc_header.php");
