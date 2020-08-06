@@ -8,7 +8,7 @@
 
     <link href='mypage/css/style.css' rel="stylesheet">
 
-    <title>検索</title>
+    <title>わかばくらぶ</title>
 </head>
 
 <body>
@@ -16,11 +16,11 @@
     <br>
     <br>
     <br>
-    <div id='center' class="main center">
+    <br><div id='center' class="main center">
         <div class="container">
-            <hr>
-            <br>
-            <div align="left">
+        <div align="left"> 
+            <h1>新着イベント</h1>
+            <hr> <br>
     <div>
 
         <form name="form1" method="get" action="">
@@ -48,6 +48,7 @@
                     <label>　ｌ</label>
                     <label>・開催場所</label>
                         <select name="venue_city">
+                        <option value="" >選択してください</option>
                         <option value="郡山市">郡山市</option>
                         <option value="須賀川市">須賀川市</option>
                         </select>
@@ -114,8 +115,8 @@
             </div>
       </div>
     </div>
-    </form>
 
+    </form>
         {foreachelse}
             検索結果が見つかりません
         {/foreach}

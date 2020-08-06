@@ -10,7 +10,11 @@ auth_user.php
 $_SESSIONは多次元配列にする
 
 *********************************/
-session_start();
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
 if((!isset($_SESSION['j2020tmD_user']['login_user'])) 
     || (!isset($_SESSION['j2020tmD_user']['user_id']))){
     cutil::redirect_exit("/~j2020tmD/sources/front/Login_Page.php");
