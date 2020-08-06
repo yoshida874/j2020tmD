@@ -8,7 +8,7 @@ $root_path = '/~j2020tmD';
 $sub_path = '/sources/admin/';
 
 $header_items = array(
-    '管理者HOME' => $root_path . $sub_path . 'Home_Page.php',
+    'ホーム' => $root_path . $sub_path . 'Home_Page.php',
     '管理者一覧' => $root_path . $sub_path . 'Admin_List.php',
     'ユーザー一覧' => $root_path . $sub_path . 'User_List.php',
     'イベント一覧' => $root_path . $sub_path . 'Event_List.php',

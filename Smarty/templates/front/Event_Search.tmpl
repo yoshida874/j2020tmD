@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="mypage/css/style.css">
-    <title>検索</title>
+    <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href='./css/style.css' rel="stylesheet">
+    <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
+
+    <title>わかばくらぶ</title>
 </head>
 
 <body>
@@ -14,18 +18,20 @@
     <br>
     <br>
     <br>
-    <div id='center' class="main center">
+    <br><div id='center' class="main center">
         <div class="container">
-            <hr>
-            <br>
-            <div align="left">
+        <div align="left"> 
+            <h1>新着イベント</h1>
+            <hr> <br>
     <div>
 
         <form name="form1" method="get" action="">
                 <div>
                     <span><label>・キーワード</label></span>
                     <input type="text" name="keyword">
-                    <label>　ｌ</label>
+
+                    <label> ｌ</label>
+
                     <label>・関連タグ</label>
                     <input type="text">
                 <br>
@@ -44,6 +50,7 @@
                     <label>　ｌ</label>
                     <label>・開催場所</label>
                         <select name="venue_city">
+                        <option value="">選択してください</option>
                         <option value="郡山市">郡山市</option>
                         <option value="須賀川市">須賀川市</option>
                         </select>
@@ -65,13 +72,16 @@
     <br>
     <hr>
         <h2>検索結果({$rows|@count}件)</h2>
-        <form name="event" method="post" action="">
         {foreach from=$rows key=k item=value}
+        <form name="form1" method="get" action="">
+
         <br>
             <div class="row">
                 <div class="col-md-4">
                 <div>
-                    <a href="Event_Detail.php?id={$value.event_id}">
+
+                    <a href="Event_Detail.php?iid={$value.event_id}">
+
                         <h4><b>{$value.event_name}<br></b></h4>
                     </a>
                 </div>
@@ -107,12 +117,11 @@
             </div>
       </div>
     </div>
-    <hr>
-        <p></p>
+<hr>
+    </form>
         {foreachelse}
             検索結果が見つかりません
         {/foreach}
-        </form>
         </div>
     </div>
     </div>
@@ -122,6 +131,7 @@
     <script src="../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="./js/main.js"></script>
 {include file="../components/footer.tmpl"}
 </body>
 </html>
