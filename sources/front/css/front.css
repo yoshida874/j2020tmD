@@ -57,15 +57,82 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 50px;
-  background: #95d3ff;
+  background: lightgreen;
   color: #fff;
-  transition: all 0.4s;
+  transition: all 0.4s; 
 }
 
 .back-to-top i:hover {
-  background: #f8f9fa;
+  background: lime;
   color: #fff;
 }
+
+
+#why-us .section-header h3,
+#why-us .section-header p {
+  color: #fff;
+}
+
+#why-us .card {
+  background: mediumseagreen;
+  border-color: mediumseagreen;
+  border-radius: 10px;
+  margin: 0 15px;
+  padding: 15px 0;
+  text-align: center;
+  color: #fff;
+  transition: 0.3s ease-in-out;
+  height: 100%;
+}
+
+#why-us .card i {
+  font-size: 48px;
+  padding-top: 15px;
+  color: #feeabf;
+}
+
+#why-us .card h5 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#why-us .card p {
+  font-size: 15px;
+  color: #fefad8;
+}
+
+#why-us .card .readmore {
+  color: #fff;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.3s ease-in-out;
+  border-bottom: #008f64 solid 2px;
+}
+
+#why-us .card .readmore:hover {
+  border-bottom: #fff solid 2px;
+}
+
+#why-us .counters {
+  padding-top: 40px;
+}
+
+#why-us .counters span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  display: block;
+  color: #fff;
+}
+
+#why-us .counters p {
+  padding: 0;
+  margin: 0 0 20px 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #ffe9cc;
+}
+
 
 /*--------------------------------------------------------------
 # Header
@@ -290,8 +357,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-toggle i {
-  color: #008000;
-}
+
+  color: #24325d;
 
 .mobile-nav {
   position: fixed;
@@ -306,6 +373,9 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden;
   border-radius: 10px;
   padding: 10px 0;
+
+  background-color: mintcream;
+
 }
 
 .mobile-nav * {
@@ -376,7 +446,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-active .mobile-nav-toggle i {
-  color: #fff;
+  color: mintcream;
 }
 
 /*--------------------------------------------------------------
@@ -476,7 +546,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   width: auto;
   height: auto;
-  background: rgba(255, 255, 255, 0.2);
+  background: aquamarine;
   border-radius: 50px;
   padding: 10px;
   transition: 0.3s;
@@ -484,10 +554,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .carousel-control-next-icon:hover, #hero .carousel-control-prev-icon:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: aquamarine;
   color: rgba(255, 255, 255, 0.8);
 }
-
 #hero .carousel-indicators li {
   cursor: pointer;
   background: #fff;
@@ -555,9 +624,6 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
-section {
-  padding: 60px 0;
-}
 
 .section-bg {
   background-color: #b4e0ff;
@@ -565,13 +631,14 @@ section {
 
 .section-title {
   text-align: center;
+  padding-top: 30px;
   padding-bottom: 30px;
-  background-color:#F5F5F5;
 }
+
 
 .section-title2 {
   text-align: center;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .section-title h2 {
@@ -815,7 +882,7 @@ section {
 
 .recent-photos2 {
   overflow: hidden;
-  background: #F5FFFA;
+  background: space;
 }
 
 /*--------------------------------------------------------------
@@ -1533,12 +1600,7 @@ element.style {
   visibility: visible;
   animation-name: fadeIn;
 }
-
-#why-us {
-  padding: 60px 0;
-  background: #00992e;
-}
-
+  
 .fadeIn {
   animation-name: fadeIn;
 }
@@ -1618,7 +1680,18 @@ html {
   box-sizing: border-box;
 }
 
-
+.bx {
+  font-family: 'boxicons'!important;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  display: inline-block;
+  text-transform: none;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 
 /*#footer .copyright {

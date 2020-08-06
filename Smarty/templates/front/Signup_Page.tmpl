@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <meta charset="utf-8">
@@ -9,130 +9,143 @@
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
+  <link href="/~j2020tmD/sources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/~j2020tmD/sources/assets/img/favicon.png" rel="icon">
   <link href="/~j2020tmD/sources/assets//img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="/~j2020tmD/sources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
   <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="/~j2020tmD/sources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="/~j2020tmD/sources/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="/~j2020tmD/sources/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="/~j2020tmD/sources/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="/~j2020tmD/sources/css/style.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/admin_base.css">
-        <link rel="stylesheet" href="../css/user_list.css">
-
-  <!-- Template Main CSS File -->
-     <link href="/~j2020tmD/sources/assets/css/style.css" rel="stylesheet">
+  {literal}
+  <script type="text/javascript">
+    <!--
+    function set_func_form(fn,pm){
+      document.form1.target = "_self";
+      document.form1.func.value = fn;
+      document.form1.param.value = pm;
+      document.form1.submit();
+    }
+    
+    // -->
+    </script>
+    {/literal}
 </head>
-
+{include file="../components/header.tmpl"}
 <body>
-  {include file="../components/header.tmpl"}
-  <br><br>
-  <div id='center' class="main center">
+
+  <!-- ======= 入力欄 ======= -->
+  <section id="about" class="about">
     <div class="container">
-    <div align="left"> 
-        <h1>新規会員登録</h1>
-        <hr> <br>
-        
+
+      <div class="section-title">
+        <br><h2>新規会員登録</h2>
+        <p>ここでは会員登録をすることができます。<br>
+          各項目を入力して登録してください。<br>
+          お子様が複数人の場合は、追加ボタンを押して新たに情報を入力してください</p>
+      </div><br>
+
       
       <div class="">
-        <form name="form1" action="" method="post" enctype="multipart/form-data"
-            class="contactform">
-              <div class="form-group">
-                  <p style="margin-bottom: 0px;">ユーザー名(ニックネーム可)<span style="color: red;">*必須</span></p>
-                  <input type="text" name='user_name' class="form-control input-sm" id="kaisai_pass"
-                      placeholder="ユーザー名" value="">
-                  <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <p style="margin-bottom: 0px;">ユーザーID<span style="color: red;">*必須</span></p>
-                <input type="text" name='user_id' class="form-control input-sm" id="kaisai_name"
-                    placeholder="ユーザーID" data-rule="minlen:1" data-msg="値を入力してください"
-                    value="">
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <p style="margin-bottom: 0px;">メールアドレス<span style="color: red;">*必須</span></p>
-                <input type="email" name='address' class="form-control input-sm" id="kaisai_name"
-                  placeholder="メールアドレス" data-rule="minlen:1" data-msg="値を入力してください"
-                  value="">
-                <div class="validation"></div>
-              </div>
-              <tr>
-                <th>性別</th>
-                <td>
-                  <p>
-                    <input type="radio" name="child_gender" value=0 checked="checked">男性
-                    <input type="radio" name="child_gender" value=1>女性
-                  </p>
-                </td>
-              </tr>
-              <div class="form-group">
-                  <p style="margin-bottom: 0px;">生年月日<span style="color: red;">*必須</span></p>
-                  <input type="date" name='birthday' class="" id="kaisai_name"
-                    placeholder="生年月日" data-rule="minlen:1" data-msg="値を入力してください"
-                    value="">
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <p style="margin-bottom: 0px;">パスワード</p>
-                <input type="password" name='pw' class="form-control input-sm" id="kaisai_name"
-                  placeholder="パスワード" data-rule="minlen:1" data-msg="値を入力してください"
-                  value="">
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                  <p style="margin-bottom: 0px;">パスワードの再確認</p>
-                  <input type="password" name='repw' class="form-control input-sm" id="kaisai_name"
-                  placeholder="パスワード" data-rule="minlen:1" data-msg="値を入力してください"
-                  value="">
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <p style="margin-bottom: 0px;">お子様の名前(ニックネーム可)<span style="color: red;">*必須</span></p>
-                <input type="text" name='children_name' class="form-control input-sm" id="kaisai_pass"
-                    placeholder="お子様の名前" value="">
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <p style="margin-bottom: 0px;">お子様の生年月日<span style="color: red;">*必須</span></p>
-                <input type="date" name='children_birthday' class="" id="kaisai_name"
-                  placeholder="生年月日" data-rule="minlen:1" data-msg="値を入力してください"
-                  value="">
-                <div class="validation"></div>
-              </div>
-              <tr>
-                <th>お子様の性別</th>
-                <td>
-                  <p>
-                    <input type="radio" name="children_gender" value=0 checked="checked">男性
-                    <input type="radio" name="children_gender" value=1>女性
-                  </p>
-                </td>
-              </tr>
-        </form>
+      {$err_flag}
+        <form name="form1" action="{$smarty.server.PHP_SELF}" method="post" >
+          <tr>
+          <div class="form-group">
+              <p style="margin-bottom: 0px;">ユーザー名(ニックネーム可)<span style="color: red;">*必須</span></p>
+              <input type="text" name='user_name' class="form-control input-sm" id="kaisai_pass"
+                  placeholder="ユーザー名" value="{$smarty.post.user_name|escape}">
+              {if isset($err_array.user_name) }<br /><span class="red">{$err_array.user_name}</span>{/if}
+              <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <p style="margin-bottom: 0px;">ユーザーID<span style="color: red;">*必須</span></p>
+            <input type="text" name='user_id' class="form-control input-sm" id="kaisai_name"
+                placeholder="ユーザーID" data-rule="minlen:1" data-msg="値を入力してください"
+                value="{$smarty.post.user_id|escape}">
+            {if isset($err_array.user_id) }<br /><span class="red">{$err_array.user_id}</span>{/if}
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <p style="margin-bottom: 0px;">メールアドレス<span style="color: red;">*必須</span></p>
+            <input type="email" name='address' class="form-control input-sm" id="kaisai_name"
+              placeholder="メールアドレス" data-rule="minlen:1" data-msg="値を入力してください"
+              value="{$smarty.post.address|escape}">
+            {if isset($err_array.address) }<br /><span class="red">{$err_array.address}</span>{/if}
+            <div class="validation"></div>
+          </div>
+          <tr>
+            <th>性別</th>
+            <td>
+              <p>
+                <input type="radio" name="sex" value="0" {if $smarty.post.sex== 1 }checked="checked"{/if} />男性&nbsp;
+                <input type="radio" name="sex" value="1" {if $smarty.post.sex == 2 }checked="checked"{/if} />女性
+              </p>
+            </td>
+          </tr>
+          <div class="form-group">
+              <p style="margin-bottom: 0px;">生年月日<span style="color: red;">*必須</span></p>
+              <input type="date" name='birthday' class="" id="kaisai_name"
+                placeholder="生年月日" data-rule="minlen:1" data-msg="値を入力してください"
+                value="{$smarty.post.birthday|escape}">
+              {if isset($err_array.birthday) }<br /><span class="red">{$err_array.birthday}</span>{/if}
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <p style="margin-bottom: 0px;">パスワード</p>
+            <input type="password" name='pw' class="form-control input-sm" id="kaisai_name"
+              placeholder="パスワード" data-rule="minlen:1" data-msg="値を入力してください"
+              value="{$smarty.post.pw|escape}">
+            {if isset($err_array.pw) }<br /><span class="red">{$err_array.pw}</span>{/if}
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+              <p style="margin-bottom: 0px;">パスワードの再確認</p>
+              <input type="password" name='repw' class="form-control input-sm" id="kaisai_name"
+              placeholder="パスワード" data-rule="minlen:1" data-msg="値を入力してください"
+              value="">
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <p style="margin-bottom: 0px;">お子様の名前(ニックネーム可)<span style="color: red;">*必須</span></p>
+            <input type="text" name='children_name' class="form-control input-sm" id="kaisai_pass"
+                placeholder="お子様の名前" value="">
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <p style="margin-bottom: 0px;">お子様の生年月日<span style="color: red;">*必須</span></p>
+            <input type="date" name='children_birthday' class="" id="kaisai_name"
+              placeholder="生年月日" data-rule="minlen:1" data-msg="値を入力してください"
+              value="">
+            <div class="validation"></div>
+          </div>
+          <tr>
+            <th>お子様の性別</th>
+            <td>
+              <p>
+                <input type="radio" name="children_gender" value=0 checked="checked">男性
+                <input type="radio" name="children_gender" value=1>女性
+              </p>
+            </td>
+          </tr>
+          <p>
+            <input type="hidden" name="func" value="" />
+            <input type="hidden" name="param" value="" />
+            <div align = "center">
+            <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="+お子様の追加" onclick="history.back()">
+            <input class="btn btn-secondary btn-lg" type="submit" name="btn_submit" value="登録" onClick="javascript:set_func_form('conf','')">
+            </div>
+          </p>
+        <br>
+      </form>
       </div>
-      </div>
-      </div>
-      <p>
-        <div align = "center">
-        <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="+お子様の追加" onclick="history.back()">
-        <input class="btn btn-secondary btn-lg" type="submit" name="btn" value="登録" onclick="history.back()">
-        </div>
-      </p>
-      <br>
-      {include file="../components/footer.tmpl"}
-  </div>
-      
-      
+    </div>
+  </section>
 
 </body>
-
+{include file="../components/footer.tmpl"}
 </html>
