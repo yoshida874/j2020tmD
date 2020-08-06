@@ -37,8 +37,9 @@ if(isset($_GET['search'])){
     }elseif ($_GET['end_age'] == "") {
         $_GET['end_age'] = 0;
     }
-
-    $_GET['venue_city'] = $_GET['venue_city'].'%';
+    if($_GET['venue_city'] == ""){
+        $_GET['venue_city'] = '%';
+    }
     $rows = $obj->get_search(false,$_GET['keyword'],$_GET['start_event_date'],
                             $_GET['end_event_date'],$_GET['start_age'],
                             $_GET['end_age'],$_GET['venue_city']);
