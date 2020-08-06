@@ -25,13 +25,20 @@ if(isset($_GET['search'])){
     if($_GET['end_event_date'] == ""){
         $_GET['end_event_date'] = '2030-01-01';
     }
-    if($_GET['start_age'] == ""){
+    //end_ageのみ入力されていた時
+    if($_GET['start_age'] == "" && !$_GET['end_age'] == ""){
+        $_GET['start_age'] = $_GET['end_age'];
+    }elseif ($_GET['start_age'] == "") {
         $_GET['start_age'] = 100;
     }
-    if($_GET['end_age'] == ""){
+    //start_ageのみ入力されていた時
+    if($_GET['end_age'] == "" && !$_GET['start_age'] == 100){
+        $_GET['end_age'] = $_GET['start_age'];
+    }elseif ($_GET['end_age'] == "") {
         $_GET['end_age'] = 0;
     }
-    print_r($_GET['venue_city']);
+
+    $_GET['venue_city'] = $_GET['venue_city'].'%';
     $rows = $obj->get_search(false,$_GET['keyword'],$_GET['start_event_date'],
                             $_GET['end_event_date'],$_GET['start_age'],
                             $_GET['end_age'],$_GET['venue_city']);
