@@ -4,6 +4,7 @@ require_once("inc_base.php");
 require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
 require_once("inc_header.php");
+require_once($CMS_COMMON_INCLUDE_DIR . "auth_NPO.php");
 
 $smarty->assign('page', $header_items);
 
@@ -97,7 +98,7 @@ function param_chk()
 @return	なし
 */
 //--------------------------------------------------------------------------------------
-function readdata()
+function readdata($NPO_id)
 {
     global $limit;
     global $rows;
@@ -105,10 +106,10 @@ function readdata()
     global $page;
     $obj = new cevent();
     $from = ($page - 1) * $limit;
-    $rows = $obj->get_all(false, $from, $limit);
+    $rows = $obj->get_tgt_NPO_id(false, $from, $limit, $NPO_id);
 }
 
-readdata();
+
 //--------------------------------------------------------------------------------------
 /*!
 @brief	削除
@@ -172,6 +173,7 @@ function assign_tgt_uri()
 /// 関数呼び出しブロック
 /////////////////////////////////////////////////////////////////
 $smarty->assign('ERR_STR', $ERR_STR);
+readdata($_SESSION["j2020tmD_npo"]["NPO_id"]);
 assign_cevent_list();
 assign_page_block();
 assign_tgt_uri();
