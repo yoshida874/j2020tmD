@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="../../img/wakaba.png">  
+    <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <title>プロフィール編集</title>
+    <link rel="stylesheet" href="/~j2020tmD/sources/front/css/Profile.css">
+    <script type="text/javascript" src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+
+    <title>わかばくらぶ</title>
+
     {literal}
     <script type="text/javascript">
     <!--
@@ -63,6 +69,7 @@
 
         reader.readAsDataURL(file);
     });
+
     });
 
     $(document).ready(function(){
@@ -71,6 +78,7 @@
     $preview = $(".preview");
     $preview.append($("<img src='{/literal}{$imgDir}{$user.profile_img}{literal}' width='200'>"));
     {/literal}{/if}{literal}
+
     });
 
     // -->
@@ -92,8 +100,7 @@
     <div align="left">
         <h1>プロフィールの変更</h1>
     </div>
-
-        <hr>
+        <hr> 
 
         <div align = "center">
     <form name="form1" method="post" action="" enctype="multipart/form-data">
@@ -116,7 +123,9 @@
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">PW</th>
                 <td class="p-3 mb-2 bg-white text-dark" width="120" height="50">
+
                 <input type="password" name="pw" placeholder="パスワードを変更する場合は入力してください" value="" size="40">
+
                 </td>
             </tr>
             <tr>
@@ -134,9 +143,11 @@
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">プロフィール画像</th>
                 {if $user.profile_img != ''}
-                  <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
+
+                <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
                 {/if}
                 <div class="preview" ></div>
+
 
                 <br>
                 <input type="hidden" name="profile_img" value="{$user.profile_img|escape}" />
@@ -186,7 +197,9 @@
 
 </body>
 {include file="../../components/footer.tmpl"}
-<script src="../../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+
+<script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="/~j2020tmD/sources/front/js/main.js"></script>
+
 </html>
