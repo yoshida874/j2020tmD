@@ -118,7 +118,7 @@ class cevent extends crecord {
 			  start_event_date between {$start_event_date} and {$end_event_date} and
 			  start_age  <= {$start_age} and
 			  end_age >= {$end_age} and
-			  venue_city = {$venue_city}"
+			  venue_city like {$venue_city}"
 		);
 		//順次取り出す
 		$arr = array();

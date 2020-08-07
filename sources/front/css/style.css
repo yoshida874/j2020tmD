@@ -290,14 +290,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-toggle i {
-  color: #24325d;
+  color: #008000;
 }
 
 .mobile-nav {
   position: fixed;
   top: 55px;
   right: 15px;
-  bottom: 15px;
   left: 15px;
   z-index: 9999;
   overflow-y: auto;
@@ -1570,7 +1569,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: #F5FFFA;
 }
 
 :root {
