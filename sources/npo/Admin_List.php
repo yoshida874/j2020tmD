@@ -4,6 +4,7 @@ require_once("inc_base.php");
 require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
 require_once("inc_header.php");
+require_once($CMS_COMMON_INCLUDE_DIR . "auth_NPO.php");
 
 $smarty->assign('page', $header_items);
 
@@ -26,7 +27,7 @@ if(isset($_GET['page'])
     $page = $_GET['page'];
 }
 
-function readdata()
+function readdata($NPO_id)
 {
 	global $limit;
 	global $rows;
@@ -34,10 +35,9 @@ function readdata()
 	global $page;
 	$obj = new cnpo_user();
 	$from = ($page - 1) * $limit;
-	$rows = $obj->get_all(false, $from, $limit);
+	$rows = $obj->get_tgt_NPO_ID(false, $from, $limit, $NPO_id);
 }
 
-readdata();
 
 //--------------------------------------------------------------------------------------
 /*!
@@ -89,6 +89,7 @@ function assign_tgt_uri(){
 /// 関数呼び出しブロック
 /////////////////////////////////////////////////////////////////
 $smarty->assign('ERR_STR', $ERR_STR);
+readdata($_SESSION["j2020tmD_npo"]["NPO_id"]);
 assign_page_block();
 assign_NPO_user_list();
 //assign_tgt_uri();
