@@ -21,7 +21,7 @@
   <br>
   <br>
 <br>
-  
+
 
   <div id='center' class="main center">
       <div class="container">
@@ -33,7 +33,7 @@
                 <h5><b>{$rows.start_event_date}({$rows.start_event_week})
                   {$rows.start_event_time|date_format:"%H:%M"} ~ </b>
             </div>
-            <img src="{$rows.img}" class="img-fluid img-thumbnail"  
+            <img src="{$rows.img}" class="img-fluid img-thumbnail"
             style="width:700px;height:350px;object-fit: cover;" alt="">
           </div>
         </div>
@@ -42,13 +42,13 @@
       <br>
       <div>
         <h4><b>■このイベントについて</b></h4>
-      </div> 
-    <hr> 
+      </div>
+    <hr>
     <div>
       {$rows.content}
     </div>
 
- 
+
 <br>
 <br>
     <div>
@@ -151,7 +151,7 @@
       <td>
         <img class="fit-picture" src="img path" alt="Event imgge" />
       </td>
-    </div> 
+    </div>
       <div class="col-md-5">
         <div>
           <tr>
@@ -181,7 +181,7 @@
       <hr>
       <br>
       <div class="row">
-        <div><button type="button" class="btn btn-primary btn-lg">お問い合わせ</button></div><br>
+        <div><button onclick="location.href='./Inquiry_NPO_Page.php?event_id={$rows.event_id}&NPO_id={$rows.NPO_id}'" type="button" class="btn btn-primary btn-lg">お問い合わせ</button></div><br>
     </div>
 <br>
 </div>

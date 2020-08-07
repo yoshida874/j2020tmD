@@ -60,7 +60,7 @@ function regist_user()
     // 値追加
     $change->insert('participant', $dataarr);
     cutil::redirect_exit($_SERVER['PHP_SELF'].'?iid='.$_GET['iid']);
-    
+
 }
 
 //--------------------------------------------------------------------------------------
