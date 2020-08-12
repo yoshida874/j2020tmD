@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/~j2020tmD/sources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link rel="icon" href="favicon.ico">
-  <link rel="icon" type="image/png" href="../../img/wakaba.png">
+    <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="../../img/wakaba.png">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
     <title>わかばくらぶ</title>
@@ -20,89 +20,66 @@
     <br>
     <br>
     <br>
-    <div>
-        <div id='center' class="main center">
-            <div class="container">
-            <div align="left">        
-    <h2>件数(５件)</h2>
-        <div class="row">
-                  <div class="col-md-5">
-                    <div>
-                        <h4><b>水族館で生物と触れ合おう!</b></h4>
+    <div id='center' class="main center">
+        <div class="container">
+            <div align="left">
+                <h2>件数({$rows|@count}件)</h2>
+                {foreach from=$rows key=k item=value}
+                <form name="form1" method="get" action="">
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <a href="/~j2020tmD/sources/front/Event_Detail.php?iid={$value.event_id}">
+                                    <h4><b>{$value.event_name}<br></b></h4>
+                                </a>
+                            </div>
+                            <div>
+                                <img src="{$value.img}" class="img-fluid img-thumbnail"
+                                    style="width:480px;height:180px;object-fit: cover;" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <br>
+                            <br>
+                            <div>
+                                <b>・日付/時間</b>：
+                                {$value.start_event_date}
+                                ({$value.start_event_week})
+                                {$value.start_event_time|date_format:"%H:%M"}~<br>
+                            </div>
+                            <br>
+                            <div>
+                                <b>・対象年齢</b>：{$value.start_age}歳~{$value.end_age}歳
+                            </div>
+                            <br>
+                            <div>
+                                <b>・開催団体</b>：{$value.group_name}
+                            </div>
+                            <br>
+                            <div>
+                                <b>・開催場所</b>：{$value.venue_name} {$value.venue_city}{$value.venue_aza}
+                            </div>
+                            <br>
+                            <div class="col-md-12">
+                                <h3 align=right>{$value.participant}/{$value.upper_limit} 人</h3>
+                            </div>
+                        </div>
                     </div>
-            <img src="../../img/SHI1987004.jpeg" class="img-fluid img-thumbnail"  
-            style="width:480px;height:180px;object-fit: cover;" alt="">
+                    <hr>
+                </form>
+                {foreachelse}
+                検索結果が見つかりません
+                {/foreach}
+            </div>
         </div>
-        <div class="col-md-6">
-<br>
-<br>
-            <div>
-                <b>・開催団体</b>：wiz保育部
-                </div>
-                <br>
-                <div>
-                    <b>・開催場所</b>：郡山シーパラダイス 郡山神保町2丁目32
-                </div>
-                <br>
-            <div>
-                        <b>・日付/時間</b>：1/7(日) 9:00~17:00
-                </div>
-<br>
-                <div>     
-                    <b>・対象年齢</b>：1~6歳
-                </div>
-        </div>
-</div>
-<div class="col-md-12">
-    <h3 align = right>9/27 人</h3>
-</div>
-<h2></h2>
-</div>  
-</div>
-<div id='center' class="main center">
-    <div class="container">
-        <div class="row">
-                  <div class="col-md-5">
-                    <div>
-                        <h4><b>水族館で生物と触れ合おう!</b></h4>
-                    </div>
-            <img src="../../img/SHI1987004.jpeg" class="img-fluid img-thumbnail"  
-            style="width:480px;height:180px;object-fit: cover;" alt="">
-        </div>
-        <div class="col-md-6">
-<br>
-<br>
-            <div>
-                <b>・開催団体</b>：wiz保育部
-                </div>
-                <br>
-                <div>
-                    <b>・開催場所</b>：郡山シーパラダイス 郡山神保町2丁目32
-                </div>
-                <br>
-            <div>
-                        <b>・日付/時間</b>：1/7(日) 9:00~17:00
-                </div>
-<br>
-                <div>     
-                    <b>・対象年齢</b>：1~6歳
-                </div>
-        </div>
-</div>
-<div class="col-md-12">
-    <h3 align = right>9/27 人</h3>
-</div>
-<h2></h2>
-</div>  
-</div>
     </div>
-  {include file="../../components/footer.tmpl"}
-  <script src="/~j2020tmD/sources/front/js/main.js"></script>
 
-  <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="/~j2020tmD/sources/front/js/main.js"></script>
+    {include file="../../components/footer.tmpl"}
+    <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/~j2020tmD/sources/front/js/main.js"></script>
 </body>
 
 </html>
