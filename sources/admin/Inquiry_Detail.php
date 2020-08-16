@@ -5,6 +5,7 @@ require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
 require_once("inc_header.php");
 require_once("inc_mail.php");
+require_once($CMS_COMMON_INCLUDE_DIR . "auth_admin.php");
 
 $smarty->assign('page', $header_items);
 
@@ -13,20 +14,20 @@ $err_flag = 0;
 $page = 0;
 $inquiry_id = 0;
 
-if(isset($_GET['page']) 
+if(isset($_GET['page'])
 	&& cutil::is_number($_GET['page'])
 	&& $_GET['page'] > 0){
 	$page = $_GET['page'];
 }
 
-if(isset($_GET['iid']) 
+if(isset($_GET['iid'])
 	&& cutil::is_number($_GET['iid'])
 	&& $_GET['iid'] > 0){
 	$inquiry_id = $_GET['iid'];
 }
 
 //$_POST優先
-if(isset($_POST['inquiry_id']) 
+if(isset($_POST['inquiry_id'])
 //cutilクラスのメンバ関数をスタティック呼出
 	&& cutil::is_number($_POST['inquiry_id'])
 	&& $_POST['inquiry_id'] > 0){
