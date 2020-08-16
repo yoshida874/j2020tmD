@@ -7,6 +7,7 @@ require_once("inc_base.php");
 require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
 require_once("inc_header.php");
+require_once($CMS_COMMON_INCLUDE_DIR . "auth_admin.php");
 
 $smarty->assign('page', $header_items);
 
@@ -20,7 +21,7 @@ $show_mode = '';
 //デフォルトは1
 $page = 1;
 //もしページが指定されていたら
-if(isset($_GET['page']) 
+if(isset($_GET['page'])
     //なおかつ、数字だったら
     && cutil::is_number($_GET['page'])
     //なおかつ、0より大きかったら
@@ -48,7 +49,7 @@ if(is_func_active()){
 					$re_page = $last_page;
 				}
 				//再読み込みのためにリダイレクト
-				cutil::redirect_exit($_SERVER['PHP_SELF'] 
+				cutil::redirect_exit($_SERVER['PHP_SELF']
 				. '?page=' . $re_page);
 			break;
 			default:
