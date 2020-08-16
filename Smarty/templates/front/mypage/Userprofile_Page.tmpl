@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
   <title>わかばくらぶ</title>
 </head>
+
 <body>
   {include file="../../components/header.tmpl"}
   <br>
@@ -19,113 +21,120 @@
   <br>
   <div id='center' class="main center">
     <div class="container">
-    <div align="left">
-      <h1>マイページ</h1>
-  <hr>
-  <div class="row">
-    <div class="col-md-1"></div>
-  <div class="col-md-4">
-  <img src="/~j2020tmD/sources/images/profile_img/{$img_name}"  style="width:200px;height:180px"; alt="プロフィール画像">
-    <div>
-      <br>
-      <font size="5">フォロー　 : {$numOfFollow}</font>
-    </div>
-    <div>
-      <font size="5">フォロワー : {$numOfFollower}</font>
-    </div>
-  </div>
-    <div>
-    <div class="col-md-12">
-    <div>
-      <font size="5">ユーザID　: {$userId}</font>
-        </div>
-        <div>
-          <font size="5">名　前　 　: {$name}</font>
-        </div>
-        <div>
-          <font size="5"> 生年月日 　: {$birth}</font>
-        </div>
-        <div>
-          <font size="5">子供の名前 : {$nameOfChild}</font>
-        </div>
-        <div>
-          <font size="5">子供の性別 : {$genderOfChild}</font>
-        </div>
-        <div>
-          <font size="5">子供の年齢 : {$ageOfChild}歳</font>
-        </div>
-        <div>
-          <font size="5">趣　味　　 : {$interest}</font>
-        </div>
-    </div>
-    </div>
-  </div>
-  </div>
-  <div class="row">
-    <div class="col-md-11">
-  <div align="right">
-<div>
-    <a href="Profile_Edit.php" class="btn btn-primary btn-lg">プロフィールの変更</a>
-  </div>
-  </div>
-  </div>
-  </div>
-  <hr>
-  <br>
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-7">
-  <div class="p-3 mb-2 text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; width:600 px; height:340px;">
-
-    <!--{$introduce}-->
-    こんにちは！一児の母親です。はじめての子育てで苦労することも多いですが、一生懸命子育て頑張ってます！<br>
-    同じ年代のママ友が少ないので娘の為にも積極にイベントに参加しています。
-
-  </div>
-    </div>
-    <br>
-  <br>
-  <div class="col-md-3">
-    <div align="right">
-      <table border="1">
-        <tr>
-          <td class="p-3 mb-2  text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "width="200" height="50" style="text-align:center;" > <a href="Event_List.php?iid=conf">予約内容の確認</a> </td>
-        </tr>
-        <tr>
-          <td class="p-3 mb-2  text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "width="200" height="50" style="text-align:center;" > <a href="Event_List.php?iid=edit">イベントの編集</a> </td>
-        </tr>
-        <tr>
-          <td class="p-3 mb-2 text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "width="210" height="50" style="text-align:center;" > <a href="Event_List.php?iid=past">過去に参加したイベント</a> </td>
-        </tr>
-        <tr>
-          <td class="p-3 mb-2 text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "width="200" height="50" style="text-align:center;" > <a href="Withdrawal_Page.php?iid={$value.event_id}">退会</a> </td>
-        </tr>
-      </table>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div>
-          <div class="row">
+      <div align="left">
+        <h1>マイページ</h1>
+        <hr>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-4">
+            <img src="/~j2020tmD/sources/images/profile_img/{$img_name}" style="width:200px;height:180px" ;
+              alt="プロフィール画像">
+            
+          </div>
+          <div>
             <div class="col-md-12">
-              <a class="twitter-timeline" data-width="220" data-height="480" href="https://twitter.com/_nannannannan?ref_src=twsrc%5Etfw">Tweets by _nannannannan</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <div>
+                <font size="5">ユーザID　: {$userId}</font>
+              </div>
+              <div>
+                <font size="5">名　前　 　: {$name}</font>
+              </div>
+              <div>
+                <font size="5"> 生年月日 　: {$birth}</font>
+              </div>
+              <div>
+                <font size="5">子供の名前 : {$nameOfChild}</font>
+              </div>
+              <div>
+                <font size="5">子供の性別 : {$genderOfChild}</font>
+              </div>
+              <div>
+                <font size="5">子供の年齢 : {$ageOfChild}歳</font>
+              </div>
+              <div>
+                <font size="5">趣　味　　 : {$interest}</font>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-11">
+          <div align="right">
+            <div>
+              <a href="Profile_Edit.php" class="btn btn-primary btn-lg">プロフィールの変更</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <br>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+          <div class="p-3 mb-2 text-dark"
+            style="border: solid 2px lightgreen ; background-color : honeydew; width:600 px; height:340px;">
+
+            <!--{$introduce}-->
+            こんにちは！一児の母親です。はじめての子育てで苦労することも多いですが、一生懸命子育て頑張ってます！<br>
+            同じ年代のママ友が少ないので娘の為にも積極にイベントに参加しています。
+
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="col-md-3">
+          <div align="right">
+            <table border="1">
+              <tr>
+                <td class="p-3 mb-2  text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "
+                  width="200" height="50" style="text-align:center;"> <a href="Event_List.php?iid=conf">予約内容の確認</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3 mb-2  text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "
+                  width="200" height="50" style="text-align:center;"> <a href="Event_List.php?iid=edit">イベントの編集</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3 mb-2 text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "
+                  width="210" height="50" style="text-align:center;"> <a href="Event_List.php?iid=past">過去に参加したイベント</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3 mb-2 text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "
+                  width="200" height="50" style="text-align:center;"> <a
+                    href="Withdrawal_Page.php?iid={$value.event_id}">退会</a> </td>
+              </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div>
+              <div class="row">
+                <div class="col-md-12">
+                  <a class="twitter-timeline" data-width="220" data-height="480"
+                    href="https://twitter.com/_nannannannan?ref_src=twsrc%5Etfw">Tweets by _nannannannan</a>
+                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      </br>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-  <hr>
-    </br>
   </div>
-</div>
   {include file="../../components/footer.tmpl"}
   <script src="/~j2020tmD/sources/front/js/main.js"></script>
 
-        <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
-        <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-        <script src="/~j2020tmD/sources/front/js/main.js"></script>
+  <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/~j2020tmD/sources/front/js/main.js"></script>
 </body>
+
 </html>
