@@ -58,7 +58,7 @@ function regist_user()
     require_once($CMS_COMMON_INCLUDE_DIR . "auth_user.php");
     $dataarr = array();
     $dataarr['user_id'] = (int)$_SESSION['j2020tmD_user']['id'];
-    $dataarr['event_id'] = (int) $_POST['param'];
+    $dataarr['event_id'] = (int) $_POST['iid'];
     $dataarr['child_id'] = 1;
     $change = new cchange_ex();
 
