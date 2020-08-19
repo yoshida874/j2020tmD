@@ -8,9 +8,15 @@ require_once("inc_header.php");
 $smarty->assign('page', $header_items);
 
 $rows = array();
+$show_mode = '';
 
 if(!isset($_POST["func"])){
 	$_POST["func"] = "";
+}
+else{
+    if($_POST["func"] == "del"){
+        deljob();
+    }
 }
 
 if(isset($_GET['iid'])){
@@ -22,11 +28,14 @@ $week = array('日', '月', '火', '水', '木', '金', '土');
 if(!empty($rows)){
     //参加者
     $obj = new cparticipant();
-    $participant = $obj->get_event_user(false,$rows["event_id"]);
+    //イベントに参加している人数
+    $participant_count = $obj->get_event_user(false,$rows["event_id"]);
+    //すでにイベントに参加登録しているか
+    $participant = $obj->get_event_participant(false,(int)$_SESSION['j2020tmD_user']['id'],$rows["event_id"]);
     //曜日
     $date = new DateTime($rows["start_event_date"]);
     $date = $date->format('w');
-    $rows = $rows + $participant +array('start_event_week'=>$week[$date]);
+    $rows = $rows + $participant + $participant_count +array('start_event_week'=>$week[$date]);
 }
 //--------------------------------------------------------------------------------------
 /*!
@@ -41,6 +50,19 @@ function readdata($id)
     $rows = $obj->get_tgt(false,$id);
 }
 
+//--------------------------------------------------------------------------------------
+/*!
+@brief	削除
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function deljob()
+{
+    $chenge = new cchange_ex();
+    if ($_POST['param'] > 0) {
+        $chenge->delete("participant", "event_id=" . $_POST['param'] . " and user_id=" . (int)$_SESSION['j2020tmD_user']['id']);
+    }
+}
 
 //--------------------------------------------------------------------------------------
 /*!
