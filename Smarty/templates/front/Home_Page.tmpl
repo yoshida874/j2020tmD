@@ -154,74 +154,53 @@
           <hr>
           <h2>新着イベント</h2>
           <hr>
-          <div class="row">
-            <div class="col-md-5">
-              <div>
-                <h4><b>家族で水族館へ行こう！</b></h4>
+          {foreach from=$rows key=k item=value}
+          <form name="form1" method="get" action="">
+            <br>
+            <div class="row">
+              <div class="col-md-5">
+                <div>
+                  <a href="Event_Detail.php?iid={$value.event_id}">
+                    <h4><b>{$value.event_name}<br></b></h4>
+                  </a>
+                </div>
+                <div>
+                  <img src="{$value.img}" class="img-fluid img-thumbnail"
+                    style="width:480px;height:180px;object-fit: cover;" alt="">
+                </div>
               </div>
-              <img src="../img/SHI1987004.jpeg" class="img-fluid img-thumbnail"
-                style="width:480px;height:180px;object-fit: cover;" alt="">
-            </div>
-            <div class="col-md-6">
-              <br>
-              <br>
-              <div>
-                <b>・日付/時間</b>：2020-07-12 (日) 14:00~
-              </div>
-              <br>
-              <div>
-                <b>・対象年齢</b>：1歳~6歳
-              </div>
-              <br>
-              <div>
-                <b>・開催団体</b>：wiz保育部
-              </div>
-              <br>
-              <div>
-                <b>・開催場所</b>：郡山シーパラダイス 郡山神保町2丁目32
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <h3 align=right>１０/１２ 人</h3>
-          </div>
-          <hr>
-        </div>
-      </div>
-      <div id='center' class="main center">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-5">
-              <div>
-                <h4><b>シャボン玉で遊ぼう</b></h4>
-              </div>
-              <img src="../img/soap_bubble.jpg" class="img-fluid img-thumbnail"
-                style="width:480px;height:180px;object-fit: cover;" alt="">
-            </div>
-            <div class="col-md-6">
-              <br>
-              <br>
-              <div>
-                <b>・日付/時間</b>：2020-07-16 (木) 12:00~
-              </div>
-              <br>
-              <div>
-                <b>・対象年齢</b>：5歳~10歳
-              </div>
-              <br>
-              <div>
-                <b>・開催団体</b>：郡山総合保育団体
-              </div>
-              <br>
-              <div>
-                <b>・開催場所</b>：うつみね幼稚園 須賀川市あかば町111
+              <div class="col-md-7">
+                <br>
+                <br>
+                <div>
+                  <b>・日付/時間</b>：
+                  {$value.start_event_date}
+                  ({$value.start_event_week})
+                  {$value.start_event_time|date_format:"%H:%M"}~<br>
+                </div>
+                <br>
+                <div>
+                  <b>・対象年齢</b>：{$value.start_age}歳~{$value.end_age}歳
+                </div>
+                <br>
+                <div>
+                  <b>・開催団体</b>：{$value.group_name}
+                </div>
+                <br>
+                <div>
+                  <b>・開催場所</b>：{$value.venue_name} {$value.venue_city}{$value.venue_aza}
+                </div>
+                <br>
+                <div class="col-md-12">
+                  <h3 align=right>{$value.participant_count}/{$value.upper_limit} 人</h3>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-12">
-            <h3 align=right>９/２７ 人</h3>
-          </div>
-          <hr>
+            <hr>
+          </form>
+          {foreachelse}
+          検索結果が見つかりません
+          {/foreach}
         </div>
       </div>
 

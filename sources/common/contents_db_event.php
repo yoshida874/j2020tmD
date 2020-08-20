@@ -61,7 +61,7 @@ class cevent extends crecord {
 			"*",			//取得するカラム
 			"Event left join NPO_group on Event.NPO_id = NPO_group.NPO_id",	//取得するテーブル
 			"1",			//条件
-			"event_id asc",	//並び替え
+			"Event.created_at asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
 		);
 		//順次取り出す

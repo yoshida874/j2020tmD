@@ -8,7 +8,7 @@ require_once("inc_header.php");
 $smarty->assign('page', $header_items);
 
 //1ページのリミット
-$limit = 20;
+$limit = 3;
 //ページの設定
 //デフォルトは1
 $page = 1;
@@ -43,6 +43,9 @@ if(isset($_GET['search'])){
     $rows = $obj->get_search(false,$_GET['keyword'],$_GET['start_event_date'],
                             $_GET['end_event_date'],$_GET['start_age'],
                             $_GET['end_age'],$_GET['venue_city']);
+}
+else{
+    readdata();
 }
 
 //曜日リスト
