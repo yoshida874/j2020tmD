@@ -2,259 +2,286 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>わかばくらぶ</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+    <title>わかばくらぶ</title>
 
-  <!-- Favicons -->
-  <link href="/~j2020tmD/sources/assets/img/favicon.png" rel="icon">
-  <link href="/~j2020tmD/sources/assets//img/apple-touch-icon.png" rel="apple-touch-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/~j2020tmD/sources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="../../img/wakaba.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
+    <script type="text/javascript" src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    {literal}
+    <script type="text/javascript">
 
-  <!-- Vendor CSS Files -->
-  <link href="/~j2020tmD/sources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/~j2020tmD/sources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="/~j2020tmD/sources/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="/~j2020tmD/sources/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="/~j2020tmD/sources/assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link rel="icon" href="favicon.ico">
-  <link rel="icon" type="image/png" href="../img/wakaba.png">
-  <link rel="stylesheet" href="../css/adminmin_base.css">
-  <link rel="stylesheet" href="../css/user_list.css">
-  <link href='mypage/css/style.css' rel="stylesheet">
+    $(function(){
+    //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+    $('form').on('change', 'input[type="file"]', function(e) {
+        var file = e.target.files[0],
+            reader = new FileReader(),
+            $preview = $(".preview");
+            t = this;
 
+        // 画像ファイル以外の場合は何もしない
+        if(file.type.indexOf("image") < 0){
+        return false;
+        }
 
-  <!-- Template Main CSS File -->
-     <link href="/~j2020tmD/sources/css/style.css" rel="stylesheet">
-     <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
+        // ファイル読み込みが完了した際のイベント登録
+        reader.onload = (function(file) {
+        return function(e) {
+            //既存のプレビューを削除
+            $preview.empty();
+            // .prevewの領域の中にロードした画像を表示するimageタグを追加
+            $preview.append($('<img>').attr({
+                    src: e.target.result,
+                    width: "200px",
+                    class: "preview",
+                    title: file.name
+                }));
+        };
+        })(file);
+
+        reader.readAsDataURL(file);
+    });
+
+    });
+
+    $(document).ready(function(){
+    //画像が入っていなかった場合は表示させない
+    {/literal}{if $rows.img != ''}{literal}
+    $preview = $(".preview");
+    $preview.append($("<img src='{/literal}{$rows.img}{literal}' width='200'>"));
+    {/literal}{/if}{literal}
+
+    });
+
+    </script>
+    {/literal}
+
 </head>
 
-  <body>
+<body>
     {include file="../components/header.tmpl"}
-    <br><br><br><br><div id='center' class="main center">
+    <br><br><br><br>
+    <div id='center' class="main center">
         <div class="container">
-        <div align="left"> 
-            <h1>イベント編集</h1>
-            <hr> <br>
+            <div align="left">
+                <h1>イベント編集</h1>
+                <hr> <br>
 
-            <div class="row">
-              <div class="col-md-11">
-            <div align="center">
-          <div>
-              <a href="" class="btn btn-outline-primary btn-lg">データの呼び出し</a>
-            </div>
-            </div>
-            </div>
-            </div>
+                <div class="">
+                    <form name="form1" action="" method="post" enctype="multipart/form-data" class="contactform">
 
-        <div class="">
-                <form name="form1" action="" method="post" enctype="multipart/form-data"
-                    class="contactform">
-                  <div class="form-group">
-                      <p style="margin-bottom: 0px;">タイトル<span style="color: red;">*必須</span></p>
-                      <input type="text" name='title' class="form-control input-sm" id="kaisai_pass"
-                          placeholder="タイトル" value="">
-                      <div class="validation"></div>
-                  </div>
-                  <div class="form-group">
-                    <p style="margin-bottom: 0px;">開催団体<span style="color: red;">*必須</span></p>
-                    <input type="text" name='organizing_organization' class="form-control input-sm" id="kaisai_name"
-                        placeholder="開催団体" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
-                    <div class="validation"></div>
-                  </div>
-                  <div class="form-group">
-                    <p style="margin-bottom: 0px;">イベント画像</p>
-                    <input type="file" name='image' class="" id="kaisai_name"
-                        placeholder="イベント画像" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
-                    <div class="validation"></div>
-                　</div>
-                <div class="form-group">       
-                    <label>対象年齢<span style="color: red;">*必須</span></label>
-                    <div class="myfoam">
-                        <select name="month">
-                        <option value="0" >選択してください</option>
-                                                                                    <option value="0" >0</option>
-                                                                                    <option value="1" >1</option>
-                                                                                    <option value="2" >2</option>
-                                                                                    <option value="3" >3</option>
-                                                                                    <option value="4" >4</option>
-                                                                                    <option value="5" >5</option>
-                                                                                    <option value="6" >6</option>
-                        </select>歳
-                        ～
-                        <select name="day">
-                          <option value="0">選択してください。</option>
-                                                                                    <option value="0" >0</option>
-                                                                                    <option value="1" >1</option>
-                                                                                    <option value="2" >2</option>
-                                                                                    <option value="3" >3</option>
-                                                                                    <option value="4" >4</option>
-                                                                                    <option value="5" >5</option>
-                                                                                    <option value="6" >6</option>
-                      </select>歳
-                    </div>
-                </div>
-                <div class="form-group">
-                    <p style="margin-bottom: 0px;">主催者<span style="color: red;">*必須</span></p>
-                    <input type="text" name='title' class="form-control input-sm" id="kaisai_name"
-                        placeholder="主催者" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
-                    <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                    <p style="margin-bottom: 0px;">ハッシュタグ</p>
-                    <input type="text" name='tag' class="form-control input-sm" id="kaisai_name"
-                        placeholder="ハッシュタグ" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
-                    <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                    <p style="margin-bottom: 0px;">参加費用<span style="color: red;">*必須</span></p>
-                    <input type="text" name='cost' class="form-control input-sm" id="kaisai_name"
-                        placeholder="参加費用" data-rule="minlen:1" data-msg="値を入力してください"
-                        value="">
-                    <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                    <p style="margin-bottom: 0px;">イベント説明文<span style="color: red;">*必須</span></p>
-                    <textarea class="textarea" name="NPO_purpose" cols="40" rows="8" placeholder="目的"></textarea>
-                    <div class="validation"></div>
-                </div>
-                
+                        <div class="form-group">
+                            <p style="margin-bottom: 0px;">タイトル<span style="color: red;">*必須</span></p>
+                            <input type="text" name='event_name' class="form-control input-sm" id="kaisai_pass"
+                                placeholder="タイトル" value="{$rows.event_name|escape}">
+                            <div class="validation"></div>
+                        </div>
 
-                <div>
-                        <!-- 開催日程-->
-                        <tr>開催日程・募集期間<span style="color: red;">*必須</span></tr>
-                        <br>
-                        <tr>
-                             <td>開始日時</td>
-                            <td><br>
-                                    <tr>
-                                        
-                                        <td><input type="date" name='start_day' class="" id="kaisai_name"
-                                        placeholder="日にちを入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value=""></td>
-                                    </tr><br>
-                                    <tr>
-                                        
-                                        <td><input type="time" name='start_time' class=" id="kaisai_name"
-                                        placeholder="時間を入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value=""></td>
-                                    </tr>
+                        <div class="form-group">
+                            {if $rows.img != ''}
+                                <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
+                            {/if}
+                            <div class="preview"></div>
+                            <br>
+                            <input type="hidden" name="img" value="{$rows.img|escape}" />
+                            <br>
+                            <input type="file" name="img" accept="image/jpeg,image/png,image/gif">
                             </td>
-                        </tr><br>
-                        <!-- 終了日時-->
-                        <br><tr>
-                            <td>終了日時</td>
-                        <td><br>
-                                <tr>
-                                        
-                                        <td><input type="date" name='kaisai_name' class="" id="kaisai_name"
-                                            placeholder="日にちを入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                            value=""></td>
-                                </tr><br>
-                                <tr>
-                                    
-                                    <td><input type="time" name='kaisai_name' class="" id="kaisai_name"
-                                    placeholder="時間を入力" size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                    value=""></td>
-                                </tr>
-                        </td>
-                        </tr><br>
-                        <!--募集開始-->
-                        <br><tr>
-                            <td>募集開始</td>
-                        <td><br>
-                                <tr>
-                                    <!--<td>日</td>-->
-                                    <td><input type="date" name='kaisai_name' class="" id="kaisai_name"
-                                        placeholder="日にちを入力" size="20" style="width:px;" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value=""></td>
-                                    </tr><br>
-                                    <tr>
-                                    <!--<td>時間</td>-->
-                                    <td><input type="time" name='kaisai_name' class="" id="kaisai_name"
-                                    placeholder="時間を入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
-                                    value=""></td>
-                                </tr>
-                        </td>
-                        </tr><br>
-                        <!--終了-->
-                        <br><tr>
-                            <td>終了日</td>
-                        <td><br>
-                                <tr>
-                                        
-                                        <td><input type="date" name='end_day' class="" id="kaisai_name"
-                                            placeholder="日にちを入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
-                                            value=""></td>
-                                    </tr><br>
-                                    <tr>
-                                    
-                                    <td><input type="time" name='end_time' class="" id="kaisai_name"
-                                        placeholder="時間を入力" size="20"  data-rule="minlen:1" data-msg="値を入力してください"
-                                        value=""></td>
-                                </tr>
-                        </td>
-                        </tr>
-                </div>
-                </form>
-                       
-          
-            <br>
-                    <tr>開催場所<span style="color: red;">*必須</span></tr>
-                    <tr>
+                            <!--
+                            <p style="margin-bottom: 0px;">イベント画像</p>
+                            <input type="file" name='image' class="" id="" placeholder="イベント画像" size="20"
+                                data-rule="minlen:1" data-msg="値を入力してください" value="">
+                            <div class="validation"></div>
+                            -->
+                            　
+                        </div>
+
+                        <div class="form-group">
+                            <label>対象年齢<span style="color: red;">*必須</span></label>
+                            <div class="myfoam">
+                                <select name="start_age">
+                                    <option value="0">選択してください</option>
+                                    {for $age=0 to 8}
+                                    {if $age == $rows.start_age}
+                                    <option value="{$age}" selected="selected">{$age}</option>
+                                    {else}
+                                    <option value="{$age}">{$age}</option>
+                                    {/if}
+                                    {/for}
+                                </select>歳
+                                ～
+                                <select name="end_age">
+                                    <option value="0">選択してください</option>
+                                    {for $age=0 to 8}
+                                    {if $age == $rows.end_age}
+                                    <option value="{$age}" selected="selected">{$age}</option>
+                                    {else}
+                                    <option value="{$age}">{$age}</option>
+                                    {/if}
+                                    {/for}
+                                </select>歳
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p style="margin-bottom: 0px;">管理者<span style="color: red;">*必須</span></p>
+                            <input type="text" name='representative' class="form-control input-sm" id=""
+                                placeholder="管理者" data-rule="minlen:1" data-msg="値を入力してください"
+                                value="{$rows.representative|escape}">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <p style="margin-bottom: 0px;">ハッシュタグ</p>
+                            <input type="text" name='tag' class="form-control input-sm" id="" placeholder="ハッシュタグ"
+                                data-rule="minlen:1" data-msg="値を入力してください" value="">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <p style="margin-bottom: 0px;">参加費用<span style="color: red;">*必須</span></p>
+                            <input type="text" name='cost' class="form-control input-sm" id="" placeholder="参加費用"
+                                data-rule="minlen:1" data-msg="値を入力してください" value="{$rows.cost|escape}">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <p style="margin-bottom: 0px;">イベント説明文<span style="color: red;">*必須</span></p>
+                            <textarea class="textarea" name="content" cols="40" rows="8" value="{$rows.content|escape}"
+                                placeholder="目的"></textarea>
+                            <div class="validation"></div>
+                        </div>
+
+
+                        <div>
+                            <!-- 開催日程-->
+                            <tr>開催日程・募集期間<span style="color: red;">*必須</span></tr>
+                            <br>
+                            <tr>
+                                <td>開始日時</td>
+                                <td><br>
+                            <tr>
+
+                                <td><input type="date" name='start_event_date' class="" id="" placeholder="日にちを入力"
+                                        size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$rows.start_event_date|escape}"></td>
+                            </tr><br>
+                            <tr>
+
+                                <td><input type="time" name='start_event_time' class="" id="" placeholder="時間を入力"
+                                        size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$rows.start_event_time|escape}"></td>
+                            </tr>
+                            </td>
+                            </tr><br>
+                            <!-- 終了日時-->
+                            <br>
+                            <tr>
+                                <td>終了日時</td>
+                                <td><br>
+                            <tr>
+
+                                <td><input type="date" name='end_event_date' class="" id="" placeholder="日にちを入力"
+                                        size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$rows.end_event_date|escape}"></td>
+                            </tr><br>
+                            <tr>
+
+                                <td><input type="time" name='end_event_time' class="" id="" placeholder="時間を入力"
+                                        size="20" style="px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$rows.end_event_time|escape}"></td>
+                            </tr>
+                            </td>
+                            </tr><br>
+                            <!--募集開始-->
+                            <br>
+                            <tr>
+                                <td>募集開始</td>
+                                <td><br>
+                            <tr>
+                                <td><input type="date" name='start_recruiting_date' class="" id="" placeholder="日にちを入力"
+                                        size="20" style="width:px;" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$rows.start_recruiting_date|escape}">
+                                </td>
+                            </tr><br>
+                            <tr>
+                                <td><input type="time" name='start_recruiting_time' class="" id="" placeholder="時間を入力"
+                                        size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$rows.start_recruiting_time|escape}"></td>
+                            </tr>
+                            </td>
+                            </tr><br>
+                            <!--終了-->
+                            <br>
+                            <tr>
+                                <td>終了日</td>
+                                <td><br>
+                            <tr>
+
+                                <td><input type="date" name='end_recruiting_date' class="" id="" placeholder="日にちを入力"
+                                        size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$rows.end_recruiting_date|escape}"></td>
+                            </tr><br>
+                            <tr>
+
+                                <td><input type="time" name='end_recruiting_time' class="" id="" placeholder="時間を入力"
+                                        size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                        value="{$rows.end_recruiting_time|escape}"></td>
+                            </tr>
+                            </td>
+                            </tr>
+                        </div>
+
+                        <br>
+                        <tr>開催場所<span style="color: red;">*必須</span></tr>
+                        <tr>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">会場名</p>
-                                    <input type="text" name='venue_name' class="form-control input-sm" id="kaisai_name"
-                                        placeholder="会場名" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value="">
-                                    <div class="validation"></div>
+                                <input type="text" name='venue_name' class="form-control input-sm" id="venue_name"
+                                    placeholder="会場名" size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                    value="{$rows.venue_name|escape}">
+                                <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">市町村</p>
-                                    <input type="text" name='plane' class="form-control input-sm" id="kaisai_name"
-                                        placeholder="市町村" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value="">
-                                    <div class="validation"></div>
+                                <input type="text" name='venue_city' class="form-control input-sm" id="venue_city"
+                                    placeholder="市町村" size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                    value="{$rows.venue_city|escape}">
+                                <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <p style="margin-bottom: 0px;">番地以下</p>
-                                    <input type="text" name='plane' class="form-control input-sm" id="kaisai_name"
-                                        placeholder="番地以下" size="20" data-rule="minlen:1" data-msg="値を入力してください"
-                                        value="">
-                                    <div class="validation"></div>
+                                <input type="text" name='venue_aza' class="form-control input-sm" id="venue_aza"
+                                    placeholder="番地以下" size="20" data-rule="minlen:1" data-msg="値を入力してください"
+                                    value="{$rows.venue_aza|escape}">
+                                <div class="validation"></div>
                             </div>
-                    </tr>
-            </section> 
-    </div>
-    </div>
-    </div>
-    <p>
-      <div align = "center">
-      <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="作成" onclick="">
-      <input class="btn btn-secondary btn-lg" type="submit" name="btn" value="保存" onclick="">
-      <input class="btn btn-secondary btn-lg" type="submit" name="delete_btn" value="削除" onclick="">
+                        </tr>
+                        <p>
+                        <div align="center">
+                            <input class="btn btn-secondary btn-lg" type="submit" name="btn" value="更新" onclick="">
+                            <input class="btn btn-secondary btn-lg" type="submit" name="delete_btn" value="削除"
+                                onclick="">
+                        </div>
+                        </p>
+                        <input type="hidden" name="event_id" value="{$rows.event_id|escape}" />
+                    </form>
+                </div>
+            </div>
+        </div>
 
-      </div>
-    </p>
-    <br>
-    <script src="/~j2020tmD/sources/front/js/main.js"></script>
-
-    <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="/~j2020tmD/sources/front/js/main.js"></script>
-    {include file="../components/footer.tmpl"}
+        <br>
+        <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+        <script src="/~j2020tmD/sources/front/js/main.js"></script>
+        {include file="../components/footer.tmpl"}
 </body>
 
 </html>
