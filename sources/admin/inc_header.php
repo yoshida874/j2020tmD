@@ -15,5 +15,5 @@ $header_items = array(
     '団体一覧' => $root_path . $sub_path . 'Dantai_List.php',
     'お問い合わせ一覧' => $root_path . $sub_path . 'Inquiry_List.php',
     'ブラックリスト' => $root_path . $sub_path . 'Blacklist_List.php',
-    'ログイン' => $root_path . $sub_path . 'Login_Page.php'
+    'ログアウト' => $root_path . $sub_path . 'Login_Page.php'
 );

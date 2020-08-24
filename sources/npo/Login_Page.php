@@ -11,7 +11,10 @@ $ERR_STR = "";
 $user_id = "";
 $user_name = "";
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
+
 if(isset($_SESSION['j2020tmD_npo']['err']) && $_SESSION['j2020tmD_npo']['err'] != ""){
     $ERR_STR = $_SESSION['j2020tmD_npo']['err'];
 }
