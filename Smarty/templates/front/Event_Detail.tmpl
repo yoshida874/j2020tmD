@@ -15,19 +15,19 @@
   <title>わかばくらぶ</title>
   {literal}
   <script type="text/javascript">
-   function del_func_form(pm){
+    function del_func_form(pm) {
       console.log("del_func");
       var message = "参加を取り消しますか?";
       console.log(message);
-      if(confirm(message)){
-          document.form1.target = "_self";
-          document.form1.func.value = 'del';
-          document.form1.param.value = pm;
-          document.form1.submit();
-      }else {
+      if (confirm(message)) {
+        document.form1.target = "_self";
+        document.form1.func.value = 'del';
+        document.form1.param.value = pm;
+        document.form1.submit();
+      } else {
         console.log('キャンセルがクリックされました');
       }
-  }
+    }
   </script>
 
   {/literal}
@@ -46,11 +46,9 @@
       <div class="row">
         <div class="col-md-8">
           <br>
-          <div>
             <h3><b>{$rows.event_name}</b></h3><br>
             <h5><b>{$rows.start_event_date}({$rows.start_event_week})
                 {$rows.start_event_time|date_format:"%H:%M"} ~ </b>
-          </div>
           <img src="{$rows.img}" class="img-fluid img-thumbnail" style="width:700px;height:350px;object-fit: cover;"
             alt="">
         </div>
@@ -58,77 +56,61 @@
 
       <br>
       <br>
-      <div>
         <h4><b>■このイベントについて</b></h4>
-      </div>
       <hr>
-      <div>
         {$rows.content}
-      </div>
-
-
       <br>
       <br>
-      <div>
+      <br>
         <h4><b>■開催概要</b></h4>
-      </div>
       <hr>
       <p></p>
 
       <!-- イベント詳細 -->
-      <div>
-        <tr>
           <h5>
-            <td>日付/時間 : {$rows.start_event_date}({$rows.start_event_week})
-              {$rows.start_event_time|date_format:"%H:%M"} ~ {$rows.end_event_time|date_format:"%H:%M"}</td>
+            日付/時間 : {$rows.start_event_date}({$rows.start_event_week})
+              {$rows.start_event_time|date_format:"%H:%M"} ~ {$rows.end_event_time|date_format:"%H:%M"}
           </h5>
-        </tr>
-      </div>
       <br>
-      <div>
-        <tr>
+        
           <h5>
-            <td>対象年齢 : {$rows.start_age}歳〜{$rows.end_age}歳</td>
+            対象年齢 : {$rows.start_age}歳〜{$rows.end_age}歳
           </h5>
-        </tr>
-      </div>
+        
       <br>
-      <div>
-        <tr>
+        
           <h5>
-            <td>参加費用 : {$rows.cost}円</td>
+            参加費用 : {$rows.cost}円
           </h5>
-        </tr>
-      </div>
-      </table>
+        
       <br>
       <p></p>
 
       <h4><b>
-          <td>■開催場所</td>
+          ■開催場所
         </b></h4>
       <hr>
 
       <!-- 開催場所 -->
       <div>
-        <tr>
+        
           <h5>
-            <td>会場名 :{$rows.venue_name} </td>
+            会場名 :{$rows.venue_name} 
           </h5>
-        </tr>
+        
         <br>
-        <tr>
+        
           <h5>
-            <td>住所 : {$rows.venue_city}{$rows.venue_aza}</td>
+            住所 : {$rows.venue_city}{$rows.venue_aza}
           </h5>
-        </tr>
+        
       </div>
       <br>
       <br>
 
       <h4><b>
-          <td>■参加者　{$rows.participant_count}/{$rows.upper_limit}人
-        </b></td>
+          ■参加者　{$rows.participant_count}/{$rows.upper_limit}人
+        </b>
         </h5>
         <hr>
 
@@ -149,56 +131,43 @@
         </form>
         <br>
         <br>
+        {if $rows.NPO_id != ''}
         <hr>
         <div>
-          <tr>
-            <h4><b>
-                <td>■開催団体
-              </b> : <button type="button" class="btn btn-primary btn-sm">Wiz保育部</button>
-          </tr>
+        <h4><b>
+            ■開催団体
+          </b> : <button type="button" class="btn btn-primary btn-sm">Wiz保育部</button>
         </div>
         <br>
         <div class="row">
           <div class="col-md-2">
-            <td>
               <img class="fit-picture" src="img path" alt="Event imgge" />
-            </td>
           </div>
           <div class="col-md-5">
-            <div>
-              <tr>
-                <h5>
-                  <td>イベント数 : ３回</td>
-                </h5>
-              </tr>
-            </div>
+              <h5>
+                イベント数 : ３回
+              </h5>
             <br>
-            <div>
-              <tr>
-                <h5>
-                  <td>メンバー数 : 40人</td>
-                </h5>
-              </tr>
-            </div>
+              <h5>
+                メンバー数 : 40人
+              </h5>
           </div>
         </div>
         <br>
         <p></p>
+        {else}
         <h4><b>
-            <td>■管理者
-          </b></td>
+            ■主催者
+          </b>
           <hr>
         </h4>
         <!-- 管理者 -->
-        <div>
-          <tr>
             <h5>
-              <td>@{$rows.representative}</td>
+              @{$rows.representative}
             </h5>
-          </tr>
-        </div>
         <br>
         <br>
+        {/if}
         <h5><b>■イベントに関するお問い合わせはこちらから</b></h5>
         <hr>
         <br>

@@ -133,7 +133,11 @@
                 </div>
                 <br>
             <div>
+                {if $value.NPO_id != ''}
                 <b>・開催団体</b>：{$value.group_name}
+                {else}
+                <b>・開催者</b>：{$value.representative}
+                {/if}
             </div>
             <br>
                 <div>
