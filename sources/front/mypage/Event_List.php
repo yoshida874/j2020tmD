@@ -25,8 +25,10 @@ switch($_GET['iid']){
         $from = ($page - 1) * $limit;
         $rows = $obj->get_conf_event(false, $from, $limit, $user_id);
     break;
-    case 'edit':
-        echo date("Y/m/d");
+    case 'past':
+        $obj = new cparticipant();
+        $from = ($page - 1) * $limit;
+        $rows = $obj->get_past_event(false, $from, $limit, $user_id);
     break;
     case 'past':
         $obj = new cparticipant();
