@@ -10,6 +10,7 @@ $smarty->assign('page', $header_items);
 $ERR_STR = "";
 $user_id = "";
 $user_name = "";
+$id = "";
 
 //inc_headerでsession_start()しているため
 if(!isset($_SESSION)){
@@ -40,6 +41,7 @@ function chk_user_login($login_user,$user_pw){
     global $ERR_STR;
     global $user_id;
     global $user_name;
+    global $id;
     $user = new cuser();
     $row = $user->get_tgt_login(false,$login_user);
     if($row === false || !isset($row['user_id'])){
@@ -54,6 +56,7 @@ function chk_user_login($login_user,$user_pw){
     }
     $user_id = $row['user_id'];
     $user_name = $row['user_name'];
+    $id = $row['user_name'];
     return true;
 }
 
