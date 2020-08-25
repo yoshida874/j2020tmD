@@ -32,6 +32,72 @@
       document.form1.submit();
     }
     
+    var i = 1 ;
+    function addForm() {
+      // // p要素作成
+      //var newContent = document.createTextNode("お子様の名前(ニックネーム可) <span style="color: red;">*必須</span>"); // テキストノードを作成
+      //newElement.appendChild(newContent); // p要素にテキストノードを追加
+      //newElement.setAttribute("style","margin-bottom: 0px;"); // p要素にidを設定
+
+      // テキスト
+      var newElement = document.createElement("p");
+      var newContent = document.createTextNode("お子様の名前(ニックネーム可)" + i);
+      newElement.style.cssText = "margin-bottom: 0px;";
+      newElement.appendChild(newContent);
+      // テキスト2
+      var newElement2 = document.createElement("p");
+      var newContent2 = document.createTextNode("お子様の年齢" + i);
+      newElement2.style.cssText = "margin-bottom: 0px;";
+      newElement2.appendChild(newContent2);
+      // テキスト3
+      var newElement3 = document.createElement("p");
+      var newContent3 = document.createTextNode("お子様の性別" + i);
+      newElement3.style.cssText = "margin-bottom: 0px;";
+      newElement3.appendChild(newContent3);
+      // input生成
+      var input_data = document.createElement('input');
+      input_data.name = 'children_name' + i;
+      input_data.type = 'text';
+      input_data.className = 'form-control input-sm'
+      input_data.id = 'kaisai_pass';
+      input_data.placeholder = 'お子様の名前' + i;
+      // input2
+      var input_data2 = document.createElement('input');
+      input_data2.name = 'children_age' + i;
+      input_data2.type = 'text';
+      input_data2.className = 'form-control input-sm'
+      input_data2.id = 'kaisai_pass';
+      input_data2.placeholder = '年齢' + i;
+      // radio
+      var input_data3 = document.createElement('input');
+      var label1 = document.createElement('label');
+      input_data3.name = 'children_sex' + i;
+      input_data3.type = 'radio';
+      input_data3.value = 0;
+      input_data3.checked = "checked";
+      label1.innerHTML = "男性";
+      // radio
+      var input_data4 = document.createElement('input');
+      var label2 = document.createElement('label');
+      input_data4.name = 'children_sex' + i;
+      input_data4.type = 'radio';
+      input_data3.value = 1;
+      label2.innerHTML = "女性"
+
+      // フックするId
+      var parent = document.getElementById('children');
+      parent.appendChild(newElement);
+      parent.appendChild(input_data);
+      parent.appendChild(newElement2);
+      parent.appendChild(input_data2);
+      parent.appendChild(newElement3);
+      parent.appendChild(input_data3);
+      parent.appendChild(label1);
+      parent.appendChild(input_data4);
+      parent.appendChild(label2);
+      i++ ;
+      document.form1.length.value = i;
+    }
     // -->
     </script>
     {/literal}
@@ -82,8 +148,8 @@
             <th>性別</th>
             <td>
               <p>
-                <input type="radio" name="sex" value="0" {if $smarty.post.sex== 1 }checked="checked"{/if} />男性&nbsp;
-                <input type="radio" name="sex" value="1" {if $smarty.post.sex == 2 }checked="checked"{/if} />女性
+                <input type="radio" name="sex" value="0" {if $smarty.post.sex== 0 }checked="checked"{/if} />男性&nbsp;
+                <input type="radio" name="sex" value="1" {if $smarty.post.sex == 1 }checked="checked"{/if} />女性
               </p>
             </td>
           </tr>
@@ -97,6 +163,7 @@
           </div>
           <div class="form-group">
             <p style="margin-bottom: 0px;">パスワード</p>
+            (半角英数字8～20文字)
             <input type="password" name='pw' class="form-control input-sm" id="kaisai_name"
               placeholder="パスワード" data-rule="minlen:1" data-msg="値を入力してください"
               value="{$smarty.post.pw|escape}">
@@ -110,38 +177,41 @@
               value="">
             <div class="validation"></div>
           </div>
-          <div class="form-group">
+          <!-- 子供 -->
+          
+          <div class="form-group" id="children">
             <p style="margin-bottom: 0px;">お子様の名前(ニックネーム可)<span style="color: red;">*必須</span></p>
             <input type="text" name='children_name' class="form-control input-sm" id="kaisai_pass"
                 placeholder="お子様の名前" value="">
             <div class="validation"></div>
-          </div>
-          <div class="form-group">
-            <p style="margin-bottom: 0px;">お子様の生年月日<span style="color: red;">*必須</span></p>
-            <input type="date" name='children_birthday' class="" id="kaisai_name"
-              placeholder="生年月日" data-rule="minlen:1" data-msg="値を入力してください"
+            <div class="form-group">
+            <p style="margin-bottom: 0px;">お子様の年齢<span style="color: red;">*必須</span></p>
+            <input type="text" name='children_age' class="" id="kaisai_name"
+              placeholder="年齢" data-rule="minlen:1" data-msg="値を入力してください"
               value="">
             <div class="validation"></div>
           </div>
           <tr>
-            <th>お子様の性別</th>
+          <th>お子様の性別</th>
             <td>
               <p>
-                <input type="radio" name="children_gender" value=0 checked="checked">男性
-                <input type="radio" name="children_gender" value=1>女性
+                <input type="radio" name="children_sex" value=1 checked="checked">男性
+                <input type="radio" name="children_sex" value=2>女性
               </p>
             </td>
           </tr>
+          </div>
+          
           <p>
             <input type="hidden" name="func" value="" />
             <input type="hidden" name="param" value="" />
             <div align = "center">
-            <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="+お子様の追加" onclick="history.back()">
             <input class="btn btn-secondary btn-lg" type="submit" name="btn_submit" value="登録" onClick="javascript:set_func_form('conf','')">
             </div>
           </p>
         <br>
       </form>
+      <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="+お子様の追加" onclick="addForm()">
       </div>
     </div>
   </section>
