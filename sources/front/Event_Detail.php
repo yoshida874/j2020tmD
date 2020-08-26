@@ -32,7 +32,12 @@ if(!empty($rows)){
     //イベントに参加している人数
     $participant_count = $obj->get_event_user(false,$rows["event_id"]);
     //すでにイベントに参加登録しているか
-    $participant = $obj->get_event_participant(false,(int)$_SESSION['j2020tmD_user']['id'],$rows["event_id"]);
+    if(isset($_SESSION['j2020tmD_user']['id'])){
+        $participant = $obj->get_event_participant(false,$_SESSION['j2020tmD_user']['id'],$rows["event_id"]);
+    }
+    else{
+        $participant = $obj->get_event_participant(false,0,$rows["event_id"]);
+    }
     if($rows["NPO_id"] != ''){
         //NPO団体情報取得
         $obj = new cnpo_group();
