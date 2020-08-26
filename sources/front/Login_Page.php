@@ -32,6 +32,7 @@ if(isset($_POST['login_user']) && isset($_POST['user_password'])){
         $_SESSION['j2020tmD_user']['login_user'] = strip_tags($_POST['login_user']);
         $_SESSION['j2020tmD_user']['user_id'] = $user_id;
         $_SESSION['j2020tmD_user']['user_name'] = $user_name;
+        $_SESSION['j2020tmD_user']['id'] = $id;
         cutil::redirect_exit("Home_Page.php");
     }
 }
@@ -56,7 +57,7 @@ function chk_user_login($login_user,$user_pw){
     }
     $user_id = $row['user_id'];
     $user_name = $row['user_name'];
-    $id = $row['user_name'];
+    $id = $row['id'];
     return true;
 }
 
