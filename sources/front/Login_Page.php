@@ -50,8 +50,8 @@ function chk_user_login($login_user,$user_pw){
         return false;
     }
     //暗号化によるパスワード認証
-    if($user_pw == $rows['pw']){
-    //if(!cutil::pw_check($user_pw,$row['pw'])){
+    //if($user_pw != $row['pw']){
+    if(!cutil::pw_check($user_pw,$row['pw'])){
         $ERR_STR .= "パスワードが違っています。\n";
         return false;
     }

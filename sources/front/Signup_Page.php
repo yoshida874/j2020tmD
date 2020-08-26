@@ -178,7 +178,7 @@ function regist()
     $dataarr['address'] = (string)$_POST['address'];
     $dataarr['sex'] = (int)$_POST['sex'];
     $dataarr['birthday'] = (string)$_POST['birthday'];
-    $dataarr['pw'] = (string)$_POST['pw'];
+    $dataarr['pw'] = (string)cutil::pw_encode($_POST['pw']);
 
     $chenge = new cchange_ex();
     // if ($member_id > 0) {
