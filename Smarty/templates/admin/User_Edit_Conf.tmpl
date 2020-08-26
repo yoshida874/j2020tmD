@@ -24,7 +24,7 @@ function set_func_form(fn,pm){
 </head>
 <body>
   {include file="../components/Side_Menu.tmpl"}
-        
+
   <!--<div id="main">-->
   <div id = "center" class ="main center">
    <div class="container">
@@ -104,8 +104,8 @@ function set_func_form(fn,pm){
   <tr>
     <th>プロフィール画像</th>
     <td>
-      <p>{$smarty.post.profile_img}</p>
-      <input type="hidden" name="profile_img"  value="{$smarty.post.profile_img|escape}" />
+      <p><img src="{$imgDir}{$rows.profile_img}" width="200px"></p>
+      <input type="hidden" name="profile_img"  value="{$rows.profile_img|escape}" />
     </td>
   </tr>
 

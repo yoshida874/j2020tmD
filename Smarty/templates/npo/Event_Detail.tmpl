@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="stylesheet" href="../css/admin_base.css">
   <link rel="stylesheet" href="../css/user_list.css">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -203,14 +203,16 @@ function set_func_form(fn,pm){
   <tr>
     <th>イベント内容</th>
     <td>
-      <textarea class = "area" cols="40" rows="8" placeholder="イベント内容">{$rows.content|escape}</textarea>
+      <textarea class = "area" name="content" cols="40" rows="8" placeholder="イベント内容">{$rows.content|escape}</textarea>
     </td>
   </tr>
 
   <tr>
-    <th>画像パス</th>
+    <th>画像</th>
     <td>
-      <input type="text" name="img" placeholder="画像パス" value={$rows.img}>
+      <img src="{$rows.img}" width="200px" >
+      <input type="hidden" name="img" value="{$rows.img|escape}" />
+
     </td>
   </tr>
 </table>
