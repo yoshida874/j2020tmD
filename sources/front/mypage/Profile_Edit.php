@@ -15,7 +15,7 @@ $smarty->assign('imgDir',$imgDir);
 
 $err_array = array();
 $err_flag = 0;
-
+$children= '';
 $page = 0;
 
 
@@ -147,7 +147,12 @@ if(isset($_GET['page'])
 	$page = $_GET['page'];
 }
 
-
+//--------------------------------------------------------------------------------------
+/*!
+@brief	メンバーのデータの追加／更新
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
 function regist(){
 	global $member_id;
 	$dataarr = array();
@@ -164,10 +169,39 @@ function regist(){
   $dataarr['profile_img'] = (string)$_POST['profile_img'];
 	$chenge = new cchange_ex();
 
-	$chenge->update('user',$dataarr,'id=' . $member_id);
+  $chenge->update('user',$dataarr,'id=' . $member_id);
+  
+  regist_child($member_id);
+
 	cutil::redirect_exit($_SERVER['PHP_SELF']);
 }
 
+//--------------------------------------------------------------------------------------
+/*!
+@brief	メンバーの子供のデータの追加／更新
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function regist_child($id)
+{
+    global $member_id;
+    $dataarr = array();
+    $chenge = new cchange_ex();
+
+    $dataarr['user_id'] = (int)$member_id;
+    $dataarr['child_name'] = (string)$_POST['child_name'];
+    $dataarr['age'] = (int)$_POST['age'];
+
+    $mid = $chenge->update('user_children', $dataarr, 'user_id=' . $member_id);
+
+}
+
+//--------------------------------------------------------------------------------------
+/*!
+@brief	メンバーのデータ読み込み。保存後自分自身を再読み込みする。
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
 function read_data_user($member_id)
 {
 	//$smartyをグローバル宣言（必須）
@@ -185,7 +219,28 @@ if(!isset($_POST["func"])){
 	$_POST["func"] = "";
 }
 
+//--------------------------------------------------------------------------------------
+/*!
+@brief	メンバーの子供のデータ読み込み。保存後自分自身を再読み込みする。
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function read_data_children($member_id)
+{
+	//$smartyをグローバル宣言（必須）
+	global $smarty;
+	global $limit;
+	global $children;
+	global $order;
+	global $page;
+	$obj = new cuser_children();
+  $children = $obj->get_tgt(false,$member_id);
+  $smarty->assign('children', $children);
+}
+
 read_data_user($_SESSION['j2020tmD_user']['user_id']);
+read_data_children($_SESSION['j2020tmD_user']['id']);
+
 $member_id = $user['id'];
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'front/mypage/';
