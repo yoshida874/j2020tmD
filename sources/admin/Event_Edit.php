@@ -47,8 +47,7 @@ function regist()
         'event_postcode'        => (string) $_POST['event_postcode'],
         'cost'                  => (int) $_POST['cost'],
         'hash_tag'              => (string) $_POST['hash_tag'],
-        'content'               => (string) $_POST['content'],
-        'img'                   => (string) $_POST['img']
+        'content'               => (string) $_POST['content']
     );
     $chenge = new cchange_ex();
 
