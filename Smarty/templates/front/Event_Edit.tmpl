@@ -20,6 +20,48 @@
 
     {literal}
     <script type="text/javascript">
+    
+    function check() {
+            var err = "";
+            if (form1.event_name.value == "") {
+                err += "タイトルを入力してください。\n"
+            }
+            if ((form1.start_age.value) == "999" || (form1.end_age.value) == "999") {
+                err += "対象年齢を入力してください。\n"
+            }
+            if (form1.cost.value == "") {
+                err += "参加費用を入力してください。\n"
+            }
+            if (form1.content.value == "") {
+                err += "イベント説明文を入力してください。\n"
+            }
+            if ((form1.start_event_date.value == "") || (form1.start_event_time.value == "")) {
+                err += "開始日時を入力してください。\n"
+            }
+            if ((form1.end_event_date.value == "") || (form1.end_event_time.value == "")) {
+                err += "終了日時を入力してください。\n"
+            }
+            if ((form1.start_recruiting_date.value == "") || (form1.start_recruiting_time.value == "")) {
+                err += "募集開始を入力してください。\n"
+            }
+            if ((form1.end_recruiting_date.value == "") || (form1.end_recruiting_time.value == "")) {
+                err += "終了日を入力してください。\n"
+            }
+            if (form1.venue_name.value == "") {
+                err += "会場名を入力してください。\n"
+            }
+            if (form1.venue_city.value == "") {
+                err += "市町村を入力してください。\n"
+            }
+            if (form1.venue_aza.value == "") {
+                err += "番地以下を入力してください。\n"
+            }
+            if (err == "") {
+                document.form1.submit();
+            } else {
+                alert(err);
+            }
+    }
 
     $(function(){
     //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
@@ -263,15 +305,16 @@
                                 <div class="validation"></div>
                             </div>
                         </tr>
+                        <input type="hidden" name="event_id" value="{$rows.event_id|escape}" />
+                    </form>
                         <p>
                         <div align="center">
-                            <input class="btn btn-secondary btn-lg" type="submit" name="btn" value="更新" onclick="">
+                            <input class="btn btn-secondary btn-lg" type="submit" name="btn_confirm" value="更新"
+                                onclick="javascript:check()">
                             <input class="btn btn-secondary btn-lg" type="submit" name="delete_btn" value="削除"
                                 onclick="">
                         </div>
                         </p>
-                        <input type="hidden" name="event_id" value="{$rows.event_id|escape}" />
-                    </form>
                 </div>
             </div>
         </div>
