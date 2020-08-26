@@ -164,20 +164,18 @@ function regist(){
     $ext_arr[] = '.png';
     $subdir = '';
     //var_dump($_FILES);
-    if(upload('img',$ext_arr,$subdir,hash('fnv132',$_POST['event_name']))){
-    //echo "upload成功";
-    }else {
-    //echo "upload失敗";
-    }
 
     $event_id = $_POST['event_id'];
 	$dataarr = array();
     $dataarr['event_name'] = (string)$_POST['event_name'];
 
-    //$dataarr[''] = date('Y-m-d', strtotime($_POST['']));
-    if(isset($_POST['img'])){
+    if(upload('img',$ext_arr,$subdir,hash('fnv132',$_POST['event_name']))){
         $dataarr['img'] = '/~j2020tmD/sources/images/event_img/'. (string)$_POST['img'];
-      }
+    //echo "upload成功";
+    }else {
+    //echo "upload失敗";
+    }
+    
     $dataarr['start_age'] = (int)$_POST['start_age'];
     $dataarr['end_age'] = (int)$_POST['end_age'];
     $dataarr['representative'] = (string)$_POST['representative'];

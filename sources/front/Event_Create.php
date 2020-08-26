@@ -160,7 +160,7 @@ function regist(){
   $dataarr['hash_tag'] = (string)$_POST['hash_tag'];
   $dataarr['content'] = (string)$_POST['content'];
 
-  $dataarr['content'] = $_SESSION['j2020tmD_user']['id'];
+  $dataarr['user_id'] = $_SESSION['j2020tmD_user']['id'];
   if(isset($_POST['event_img'])){
     $dataarr['img'] = '/~j2020tmD/sources/images/event_img/'. (string)$_POST['event_img'];
   }
