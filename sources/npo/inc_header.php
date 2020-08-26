@@ -23,6 +23,7 @@ else{
         );
 }
 
+
 $header_items = array(
     'ホーム' => $root_path . $sub_path . 'Home_Page.php',
     '管理者' => $root_path . $sub_path . 'Admin_List.php',
