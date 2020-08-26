@@ -87,6 +87,10 @@ function set_func_form(fn,pm){
         <p>ログインできない</p>
         {elseif $smarty.post.inquiry == "signup"}
         <p>会員登録について</p>
+        {elseif $smarty.post.inquiry == "black"}
+        <p>迷惑行為、誹謗中傷をされた</p>
+        {elseif $smarty.post.inquiry == "other"}
+        <p>その他</p>
         {/if}
         <input type="hidden" name="inquiry"  value="{$smarty.post.inquiry|escape}" />
       </td>
