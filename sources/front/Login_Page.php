@@ -32,7 +32,8 @@ if(isset($_POST['login_user']) && isset($_POST['user_password'])){
         $_SESSION['j2020tmD_user']['login_user'] = strip_tags($_POST['login_user']);
         $_SESSION['j2020tmD_user']['user_id'] = $user_id;
         $_SESSION['j2020tmD_user']['user_name'] = $user_name;
-        $smarty->display('front/' . 'Home_Page' . '.tmpl');
+        $_SESSION['j2020tmD_user']['id'] = $id;
+        cutil::redirect_exit("Home_Page.php");
     }
 }
 
