@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="../../img/wakaba.png">
     <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
@@ -94,6 +95,22 @@ function set_func_form(fn,pm){
     <td  class="p-3 mb-2 bg-white text-dark">
       <p>{$smarty.post.hobby}</p>
       <input type="hidden" name="hobby"  value="{$smarty.post.hobby|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th  class="p-3 mb-2 bg-white text-dark">お子様の名前</th>
+    <td  class="p-3 mb-2 bg-white text-dark">
+      <p>{$smarty.post.child_name}</p>
+      <input type="hidden" name="child_name"  value="{$smarty.post.child_name|escape}" />
+    </td>
+  </tr>
+
+  <tr>
+    <th  class="p-3 mb-2 bg-white text-dark">お子様の年齢</th>
+    <td  class="p-3 mb-2 bg-white text-dark">
+      <p>{$smarty.post.age}</p>
+      <input type="hidden" name="age" value="{$smarty.post.age|escape}歳" />
     </td>
   </tr>
 

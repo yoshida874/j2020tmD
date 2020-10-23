@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="../../img/wakaba.png">  
     <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="/~j2020tmD/sources/front/css/Profile.css">
     <script type="text/javascript" src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
+
 
     <title>わかばくらぶ</title>
 
@@ -141,13 +143,8 @@
             </tr>
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">プロフィール画像</th>
-                {if $user.profile_img != ''}
-
-                <td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
-                {/if}
+                <td td class="p-3 mb-2 bg-white text-dark" width="120" height="100">
                 <div class="preview" ></div>
-
-
                 <br>
                 <input type="hidden" name="profile_img" value="{$user.profile_img|escape}" />
                 <br>
@@ -156,15 +153,31 @@
             </tr>
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">趣味</th>
-                <td class="p-3 mb-2 bg-white text-dark" width="120" height="50"><input type="text" name="hobby" placeholder="趣味" value={$user.hobby|escape} size="40"></td>
+                <td class="p-3 mb-2 bg-white text-dark" width="120" height="50"><input type="text" name="hobby" placeholder="趣味" value="{$user.hobby|escape}" size="40"></td>
             </tr>
             <tr>
                 <th class="p-3 mb-2 bg-white text-dark">お子様の名前
                     <p>＊ニックネーム可</p>
                 </th>
-                <td class="p-3 mb-2 bg-white text-dark" width="120" height="50"><input type="text" value="渡辺太郎" size="40"></td>
+                <td class="p-3 mb-2 bg-white text-dark" width="120" height="50"><input type="text" name="child_name" value="{$children.child_name|escape}" size="40"></td>
             </tr>
+
             <tr>
+                <th class="p-3 mb-2 bg-white text-dark">お子様の年齢</th>
+                <td class="p-3 mb-2 bg-white text-dark" width="120" height="50">
+                    <select name="age">
+                        <option value="0">選択してください</option>
+                        {for $age=0 to 8}
+                        {if $age == $children.age}
+                        <option value="{$age}" selected="selected">{$age}</option>
+                        {else}
+                        <option value="{$age}">{$age}</option>
+                        {/if}
+                        {/for}
+                    </select>歳
+                </td>
+            <tr>
+            
                 <th class="p-3 mb-2 bg-white text-dark">自己紹介</th>
                 <td class="p-3 mb-2 bg-white text-dark" width="120" height="80"><textarea class = "textarea" name="profile_content" id="" cols="50" rows="10">{$user.profile_content|escape}</textarea></td>
             </tr>
@@ -176,12 +189,17 @@
 <hr>
         <p>
 <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-2">
                 <div align="right">
             <input type="button" class="btn btn-outline-primary btn-lg" value="+お子様の追加" onclick="history.back()">
             </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
+                <div align="center">
+                <input type="button" class="btn btn-outline-secondary btn-lg" name="btn_back" onclick="location.href='./Userprofile_Page.php'" value="戻る">
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div align="center">
                 <input type="button" class="btn btn-outline-primary btn-lg" name="btn_confirm" value="確認" onclick="javascript:check()">
                 </div>

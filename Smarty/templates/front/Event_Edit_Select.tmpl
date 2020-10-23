@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    {include file="../../components/header.tmpl"}
+    {include file="../components/header.tmpl"}
     <br>
     <br>
     <br>
@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div>
-                                <a href="/~j2020tmD/sources/front/Event_Detail.php?iid={$value.event_id}">
+                                <a href="/~j2020tmD/sources/front/Event_Edit.php?iid={$value.event_id}">
                                     <h4><b>{$value.event_name}<br></b></h4>
                                 </a>
                             </div>
@@ -54,14 +54,6 @@
                             </div>
                             <br>
                             <div>
-                                {if $value.NPO_id != ''}
-                                <b>・開催団体</b>：{$value.group_name}
-                                {else}
-                                <b>・開催者</b>：{$value.representative}
-                                {/if}
-                            </div>
-                            <br>
-                            <div>
                                 <b>・開催場所</b>：{$value.venue_name} {$value.venue_city}{$value.venue_aza}
                             </div>
                             <br>
@@ -79,7 +71,7 @@
         </div>
     </div>
 
-    {include file="../../components/footer.tmpl"}
+    {include file="../components/footer.tmpl"}
     <script src="/~j2020tmD/sources/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/~j2020tmD/sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/~j2020tmD/sources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>

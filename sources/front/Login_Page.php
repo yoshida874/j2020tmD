@@ -10,6 +10,7 @@ $smarty->assign('page', $header_items);
 $ERR_STR = "";
 $user_id = "";
 $user_name = "";
+$id = "";
 
 //inc_headerでsession_start()しているため
 if(!isset($_SESSION)){
@@ -31,7 +32,7 @@ if(isset($_POST['login_user']) && isset($_POST['user_password'])){
         $_SESSION['j2020tmD_user']['login_user'] = strip_tags($_POST['login_user']);
         $_SESSION['j2020tmD_user']['user_id'] = $user_id;
         $_SESSION['j2020tmD_user']['user_name'] = $user_name;
-        cutil::redirect_exit("Home_Page.php");
+        $smarty->display('front/' . 'Home_Page' . '.tmpl');
     }
 }
 
@@ -40,6 +41,7 @@ function chk_user_login($login_user,$user_pw){
     global $ERR_STR;
     global $user_id;
     global $user_name;
+    global $id;
     $user = new cuser();
     $row = $user->get_tgt_login(false,$login_user);
     if($row === false || !isset($row['user_id'])){
@@ -47,13 +49,14 @@ function chk_user_login($login_user,$user_pw){
         return false;
     }
     //暗号化によるパスワード認証
-    if($user_pw == $rows['pw']){
-    //if(!cutil::pw_check($user_pw,$row['pw'])){
+    //if($user_pw != $row['pw']){
+    if(!cutil::pw_check($user_pw,$row['pw'])){
         $ERR_STR .= "パスワードが違っています。\n";
         return false;
     }
     $user_id = $row['user_id'];
     $user_name = $row['user_name'];
+    $id = $row['id'];
     return true;
 }
 

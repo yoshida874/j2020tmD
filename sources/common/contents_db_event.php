@@ -61,6 +61,33 @@ class cevent extends crecord {
 			"*",			//取得するカラム
 			"Event left join NPO_group on Event.NPO_id = NPO_group.NPO_id",	//取得するテーブル
 			"1",			//条件
+			"Event.created_at asc",	//並び替え
+			"limit " . $from . "," . $limit		//抽出開始行と抽出数
+		);
+		//順次取り出す
+		while($row = $this->fetch_assoc()){
+			$arr[] = $row;
+		}
+		//取得した配列を返す
+		return $arr;
+	}
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief	指定された範囲の配列を得る
+	@param[in]	$debug	デバッグ出力をするかどうか
+	@param[in]	$from	抽出開始行
+	@param[in]	$limit	抽出数
+	@return	配列（2次元配列になる）
+	*/
+	//--------------------------------------------------------------------------------------
+	public function get_tgt_NPO_id($debug,$from,$limit,$id){
+		$arr = array();
+		//親クラスのselect()メンバ関数を呼ぶ
+		$this->select(
+			$debug,			//デバッグ表示するかどうか
+			"*",			//取得するカラム
+			"Event left join NPO_group on Event.NPO_id = NPO_group.NPO_id",	//取得するテーブル
+			"Event.NPO_id=" . $id,			//条件
 			"event_id asc",	//並び替え
 			"limit " . $from . "," . $limit		//抽出開始行と抽出数
 		);
@@ -97,7 +124,7 @@ class cevent extends crecord {
 
 	//--------------------------------------------------------------------------------------
 	/*!
-	@brief	指定されたIDの配列を得る
+	@brief	検索条件に応じたイベントの配列を得る
 	@param[in]	$debug	デバッグ出力をするかどうか
 	@param[in]	$id		ID
 	@return	配列（1次元配列になる）空の場合はfalse
@@ -127,6 +154,34 @@ class cevent extends crecord {
 			}
         //取得した配列を返す
         return $arr;
+	}
+
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief	指定された範囲の配列を得る
+	@param[in]	$debug	デバッグ出力をするかどうか
+	@param[in]	$from	抽出開始行
+	@param[in]	$limit	抽出数
+	@return	配列（2次元配列になる）
+	*/
+	//--------------------------------------------------------------------------------------
+	public function get_event_edit($debug,$id,$from,$limit){
+		$arr = array();
+		//親クラスのselect()メンバ関数を呼ぶ
+		$this->select(
+			$debug,			//デバッグ表示するかどうか
+			"*",			//取得するカラム
+			"Event",	//取得するテーブル
+			"user_id = ". $id,			//条件
+			"Event.created_at asc",	//並び替え
+			"limit " . $from . "," . $limit		//抽出開始行と抽出数
+		);
+		//順次取り出す
+		while($row = $this->fetch_assoc()){
+			$arr[] = $row;
+		}
+		//取得した配列を返す
+		return $arr;
 	}
 
 	//--------------------------------------------------------------------------------------
@@ -205,7 +260,7 @@ class cparticipant extends crecord {
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
-	@brief	指定されたIDの配列を得る
+	@brief	指定されたイベントの参加人数を得る
 	@param[in]	$debug	デバッグ出力をするかどうか
 	@param[in]	$id		ID
 	@return	配列（1次元配列になる）空の場合はfalse
@@ -220,14 +275,93 @@ class cparticipant extends crecord {
 		//親クラスのselect()メンバ関数を呼ぶ
 		$this->select(
 			$debug,			//デバッグ表示するかどうか
-			"count(*) as participant",		//取得するカラム
+			"count(*) as participant_count",		//取得するカラム
 			"participant",	//取得するテーブル
 			"event_id=" . $id	//条件
 		);
 		return $this->fetch_assoc();
 	}
 
-	
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief	指定されたユーザがイベントに参加登録をしているか
+	@param[in]	$debug	デバッグ出力をするかどうか
+	@param[in]	$user_id		user_id
+	@param[in]	$event_id		event_id
+	@return	配列（1次元配列になる）空の場合はfalse
+	*/
+	//--------------------------------------------------------------------------------------
+	public function get_event_participant($debug,$user_id,$event_id){
+
+		//親クラスのselect()メンバ関数を呼ぶ
+		$this->select(
+			$debug,			//デバッグ表示するかどうか
+			"count(*) as participant",		//取得するカラム
+			"participant",	//取得するテーブル
+			"user_id = {$user_id}
+			and event_id = {$event_id}"	//条件
+		);
+		return $this->fetch_assoc();
+	}
+
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief	userの参加予定のイベントの配列を得る
+	@param[in]	$debug	デバッグ出力をするかどうか
+	@param[in]	$id		ID
+	@return	配列（1次元配列になる）空の場合はfalse
+	*/
+	//--------------------------------------------------------------------------------------
+	public function get_conf_event($debug,$from,$limit,$id){
+		$arr = array();
+		//親クラスのselect()メンバ関数を呼ぶ
+		$this->select(
+			$debug,			//デバッグ表示するかどうか
+			"*",			//取得するカラム
+			"Event left join participant on Event.event_id = participant.event_id
+				   left join NPO_group on Event.NPO_id = NPO_group.NPO_id",	//取得するテーブル
+			"participant.user_id = {$id}
+			 and Event.start_event_date >" . date("Y/m/d"),			//条件
+			"Event.event_id asc",	//並び替え
+			"limit " . $from . "," . $limit		//抽出開始行と抽出数
+		);
+		//順次取り出す
+		while($row = $this->fetch_assoc()){
+			$arr[] = $row;
+		}
+		//取得した配列を返す
+		return $arr;
+	}
+
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief	userの参加したイベントの配列を得る
+	@param[in]	$debug	デバッグ出力をするかどうか
+	@param[in]	$id		ID
+	@return	配列（1次元配列になる）空の場合はfalse
+	*/
+	//--------------------------------------------------------------------------------------
+	public function get_past_event($debug,$from,$limit,$id){
+		$arr = array();
+		//親クラスのselect()メンバ関数を呼ぶ
+		$this->select(
+			$debug,			//デバッグ表示するかどうか
+			"*",			//取得するカラム
+			"Event left join participant on Event.event_id = participant.event_id
+				   left join NPO_group on Event.NPO_id = NPO_group.NPO_id",	//取得するテーブル
+			"participant.user_id = {$id}
+			 and Event.start_event_date <" . date("Y/m/d"),			//条件
+			"Event.event_id asc",	//並び替え
+			"limit " . $from . "," . $limit		//抽出開始行と抽出数
+		);
+		//順次取り出す
+		while($row = $this->fetch_assoc()){
+			$arr[] = $row;
+		}
+		//取得した配列を返す
+		return $arr;
+	}
+
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	デストラクタ
@@ -241,7 +375,7 @@ class cparticipant extends crecord {
 }
 
 //--------------------------------------------------------------------------------------
-///	participantクラス
+///	hash_tagクラス
 //--------------------------------------------------------------------------------------
 class chash_tag extends crecord {
 	//--------------------------------------------------------------------------------------
@@ -303,7 +437,7 @@ class chash_tag extends crecord {
 		//取得した配列を返す
 		return $arr;
 	}
-	
+
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	デストラクタ

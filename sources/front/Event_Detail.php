@@ -8,9 +8,16 @@ require_once("inc_header.php");
 $smarty->assign('page', $header_items);
 
 $rows = array();
+$NPO = array();
+$show_mode = '';
 
 if(!isset($_POST["func"])){
 	$_POST["func"] = "";
+}
+else{
+    if($_POST["func"] == "del"){
+        deljob();
+    }
 }
 
 if(isset($_GET['iid'])){
@@ -22,12 +29,26 @@ $week = array('日', '月', '火', '水', '木', '金', '土');
 if(!empty($rows)){
     //参加者
     $obj = new cparticipant();
-    $participant = $obj->get_event_user(false,$rows["event_id"]);
+    //イベントに参加している人数
+    $participant_count = $obj->get_event_user(false,$rows["event_id"]);
+    //すでにイベントに参加登録しているか
+    if(isset($_SESSION['j2020tmD_user']['id'])){
+        $participant = $obj->get_event_participant(false,$_SESSION['j2020tmD_user']['id'],$rows["event_id"]);
+    }
+    else{
+        $participant = $obj->get_event_participant(false,0,$rows["event_id"]);
+    }
+    if($rows["NPO_id"] != ''){
+        //NPO団体情報取得
+        $obj = new cnpo_group();
+        $NPO = $obj->get_tgt(false,$rows["NPO_id"]);
+    }
     //曜日
     $date = new DateTime($rows["start_event_date"]);
     $date = $date->format('w');
-    $rows = $rows + $participant +array('start_event_week'=>$week[$date]);
+    $rows = $rows + $participant + $participant_count  + $NPO + array('start_event_week'=>$week[$date]);
 }
+
 //--------------------------------------------------------------------------------------
 /*!
 @brief	データ読み込み
@@ -43,24 +64,16 @@ function readdata($id)
 
 //--------------------------------------------------------------------------------------
 /*!
-@brief	userのイベント参加
+@brief	削除
 @return	なし
 */
 //--------------------------------------------------------------------------------------
-function regist_user()
+function deljob()
 {
-    global $CMS_COMMON_INCLUDE_DIR;
-    require_once($CMS_COMMON_INCLUDE_DIR . "auth_user.php");
-    $dataarr = array();
-    $dataarr['user_id'] = (int)$_SESSION['j2020tmD_user']['id'];
-    $dataarr['event_id'] = (int) $_POST['param'];
-    $dataarr['child_id'] = 1;
-    $change = new cchange_ex();
-
-    // 値追加
-    $change->insert('participant', $dataarr);
-    cutil::redirect_exit($_SERVER['PHP_SELF'].'?iid='.$_GET['iid']);
-    
+    $chenge = new cchange_ex();
+    if ($_POST['param'] > 0) {
+        $chenge->delete("participant", "event_id=" . $_POST['param'] . " and user_id=" . (int)$_SESSION['j2020tmD_user']['id']);
+    }
 }
 
 //--------------------------------------------------------------------------------------
@@ -81,8 +94,5 @@ assign_cevent_list();
 //Smartyを使用した表示(テンプレートファイルの指定)
 $top_path = 'front/';
 $base_name = basename(__FILE__, ".php");
-if(isset($_POST["func"]) && $_POST["func"] == "func"){
-    regist_user();
-}else{
-    $smarty->display($top_path . $base_name . '.tmpl');
-}
+
+$smarty->display($top_path . $base_name . '.tmpl');

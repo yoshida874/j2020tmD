@@ -54,20 +54,16 @@
               <td>未返信</td>
             </tr>
             <tr>
-              <td>ユーザ名</td>
-              <td>{$smarty.post.user_name}</td>
-            </tr>
-            <tr>
               <td>ユーザID</td>
-              <td>{$smarty.post.user_id}</td>
+              <td>{$rows.user_id}</td>
             </tr>
             <tr>
               <td>お問い合わせ内容</td>
-              <td>{$smarty.post.content}</td>
+              <td>{$rows.content}</td>
             </tr>
             <tr>
               <td>受信日時</td>
-              <td>{$smarty.post.target_date}</td>
+              <td>{$rows.target_date}</td>
             </tr>
           </table>
           <button type="button" class="btn btn-secondary" onclick="location.href='./Inquiry_List.php'">戻る</button>
@@ -86,7 +82,6 @@
               <textarea name="" id="" cols="40" rows="10"> </textarea>
             </p>
             <input type="hidden"   name="inquiry_id" value="{$smarty.post.inquiry_id|escape}">
-            <input type="hidden"   name="user_name" value="{$smarty.post.user_name|escape}">
             <input type="hidden"   name="user_id" value="{$smarty.post.user_id|escape}">
             <input type="hidden"   name="content" value="{$smarty.post.content|escape}">
             <input type="hidden"   name="target_date" value="{$smarty.post.target_date|escape}">

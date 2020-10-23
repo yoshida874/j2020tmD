@@ -4,6 +4,7 @@ require_once("inc_base.php");
 require_once($CMS_COMMON_INCLUDE_DIR . "libs.php");
 require_once("inc_smarty.php");
 require_once("inc_header.php");
+require_once($CMS_COMMON_INCLUDE_DIR . "auth_NPO.php");
 
 $smarty->assign('page', $header_items);
 

@@ -8,7 +8,8 @@
         <link rel="stylesheet" href="../css/admin_base.css">
         <link rel="stylesheet" href="../css/user_list.css">
         <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<title>イベント詳細</title>
+        <link rel="icon" type="image/png" href="/~j2020tmD/sources/img/wakaba.png">
+        <title>管理者admin</title>
 {literal}
 <script type="text/javascript">
 <!--
@@ -25,7 +26,7 @@ function set_func_form(fn,pm){
 </head>
 <body>
   {include file="../components/Side_Menu.tmpl"}
-        
+
   <!--<div id="main">-->
   <div id = "center" class ="main center">
    <div class="container">
@@ -228,10 +229,12 @@ function set_func_form(fn,pm){
 
 
 <tr>
-  <th>画像パス</th>
+  <th>画像</th>
   <td>
-    <p>{$smarty.post.img}</p>
-    <input type="hidden" name="img"  value="{$smarty.post.img|escape}" />
+    <p>
+      <img src="{$rows.img}" width="200px" >
+      <input type="hidden" name="profile_img" value="{$rows.profile_img|escape}" />
+      </p>
   </td>
 </tr>
 

@@ -10,6 +10,8 @@
     <link href="/~j2020tmD/sources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="/~j2020tmD/sources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href='./css/style.css' rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="../img/wakaba.png">
     <link rel="stylesheet" href="/~j2020tmD/sources/front/css/front.css">
 
     <title>わかばくらぶ</title>
@@ -23,7 +25,7 @@
     <br><div id='center' class="main center">
         <div class="container">
         <div align="left"> 
-            <h1>新着イベント</h1>
+            <h1>イベント検索</h1>
             <hr> <br>
     <div>
 
@@ -41,7 +43,31 @@
             <br>
             <div>
                 <span><label>・対象年齢</label></span>
-                <input type="text" name="start_age"> 歳 ~ <input type="text" name="end_age"> 歳
+                    <select name="start_age">
+                    <option value="" >選択してください</option>
+                                                                                <option value="0" >0</option>
+                                                                                <option value="1" >1</option>
+                                                                                <option value="2" >2</option>
+                                                                                <option value="3" >3</option>
+                                                                                <option value="4" >4</option>
+                                                                                <option value="5" >5</option>
+                                                                                <option value="6" >6</option>
+                                                                                <option value="7" >7</option>
+                                                                                <option value="8" >8</option>
+                    </select> 歳
+                    ～
+                    <select name="end_age">
+                      <option value="">選択してください</option>
+                                                                                <option value="0" >0</option>
+                                                                                <option value="1" >1</option>
+                                                                                <option value="2" >2</option>
+                                                                                <option value="3" >3</option>
+                                                                                <option value="4" >4</option>
+                                                                                <option value="5" >5</option>
+                                                                                <option value="6" >6</option>
+                                                                                <option value="7" >7</option>
+                                                                                <option value="8" >8</option>
+                  </select> 歳
             </div>
             <br>
                 <div>
@@ -107,7 +133,11 @@
                 </div>
                 <br>
             <div>
+                {if $value.NPO_id != ''}
                 <b>・開催団体</b>：{$value.group_name}
+                {else}
+                <b>・開催者</b>：{$value.representative}
+                {/if}
             </div>
             <br>
                 <div>
@@ -115,7 +145,7 @@
                 </div>
                 <br>
                 <div class="col-md-12">
-                    <h3 align = right>{$value.participant}/{$value.upper_limit} 人</h3>
+                    <h3 align = right>{$value.participant_count}/{$value.upper_limit} 人</h3>
             </div>
       </div>
     </div>

@@ -11,7 +11,10 @@ $ERR_STR = "";
 $user_id = "";
 $user_name = "";
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
+
 if(isset($_SESSION['j2020tmD_npo']['err']) && $_SESSION['j2020tmD_npo']['err'] != ""){
     $ERR_STR = $_SESSION['j2020tmD_npo']['err'];
 }
@@ -27,6 +30,7 @@ if(isset($_POST['login_user']) && isset($_POST['NPO_password'])){
         $_SESSION['j2020tmD_npo']['login_user'] = strip_tags($_POST['login_user']);
         $_SESSION['j2020tmD_npo']['user_id'] = $user_id;
         $_SESSION['j2020tmD_npo']['user_name'] = $user_name;
+        $_SESSION['j2020tmD_npo']['NPO_id'] = $NPO_id;
         cutil::redirect_exit("Home_Page.php");
     }
 }
@@ -36,6 +40,7 @@ function chk_NPO_login($login_user,$npo_pw){
     global $ERR_STR;
     global $user_id;
     global $user_name;
+    global $NPO_id;
     $NPO = new cnpo_user();
     $row = $NPO->get_tgt_login(false,$login_user);
     if($row === false || !isset($row['user_id'])){
@@ -49,6 +54,7 @@ function chk_NPO_login($login_user,$npo_pw){
     }
     $user_id = $row['user_id'];
     $user_name = $row['user_name'];
+    $NPO_id = $row['NPO_id'];
     return true;
 }
 

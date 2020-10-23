@@ -42,53 +42,7 @@ $member_obj = new cuser();
 //配列にメンバーを$_POSTに取り出す
 //すでにPOSTされていたら、DBからは取り出さない
 
-if (isset($_POST['func'])) {
-    switch ($_POST['func']) {
-        case 'set':
-            //regist();
-            if (!paramchk()) {
-                //$_POST['func'] = 'edit';
-                $err_flag = 1;
-            } else {
 
-                regist();
-                //regist()内でリダイレクトするので
-                //ここまで実行されればリダイレクト失敗
-                //$_POST['func'] = 'edit';
-                //システムに問題のあるエラー
-                $err_flag = 2;
-            }
-        case 'conf':
-            if (!paramchk()) {
-                $_POST['func'] = 'edit';
-                $err_flag = 1;
-            }
-            break;
-        case 'edit':
-            //戻るボタン。
-            break;
-        default:
-            //通常はありえない
-            echo '原因不明のエラーです。';
-            exit;
-            break;
-    }
-} else {
-    if ($member_id > 0) {
-        // if (($_POST = $member_obj->get_tgt(false, $member_id)) === false) {
-        //     $_POST['func'] = 'new';
-        //     //console_log("EDIT member_id > 0 (POST['func']) : " . $_POST['func']);
-        // } else {
-        //     //$_POST['fruits'] = $member_obj->get_all_fruits_match(false, $member_id);
-        //     //$_POST['func'] = 'edit';
-        // }
-        $_POST['func'] = 'new';
-    } else {
-        //新規の入力フォーム
-        $_POST['func'] = 'new';
-        //console_log("EDIT ELSE (POST['func']) : " . $_POST['func']);
-    }
-}
 
 /////////////////////////////////////////////////////////////////
 /// 関数ブロック
@@ -161,25 +115,6 @@ function paramchk()
     return $retflg;
 }
 
-//--------------------------------------------------------------------------------------
-/*!
-@brief	フルーツデータの追加／更新
-@return	なし
-*/
-//--------------------------------------------------------------------------------------
-function regist_user($member_id)
-{
-    $chenge = new cchange_ex();
-    $chenge->delete("user", "id=" . $member_id);
-    foreach ($_POST['user'] as $key => $val) {
-        $dataarr = array();
-        $dataarr['id'] = (int)$member_id;
-        //$dataarr['fruits_id'] = (int)$val;
-        //console_log("REGIST_USER : " . $chenge->insert('user', $dataarr));
-        //$chenge->insert('user', $dataarr);
-    }
-}
-
 
 //--------------------------------------------------------------------------------------
 /*!
@@ -189,6 +124,7 @@ function regist_user($member_id)
 //--------------------------------------------------------------------------------------
 function regist()
 {
+    global $smarty;
     global $member_id;
     $dataarr = array();
     $dataarr['user_name'] = (string)$_POST['user_name'];
@@ -196,7 +132,7 @@ function regist()
     $dataarr['address'] = (string)$_POST['address'];
     $dataarr['sex'] = (int)$_POST['sex'];
     $dataarr['birthday'] = (string)$_POST['birthday'];
-    $dataarr['pw'] = (string)$_POST['pw'];
+    $dataarr['pw'] = (string)cutil::pw_encode($_POST['pw']);
 
     $chenge = new cchange_ex();
     // if ($member_id > 0) {
@@ -209,10 +145,49 @@ function regist()
     //     cutil::redirect_exit($_SERVER['PHP_SELF'] . '?mid=' . $mid);
     // }
     $mid = $chenge->insert('user', $dataarr);
-    echo $mid;
     //console_log("REGIST : " . $mid);
     //regist_user($mid);
-    cutil::redirect_exit($_SERVER['PHP_SELF'] . '?mid=' . $mid);
+
+    regist_child($mid);
+
+    $_SESSION['j2020tmD_user']['login_user'] = (string)$_POST['user_id'];
+    $_SESSION['j2020tmD_user']['user_id'] = (string)$_POST['user_id'];
+    $_SESSION['j2020tmD_user']['user_name'] = (string)$_POST['user_name'];
+    $_SESSION['j2020tmD_user']['id'] = $mid;
+
+    //$smarty->display('front/' . 'Home_Page' . '.tmpl');
+    cutil::redirect_exit('Home_Page.php');
+}
+//--------------------------------------------------------------------------------------
+/*!
+@brief	メンバーの子供のデータの追加／更新。保存後自分自身を再読み込みする。
+@return	なし
+*/
+//--------------------------------------------------------------------------------------
+function regist_child($id)
+{
+    global $member_id;
+    $dataarr = array();
+    $chenge = new cchange_ex();
+
+    $dataarr['user_id'] = (int)$id;
+    $dataarr['child_name'] = (string)$_POST['children_name'];
+    $dataarr['age'] = (int)$_POST['children_age'];
+    $dataarr['sex'] = (string)$_POST['children_sex'];
+
+    $mid = $chenge->insert('user_children', $dataarr);
+    /*
+    $child_length = (int)$_POST['length'];
+
+    for ($i = 0; $i < $child_length; $i++) {
+        $dataarr['user_id'] = (string)$_POST['user_id'];
+        $dataarr['child_name'] = (string)$_POST['children_name' + ($i + 1)];
+        $dataarr['age'] = $i; //(int)$_POST['children_age' + ($i + 1)];
+        $dataarr['sex'] = (string)$_POST['children_sex' + ($i + 1)];
+        $mid = $chenge->insert('user_children', $dataarr);
+    }
+    */
+
 }
 //--------------------------------------------------------------------------------------
 /*!
@@ -285,10 +260,13 @@ $smarty->assign('err_array', $err_array);
 $top_path = 'front/';
 $base_name = basename(__FILE__, ".php");
 
-if(isset($_POST['func']) && $_POST['func'] == 'conf'){
-    $smarty->display($top_path . 'Home_Page' . '.tmpl');
+if(isset($_POST["func"]) && $_POST["func"] == "conf"){
+    //paramchk();
+    $smarty->display($top_path . $base_name . '_Conf.tmpl');
+}elseif(isset($_POST["func"]) && $_POST["func"] == "set"){
+    regist();
 }
 else{
     $smarty->display($top_path . $base_name . '.tmpl');
 }
-
+  

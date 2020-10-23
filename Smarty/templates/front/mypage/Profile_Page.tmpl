@@ -55,15 +55,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-11">
-          <div align="right">
-            <div>
-              <a href="Profile_Edit.php" class="btn btn-primary btn-lg">プロフィールの変更</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <hr>
       <br>
       <div class="row">
@@ -81,23 +73,13 @@
             <table border="1">
               <tr>
                 <td class="p-3 mb-2  text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "
-                  width="200" height="50" style="text-align:center;"> <a href="Event_List.php?iid=conf">予約内容の確認</a>
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3 mb-2  text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "
-                  width="200" height="50" style="text-align:center;"> <a href="../Event_Edit.php">イベントの編集</a>
+                  width="200" height="50" style="text-align:center;"> <a href="Event_List.php?iid=conf&uid={$uid}">予約しているイベント</a>
                 </td>
               </tr>
               <tr>
                 <td class="p-3 mb-2 text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "
-                  width="210" height="50" style="text-align:center;"> <a href="Event_List.php?iid=past">過去に参加したイベント</a>
+                  width="210" height="50" style="text-align:center;"> <a href="Event_List.php?iid=past&uid={$uid}">過去に参加したイベント</a>
                 </td>
-              </tr>
-              <tr>
-                <td class="p-3 mb-2 text-dark" style="border: solid 2px lightgreen ; background-color : honeydew; "
-                  width="200" height="50" style="text-align:center;"> <a
-                    href="Withdrawal_Page.php">退会</a> </td>
               </tr>
             </table>
             <br>

@@ -10,7 +10,10 @@ $ERR_STR = "";
 $user_id = "";
 $user_name = "";
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
+
 if(isset($_SESSION['j2020tmD_admin']['err']) && $_SESSION['j2020tmD_admin']['err'] != ""){
     $ERR_STR = $_SESSION['j2020tmD_admin']['err'];
 }
@@ -35,7 +38,7 @@ function chk_user_login($login_user,$admin_pw){
     global $ERR_STR;
     global $user_id;
     global $user_name;
-    $user = new cuser();
+    $user = new cadmin_user();
     $row = $user->get_tgt_login(false,$login_user);
     if($row === false || !isset($row['user_id'])){
         $ERR_STR .= "ログイン名が不定です。\n";

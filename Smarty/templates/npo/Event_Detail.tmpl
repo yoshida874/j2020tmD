@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="stylesheet" href="../css/admin_base.css">
   <link rel="stylesheet" href="../css/user_list.css">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,16 +53,18 @@ function set_func_form(fn,pm){
 
 
   <tr>
-    <th>NPOID</th>
-    <td>
-    <input type="text" name="NPO_id" placeholder="NPOID" value={$rows.NPO_id|escape}>
-    </td>
-  </tr>
-
-  <tr>
     <th>最小対象年齢</th>
     <td>
-      <input type="text" name="start_age" placeholder="最小対象年齢" value={$rows.start_age|escape}>
+      <select name="start_age">
+        <option value="0">選択してください</option>
+        {for $age=0 to 8}
+        {if $age == $rows.start_age}
+        <option value="{$age}" selected="selected">{$age}</option>
+        {else}
+        <option value="{$age}">{$age}</option>
+        {/if}
+        {/for}
+    </select>
     </td>
   </tr>
 
@@ -70,7 +72,16 @@ function set_func_form(fn,pm){
   <tr>
     <th>最大対象年齢</th>
     <td>
-      <input type="text" name="end_age" placeholder="最大対象年齢" value={$rows.end_age|escape}>
+      <select name="end_age">
+        <option value="0">選択してください</option>
+        {for $age=0 to 8}
+        {if $age == $rows.end_age}
+        <option value="{$age}" selected="selected">{$age}</option>
+        {else}
+        <option value="{$age}">{$age}</option>
+        {/if}
+        {/for}
+    </select>
     </td>
   </tr>
 
@@ -78,14 +89,14 @@ function set_func_form(fn,pm){
   <tr>
     <th>イベント開始日</th>
     <td>
-      <input type="text" name="start_event_date" placeholder="イベント開始" value={$rows.start_event_date|escape}>
+      <input type="date" name='start_event_date' placeholder="イベント開始" value={$rows.start_event_date|escape}>
     </td>
   </tr>
 
   <tr>
     <th>イベント開始時間</th>
     <td>
-      <input type="text" name="start_event_time" placeholder="イベント開始" value={$rows.start_event_time|escape}>
+      <input type="time" name="start_event_time" placeholder="イベント開始" value={$rows.start_event_time|escape}>
     </td>
   </tr>
 
@@ -93,14 +104,14 @@ function set_func_form(fn,pm){
   <tr>
     <th>イベント終了日</th>
     <td>
-      <input type="text" name="end_event_date" placeholder="イベント終了" value={$rows.end_event_date|escape}>
+      <input type="date" name="end_event_date" placeholder="イベント終了" value={$rows.end_event_date|escape}>
     </td>
   </tr>
 
   <tr>
     <th>イベント終了時間</th>
     <td>
-      <input type="text" name="end_event_time" placeholder="イベント終了" value={$rows.end_event_time|escape}>
+      <input type="time" name="end_event_time" placeholder="イベント終了" value={$rows.end_event_time|escape}>
     </td>
   </tr>
 
@@ -108,14 +119,14 @@ function set_func_form(fn,pm){
   <tr>
     <th>募集開始日</th>
     <td>
-      <input type="text" name="start_recruiting_date" placeholder="募集開始" value={$rows.start_recruiting_date|escape}>
+      <input type="date" name="start_recruiting_date" placeholder="募集開始" value={$rows.start_recruiting_date|escape}>
     </td>
   </tr>
 
   <tr>
     <th>募集開始時間</th>
     <td>
-      <input type="text" name="start_recruiting_time" placeholder="募集開始" value={$rows.start_recruiting_time|escape}>
+      <input type="time" name="start_recruiting_time" placeholder="募集開始" value={$rows.start_recruiting_time|escape}>
     </td>
   </tr>
 
@@ -123,14 +134,14 @@ function set_func_form(fn,pm){
   <tr>
     <th>募集終了日</th>
     <td>
-      <input type="text" name="end_recruiting_date" placeholder="募集終了" value={$rows.end_recruiting_date|escape}>
+      <input type="date" name="end_recruiting_date" placeholder="募集終了" value={$rows.end_recruiting_date|escape}>
     </td>
   </tr>
 
   <tr>
     <th>募集終了時間</th>
     <td>
-      <input type="text" name="end_recruiting_time" placeholder="募集終了" value={$rows.end_recruiting_time|escape}>
+      <input type="time" name="end_recruiting_time" placeholder="募集終了" value={$rows.end_recruiting_time|escape}>
     </td>
   </tr>
 
@@ -203,14 +214,16 @@ function set_func_form(fn,pm){
   <tr>
     <th>イベント内容</th>
     <td>
-      <textarea class = "area" cols="40" rows="8" placeholder="イベント内容">{$rows.content|escape}</textarea>
+      <textarea class = "area" name="content" cols="40" rows="8" placeholder="イベント内容">{$rows.content|escape}</textarea>
     </td>
   </tr>
 
   <tr>
-    <th>画像パス</th>
+    <th>画像</th>
     <td>
-      <input type="text" name="img" placeholder="画像パス" value={$rows.img}>
+      <img src="{$rows.img}" width="200px" >
+      <input type="hidden" name="img" value="{$rows.img|escape}" />
+
     </td>
   </tr>
 </table>
@@ -219,6 +232,7 @@ function set_func_form(fn,pm){
 
   <input type="hidden" name="func" value="" />
   <input type="hidden" name="param" value="" />
+  <input type="hidden" name="NPO_id"  value={$rows.NPO_id|escape}>
 	<input type="button" class="btn btn-secondary btn-lg" name="btn_confirm" onClick="javascript:set_func_form('confirm','')" style="bottom; left: 50%; top: 70%" value="確認">
 </form>
 

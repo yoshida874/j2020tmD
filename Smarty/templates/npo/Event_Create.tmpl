@@ -1,110 +1,226 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
-        <link rel="stylesheet" href="../css/admin_base.css">
-        <link rel="stylesheet" href="../css/user_list.css">
-        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="header"></div>
-    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-    <label for="openSidebarMenu" class="sidebarIconToggle">
-      <div class="spinner diagonal part-1"></div>
-      <div class="spinner horizontal"></div>
-      <div class="spinner diagonal part-2"></div>
-    </label>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="../css/admin_base.css">
+  <link rel="stylesheet" href="../css/user_list.css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<title>NPO管理</title>
+{literal}
+<script type="text/javascript">
+<!--
+function set_func_form(fn,pm){
+	document.form1.target = "_self";
+  document.form1.func.value = fn;
+	document.form1.param.value = pm;
+	document.form1.submit();
+}
+
+
+// -->
+</script>
+{/literal}
+</head>
+<body>
   {include file="../components/Side_Menu.tmpl"}
-    <br>
-    <div>
-      <div id='center' class="main center">
-        <div class="container">
-        <div align="center">
-      <table border="1">
-        <tr>
-          <td>イベント名</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-          <td>主催者</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-        </tr>
-        <tr>
-          <td>対象年齢</td>
-          <td>
-            <input
-              type="text"
-              name="title"
-              value=""
-              size="24"
-              style="width: 50px;"
-            />
-            ~
-            <input
-              type="text"
-              name="title"
-              value=""
-              size="24"
-              style="width: 50px;"
-            />
-            歳
-          </td>
-          <td>ハッシュタグ</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-        </tr>
-        <tr>
-          <td>開催日</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-          <td>時間</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-        </tr>
-        <tr>
-          <td>募集期間</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-          <td>開催場所</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-        </tr>
-        <tr>
-          <td>会場名</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-          <td>内容</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-        </tr>
-        <tr>
-          <td>参加費</td>
-          <td><input type="text" name="userId" value="" size="24" /></td>
-        </tr>
-      </table>
-      <br>
-      <section id="confirm">
-        <form>
-          <div align="center">
-            <button class="btn btn-secondary btn-lg" onmousedown="confirm()">確認</button>
-          </div>
-        </form>
-        <script>
-          function confirm() {
-            document.getElementById("confirm").hidden = true;
-            document.getElementById("post").hidden = false;
-          }
-        </script>
-      </section>
-      <section id="post" hidden>
-        <div align="center">
-          <button class="btn btn-secondary btn-lg" onmousedown="back()">戻る</button>
-          <button class="btn btn-secondary btn-lg">追加</button>
-        </div>
-        <script>
-          function back() {
-            document.getElementById("confirm").hidden = false;
-            document.getElementById("post").hidden = true;
-          }
-        </script>
-      </section>
-    </div>
-    <script src="../assets/vendor/jquery/jquery.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  </body>
+  <br>
+  <div>
+    <div id='center' class="main center">
+      <div class="container">
+      <div align="center">
+  <div>
+<h1>イベント作成</h1>
+
+<form name="form1" method="post" action="">
+
+<table border="1" align="center" width="500px">
+
+  <tr>
+    <th>イベント名</th>
+    <td>
+      <input type="text" name="event_name" placeholder="イベント名">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>最小対象年齢</th>
+    <td>
+      <select name="start_age">
+        <option value="0">選択してください</option>
+        {for $age=0 to 8}
+        <option value="{$age}">{$age}</option>
+        {/for}
+    </select>
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>最大対象年齢</th>
+    <td>
+      <select name="end_age">
+        <option value="0">選択してください</option>
+        {for $age=0 to 8}
+        <option value="{$age}">{$age}</option>
+        {/for}
+    </select>
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>イベント開始日</th>
+    <td>
+      <input type="date" name='start_event_date' placeholder="イベント開始">
+    </td>
+  </tr>
+
+  <tr>
+    <th>イベント開始時間</th>
+    <td>
+      <input type="time" name="start_event_time" placeholder="イベント開始">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>イベント終了日</th>
+    <td>
+      <input type="date" name="end_event_date" placeholder="イベント終了">
+    </td>
+  </tr>
+
+  <tr>
+    <th>イベント終了時間</th>
+    <td>
+      <input type="time" name="end_event_time" placeholder="イベント終了">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>募集開始日</th>
+    <td>
+      <input type="date" name="start_recruiting_date" placeholder="募集開始">
+    </td>
+  </tr>
+
+  <tr>
+    <th>募集開始時間</th>
+    <td>
+      <input type="time" name="start_recruiting_time" placeholder="募集開始">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>募集終了日</th>
+    <td>
+      <input type="date" name="end_recruiting_date" placeholder="募集終了">
+    </td>
+  </tr>
+
+  <tr>
+    <th>募集終了時間</th>
+    <td>
+      <input type="time" name="end_recruiting_time" placeholder="募集終了">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>代表者名</th>
+    <td>
+      <input type="text" name="representative" placeholder="代表者名">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>会場名</th>
+    <td>
+      <input type="text" name="venue_name" placeholder="会場名">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>会場所在都道府県</th>
+    <td>
+      <input type="text" name="venue_prefecture"  placeholder="会場所在都道府県">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>会場所在市町村</th>
+    <td>
+      <input type="text" name="venue_city" placeholder="会場所在市町村">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>会場所在字丁目</th>
+    <td>
+      <input type="text" name="venue_aza" placeholder="会場所在字丁目" >
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>郵便番号</th>
+    <td>
+      <input type="text" name="event_postcode" placeholder="郵便番号">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>開催費用</th>
+    <td>
+      <input type="text" name="cost" placeholder="開催費用">
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>ハッシュタグ</th>
+    <td>
+      <input type="text" name="hash_tag" placeholder="ハッシュタグ">
+    </td>
+  </tr>
+
+
+
+  <tr>
+    <th>イベント内容</th>
+    <td>
+      <textarea class = "area" name="content" cols="40" rows="8" placeholder="イベント内容"></textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <th>画像</th>
+    <td>
+      <input type="file">
+    </td>
+  </tr>
+</table>
+
+<br>
+
+  <input type="hidden" name="func" value="" />
+  <input type="hidden" name="param" value="" />
+	<input type="button" class="btn btn-secondary btn-lg" name="btn_confirm" onClick="javascript:set_func_form('confirm','')" style="bottom; left: 50%; top: 70%" value="確認">
+</form>
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<br>
+</body>
 </html>
