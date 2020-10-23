@@ -42,53 +42,7 @@ $member_obj = new cuser();
 //配列にメンバーを$_POSTに取り出す
 //すでにPOSTされていたら、DBからは取り出さない
 
-if (isset($_POST['func'])) {
-    switch ($_POST['func']) {
-        case 'set':
-            //regist();
-            if (!paramchk()) {
-                //$_POST['func'] = 'edit';
-                $err_flag = 1;
-            } else {
 
-                regist();
-                //regist()内でリダイレクトするので
-                //ここまで実行されればリダイレクト失敗
-                //$_POST['func'] = 'edit';
-                //システムに問題のあるエラー
-                $err_flag = 2;
-            }
-        case 'conf':
-            if (!paramchk()) {
-                $_POST['func'] = 'edit';
-                $err_flag = 1;
-            }
-            break;
-        case 'edit':
-            //戻るボタン。
-            break;
-        default:
-            //通常はありえない
-            echo '原因不明のエラーです。';
-            exit;
-            break;
-    }
-} else {
-    if ($member_id > 0) {
-        // if (($_POST = $member_obj->get_tgt(false, $member_id)) === false) {
-        //     $_POST['func'] = 'new';
-        //     //console_log("EDIT member_id > 0 (POST['func']) : " . $_POST['func']);
-        // } else {
-        //     //$_POST['fruits'] = $member_obj->get_all_fruits_match(false, $member_id);
-        //     //$_POST['func'] = 'edit';
-        // }
-        $_POST['func'] = 'new';
-    } else {
-        //新規の入力フォーム
-        $_POST['func'] = 'new';
-        //console_log("EDIT ELSE (POST['func']) : " . $_POST['func']);
-    }
-}
 
 /////////////////////////////////////////////////////////////////
 /// 関数ブロック
@@ -199,9 +153,10 @@ function regist()
     $_SESSION['j2020tmD_user']['login_user'] = (string)$_POST['user_id'];
     $_SESSION['j2020tmD_user']['user_id'] = (string)$_POST['user_id'];
     $_SESSION['j2020tmD_user']['user_name'] = (string)$_POST['user_name'];
+    $_SESSION['j2020tmD_user']['id'] = $mid;
 
-    $smarty->display('front/' . 'Home_Page' . '.tmpl');
-    //cutil::redirect_exit($_SERVER['PHP_SELF'] . '?mid=' . $mid);
+    //$smarty->display('front/' . 'Home_Page' . '.tmpl');
+    cutil::redirect_exit('Home_Page.php');
 }
 //--------------------------------------------------------------------------------------
 /*!
@@ -305,8 +260,13 @@ $smarty->assign('err_array', $err_array);
 $top_path = 'front/';
 $base_name = basename(__FILE__, ".php");
 
-if (isset($_POST['func']) && $_POST['func'] == 'conf') {
-    $smarty->display($top_path . 'Home_Page' . '.tmpl');
-} else {
+if(isset($_POST["func"]) && $_POST["func"] == "conf"){
+    //paramchk();
+    $smarty->display($top_path . $base_name . '_Conf.tmpl');
+}elseif(isset($_POST["func"]) && $_POST["func"] == "set"){
+    regist();
+}
+else{
     $smarty->display($top_path . $base_name . '.tmpl');
 }
+  
