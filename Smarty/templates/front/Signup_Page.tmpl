@@ -179,7 +179,6 @@
 
           <div class="form-group" id="children">
             <p style="margin-bottom: 0px;">お子様の名前(ニックネーム可)<span style="color: red;">*必須</span></p>
-<<<<<<< HEAD
             <input type="text" name='children_name' class="form-control input-sm" id="kaisai_pass"
                 placeholder="お子様の名前" value="">
             <div class="validation"></div>
@@ -196,49 +195,14 @@
               {/if}
               {/for}
           </select>歳
-=======
-            <input type="text" name='children_name' class="form-control input-sm" id="kaisai_pass" placeholder="お子様の名前"
-              value="">
-            <div class="validation"></div>
-
-            <div class="form-group">
-              <p style="margin-bottom: 0px;">お子様の年齢<span style="color: red;">*必須</span></p>
-              <select name="children_age">
-                <option value="0">選択してください</option>
-                {for $age=0 to 8}
-                {if $age == $children.age}
-                <option value="{$age}" selected="selected">{$age}</option>
-                {else}
-                <option value="{$age}">{$age}</option>
-                {/if}
-                {/for}
-              </select>歳
-            </div>
-            <tr>
-              <th>お子様の性別</th>
-              <td>
-                <p>
-                  <input type="radio" name="children_sex" value=1 checked="checked">男性
-                  <input type="radio" name="children_sex" value=2>女性
-                </p>
-              </td>
-            </tr>
->>>>>>> 7216982e6012d33189ed91bd6bd2f41da07686d2
           </div>
 
           <p>
             <input type="hidden" name="func" value="" />
             <input type="hidden" name="param" value="" />
-<<<<<<< HEAD
             <div align = "center">
             <input class="btn btn-secondary btn-lg" type="submit" name="btn_submit" value="確認" onClick="javascript:set_func_form('conf','')">
             </div>
-=======
-          <div align="center">
-            <input class="btn btn-secondary btn-lg" type="submit" name="btn_submit" value="確認"
-              onClick="javascript:set_func_form('conf','')">
-          </div>
->>>>>>> 7216982e6012d33189ed91bd6bd2f41da07686d2
           </p>
           <br>
         </form>
